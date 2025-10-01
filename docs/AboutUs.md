@@ -1,7 +1,3 @@
----
-  layout: default.md
-  title: "About Us"
----
 
 # About Us
 
