@@ -31,14 +31,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Nicholas Chin
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/lanjia0.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/lanjia0)] [[portfolio](team/lanjia0.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Integration, HashMap expert
 
 ### Jean Doe
 
