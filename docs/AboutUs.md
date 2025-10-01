@@ -39,7 +39,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/zpnoob.png" width="200px">
 
-[[github](http://github.cohttps://github.com/zpnoob)]
+[[github](https://github.com/zpnoob)]
 [[portfolio](team/zpnoob.md)]
 
 * Role: Developer
