@@ -40,15 +40,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Zamien Peh
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/zpnoob.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.cohttps://github.com/zpnoob)]
+[[portfolio](team/zpnoob.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Testing Lead/Code Quality
 
 ### James Doe
 
