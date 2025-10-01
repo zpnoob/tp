@@ -35,15 +35,15 @@ You can reach us by dropping by our CS2103T Tutorial session F15a!
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Zamien Peh
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/zpnoob.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/zpnoob)]
+[[portfolio](team/zpnoob.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Testing Lead/Code Quality
 
 ### James Doe
 
