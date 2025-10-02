@@ -45,11 +45,11 @@ You can reach us by dropping by our CS2103T Tutorial session F15a!
 * Role: Developer
 * Responsibilities: Testing Lead/Code Quality
 
-### James Doe
+### Cheng Leong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/chengleong.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/ChengLeong)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
