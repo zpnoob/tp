@@ -40,7 +40,14 @@
   * [Documentation, logging, testing, configuration, dev-ops]({{ baseUrl }}/DeveloperGuide.html#documentation-logging-testing-configuration-dev-ops)
   * [Appendix: Requirements]({{ baseUrl }}/DeveloperGuide.html#appendix-requirements)
   * [Appendix: Instructions for manual testing]({{ baseUrl }}/DeveloperGuide.html#appendix-instructions-for-manual-testing)
-* [About Us]({{ baseUrl }}/AboutUs.html)
+* [About Us]({{ baseUrl }}/AboutUs.html) :expanded: 
+  * [Project Team]({{ baseUrl }}/AboutUs.html#project-team)
+  * [Portfolios]({{ baseUrl }}/AboutUs.html) :expanded:
+    * [Cyril]({{ baseUrl}}/team/cyfake.html)
+    * [Ernest]({{ baseUrl}}/team/hiokkuek.html)
+    * [Nicholas]({{ baseUrl}}/team/johndoe.html)
+    * [Zamien]({{ baseUrl}}/team/zpnoob.html)
+    * [Cheng Leong]({{ baseUrl}}/team/chengleong.html)
       </site-nav>
     </div>
   </nav>
