@@ -26,30 +26,30 @@ You can reach us by dropping by our CS2103T Tutorial session F15a!
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Nicholas Chin
+
+<img src="images/lanjia0.png" width="200px">
+
+[[github](http://github.com/lanjia0)] [[portfolio](team/lanjia0.md)]
+
+* Role: Developer
+* Responsibilities: Integration, HashMap expert
+
+### Jean Doe
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Dev Ops + Threading
 
-### Zamien Peh
+### James Doe
 
-<img src="images/zpnoob.png" width="200px">
+<img src="images/johndoe.png" width="200px">
 
-[[github](https://github.com/zpnoob)]
-[[portfolio](team/zpnoob.md)]
-
-* Role: Developer
-* Responsibilities: Testing Lead/Code Quality
-
-### Cheng Leong
-
-<img src="images/chengleong.png" width="200px">
-
-[[github](http://github.com/ChengLeong)]
+[[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
