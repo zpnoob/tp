@@ -1,9 +1,13 @@
 ---
   layout: default.md
   title: "About Us"
+  pageNav: 3
 ---
 
 # About Us
+
+<!-- * Table of Contents -->
+<page-nav-print />
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
