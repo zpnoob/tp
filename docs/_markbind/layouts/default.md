@@ -22,7 +22,7 @@
 <div id="flex-body">
   <nav id="site-nav">
     <div class="site-nav-top">
-      <div class="fw-bold mb-2" style="font-size: 1.25rem;">Site Map</div>
+      <div class="fw-bold mb-2" style="font-size: 1.25rem;">Site Map 🗺️</div>
     </div>
     <div class="nav-component slim-scroll">
       <site-nav>
@@ -45,7 +45,7 @@
   * [Portfolios]({{ baseUrl }}/AboutUs.html) :expanded:
     * [Cyril]({{ baseUrl}}/team/cyfake.html)
     * [Ernest]({{ baseUrl}}/team/hiokkuek.html)
-    * [Nicholas]({{ baseUrl}}/team/johndoe.html)
+    * [Nicholas]({{ baseUrl}}/team/lanjia0.html)
     * [Zamien]({{ baseUrl}}/team/zpnoob.html)
     * [Cheng Leong]({{ baseUrl}}/team/chengleong.html)
       </site-nav>
