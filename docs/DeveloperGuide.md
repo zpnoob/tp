@@ -325,7 +325,7 @@ Priorities: High (must have) - * * *, Medium (nice to have) - * *, Low (unlikely
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `InsuraBook` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Delete a person**
 
@@ -350,7 +350,7 @@ Priorities: High (must have) - * * *, Medium (nice to have) - * *, Low (unlikely
 
       Use case resumes at step 2.
 
-*{More to be added}*
+*{To be updated}*
 
 ### Non-Functional Requirements
 
