@@ -15,6 +15,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -28,6 +29,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String priority;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -36,11 +38,13 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
+            @JsonProperty("priority") String priority,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.priority = priority;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -54,6 +58,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        priority = source.getPriority().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -102,8 +107,19 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        // Handle priority field - default to NONE if missing for backward compatibility
+        Priority modelPriority;
+        if (priority == null) {
+            modelPriority = new Priority(Priority.Level.NONE);
+        } else {
+            if (!Priority.isValidPriority(priority)) {
+                throw new IllegalValueException(Priority.MESSAGE_CONSTRAINTS);
+            }
+            modelPriority = new Priority(priority);
+        }
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority);
     }
 
 }

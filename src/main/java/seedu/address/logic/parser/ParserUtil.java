@@ -13,6 +13,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -108,6 +109,17 @@ public class ParserUtil {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
         }
         return new Tag(trimmedTag);
+    }
+
+    /**
+     * Parses {@code String priority} into a {@code Priority}.
+     */
+    public static Priority parsePriority(String priority) throws ParseException {
+        requireNonNull(priority);
+        if (!Priority.isValidPriority(priority)) {
+            throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
+        }
+        return new Priority(priority);
     }
 
     /**
