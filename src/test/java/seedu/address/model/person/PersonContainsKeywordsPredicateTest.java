@@ -67,11 +67,102 @@ public class PersonContainsKeywordsPredicateTest {
         // Non-matching keyword
         predicate = new PersonContainsKeywordsPredicate(Arrays.asList("Carol"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+    }
 
-        // Keywords match phone, email and address, but does not match name
-        predicate = new PersonContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+    @Test
+    public void test_phoneContainsKeywords_returnsTrue() {
+        // Exact phone match
+        PersonContainsKeywordsPredicate predicate =
+                new PersonContainsKeywordsPredicate(Collections.singletonList("91234567"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").withPhone("91234567").build()));
+
+        // Multiple keywords where one matches phone
+        predicate = new PersonContainsKeywordsPredicate(Arrays.asList("notit", "91234567"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Carol Danvers").withPhone("91234567").build()));
+    }
+
+    @Test
+    public void test_phoneDoesNotContainKeywords_returnsFalse() {
+        // Non-matching phone
+        PersonContainsKeywordsPredicate predicate =
+                new PersonContainsKeywordsPredicate(Collections.singletonList("98765432"));
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").withPhone("91234567").build()));
+
+        // Note: if StringUtil.containsWordIgnoreCase requires whole-word matches,
+        // partials like "9123" should NOT match.
+        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("9123"));
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").withPhone("91234567").build()));
+    }
+
+    @Test
+    public void test_tagsContainKeywords_returnsTrue() {
+        // Single tag match
+        PersonContainsKeywordsPredicate predicate =
+                new PersonContainsKeywordsPredicate(Collections.singletonList("friends"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Bernice Yu")
+                .withPhone("97555555")
+                .withTags("friends", "colleagues")
+                .build()));
+
+        // Mixed-case keyword vs tag
+        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("FrIeNdS"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Bernice Yu")
+                .withPhone("97555555")
+                .withTags("friends", "colleagues")
+                .build()));
+
+        // Multiple keywords where one matches a tag
+        predicate = new PersonContainsKeywordsPredicate(Arrays.asList("vip", "colleagues"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Carl Khoo")
+                .withPhone("91230000")
+                .withTags("team", "colleagues")
+                .build()));
+    }
+
+    @Test
+    public void test_tagsDoNotContainKeywords_returnsFalse() {
+        // No tag matches
+        PersonContainsKeywordsPredicate predicate =
+                new PersonContainsKeywordsPredicate(Collections.singletonList("family"));
+        assertFalse(predicate.test(new PersonBuilder().withName("David Li")
+                .withPhone("93334444")
+                .withTags("friends", "colleagues")
+                .build()));
+
+        // Empty tags should not match any tag keyword
+        predicate = new PersonContainsKeywordsPredicate(Collections.singletonList("friends"));
+        assertFalse(predicate.test(new PersonBuilder().withName("Eve")
+                .withPhone("98887777")
+                .withTags()
+                .build()));
+    }
+
+    @Test
+    public void test_mixedFields_keywordsMatchAcrossDifferentFields_returnsTrue() {
+        // One keyword matches tag; other keywords do not match name/phone
+        PersonContainsKeywordsPredicate predicate =
+                new PersonContainsKeywordsPredicate(Arrays.asList("random", "friends", "xxyyzz"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Foo Bar")
+                .withPhone("90000000")
+                .withTags("friends")
+                .build()));
+
+        // One keyword matches phone; none match name/tags
+        predicate = new PersonContainsKeywordsPredicate(Arrays.asList("not-in-name", "90000000", "nope"));
+        assertTrue(predicate.test(new PersonBuilder().withName("Zed Zee")
+                .withPhone("90000000")
+                .withTags("team")
+                .build()));
+    }
+
+    @Test
+    public void test_noMatchAnywhere_returnsFalse() {
+        PersonContainsKeywordsPredicate predicate =
+                new PersonContainsKeywordsPredicate(Arrays.asList("omega", "delta"));
+        assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob")
+                .withPhone("91234567")
+                .withTags("friends", "colleagues")
+                .build()));
     }
 
     @Test
