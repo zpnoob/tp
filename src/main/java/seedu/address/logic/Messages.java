@@ -38,21 +38,17 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
                 .append("; Phone: ")
-                .append(person.getPhone());
-        
+                .append(person.getPhone()); 
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }
-        
         if (!person.getAddress().toString().isEmpty()) {
             builder.append("; Address: ").append(person.getAddress());
         }
-        
         if (!person.getTags().isEmpty()) {
             builder.append("; Tags: ");
             person.getTags().forEach(builder::append);
         }
-       
         return builder.toString();
-    }    
+    }
 }
