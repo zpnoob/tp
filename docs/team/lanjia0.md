@@ -8,7 +8,7 @@ Welcome to my SoundCloud DJ portfolio! Here you can find some of my featured mix
 
 ## 👤 About Me
 
-I am a passionate DJ exploring diverse sounds and remix styles, bringing energy and creativity to every track.  
+I am a passionate DJ exploring diverse sounds and remix styles, bringing energy and creativity to every track.
 Follow my journey on SoundCloud for more music!
 
 ---
