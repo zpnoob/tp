@@ -35,7 +35,7 @@ public class PersonTest {
         // same name, different phone -> returns false
         Person editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
-        
+
         // same name and phone, other attributes different -> returns true
         editedAlice = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
@@ -56,7 +56,7 @@ public class PersonTest {
         // same name, different phone -> returns false
         Person sameNameDifferentPhone = new PersonBuilder(ALICE).withPhone("99999999").build();
         assertFalse(ALICE.isSamePerson(sameNameDifferentPhone));
-        
+
         // different name, same phone -> returns false
         Person differentNameSamePhone = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.isSamePerson(differentNameSamePhone));
