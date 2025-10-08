@@ -68,7 +68,6 @@ public class PersonCard extends UiPart<Region> {
     private void setPriorityStyle(Priority priority) {
         this.priority.getStyleClass().clear();
         this.priority.getStyleClass().add("priority-label");
-        
         switch (priority.getValue().toUpperCase()) {
         case "HIGH":
             this.priority.getStyleClass().add("priority-high");

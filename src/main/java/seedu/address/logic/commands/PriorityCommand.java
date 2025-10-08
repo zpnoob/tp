@@ -62,7 +62,7 @@ public class PriorityCommand extends Command {
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         
-        return new CommandResult(String.format(MESSAGE_PRIORITY_PERSON_SUCCESS, 
+        return new CommandResult(String.format(MESSAGE_PRIORITY_PERSON_SUCCESS,
                 Messages.format(editedPerson), newPriority.getValue()));
     }
 

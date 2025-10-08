@@ -26,7 +26,6 @@ public class PriorityCommandParser implements Parser<PriorityCommand> {
         }
 
         String[] argParts = trimmedArgs.split("\\s+", 2);
-        
         if (argParts.length != 2) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, PriorityCommand.MESSAGE_USAGE));
