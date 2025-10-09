@@ -75,7 +75,7 @@ public class MainAppPrefsTest {
             }
             @Override
             public void saveUserPrefs(seedu.address.model.ReadOnlyUserPrefs prefs) throws IOException {
-                // no-op
+                // nil op
             }
         };
         UserPrefs result = app.initPrefs(storage);
