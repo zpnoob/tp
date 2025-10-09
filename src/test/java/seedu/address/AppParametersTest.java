@@ -4,6 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,6 +42,48 @@ public class AppParametersTest {
         parametersStub.namedParameters.put("config", "a\0");
         expected.setConfigPath(null);
         assertEquals(expected, AppParameters.parse(parametersStub));
+    }
+
+    @Test
+    public void logger_printsInitializingInsuraBook() {
+        Logger logger = Logger.getLogger("seedu.address");
+        List<String> logs = new ArrayList<>();
+        Handler handler = new Handler() {
+            @Override public void publish(LogRecord record) { logs.add(record.getMessage()); }
+            @Override public void flush() {}
+            @Override public void close() throws SecurityException {}
+        };
+        logger.addHandler(handler);
+
+        logger.info("=============================[ Initializing InsuraBook ]===========================");
+
+        assertTrue(
+                logs.stream().anyMatch(msg -> msg.contains("Initializing InsuraBook")),
+                "Should log Initializing InsuraBook"
+        );
+
+        logger.removeHandler(handler);
+    }
+
+    @Test
+    public void logger_printsStoppingInsuraBook() {
+        Logger logger = Logger.getLogger("seedu.address");
+        List<String> logs = new ArrayList<>();
+        Handler handler = new Handler() {
+            @Override public void publish(LogRecord record) { logs.add(record.getMessage()); }
+            @Override public void flush() {}
+            @Override public void close() throws SecurityException {}
+        };
+        logger.addHandler(handler);
+
+        logger.info("============================ [ Stopping InsuraBook ] =============================");
+
+        assertTrue(
+                logs.stream().anyMatch(msg -> msg.contains("Stopping InsuraBook")),
+                "Should log Stopping InsuraBook"
+        );
+
+        logger.removeHandler(handler);
     }
 
     @Test
