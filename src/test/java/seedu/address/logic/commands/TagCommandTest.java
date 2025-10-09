@@ -33,7 +33,7 @@ public class TagCommandTest {
         Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Tag newTag = new Tag("friend");
         TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
-                Set<Tag> newTagsSet = Collections.singleton(newTag);
+        Set<Tag> newTagsSet = Collections.singleton(newTag);
         Person editedPerson = new Person(
                 personToEdit.getName(),
                 personToEdit.getPhone(),
@@ -42,10 +42,10 @@ public class TagCommandTest {
                 newTagsSet,
                 personToEdit.getPriority());
 
-                String tagsString = editedPerson.getTags().stream()
+        String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)
                     .collect(Collectors.joining(", "));
-                String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
+        String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
