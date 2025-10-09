@@ -30,8 +30,7 @@ public class TagCommandTest {
 
     @Test
     public void execute_validInfexUnfilteredList_success() {
-        Person personToEdit = 
-    model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Tag newTag = new Tag("friend");
         TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
                 Set<Tag> newTagsSet = Collections.singleton(newTag);
@@ -43,10 +42,10 @@ public class TagCommandTest {
                 newTagsSet);
 
                 String tagsString = editedPerson.getTags().stream()
-                    .map(Tag::toString) // or Tag::getTagName if you want no brackets
+                    .map(Tag::toString)
                     .collect(Collectors.joining(", "));
-                String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS, 
-                                           editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
+                                        editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
                                            + "; Tags: " + tagsString);
@@ -76,20 +75,16 @@ public class TagCommandTest {
         TagCommand tagFirstCommand = new TagCommand(INDEX_FIRST_PERSON, tagFriend);
         TagCommand tagSecondCommand = new TagCommand(INDEX_SECOND_PERSON, tagColleague);
 
-        // same object -> returns true
+
         assertTrue(tagFirstCommand.equals(tagFirstCommand));
 
-        // same values -> returns true
         TagCommand tagFirstCommandCopy = new TagCommand(INDEX_FIRST_PERSON, tagFriend);
         assertTrue(tagFirstCommand.equals(tagFirstCommandCopy));
 
-        // different types -> returns false
         assertFalse(tagFirstCommand.equals(1));
 
-        // null -> returns false
         assertFalse(tagFirstCommand.equals(null));
 
-        // different person -> returns false
         assertFalse(tagFirstCommand.equals(tagSecondCommand));
     }
 
