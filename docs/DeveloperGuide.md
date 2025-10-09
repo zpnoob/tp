@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# InsuraBook Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -279,7 +279,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * is reasonably comfortable using CLI apps
 * has a need for reminders
 
-**Value proposition**: 
+**Value proposition**:
 * saves time
 * prevent lost information
 * ensures timely follow-ups
@@ -290,20 +290,42 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a …​              | I want to …​                                                       | So that I can…​                                                |
+|----------|----------------------|--------------------------------------------------------------------|----------------------------------------------------------------|
+| `* * *`    | telemarketing agent  | filter contacts by tags, demographics, priority, or status         | create targeted campaigns                                      |
+| `* * *`    | telemarketing agent  | import contacts from CSV/Excel/raw text files                      | save time entering bulk data                                   |
+| `* * *`    | telemarketing agent  | add a new contact with a customer’s name and phone number          |                                                                |
+| `* * *`    | telemarketing agent  | tag contacts (e.g., “interested,” “follow-up,” “do not call”)      | segment my leads                                               |
+| `* * *`    | telemarketing agent  | search for a contact by name, number, or tag                       | quickly retrieve their details                                 |
+| `* * *`    | telemarketing agent  | edit a contact’s details                                           |                                                                |
+| `* * *`    | telemarketing agent  | prioritise contacts (high, medium, low)                            | focus on the most promising leads                              |
+| `* * *`    | telemarketing agent  | mark contacts as “Do Not Call”                                     | comply with regulations                                        |
+| `* * *`    | telemarketing agent  | delete outdated or duplicate contacts                              | keep my address book clean                                     |
+| `* * *`    | telemarketing agent  | record a contact’s age, occupation, and income bracket             | match them to suitable insurance products                      |
+| `* * *`    | telemarketing agent  | see the last contact date for each lead                            | know when to follow up                                         |
+| `* * *`    | team leader          | assign leads to different agents                                   | workload is distributed fairly                                 |
+| `* *`      | team leader          | view the call notes of my team members                             | track progress                                                 |
+| `* *`      | telemarketing agent  | store multiple phone numbers and emails per contact                | reach them through different channels                          |
+| `* *`      | telemarketing agent  | log existing insurance policies a contact already has              | avoid pitching irrelevant products                             |
+| `* *`      | telemarketing agent  | sort contacts by last contacted date or priority                   | plan my day’s calls                                            |
+| `* *`      | telemarketing agent  | bookmark or star important contacts                                | access them quickly                                            |
+| `* *`      | telemarketing agent  | securely store sensitive customer information                      | avoid data leaks                                               |
+| `* *`      | telemarketing agent  | quickly remove all personal data of a contact upon request         | respect privacy rights                                         |
+| `* *`      | telemarketing agent  | view the number of follow-ups pending                              | manage my workload                                             |
+| `*`        | team leader          | reassign contacts from one agent to another                        | ensure no lead is neglected if someone is unavailable          |
+| `*`        | team leader          | see a summary dashboard of call outcomes                           | evaluate team performance                                      |
+| `*`        | telemarketing agent  | note important dates such as policy renewal or birthday            | time my calls effectively                                      |
+| `*`        | telemarketing agent  | record notes after each call                                       | avoid forgetting what was discussed                            |
+| `*`        | telemarketing agent  | schedule follow-up reminders                                       | never miss important calls                                     |
+| `*`        | telemarketing agent  | export selected contacts into a call list                          | use them with auto-dialer tools                                |
+| `*`        | telemarketing agent  | log when I obtained consent to contact someone                     | prove compliance if needed                                     |
+| `*`        | telemarketing agent  | track my call success rate                                         | monitor my personal performance                                |
+| `*`        | telemarketing agent  | see which products generate the most interest among leads          | guide my focus                                                 |
+| `*`        | telemarketing agent  | generate a weekly report of my calls and outcomes                  | share progress with my supervisor                              |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `InsuraBook` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Delete a person**
 
@@ -328,7 +350,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
+*{To be updated}*
 
 ### Non-Functional Requirements
 
