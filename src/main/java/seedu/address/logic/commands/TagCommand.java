@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -64,7 +63,8 @@ public class TagCommand extends Command {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
-                newTagsSet
+                newTagsSet,
+                personToEdit.getPriority()
         );
 
         model.setPerson(personToEdit, editedPerson);

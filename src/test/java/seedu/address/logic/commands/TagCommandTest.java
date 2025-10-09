@@ -39,13 +39,15 @@ public class TagCommandTest {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
-                newTagsSet);
+                newTagsSet,
+                personToEdit.getPriority());
 
                 String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)
                     .collect(Collectors.joining(", "));
                 String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                                            + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
                                            + "; Tags: " + tagsString);
