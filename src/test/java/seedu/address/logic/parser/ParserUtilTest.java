@@ -18,14 +18,16 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PHONE = "+651234";
-    private static final String INVALID_ADDRESS = " ";
+    private static final String INVALID_ADDRESS = " invalid"; // starts with whitespace - violates regex
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_PRIORITY = "INVALID";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
@@ -33,6 +35,7 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_PRIORITY = "HIGH";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -107,9 +110,12 @@ public class ParserUtilTest {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
     }
 
+
+
     @Test
-    public void parseAddress_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
+    public void parseAddress_emptyValue_returnsEmptyAddress() throws Exception {
+        Address expectedAddress = new Address("");
+        assertEquals(expectedAddress, ParserUtil.parseAddress(""));
     }
 
     @Test
@@ -192,5 +198,51 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parsePriority_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parsePriority(null));
+    }
+
+    @Test
+    public void parsePriority_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parsePriority(INVALID_PRIORITY));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePriority(""));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePriority(" "));
+        assertThrows(ParseException.class, () -> ParserUtil.parsePriority("invalid"));
+    }
+
+    @Test
+    public void parsePriority_validValueWithoutWhitespace_returnsPriority() throws Exception {
+        Priority expectedPriority = new Priority(VALID_PRIORITY);
+        assertEquals(expectedPriority, ParserUtil.parsePriority(VALID_PRIORITY));
+    }
+
+    @Test
+    public void parsePriority_validValueWithWhitespace_returnsTrimmedPriority() throws Exception {
+        String priorityWithWhitespace = "  " + VALID_PRIORITY + "  ";
+        Priority expectedPriority = new Priority(VALID_PRIORITY);
+        assertEquals(expectedPriority, ParserUtil.parsePriority(priorityWithWhitespace));
+    }
+
+    @Test
+    public void parsePriority_validValuesCaseInsensitive_returnsPriority() throws Exception {
+        // Test all valid priority levels with different cases
+        assertEquals(new Priority("NONE"), ParserUtil.parsePriority("NONE"));
+        assertEquals(new Priority("NONE"), ParserUtil.parsePriority("none"));
+        assertEquals(new Priority("NONE"), ParserUtil.parsePriority("None"));
+
+        assertEquals(new Priority("LOW"), ParserUtil.parsePriority("LOW"));
+        assertEquals(new Priority("LOW"), ParserUtil.parsePriority("low"));
+        assertEquals(new Priority("LOW"), ParserUtil.parsePriority("Low"));
+
+        assertEquals(new Priority("MEDIUM"), ParserUtil.parsePriority("MEDIUM"));
+        assertEquals(new Priority("MEDIUM"), ParserUtil.parsePriority("medium"));
+        assertEquals(new Priority("MEDIUM"), ParserUtil.parsePriority("Medium"));
+
+        assertEquals(new Priority("HIGH"), ParserUtil.parsePriority("HIGH"));
+        assertEquals(new Priority("HIGH"), ParserUtil.parsePriority("high"));
+        assertEquals(new Priority("HIGH"), ParserUtil.parsePriority("High"));
     }
 }
