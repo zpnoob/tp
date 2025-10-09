@@ -28,10 +28,12 @@ public class TagCommandParserTest {
 
     private final TagCommandParser parser = new TagCommandParser();
 
+    // ---------- FAILURE CASES ----------
+
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, TAG_DESC_FRIEND, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, " t/friend", MESSAGE_INVALID_FORMAT);
 
         // no tag specified
         assertParseFailure(parser, "1", MESSAGE_INVALID_FORMAT);
@@ -43,23 +45,48 @@ public class TagCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + TAG_DESC_FRIEND, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5 t/friend", MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + TAG_DESC_FRIEND, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0 t/friend", MESSAGE_INVALID_FORMAT);
 
-        // invalid arguments being parsed as preamble
+        // non-numeric index
+        assertParseFailure(parser, "abc t/friend", MESSAGE_INVALID_FORMAT);
+
+        // invalid prefix
+        assertParseFailure(parser, "1 x/friend", MESSAGE_INVALID_FORMAT);
+
+        // random string as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
-
-        // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/friend", MESSAGE_INVALID_FORMAT);
     }
 
     @Test
-    public void parse_invalidValue_failure() {
-        // invalid tag
+    public void parse_invalidTagValue_failure() {
+        // invalid tag with illegal characters
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS);
     }
+
+    @Test
+    public void parse_whitespaceOnlyInput_failure() {
+        assertParseFailure(parser, "   ", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_missingTagPrefix_failure() {
+        assertParseFailure(parser, "1 friend", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_tagPrefixOnly_failure() {
+        assertParseFailure(parser, "1 t/", Tag.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_indexWithOnlyWhitespace_failure() {
+        assertParseFailure(parser, "   t/friend", MESSAGE_INVALID_FORMAT);
+    }
+
+    // ---------- SUCCESS CASES ----------
 
     @Test
     public void parse_validSingleTag_success() {
@@ -72,12 +99,11 @@ public class TagCommandParserTest {
 
     @Test
     public void parse_validMultipleTags_success() {
-        // If your TagCommand supports adding multiple tags
+        // Only the first tag is used, as TagCommand only accepts one tag
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
 
-        TagCommand expectedCommand = new TagCommand(targetIndex,
-                new Tag(VALID_TAG_FRIEND), new Tag(VALID_TAG_HUSBAND));
+        TagCommand expectedCommand = new TagCommand(targetIndex, new Tag(VALID_TAG_FRIEND));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -87,6 +113,24 @@ public class TagCommandParserTest {
         String userInput = "  " + targetIndex.getOneBased() + "   " + TAG_DESC_HUSBAND + "  ";
 
         TagCommand expectedCommand = new TagCommand(targetIndex, new Tag(VALID_TAG_HUSBAND));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_multipleSpacesBetweenIndexAndTag_success() {
+        Index targetIndex = INDEX_FIRST_PERSON;
+        String userInput = targetIndex.getOneBased() + "    " + TAG_DESC_FRIEND;
+
+        TagCommand expectedCommand = new TagCommand(targetIndex, new Tag(VALID_TAG_FRIEND));
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_tagWithSpaces_success() {
+        Index targetIndex = INDEX_FIRST_PERSON;
+        String userInput = targetIndex.getOneBased() + " t/follow up";
+
+        TagCommand expectedCommand = new TagCommand(targetIndex, new Tag("follow up"));
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 }
