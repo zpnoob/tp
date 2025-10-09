@@ -279,7 +279,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * is reasonably comfortable using CLI apps
 * has a need for reminders
 
-**Value proposition**: 
+**Value proposition**:
 * saves time
 * prevent lost information
 * ensures timely follow-ups

@@ -2,7 +2,7 @@
 
 ## 👥 Team Project: EcoTrack (NUS Orbital Project)
 
-**EcoTrack** is an AI-powered waste management platform built as part of NUS Orbital 2025.  
+**EcoTrack** is an AI-powered waste management platform built as part of NUS Orbital 2025.
 Our goal is to incentivize sustainable behavior through gamification, AI waste classification, and Web3-based authentication.
 
 ### Key Features
@@ -19,13 +19,13 @@ Our goal is to incentivize sustainable behavior through gamification, AI waste c
 - Designed and managed the **Neon PostgreSQL database schema** (users, reports, rewards, transactions)
 - Implemented **database integration** with Drizzle ORM for efficient queries
 - Worked on **waste reporting & image upload feature**, ensuring proper DB storage and retrieval
-- Contributed to UI for reporting flow and points system display  
+- Contributed to UI for reporting flow and points system display
 
 ---
 
 ## 🧑‍💻 Individual Project: Jung (Task Manager)
 
-**Jung** is a desktop task management assistant, optimized for **fast CLI-style input** with a simple GUI.  
+**Jung** is a desktop task management assistant, optimized for **fast CLI-style input** with a simple GUI.
 It speaks Singlish, giving it a light-hearted personality while keeping productivity high.
 
 
@@ -48,4 +48,4 @@ It speaks Singlish, giving it a light-hearted personality while keeping producti
 - **AI integration** (Google Gemini API for image classification)
 - **Software engineering practices** (version control with Git, branching, PR reviews)
 - **Java application development** (object-oriented design, GUI + CLI hybrid)
-- **UI/UX design** (Figma prototyping, user testing, iterative improvements)  
+- **UI/UX design** (Figma prototyping, user testing, iterative improvements)

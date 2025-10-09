@@ -43,8 +43,7 @@ You can reach us by dropping by our CS2103T Tutorial session F15a!
 * Role: Developer
 * Responsibilities: Data
 
-### Zamien Peh 
-
+### Zamien Peh
 <img src="images/zpnoob.png" width="200px">
 
 [[github](http://github.com/zpnoob)]
@@ -53,8 +52,7 @@ You can reach us by dropping by our CS2103T Tutorial session F15a!
 * Role: Developer
 * Responsibilities: Testing Lead/Code Quality
 
-### Cheng Leong 
-
+### Cheng Leong
 <img src="images/chengleong.png" width="200px">
 
 [[github](http://github.com/chengleong)]

@@ -38,7 +38,9 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
                 .append("; Phone: ")
-                .append(person.getPhone());
+                .append(person.getPhone())
+                .append("; Priority: ")
+                .append(person.getPriority());
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }

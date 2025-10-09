@@ -8,6 +8,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Priority;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -39,6 +40,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label priority;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -52,8 +55,33 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        priority.setText("Priority: " + person.getPriority().getValue());
+        setPriorityStyle(person.getPriority());
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+    }
+
+    /**
+     * Sets the CSS style for the priority label based on priority level.
+     */
+    private void setPriorityStyle(Priority priority) {
+        this.priority.getStyleClass().clear();
+        this.priority.getStyleClass().add("priority-label");
+        switch (priority.getValue().toUpperCase()) {
+        case "HIGH":
+            this.priority.getStyleClass().add("priority-high");
+            break;
+        case "MEDIUM":
+            this.priority.getStyleClass().add("priority-medium");
+            break;
+        case "LOW":
+            this.priority.getStyleClass().add("priority-low");
+            break;
+        case "NONE":
+        default:
+            this.priority.getStyleClass().add("priority-none");
+            break;
+        }
     }
 }
