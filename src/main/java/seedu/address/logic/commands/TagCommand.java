@@ -99,5 +99,4 @@ public class TagCommand extends Command {
         return "TagCommand{targetIndex=Index{value=" + (targetIndex.getOneBased())
             + "}, tag=Tag{tagName='" + tag.tagName + "'}}";
     }
-
 }
