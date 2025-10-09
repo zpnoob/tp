@@ -1,6 +1,7 @@
 package seedu.address;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -8,15 +9,15 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.UserPrefs;
 import seedu.address.storage.UserPrefsStorage;
-import seedu.address.commons.exceptions.DataLoadingException;
 
 public class MainAppPrefsTest {
 
     // Normal case: prefs file exists and is read successfully
     @Test
-    public void initPrefs_readsPrefs_success() {
+    public void initPrefsReadsPrefsSuccess() {
         UserPrefs expected = new UserPrefs();
         MainApp app = new MainApp();
         UserPrefsStorage storage = new UserPrefsStorage() {
@@ -40,7 +41,7 @@ public class MainAppPrefsTest {
 
     // Case: prefs file missing, should create new
     @Test
-    public void initPrefs_readsPrefs_missingFile_createsNew() {
+    public void initPrefsReadsPrefsMissingFileCreatesNew() {
         MainApp app = new MainApp();
         UserPrefsStorage storage = new UserPrefsStorage() {
             @Override
@@ -62,7 +63,7 @@ public class MainAppPrefsTest {
 
     // Case: exception when reading, should use default
     @Test
-    public void initPrefs_readsPrefs_exception_returnsDefault() {
+    public void initPrefsReadsPrefsExceptionReturnsDefault() {
         MainApp app = new MainApp();
         UserPrefsStorage storage = new UserPrefsStorage() {
             @Override
@@ -84,7 +85,7 @@ public class MainAppPrefsTest {
 
     // Case: exception when saving, should log warning but still return prefs
     @Test
-    public void initPrefs_savePrefs_exception_logsWarning() {
+    public void initPrefsSavePrefsExceptionLogsWarning() {
         MainApp app = new MainApp();
         UserPrefsStorage storage = new UserPrefsStorage() {
             @Override
