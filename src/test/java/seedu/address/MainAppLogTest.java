@@ -16,7 +16,9 @@ public class MainAppLogTest {
         Logger logger = Logger.getLogger("seedu.address");
         List<String> logs = new ArrayList<>();
         Handler handler = new Handler() {
-            @Override public void publish(LogRecord record) { logs.add(record.getMessage()); }
+            @Override public void publish(LogRecord record) {
+                logs.add(record.getMessage());
+            }
             @Override public void flush() {}
             @Override public void close() throws SecurityException {}
         };
@@ -43,7 +45,9 @@ public class MainAppLogTest {
         Logger logger = Logger.getLogger("seedu.address");
         List<String> logs = new ArrayList<>();
         Handler handler = new Handler() {
-            @Override public void publish(LogRecord record) { logs.add(record.getMessage()); }
+            @Override public void publish(LogRecord record) {
+                logs.add(record.getMessage());
+                }
             @Override public void flush() {}
             @Override public void close() throws SecurityException {}
         };

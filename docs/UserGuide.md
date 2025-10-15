@@ -90,6 +90,12 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pr/PRIORITY] [t/TAG]…​
 <box type="tip" seamless>
 
 **Tip:** A person can have any number of tags (including 0) and an optional priority level
+
+</box>
+<box type="warning" seamless>
+
+**Warning:** Adding another person with the same `NAME` as an existing person will be counted as a duplicate and is not allowed. 
+
 </box>
 
 Examples:
