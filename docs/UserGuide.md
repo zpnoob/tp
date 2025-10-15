@@ -162,11 +162,11 @@ Examples:
 
 ### Editing the tag: `tag`
 
-Changes the priority of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
+Changes the tag of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
 
 Format: `tag INDEX t/tag_name`
 
-* Changes the priority of the person at the specified `INDEX`.
+* Changes the tag of the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * `tag` must be  Alphanumeric and spaces allowed. Maximum 30 characters. Case-insensitive (eg, Interested = interested). Leading/trailing spaces are trimmed
