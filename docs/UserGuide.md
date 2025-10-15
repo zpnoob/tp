@@ -162,7 +162,7 @@ Examples:
 
 ### Editing the tag: `tag`
 
-Changes the tag of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
+Changes the tag of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tag.
 
 Format: `tag INDEX t/tag_name`
 
