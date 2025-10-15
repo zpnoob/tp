@@ -1,0 +1,195 @@
+{
+  "enableSearch": true,
+  "pages": [
+    {
+      "src": "AboutUs.md",
+      "title": "About Us",
+      "headings": {
+        "about-us": "About Us",
+        "project-team": "Project team",
+        "cyril-pedrina": "Cyril Pedrina",
+        "ernest-tan-hiok-kuek": "Ernest Tan Hiok Kuek",
+        "nicholas-chin": "Nicholas Chin",
+        "zamien-peh": "Zamien Peh",
+        "cheng-leong": "Cheng Leong"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "Configuration.md",
+      "title": "Configuration guide",
+      "headings": {
+        "configuration-guide": "Configuration guide"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "DevOps.md",
+      "title": "DevOps guide",
+      "headings": {
+        "devops-guide": "DevOps guide",
+        "build-automation": "Build automation",
+        "continuous-integration-ci": "Continuous integration (CI)",
+        "code-coverage": "Code coverage",
+        "repository-wide-checks": "Repository-wide checks",
+        "making-a-release": "Making a release"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "DeveloperGuide.md",
+      "title": "Developer Guide",
+      "headings": {
+        "insurabook-developer-guide": "InsuraBook Developer Guide",
+        "acknowledgements": "Acknowledgements",
+        "setting-up-getting-started": "Setting up, getting started",
+        "design": "Design",
+        "architecture": "Architecture",
+        "ui-component": "UI component",
+        "logic-component": "Logic component",
+        "model-component": "Model component",
+        "storage-component": "Storage component",
+        "common-classes": "Common classes",
+        "implementation": "Implementation",
+        "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
+        "proposed-data-archiving": "[Proposed] Data archiving",
+        "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
+        "appendix-requirements": "Appendix: Requirements",
+        "product-scope": "Product scope",
+        "user-stories": "User stories",
+        "use-cases": "Use cases",
+        "non-functional-requirements": "Non-Functional Requirements",
+        "glossary": "Glossary",
+        "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
+        "launch-and-shutdown": "Launch and shutdown",
+        "deleting-a-person": "Deleting a person",
+        "saving-data": "Saving data"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "Documentation.md",
+      "title": "Documentation guide",
+      "headings": {
+        "documentation-guide": "Documentation Guide"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "Logging.md",
+      "title": "Logging guide",
+      "headings": {
+        "logging-guide": "Logging guide"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "SettingUp.md",
+      "title": "Setting up and getting started",
+      "headings": {
+        "setting-up-and-getting-started": "Setting up and getting started",
+        "setting-up-the-project-in-your-computer": "Setting up the project in your computer",
+        "before-writing-code": "Before writing code"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "Testing.md",
+      "title": "Testing guide",
+      "headings": {
+        "testing-guide": "Testing guide",
+        "running-tests": "Running tests",
+        "types-of-tests": "Types of tests"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "UserGuide.md",
+      "title": "User Guide",
+      "headings": {
+        "insurabook-user-guide": "InsuraBook User Guide",
+        "quick-start": "Quick start",
+        "features": "Features",
+        "viewing-help-help": "Viewing help : help",
+        "adding-a-person-add": "Adding a person: add",
+        "listing-all-persons-list": "Listing all persons : list",
+        "editing-a-person-edit": "Editing a person : edit",
+        "locating-persons-by-name-find": "Locating persons by name: find",
+        "deleting-a-person-delete": "Deleting a person : delete",
+        "clearing-all-entries-clear": "Clearing all entries : clear",
+        "exiting-the-program-exit": "Exiting the program : exit",
+        "saving-the-data": "Saving the data",
+        "editing-the-data-file": "Editing the data file",
+        "archiving-data-files-coming-in-v2-0": "Archiving data files [coming in v2.0]",
+        "faq": "FAQ",
+        "known-issues": "Known issues",
+        "command-summary": "Command summary"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "index.md",
+      "title": "",
+      "headings": {
+        "insurabook": "InsuraBook"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/chengleong.md",
+      "headings": {
+        "portfolio": "Portfolio"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/cyfake.md",
+      "headings": {
+        "my-portfolio": "My Portfolio",
+        "quotes-by-the-boys": "Quotes by the Boys",
+        "random-quote-generator": "Random Quote Generator"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/hiokkuek.md",
+      "headings": {
+        "my-portfolio": "My Portfolio",
+        "tanbucha": "Tanbucha",
+        "pollinator": "Pollinator"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/johndoe.md",
+      "title": "John Doe's Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/lanjia0.md",
+      "headings": {
+        "lanjia0-portfolio": "lanjia0 Portfolio 🎶",
+        "featured-track": "🎵 Featured Track",
+        "about-me": "👤 About Me"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/zpnoob.md",
+      "headings": {
+        "portfolio": "Portfolio",
+        "team-project-ecotrack-nus-orbital-project": "👥 Team Project: EcoTrack (NUS Orbital Project)",
+        "key-features": "Key Features",
+        "my-role": "My Role",
+        "individual-project-jung-task-manager": "🧑‍💻 Individual Project: Jung (Task Manager)",
+        "key-features-2": "Key Features",
+        "technology": "Technology",
+        "skills-highlighted": "📌 Skills Highlighted"
+      },
+      "headingKeywords": {}
+    }
+  ]
+}
