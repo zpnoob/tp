@@ -86,6 +86,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pr/PRIORITY] [t/TAG]…​
 
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
 * If priority is not specified, it defaults to `NONE`
+* Email, address and priority fields are optional, only name and phone fields are required when adding a new contact
 
 <box type="tip" seamless>
 
@@ -93,6 +94,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pr/PRIORITY] [t/TAG]…​
 </box>
 
 Examples:
+* `add n/John Doe p/98765432`
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal pr/HIGH`
 * `add n/Jane Smith p/87654321 e/jane@example.com a/456 Main St pr/MEDIUM t/colleague`
