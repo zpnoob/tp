@@ -163,6 +163,28 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Editing the tag: `tag`
+
+Changes the tag of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tag.
+
+Format: `tag INDEX t/tag_name`
+
+* Changes the tag of the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* `tag` must be  Alphanumeric and spaces allowed. Maximum 30 characters. Case-insensitive (eg, Interested = interested). Leading/trailing spaces are trimmed
+* This command is equivalent to `edit INDEX t/tag_name`
+
+Examples:
+* `tag 1 t/interested` Sets the tag of the 1st person to `interested`.
+* `tag 2 t/follow up` Sets the tag of the 2nd person to `follow up`.
+* `tag 5 t/do not call` Sets the tag of the 5th person to `do not call`.
+
+<box type="tip" seamless>
+
+**Tip:** Use the `tag` command for quick tag changes, or the `edit` command when changing multiple fields at once.
+</box>
+
 ### Editing the priority: `priority`
 
 Changes the priority of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
