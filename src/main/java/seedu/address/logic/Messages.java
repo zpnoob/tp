@@ -41,6 +41,9 @@ public class Messages {
                 .append(person.getPhone())
                 .append("; Priority: ")
                 .append(person.getPriority());
+        if (!person.getOccupation().toString().isEmpty()) {
+            builder.append("; Occupation: ").append(person.getOccupation());
+        }
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }

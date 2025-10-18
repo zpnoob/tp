@@ -25,17 +25,20 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
     private final Priority priority;
+    private final Occupation occupation;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority) {
-        requireAllNonNull(name, phone, email, address, tags, priority);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority,
+                  Occupation occupation) {
+        requireAllNonNull(name, phone, email, address, tags, priority, occupation);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.priority = priority;
+        this.occupation = occupation;
         this.tags.addAll(tags);
     }
 
@@ -57,6 +60,10 @@ public class Person {
 
     public Priority getPriority() {
         return priority;
+    }
+
+    public Occupation getOccupation() {
+        return occupation;
     }
 
     /**
@@ -102,13 +109,15 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && priority.equals(otherPerson.priority)
+                && occupation.equals(otherPerson.occupation)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, priority, tags);
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(name, phone, email, address, priority, occupation, tags);
     }
 
     @Override
@@ -119,7 +128,8 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
-                .add("priority", priority)
+        .add("priority", priority)
+        .add("occupation", occupation)
                 .toString();
     }
 

@@ -29,6 +29,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -103,10 +104,12 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
+    Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
+    Occupation updatedOccupation = editPersonDescriptor.getOccupation().orElse(personToEdit.getOccupation());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedPriority);
+    return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedPriority,
+        updatedOccupation);
     }
 
     @Override
@@ -144,6 +147,7 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private Priority priority;
+    private Occupation occupation;
 
         public EditPersonDescriptor() {}
 
@@ -157,6 +161,7 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setPriority(toCopy.priority);
+            setOccupation(toCopy.occupation);
             setTags(toCopy.tags);
         }
 
@@ -207,6 +212,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(priority);
         }
 
+        public void setOccupation(Occupation occupation) {
+            this.occupation = occupation;
+        }
+
+        public Optional<Occupation> getOccupation() {
+            return Optional.ofNullable(occupation);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -236,12 +249,13 @@ public class EditCommand extends Command {
             }
 
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
-            return Objects.equals(name, otherEditPersonDescriptor.name)
-                    && Objects.equals(phone, otherEditPersonDescriptor.phone)
-                    && Objects.equals(email, otherEditPersonDescriptor.email)
-                    && Objects.equals(address, otherEditPersonDescriptor.address)
-                    && Objects.equals(priority, otherEditPersonDescriptor.priority)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+        return Objects.equals(name, otherEditPersonDescriptor.name)
+            && Objects.equals(phone, otherEditPersonDescriptor.phone)
+            && Objects.equals(email, otherEditPersonDescriptor.email)
+            && Objects.equals(address, otherEditPersonDescriptor.address)
+            && Objects.equals(priority, otherEditPersonDescriptor.priority)
+            && Objects.equals(occupation, otherEditPersonDescriptor.occupation)
+            && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
 
         @Override
@@ -252,6 +266,7 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("priority", priority)
+                    .add("occupation", occupation)
                     .add("tags", tags)
                     .toString();
         }

@@ -22,12 +22,14 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_PRIORITY = "NONE";
+    public static final String DEFAULT_OCCUPATION = "";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
     private Priority priority;
+    private seedu.address.model.person.Occupation occupation;
     private Set<Tag> tags;
 
     /**
@@ -39,6 +41,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         priority = new Priority(DEFAULT_PRIORITY);
+        occupation = new seedu.address.model.person.Occupation(DEFAULT_OCCUPATION);
         tags = new HashSet<>();
     }
 
@@ -51,6 +54,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         priority = personToCopy.getPriority();
+        occupation = personToCopy.getOccupation();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -102,8 +106,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Occupation} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withOccupation(String occupation) {
+        this.occupation = new seedu.address.model.person.Occupation(occupation);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, priority);
+        return new Person(name, phone, email, address, tags, priority, occupation);
     }
 
 }

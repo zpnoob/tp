@@ -40,6 +40,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label occupation;
+    @FXML
     private Label priority;
     @FXML
     private FlowPane tags;
@@ -55,6 +57,7 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+    occupation.setText(person.getOccupation().value);
         priority.setText("Priority: " + person.getPriority().getValue());
         setPriorityStyle(person.getPriority());
         person.getTags().stream()

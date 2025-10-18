@@ -36,6 +36,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());
+        descriptor.setOccupation(person.getOccupation());
         descriptor.setTags(person.getTags());
     }
 
@@ -68,6 +69,11 @@ public class EditPersonDescriptorBuilder {
      */
     public EditPersonDescriptorBuilder withAddress(String address) {
         descriptor.setAddress(new Address(address));
+        return this;
+    }
+
+    public EditPersonDescriptorBuilder withOccupation(String occupation) {
+        descriptor.setOccupation(new seedu.address.model.person.Occupation(occupation));
         return this;
     }
 

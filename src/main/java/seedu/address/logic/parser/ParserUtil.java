@@ -14,6 +14,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -121,6 +122,21 @@ public class ParserUtil {
             throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
         }
         return new Priority(trimmedPriority);
+    }
+
+    /**
+     * Parses a {@code String occupation} into an {@code Occupation}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code occupation} is invalid.
+     */
+    public static Occupation parseOccupation(String occupation) throws ParseException {
+        requireNonNull(occupation);
+        String trimmedOccupation = occupation.trim();
+        if (!Occupation.isValidOccupation(trimmedOccupation)) {
+            throw new ParseException(Occupation.MESSAGE_CONSTRAINTS);
+        }
+        return new Occupation(trimmedOccupation);
     }
 
     /**

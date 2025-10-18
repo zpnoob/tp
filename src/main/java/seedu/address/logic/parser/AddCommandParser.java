@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OCCUPATION;
 
 import java.util.Set;
 import java.util.stream.Stream;
@@ -32,9 +33,9 @@ public class AddCommandParser implements Parser<AddCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
-                 PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_PRIORITY);
+    ArgumentMultimap argMultimap =
+        ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
+         PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_PRIORITY, PREFIX_OCCUPATION);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -52,10 +53,15 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ? ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get())
                 : new Address("");
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        Priority priority = ParserUtil.parsePriority(
-                argMultimap.getValue(PREFIX_PRIORITY).orElse(Priority.Level.NONE.toString()));
 
-        Person person = new Person(name, phone, email, address, tagList, priority);
+    Priority priority = ParserUtil.parsePriority(
+        argMultimap.getValue(PREFIX_PRIORITY).orElse(Priority.Level.NONE.toString()));
+
+    // occupation is optional; default to empty string
+    seedu.address.model.person.Occupation occupation = ParserUtil.parseOccupation(
+        argMultimap.getValue(PREFIX_OCCUPATION).orElse(""));
+
+    Person person = new Person(name, phone, email, address, tagList, priority, occupation);
 
         return new AddCommand(person);
     }

@@ -34,13 +34,14 @@ public class PriorityCommandTest {
         Priority newPriority = new Priority(Priority.Level.HIGH);
         PriorityCommand priorityCommand = new PriorityCommand(INDEX_FIRST_PERSON, newPriority);
 
-        Person editedPerson = new Person(
-                personToEdit.getName(),
-                personToEdit.getPhone(),
-                personToEdit.getEmail(),
-                personToEdit.getAddress(),
-                personToEdit.getTags(),
-                newPriority);
+    Person editedPerson = new Person(
+        personToEdit.getName(),
+        personToEdit.getPhone(),
+        personToEdit.getEmail(),
+        personToEdit.getAddress(),
+        personToEdit.getTags(),
+        newPriority,
+        personToEdit.getOccupation());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,
                 Messages.format(editedPerson), newPriority.getValue());
@@ -68,13 +69,14 @@ public class PriorityCommandTest {
         Priority newPriority = new Priority(Priority.Level.MEDIUM);
         PriorityCommand priorityCommand = new PriorityCommand(INDEX_FIRST_PERSON, newPriority);
 
-        Person editedPerson = new Person(
-                personToEdit.getName(),
-                personToEdit.getPhone(),
-                personToEdit.getEmail(),
-                personToEdit.getAddress(),
-                personToEdit.getTags(),
-                newPriority);
+    Person editedPerson = new Person(
+        personToEdit.getName(),
+        personToEdit.getPhone(),
+        personToEdit.getEmail(),
+        personToEdit.getAddress(),
+        personToEdit.getTags(),
+        newPriority,
+        personToEdit.getOccupation());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,
                 Messages.format(editedPerson), newPriority.getValue());

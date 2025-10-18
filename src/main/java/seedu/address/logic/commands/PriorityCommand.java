@@ -51,13 +51,14 @@ public class PriorityCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
-        Person editedPerson = new Person(
-                personToEdit.getName(),
-                personToEdit.getPhone(),
-                personToEdit.getEmail(),
-                personToEdit.getAddress(),
-                personToEdit.getTags(),
-                newPriority);
+    Person editedPerson = new Person(
+        personToEdit.getName(),
+        personToEdit.getPhone(),
+        personToEdit.getEmail(),
+        personToEdit.getAddress(),
+        personToEdit.getTags(),
+        newPriority,
+        personToEdit.getOccupation());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

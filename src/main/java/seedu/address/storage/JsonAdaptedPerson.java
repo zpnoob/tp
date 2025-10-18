@@ -16,6 +16,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,6 +31,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String priority;
+    private final String occupation;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -39,12 +41,14 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("priority") String priority,
+            @JsonProperty("occupation") String occupation,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.priority = priority;
+        this.occupation = occupation;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -59,6 +63,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         priority = source.getPriority().toString();
+        occupation = source.getOccupation().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -107,6 +112,17 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        // Handle occupation field - default to empty occupation if missing for backward compatibility
+        Occupation modelOccupation;
+        if (occupation == null) {
+            modelOccupation = new Occupation("");
+        } else {
+            if (!Occupation.isValidOccupation(occupation)) {
+                throw new IllegalValueException(Occupation.MESSAGE_CONSTRAINTS);
+            }
+            modelOccupation = new Occupation(occupation);
+        }
+
         // Handle priority field - default to NONE if missing for backward compatibility
         Priority modelPriority;
         if (priority == null) {
@@ -119,7 +135,7 @@ class JsonAdaptedPerson {
         }
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority, modelOccupation);
     }
 
 }
