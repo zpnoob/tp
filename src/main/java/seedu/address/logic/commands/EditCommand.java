@@ -110,7 +110,8 @@ public class EditCommand extends Command {
         Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedPriority, updatedAge);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                updatedTags, updatedPriority, updatedAge);
     }
 
     @Override
