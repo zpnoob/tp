@@ -29,7 +29,7 @@ public class Age {
      * Returns true if a given string is a valid age.
      */
     public static boolean isValidAge(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return test.isEmpty() || test.matches(VALIDATION_REGEX);
     }
 
     @Override
