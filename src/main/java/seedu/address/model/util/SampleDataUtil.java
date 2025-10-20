@@ -38,7 +38,8 @@ public class SampleDataUtil {
                 getTagSet("classmates"), new Priority(Priority.Level.NONE), new Age("23")),
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"), new Priority(Priority.Level.MEDIUM), new Age(""))        };
+                getTagSet("colleagues"), new Priority(Priority.Level.MEDIUM), new Age(""))
+        };
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
