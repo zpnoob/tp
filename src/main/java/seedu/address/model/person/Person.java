@@ -23,23 +23,27 @@ public class Person {
 
     // Data fields
     private final Address address;
+    private final Occupation occupation;
     private final Set<Tag> tags = new HashSet<>();
     private final Priority priority;
-    private final Occupation occupation;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority,
-                  Occupation occupation) {
-        requireAllNonNull(name, phone, email, address, tags, priority, occupation);
+    public Person(Name name, Phone phone, Email email, Address address, Occupation occupation, Set<Tag> tags, Priority priority) {
+        requireAllNonNull(name, phone, email, address, occupation, tags, priority);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.priority = priority;
         this.occupation = occupation;
+        this.priority = priority;
         this.tags.addAll(tags);
+    }
+    // removed stray closing brace
+
+    public Occupation getOccupation() {
+        return occupation;
     }
 
     public Name getName() {
@@ -62,10 +66,6 @@ public class Person {
         return priority;
     }
 
-    public Occupation getOccupation() {
-        return occupation;
-    }
-
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -83,9 +83,9 @@ public class Person {
             return true;
         }
 
-        return otherPerson != null
-                && otherPerson.getName().equals(getName())
-                && otherPerson.getPhone().equals(getPhone());
+    return otherPerson != null
+        && otherPerson.getName().equals(getName())
+        && otherPerson.getPhone().equals(getPhone());
     }
 
     /**
@@ -104,33 +104,32 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
-        return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone)
-                && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
-                && priority.equals(otherPerson.priority)
-                && occupation.equals(otherPerson.occupation)
-                && tags.equals(otherPerson.tags);
+    return name.equals(otherPerson.name)
+        && phone.equals(otherPerson.phone)
+        && email.equals(otherPerson.email)
+        && address.equals(otherPerson.address)
+        && occupation.equals(otherPerson.occupation)
+        && priority.equals(otherPerson.priority)
+        && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, priority, occupation, tags);
+    return Objects.hash(name, phone, email, address, occupation, priority, tags);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("name", name)
-                .add("phone", phone)
-                .add("email", email)
-                .add("address", address)
-                .add("tags", tags)
-        .add("priority", priority)
+    return new ToStringBuilder(this)
+        .add("name", name)
+        .add("phone", phone)
+        .add("email", email)
+        .add("address", address)
         .add("occupation", occupation)
-                .toString();
+        .add("tags", tags)
+        .add("priority", priority)
+        .toString();
     }
 
 }

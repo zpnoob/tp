@@ -58,15 +58,15 @@ public class TagCommand extends Command {
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
         Set<Tag> newTagsSet = Collections.singleton(tag);
-    Person editedPerson = new Person(
-        personToEdit.getName(),
-        personToEdit.getPhone(),
-        personToEdit.getEmail(),
-        personToEdit.getAddress(),
-        newTagsSet,
-        personToEdit.getPriority(),
-        personToEdit.getOccupation()
-    );
+        Person editedPerson = new Person(
+            personToEdit.getName(),
+            personToEdit.getPhone(),
+            personToEdit.getEmail(),
+            personToEdit.getAddress(),
+            personToEdit.getOccupation(),
+            newTagsSet,
+            personToEdit.getPriority()
+        );
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

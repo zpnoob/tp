@@ -103,9 +103,15 @@ public class PersonTest {
 
     @Test
     public void toStringMethod() {
-    String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-        + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
-        + ", priority=" + ALICE.getPriority() + ", occupation=" + ALICE.getOccupation() + "}";
+    String expected = new seedu.address.commons.util.ToStringBuilder(ALICE)
+        .add("name", ALICE.getName())
+        .add("phone", ALICE.getPhone())
+        .add("email", ALICE.getEmail())
+        .add("address", ALICE.getAddress())
+        .add("occupation", ALICE.getOccupation())
+        .add("tags", ALICE.getTags())
+        .add("priority", ALICE.getPriority())
+        .toString();
         assertEquals(expected, ALICE.toString());
     }
 }

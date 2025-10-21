@@ -39,9 +39,9 @@ public class TagCommandTest {
         personToEdit.getPhone(),
         personToEdit.getEmail(),
         personToEdit.getAddress(),
+        personToEdit.getOccupation(),
         newTagsSet,
-        personToEdit.getPriority(),
-        personToEdit.getOccupation());
+        personToEdit.getPriority());
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)

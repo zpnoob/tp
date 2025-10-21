@@ -11,6 +11,5 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 - The application is a desktop app designed for telemarketing agents to manage their client base more effectively.
   - Keep track of clients and related details in one place.
   - Search, filter, and edit client records efficiently through a command-line interface (CLI) optimized for fast-typing users.
-  - Each contact now includes an optional `occupation` field. Use the CLI prefix `o/` when adding or editing a contact to set their occupation (e.g. `add n/John p/9876 o/Engineer`).
 - For the detailed documentation of this project, see the **[InsuraBook Product Website](https://ay2526s1-cs2103t-f15a-2.github.io/tp/)**.
 - This project is a **part of the se-education.org** initiative. If you would like to contribute code to this project, see [se-education.org](https://se-education.org/#contributing-to-se-edu) for more info.

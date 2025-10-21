@@ -51,15 +51,15 @@ public class PriorityCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
-    Person editedPerson = new Person(
-        personToEdit.getName(),
-        personToEdit.getPhone(),
-        personToEdit.getEmail(),
-        personToEdit.getAddress(),
-        personToEdit.getTags(),
-        newPriority,
-        personToEdit.getOccupation());
-
+        Person editedPerson = new Person(
+                personToEdit.getName(),
+                personToEdit.getPhone(),
+                personToEdit.getEmail(),
+                personToEdit.getAddress(),
+                personToEdit.getOccupation(),
+                personToEdit.getTags(),
+                new Priority(newPriority.getValue())
+        );
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_PRIORITY_PERSON_SUCCESS,

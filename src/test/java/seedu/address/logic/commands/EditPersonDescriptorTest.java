@@ -60,14 +60,15 @@ public class EditPersonDescriptorTest {
     @Test
     public void toStringMethod() {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-    String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
-        + editPersonDescriptor.getName().orElse(null) + ", phone="
-        + editPersonDescriptor.getPhone().orElse(null) + ", email="
-        + editPersonDescriptor.getEmail().orElse(null) + ", address="
-        + editPersonDescriptor.getAddress().orElse(null) + ", priority="
-        + editPersonDescriptor.getPriority().orElse(null) + ", occupation="
-        + editPersonDescriptor.getOccupation().orElse(null) + ", tags="
-        + editPersonDescriptor.getTags().orElse(null) + "}";
+    String expected = new seedu.address.commons.util.ToStringBuilder(editPersonDescriptor)
+        .add("name", editPersonDescriptor.getName().orElse(null))
+        .add("phone", editPersonDescriptor.getPhone().orElse(null))
+        .add("email", editPersonDescriptor.getEmail().orElse(null))
+        .add("address", editPersonDescriptor.getAddress().orElse(null))
+        .add("occupation", editPersonDescriptor.getOccupation())
+        .add("priority", editPersonDescriptor.getPriority().orElse(null))
+        .add("tags", editPersonDescriptor.getTags().orElse(null))
+        .toString();
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

@@ -1,3 +1,4 @@
+
 package seedu.address.testutil;
 
 import java.util.HashSet;
@@ -9,28 +10,23 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.util.SampleDataUtil;
-
-/**
- * A utility class to help with building Person objects.
- */
 public class PersonBuilder {
-
+    public static final String DEFAULT_OCCUPATION = "Engineer";
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_PRIORITY = "NONE";
-    public static final String DEFAULT_OCCUPATION = "";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private Occupation occupation;
     private Priority priority;
-    private seedu.address.model.person.Occupation occupation;
-    private Set<Tag> tags;
+    private Set<seedu.address.model.tag.Tag> tags;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -40,9 +36,9 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-        priority = new Priority(DEFAULT_PRIORITY);
-        occupation = new seedu.address.model.person.Occupation(DEFAULT_OCCUPATION);
-        tags = new HashSet<>();
+    occupation = new Occupation(DEFAULT_OCCUPATION);
+    priority = new Priority(DEFAULT_PRIORITY);
+    tags = new HashSet<>();
     }
 
     /**
@@ -53,9 +49,13 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
-        priority = personToCopy.getPriority();
-        occupation = personToCopy.getOccupation();
-        tags = new HashSet<>(personToCopy.getTags());
+    occupation = personToCopy.getOccupation();
+    priority = personToCopy.getPriority();
+    tags = new HashSet<>(personToCopy.getTags());
+    }
+    public PersonBuilder withOccupation(String occupation) {
+        this.occupation = new Occupation(occupation);
+        return this;
     }
 
     /**
@@ -99,23 +99,15 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Priority} of the {@code Person} that we are building.
+        return new Person(name, phone, email, address, occupation, tags, priority);
      */
     public PersonBuilder withPriority(String priority) {
         this.priority = new Priority(priority);
         return this;
     }
 
-    /**
-     * Sets the {@code Occupation} of the {@code Person} that we are building.
-     */
-    public PersonBuilder withOccupation(String occupation) {
-        this.occupation = new seedu.address.model.person.Occupation(occupation);
-        return this;
-    }
-
     public Person build() {
-        return new Person(name, phone, email, address, tags, priority, occupation);
+    return new Person(name, phone, email, address, occupation, tags, priority);
     }
 
 }

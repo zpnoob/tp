@@ -34,7 +34,7 @@ public class Occupation {
      * Returns true if a given string is a valid occupation.
      */
     public static boolean isValidOccupation(String test) {
-        return test.isEmpty() || test.matches(VALIDATION_REGEX);
+        return test != null && !test.trim().isEmpty() && test.matches(VALIDATION_REGEX);
     }
 
     @Override

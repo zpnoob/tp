@@ -1,46 +1,60 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
   "persons" : [ {
-    "name" : "Alice Pauline",
-    "phone" : "94351253",
-    "email" : "alice@example.com",
-    "address" : "123, Jurong West Ave 6, #08-111",
-    "tags" : [ "friends" ]
+  "name" : "Alice Pauline",
+  "phone" : "94351253",
+  "email" : "alice@example.com",
+  "address" : "123, Jurong West Ave 6, #08-111",
+  "occupation" : "Engineer",
+  "priority" : "HIGH",
+  "tags" : [ "friends" ]
   }, {
-    "name" : "Benson Meier",
-    "phone" : "98765432",
-    "email" : "johnd@example.com",
-    "address" : "311, Clementi Ave 2, #02-25",
-    "tags" : [ "owesMoney", "friends" ]
+  "name" : "Benson Meier",
+  "phone" : "98765432",
+  "email" : "johnd@example.com",
+  "address" : "311, Clementi Ave 2, #02-25",
+  "occupation" : "Manager",
+  "priority" : "MEDIUM",
+  "tags" : [ "owesMoney", "friends" ]
   }, {
-    "name" : "Carl Kurz",
-    "phone" : "95352563",
-    "email" : "heinz@example.com",
-    "address" : "wall street",
-    "tags" : [ ]
+  "name" : "Carl Kurz",
+  "phone" : "95352563",
+  "email" : "heinz@example.com",
+  "address" : "wall street",
+  "occupation" : "Teacher",
+  "priority" : "LOW",
+  "tags" : [ ]
   }, {
-    "name" : "Daniel Meier",
-    "phone" : "87652533",
-    "email" : "cornelia@example.com",
-    "address" : "10th street",
-    "tags" : [ "friends" ]
+  "name" : "Daniel Meier",
+  "phone" : "87652533",
+  "email" : "cornelia@example.com",
+  "address" : "10th street",
+  "occupation" : "Student",
+  "priority" : "HIGH",
+  "tags" : [ "friends" ]
   }, {
-    "name" : "Elle Meyer",
-    "phone" : "9482224",
-    "email" : "werner@example.com",
-    "address" : "michegan ave",
-    "tags" : [ ]
+  "name" : "Elle Meyer",
+  "phone" : "9482224",
+  "email" : "werner@example.com",
+  "address" : "michegan ave",
+  "occupation" : "Designer",
+  "priority" : "NONE",
+  "tags" : [ ]
   }, {
-    "name" : "Fiona Kunz",
-    "phone" : "9482427",
-    "email" : "lydia@example.com",
-    "address" : "little tokyo",
-    "tags" : [ ]
+  "name" : "Fiona Kunz",
+  "phone" : "9482427",
+  "email" : "lydia@example.com",
+  "address" : "little tokyo",
+  "occupation" : "Chef",
+  "priority" : "MEDIUM",
+  "tags" : [ ]
   }, {
-    "name" : "George Best",
-    "phone" : "9482442",
-    "email" : "anna@example.com",
-    "address" : "4th street",
-    "tags" : [ ]
+  "name" : "George Best",
+  "phone" : "9482442",
+  "email" : "anna@example.com",
+  "address" : "4th street",
+  "occupation" : "Student",
+  "priority" : "LOW",
+  "tags" : [ ]
   } ]
 }
