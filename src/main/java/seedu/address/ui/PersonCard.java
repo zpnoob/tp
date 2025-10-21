@@ -42,6 +42,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label priority;
     @FXML
+    private Label lastContactedDate;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -56,6 +58,7 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         priority.setText("Priority: " + person.getPriority().getValue());
+        lastContactedDate.setText("Last Contacted: " + person.getLastContactedDate().toDisplayString());
         setPriorityStyle(person.getPriority());
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

@@ -47,6 +47,10 @@ public class Messages {
         if (!person.getAddress().toString().isEmpty()) {
             builder.append("; Address: ").append(person.getAddress());
         }
+        if (!person.getLastContactedDate().toDisplayString().isEmpty()
+                && !person.getLastContactedDate().toDisplayString().equals("N/A")) {
+            builder.append("; Last Contacted: ").append(person.getLastContactedDate().toDisplayString());
+        }
         if (!person.getTags().isEmpty()) {
             builder.append("; Tags: ");
             person.getTags().forEach(builder::append);
