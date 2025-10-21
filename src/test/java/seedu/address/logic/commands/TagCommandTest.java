@@ -40,7 +40,8 @@ public class TagCommandTest {
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 newTagsSet,
-                personToEdit.getPriority());
+                personToEdit.getPriority(),
+                personToEdit.getLastContactedDate());
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)
@@ -50,6 +51,8 @@ public class TagCommandTest {
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
+                                           + "; Last Contacted: " + editedPerson.getLastContactedDate()
+                                                        .toDisplayString()
                                            + "; Tags: " + tagsString);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());

@@ -23,7 +23,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_PRIORITY = "NONE";
-    public static final String DEFAULT_LAST_CONTACTED_DATE = "";  // Empty string for no date set
+    public static final String DEFAULT_LAST_CONTACTED_DATE = ""; // Empty string for no date set
 
     private Name name;
     private Phone phone;

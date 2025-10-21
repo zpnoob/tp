@@ -99,13 +99,17 @@ public class PersonTest {
         // different tags -> returns false
         editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));
+
+        // different lastContactedDate -> returns false
+        editedAlice = new PersonBuilder(ALICE).withLastContactedDate("2025-10-22").build();
+        assertFalse(ALICE.equals(editedAlice));
     }
 
     @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
-                + ", priority=" + ALICE.getPriority() + "}";
+                + ", priority=" + ALICE.getPriority() + ", lastContactedDate=" + ALICE.getLastContactedDate() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }
