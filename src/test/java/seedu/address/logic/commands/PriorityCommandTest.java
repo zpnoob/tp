@@ -40,7 +40,8 @@ public class PriorityCommandTest {
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 personToEdit.getTags(),
-                newPriority);
+                newPriority,
+                personToEdit.getLastContactedDate());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,
                 Messages.format(editedPerson), newPriority.getValue());
@@ -74,7 +75,8 @@ public class PriorityCommandTest {
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 personToEdit.getTags(),
-                newPriority);
+                newPriority,
+                personToEdit.getLastContactedDate());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,
                 Messages.format(editedPerson), newPriority.getValue());
