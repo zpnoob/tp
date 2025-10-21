@@ -27,7 +27,7 @@ public class LastContactedDate {
      *
      * @param dateString A valid date string in YYYY-MM-DD format, or an empty string.
      */
-    public LastContactedDate(String dateString){
+    public LastContactedDate(String dateString) {
         requireNonNull(dateString);
         assert dateString != null : "Date string must not be null after requireNonNull check.";
         checkArgument(isValidLastContactedDate(dateString), MESSAGE_CONSTRAINTS);
