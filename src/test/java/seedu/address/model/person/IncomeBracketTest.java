@@ -19,6 +19,8 @@ public class IncomeBracketTest {
     public void constructor_invalidIncomeBracket_throwsIllegalArgumentException() {
         String invalidIncomeBracket = "";
         assertThrows(IllegalArgumentException.class, () -> new IncomeBracket(invalidIncomeBracket));
+        assertThrows(IllegalArgumentException.class, () -> new IncomeBracket("rich"));
+        assertThrows(IllegalArgumentException.class, () -> new IncomeBracket("very high"));
     }
 
     @Test
@@ -119,6 +121,49 @@ public class IncomeBracketTest {
         // different values -> returns false
         assertFalse(low.equals(new IncomeBracket("high")));
         assertFalse(low.equals(new IncomeBracket("middle")));
+    }
+
+    @Test
+    public void fromString_validAndInvalid() {
+        // valid
+        assertEquals(IncomeBracket.Level.LOW, IncomeBracket.fromString("low").value);
+        assertEquals(IncomeBracket.Level.MIDDLE, IncomeBracket.fromString("middle").value);
+        assertEquals(IncomeBracket.Level.HIGH, IncomeBracket.fromString("high").value);
+        // case insensitivity
+        assertEquals(IncomeBracket.Level.LOW, IncomeBracket.fromString("LOW").value);
+        assertEquals(IncomeBracket.Level.MIDDLE, IncomeBracket.fromString("MIDDLE").value);
+        assertEquals(IncomeBracket.Level.HIGH, IncomeBracket.fromString("HIGH").value);
+        // with spaces
+        assertEquals(IncomeBracket.Level.LOW, IncomeBracket.fromString(" low ").value);
+        // invalid
+        assertThrows(IllegalArgumentException.class, () -> IncomeBracket.fromString("rich"));
+        assertThrows(IllegalArgumentException.class, () -> IncomeBracket.fromString(""));
+        assertThrows(NullPointerException.class, () -> IncomeBracket.fromString(null));
+    }
+
+    @Test
+    public void parseIncomeBracket_branchCoverage() {
+        // valid
+        assertEquals(IncomeBracket.Level.LOW, invokeParse("low"));
+        assertEquals(IncomeBracket.Level.MIDDLE, invokeParse("middle"));
+        assertEquals(IncomeBracket.Level.HIGH, invokeParse("high"));
+        // invalid
+        assertThrows(IllegalArgumentException.class, () -> invokeParse("rich"));
+        assertThrows(IllegalArgumentException.class, () -> invokeParse(""));
+    }
+
+    // Helper to access private method parseIncomeBracket via reflection
+    private IncomeBracket.Level invokeParse(String val) {
+        try {
+            java.lang.reflect.Method m = IncomeBracket.class.getDeclaredMethod("parseIncomeBracket", String.class);
+            m.setAccessible(true);
+            return (IncomeBracket.Level) m.invoke(null, val);
+        } catch (Exception e) {
+            if (e.getCause() instanceof IllegalArgumentException) {
+                throw (IllegalArgumentException) e.getCause();
+            }
+            throw new RuntimeException(e);
+        }
     }
 
     @Test
