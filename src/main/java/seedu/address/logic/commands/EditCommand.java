@@ -4,6 +4,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -25,6 +26,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -47,10 +49,12 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
+            + "[" + PREFIX_INCOME_BRACKET + "INCOME_BRACKET] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_EMAIL + "johndoe@example.com "
+            + PREFIX_INCOME_BRACKET + "high";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -104,9 +108,12 @@ public class EditCommand extends Command {
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
+        IncomeBracket updatedIncomeBracket = editPersonDescriptor.getIncomeBracket()
+                .orElse(personToEdit.getIncomeBracket());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedPriority);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedPriority,
+                updatedIncomeBracket);
     }
 
     @Override
@@ -144,6 +151,7 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private Priority priority;
+        private IncomeBracket incomeBracket;
 
         public EditPersonDescriptor() {}
 
@@ -157,6 +165,7 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setPriority(toCopy.priority);
+            setIncomeBracket(toCopy.incomeBracket);
             setTags(toCopy.tags);
         }
 
@@ -164,7 +173,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, priority, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, priority, incomeBracket, tags);
         }
 
         public void setName(Name name) {
@@ -207,6 +216,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(priority);
         }
 
+        public void setIncomeBracket(IncomeBracket incomeBracket) {
+            this.incomeBracket = incomeBracket;
+        }
+
+        public Optional<IncomeBracket> getIncomeBracket() {
+            return Optional.ofNullable(incomeBracket);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -241,6 +258,7 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(priority, otherEditPersonDescriptor.priority)
+                    && Objects.equals(incomeBracket, otherEditPersonDescriptor.incomeBracket)
                     && Objects.equals(tags, otherEditPersonDescriptor.tags);
         }
 
@@ -252,6 +270,7 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("priority", priority)
+                    .add("incomeBracket", incomeBracket)
                     .add("tags", tags)
                     .toString();
         }

@@ -11,6 +11,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
@@ -121,6 +122,18 @@ public class ParserUtil {
             throw new ParseException(Priority.MESSAGE_CONSTRAINTS);
         }
         return new Priority(trimmedPriority);
+    }
+
+    /**
+     * Parses {@code String incomeBracket} into an {@code IncomeBracket}.
+     */
+    public static IncomeBracket parseIncomeBracket(String incomeBracket) throws ParseException {
+        requireNonNull(incomeBracket);
+        String trimmedIncomeBracket = incomeBracket.trim();
+        if (!IncomeBracket.isValidIncomeBracket(trimmedIncomeBracket)) {
+            throw new ParseException(IncomeBracket.MESSAGE_CONSTRAINTS);
+        }
+        return new IncomeBracket(trimmedIncomeBracket);
     }
 
     /**

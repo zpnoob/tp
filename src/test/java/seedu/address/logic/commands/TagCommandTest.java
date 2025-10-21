@@ -40,7 +40,8 @@ public class TagCommandTest {
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 newTagsSet,
-                personToEdit.getPriority());
+                personToEdit.getPriority(),
+                personToEdit.getIncomeBracket());
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)

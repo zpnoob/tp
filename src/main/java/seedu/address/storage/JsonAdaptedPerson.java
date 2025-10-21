@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -30,6 +31,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String priority;
+    private final String incomeBracket;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -38,13 +40,14 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("priority") String priority,
+            @JsonProperty("priority") String priority, @JsonProperty("incomeBracket") String incomeBracket,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.priority = priority;
+        this.incomeBracket = incomeBracket;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -59,6 +62,8 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         priority = source.getPriority().toString();
+        // Store income bracket as the enum name for consistent serialization
+        incomeBracket = source.getIncomeBracket() != null ? source.getIncomeBracket().value.name() : null;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -118,8 +123,26 @@ class JsonAdaptedPerson {
             modelPriority = new Priority(priority);
         }
 
+        // Handle income bracket field - can be null
+        IncomeBracket modelIncomeBracket = null;
+        if (incomeBracket != null && !incomeBracket.trim().isEmpty()) {
+            try {
+                // First try to parse as enum name (e.g., "LOW", "MIDDLE", "HIGH")
+                IncomeBracket.Level level = IncomeBracket.Level.valueOf(incomeBracket.toUpperCase());
+                modelIncomeBracket = new IncomeBracket(level);
+            } catch (IllegalArgumentException e) {
+                // Fallback: try to parse as user-friendly string (e.g., "low", "middle", "high")
+                if (IncomeBracket.isValidIncomeBracket(incomeBracket)) {
+                    modelIncomeBracket = new IncomeBracket(incomeBracket);
+                } else {
+                    throw new IllegalValueException(IncomeBracket.MESSAGE_CONSTRAINTS);
+                }
+            }
+        }
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority,
+                modelIncomeBracket);
     }
 
 }
