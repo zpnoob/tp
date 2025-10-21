@@ -10,6 +10,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
@@ -19,6 +21,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Priority;
+import seedu.address.model.tag.DncTag;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
@@ -97,6 +100,25 @@ public class PriorityCommandTest {
         PriorityCommand priorityCommand = new PriorityCommand(outOfBoundIndex, newPriority);
 
         assertCommandFailure(priorityCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_dncContactPriority_throwsCommandException() {
+        Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person dncPerson = new Person(
+                personToEdit.getName(),
+                personToEdit.getPhone(),
+                personToEdit.getEmail(),
+                personToEdit.getAddress(),
+                Collections.singleton(new DncTag()),
+                personToEdit.getPriority()
+        );
+        model.setPerson(personToEdit, dncPerson);
+
+        Priority newPriority = new Priority(Priority.Level.HIGH);
+        PriorityCommand priorityCommand = new PriorityCommand(INDEX_FIRST_PERSON, newPriority);
+
+        assertCommandFailure(priorityCommand, model, PriorityCommand.MESSAGE_DNC_CANNOT_MODIFY);
     }
 
     @Test

@@ -64,7 +64,7 @@ public class DncCommand extends Command {
                 Collections.singleton(tag),
                 personToEdit.getPriority()
         );
-        
+
         assert !editedPerson.getTags().isEmpty() : "Edited person should have at least the DNC tag";
         assert editedPerson.isDncTagged() : "Edited person should be marked as DNC after adding DNC tag";
 
