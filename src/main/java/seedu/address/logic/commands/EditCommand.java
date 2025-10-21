@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -30,6 +31,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.person.LastContactedDate;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -47,10 +49,12 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
+            + "[" + PREFIX_LAST_CONTACTED_DATE + "LAST_CONTACTED_DATE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + PREFIX_EMAIL + "johndoe@example.com"
+            + PREFIX_LAST_CONTACTED_DATE + "2025-09-22";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -105,8 +109,11 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        LastContactedDate updatedLastContactedDate = editPersonDescriptor.getLastContactedDate()
+                .orElse(personToEdit.getLastContactedDate());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedPriority);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedPriority,
+                updatedLastContactedDate);
     }
 
     @Override
@@ -144,6 +151,7 @@ public class EditCommand extends Command {
         private Address address;
         private Set<Tag> tags;
         private Priority priority;
+        private LastContactedDate lastContactedDate;
 
         public EditPersonDescriptor() {}
 
@@ -158,6 +166,7 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setPriority(toCopy.priority);
             setTags(toCopy.tags);
+            setLastContactedDate(toCopy.lastContactedDate);
         }
 
         /**
@@ -207,6 +216,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(priority);
         }
 
+        public void setLastContactedDate(LastContactedDate lastContactedDate) {
+            this.lastContactedDate = lastContactedDate;
+        }
+
+        public Optional<LastContactedDate> getLastContactedDate() {
+            return Optional.ofNullable(lastContactedDate);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -241,7 +258,8 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
                     && Objects.equals(priority, otherEditPersonDescriptor.priority)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(tags, otherEditPersonDescriptor.tags)
+                    && Objects.equals(lastContactedDate, otherEditPersonDescriptor.lastContactedDate);
         }
 
         @Override
@@ -253,6 +271,7 @@ public class EditCommand extends Command {
                     .add("address", address)
                     .add("priority", priority)
                     .add("tags", tags)
+                    .add("lastContactedDate", lastContactedDate)
                     .toString();
         }
     }
