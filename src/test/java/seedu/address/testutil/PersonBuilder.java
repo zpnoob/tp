@@ -7,11 +7,14 @@ import java.util.Set;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
-import seedu.address.model.person.Occupation;
 import seedu.address.model.util.SampleDataUtil;
+/**
+ * A utility class to help with building Person objects for tests.
+ */
 public class PersonBuilder {
     public static final String DEFAULT_OCCUPATION = "Engineer";
     public static final String DEFAULT_NAME = "Amy Bee";
@@ -36,9 +39,9 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-    occupation = new Occupation(DEFAULT_OCCUPATION);
-    priority = new Priority(DEFAULT_PRIORITY);
-    tags = new HashSet<>();
+        occupation = new Occupation(DEFAULT_OCCUPATION);
+        priority = new Priority(DEFAULT_PRIORITY);
+        tags = new HashSet<>();
     }
 
     /**
@@ -49,10 +52,13 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
-    occupation = personToCopy.getOccupation();
-    priority = personToCopy.getPriority();
-    tags = new HashSet<>(personToCopy.getTags());
+        occupation = personToCopy.getOccupation();
+        priority = personToCopy.getPriority();
+        tags = new HashSet<>(personToCopy.getTags());
     }
+    /**
+     * Sets the occupation for the person being built.
+     */
     public PersonBuilder withOccupation(String occupation) {
         this.occupation = new Occupation(occupation);
         return this;
@@ -99,7 +105,7 @@ public class PersonBuilder {
     }
 
     /**
-        return new Person(name, phone, email, address, occupation, tags, priority);
+     * Returns a new Person with the current builder state.
      */
     public PersonBuilder withPriority(String priority) {
         this.priority = new Priority(priority);
@@ -107,7 +113,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-    return new Person(name, phone, email, address, occupation, tags, priority);
+        return new Person(name, phone, email, address, occupation, tags, priority);
     }
 
 }

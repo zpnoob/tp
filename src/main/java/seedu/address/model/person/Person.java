@@ -30,7 +30,8 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Occupation occupation, Set<Tag> tags, Priority priority) {
+    public Person(Name name, Phone phone, Email email, Address address, Occupation occupation,
+            Set<Tag> tags, Priority priority) {
         requireAllNonNull(name, phone, email, address, occupation, tags, priority);
         this.name = name;
         this.phone = phone;
@@ -83,9 +84,9 @@ public class Person {
             return true;
         }
 
-    return otherPerson != null
-        && otherPerson.getName().equals(getName())
-        && otherPerson.getPhone().equals(getPhone());
+        return otherPerson != null
+            && otherPerson.getName().equals(getName())
+            && otherPerson.getPhone().equals(getPhone());
     }
 
     /**
@@ -104,32 +105,32 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
-    return name.equals(otherPerson.name)
-        && phone.equals(otherPerson.phone)
-        && email.equals(otherPerson.email)
-        && address.equals(otherPerson.address)
-        && occupation.equals(otherPerson.occupation)
-        && priority.equals(otherPerson.priority)
-        && tags.equals(otherPerson.tags);
+        return name.equals(otherPerson.name)
+            && phone.equals(otherPerson.phone)
+            && email.equals(otherPerson.email)
+            && address.equals(otherPerson.address)
+            && occupation.equals(otherPerson.occupation)
+            && priority.equals(otherPerson.priority)
+            && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-    return Objects.hash(name, phone, email, address, occupation, priority, tags);
+        return Objects.hash(name, phone, email, address, occupation, priority, tags);
     }
 
     @Override
     public String toString() {
-    return new ToStringBuilder(this)
-        .add("name", name)
-        .add("phone", phone)
-        .add("email", email)
-        .add("address", address)
-        .add("occupation", occupation)
-        .add("tags", tags)
-        .add("priority", priority)
-        .toString();
+        return new ToStringBuilder(this)
+            .add("name", name)
+            .add("phone", phone)
+            .add("email", email)
+            .add("address", address)
+            .add("occupation", occupation)
+            .add("tags", tags)
+            .add("priority", priority)
+            .toString();
     }
 
 }

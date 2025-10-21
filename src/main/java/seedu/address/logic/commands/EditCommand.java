@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OCCUPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -44,7 +43,7 @@ public class EditCommand extends Command {
         + PREFIX_PHONE + "PHONE "
         + PREFIX_EMAIL + "EMAIL "
         + PREFIX_ADDRESS + "ADDRESS "
-        + PREFIX_OCCUPATION + "OCCUPATION "
+        + "o/OCCUPATION "
         + PREFIX_PRIORITY + "PRIORITY "
         + PREFIX_TAG + "TAG...\n"
         + "Example: " + COMMAND_WORD + " 1 " + PREFIX_PHONE + "91234567 "
@@ -136,18 +135,6 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
-    @Override
-    public String toString() {
-        return new seedu.address.commons.util.ToStringBuilder(this)
-            .add("name", getName().orElse(null))
-            .add("phone", getPhone().orElse(null))
-            .add("email", getEmail().orElse(null))
-            .add("address", getAddress().orElse(null))
-            .add("occupation", getOccupation())
-            .add("priority", getPriority().orElse(null))
-            .add("tags", getTags().orElse(null))
-            .toString();
-    }
         private Name name;
         private Phone phone;
         private Email email;
@@ -253,6 +240,19 @@ public class EditCommand extends Command {
                     && Objects.equals(occupation, otherDescriptor.occupation)
                     && Objects.equals(tags, otherDescriptor.tags)
                     && Objects.equals(priority, otherDescriptor.priority);
+        }
+
+        @Override
+        public String toString() {
+            return new seedu.address.commons.util.ToStringBuilder(this)
+                .add("name", getName().orElse(null))
+                .add("phone", getPhone().orElse(null))
+                .add("email", getEmail().orElse(null))
+                .add("address", getAddress().orElse(null))
+                .add("occupation", getOccupation())
+                .add("priority", getPriority().orElse(null))
+                .add("tags", getTags().orElse(null))
+                .toString();
         }
     }
 }

@@ -34,14 +34,14 @@ public class TagCommandTest {
         Tag newTag = new Tag("friend");
         TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
         Set<Tag> newTagsSet = Collections.singleton(newTag);
-    Person editedPerson = new Person(
-        personToEdit.getName(),
-        personToEdit.getPhone(),
-        personToEdit.getEmail(),
-        personToEdit.getAddress(),
-        personToEdit.getOccupation(),
-        newTagsSet,
-        personToEdit.getPriority());
+        Person editedPerson = new Person(
+            personToEdit.getName(),
+            personToEdit.getPhone(),
+            personToEdit.getEmail(),
+            personToEdit.getAddress(),
+            personToEdit.getOccupation(),
+            newTagsSet,
+            personToEdit.getPriority());
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)

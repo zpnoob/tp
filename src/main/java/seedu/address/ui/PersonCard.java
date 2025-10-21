@@ -1,5 +1,5 @@
-package seedu.address.ui;
 
+package seedu.address.ui;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -8,14 +8,14 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
-// import removed: Occupation is not used in this file
 import seedu.address.model.person.Priority;
+
+
 
 /**
  * An UI component that displays information of a {@code Person}.
  */
 public class PersonCard extends UiPart<Region> {
-// ...existing imports...
 
     private static final String FXML = "PersonListCard.fxml";
 
@@ -60,11 +60,11 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         priority.setText("Priority: " + person.getPriority().getValue());
-    occupation.setText(person.getOccupation().toString());
+        occupation.setText(person.getOccupation().toString());
         setPriorityStyle(person.getPriority());
         person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            .sorted(Comparator.comparing(tag -> tag.tagName))
+            .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     /**

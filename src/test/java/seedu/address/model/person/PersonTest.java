@@ -17,11 +17,44 @@ import org.junit.jupiter.api.Test;
 import seedu.address.testutil.PersonBuilder;
 
 public class PersonTest {
+    @Test
+    public void occupationField_setAndGet_correct() {
+        Person person = new PersonBuilder().withOccupation("Doctor").build();
+        assertEquals("Doctor", person.getOccupation().toString());
+    }
 
     @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
+    public void priorityField_setAndGet_correct() {
+        Person person = new PersonBuilder().withPriority("HIGH").build();
+        assertEquals("HIGH", person.getPriority().toString());
+    }
+
+    @Test
+    public void occupation_affectsEquality() {
+        Person aliceCopy = new PersonBuilder(ALICE).build();
+        Person editedAlice = new PersonBuilder(ALICE).withOccupation("Lawyer").build();
+        assertFalse(aliceCopy.equals(editedAlice));
+    }
+
+    @Test
+    public void priority_affectsEquality() {
+        Person aliceCopy = new PersonBuilder(ALICE).build();
+        Person editedAlice = new PersonBuilder(ALICE).withPriority("LOW").build();
+        assertFalse(aliceCopy.equals(editedAlice));
+    }
+
+    @Test
+    public void getTags_returnsUnmodifiableSet() {
         Person person = new PersonBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> person.getTags()
+            .add(new seedu.address.model.tag.Tag("test")));
+    }
+
+    @Test
+        public void asObservableList_modifyList_throwsUnsupportedOperationException() {
+        Person person = new PersonBuilder().withTags("testTag").build();
+        seedu.address.model.tag.Tag tag = new seedu.address.model.tag.Tag("testTag");
+        assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(tag));
     }
 
     @Test
@@ -103,15 +136,15 @@ public class PersonTest {
 
     @Test
     public void toStringMethod() {
-    String expected = new seedu.address.commons.util.ToStringBuilder(ALICE)
-        .add("name", ALICE.getName())
-        .add("phone", ALICE.getPhone())
-        .add("email", ALICE.getEmail())
-        .add("address", ALICE.getAddress())
-        .add("occupation", ALICE.getOccupation())
-        .add("tags", ALICE.getTags())
-        .add("priority", ALICE.getPriority())
-        .toString();
+        String expected = new seedu.address.commons.util.ToStringBuilder(ALICE)
+            .add("name", ALICE.getName())
+            .add("phone", ALICE.getPhone())
+            .add("email", ALICE.getEmail())
+            .add("address", ALICE.getAddress())
+            .add("occupation", ALICE.getOccupation())
+            .add("tags", ALICE.getTags())
+            .add("priority", ALICE.getPriority())
+            .toString();
         assertEquals(expected, ALICE.toString());
     }
 }

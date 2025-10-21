@@ -176,10 +176,10 @@ public class EditCommandTest {
         Index index = Index.fromOneBased(1);
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         EditCommand editCommand = new EditCommand(index, editPersonDescriptor);
-    String expected = new seedu.address.commons.util.ToStringBuilder(editCommand)
-        .add("index", index)
-        .add("editPersonDescriptor", editPersonDescriptor)
-        .toString();
+        String expected = new seedu.address.commons.util.ToStringBuilder(editCommand)
+            .add("index", index)
+            .add("editPersonDescriptor", editPersonDescriptor)
+            .toString();
         assertEquals(expected, editCommand.toString());
     }
 

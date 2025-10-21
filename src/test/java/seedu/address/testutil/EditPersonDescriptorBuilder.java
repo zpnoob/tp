@@ -31,14 +31,14 @@ public class EditPersonDescriptorBuilder {
      * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
      */
     public EditPersonDescriptorBuilder(Person person) {
-    descriptor = new EditPersonDescriptor();
-    descriptor.setName(person.getName());
-    descriptor.setPhone(person.getPhone());
-    descriptor.setEmail(person.getEmail());
-    descriptor.setAddress(person.getAddress());
-    descriptor.setOccupation(person.getOccupation());
-    descriptor.setPriority(person.getPriority());
-    descriptor.setTags(person.getTags());
+        descriptor = new EditPersonDescriptor();
+        descriptor.setName(person.getName());
+        descriptor.setPhone(person.getPhone());
+        descriptor.setEmail(person.getEmail());
+        descriptor.setAddress(person.getAddress());
+        descriptor.setOccupation(person.getOccupation());
+        descriptor.setPriority(person.getPriority());
+        descriptor.setTags(person.getTags());
     }
 
     /**

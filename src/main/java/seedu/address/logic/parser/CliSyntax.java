@@ -4,7 +4,7 @@ package seedu.address.logic.parser;
  * Contains Command Line Interface (CLI) syntax definitions common to multiple commands
  */
 public class CliSyntax {
-    public static final Prefix PREFIX_OCCUPATION = new Prefix("occupation/");
+    public static final Prefix PREFIX_OCCUPATION = new Prefix("o/");
 
     /* Prefix definitions */
     public static final Prefix PREFIX_NAME = new Prefix("n/");

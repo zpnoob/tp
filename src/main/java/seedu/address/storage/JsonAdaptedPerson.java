@@ -13,9 +13,9 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
 
@@ -58,15 +58,15 @@ class JsonAdaptedPerson {
      * Converts a given {@code Person} into this class for Jackson use.
      */
     public JsonAdaptedPerson(Person source) {
-    name = source.getName().fullName;
-    phone = source.getPhone().value;
-    email = source.getEmail().value;
-    address = source.getAddress().value;
-    occupation = source.getOccupation().toString();
-    priority = source.getPriority().toString();
-    tags.addAll(source.getTags().stream()
-        .map(JsonAdaptedTag::new)
-        .collect(Collectors.toList()));
+        name = source.getName().fullName;
+        phone = source.getPhone().value;
+        email = source.getEmail().value;
+        address = source.getAddress().value;
+        occupation = source.getOccupation().toString();
+        priority = source.getPriority().toString();
+        tags.addAll(source.getTags().stream()
+            .map(JsonAdaptedTag::new)
+            .collect(Collectors.toList()));
     }
 
     /**
@@ -124,8 +124,8 @@ class JsonAdaptedPerson {
         }
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-    Occupation modelOccupation = new Occupation(occupation);
-    return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority);
+        Occupation modelOccupation = new Occupation(occupation);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority);
     }
 
 }
