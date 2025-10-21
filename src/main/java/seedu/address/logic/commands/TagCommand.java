@@ -13,7 +13,6 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -60,8 +59,7 @@ public class TagCommand extends Command {
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
 
-        if (personToEdit.getTags().stream()
-                .anyMatch(t -> t instanceof DncTag)) {
+        if (personToEdit.isDncTagged()) {
             throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
         }
 

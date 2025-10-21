@@ -28,7 +28,6 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
-import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -83,8 +82,7 @@ public class EditCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
 
-        boolean hasDncTag = personToEdit.getTags().stream().anyMatch(t -> t instanceof DncTag);
-        if (hasDncTag && editPersonDescriptor.isAnyFieldEdited()) {
+        if (personToEdit.isDncTagged() && editPersonDescriptor.isAnyFieldEdited()) {
             throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
         }
 

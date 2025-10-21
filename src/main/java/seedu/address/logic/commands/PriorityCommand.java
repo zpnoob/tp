@@ -12,7 +12,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Priority;
-import seedu.address.model.tag.DncTag;
 
 /**
  * Changes the priority of an existing person in the address book.
@@ -54,8 +53,7 @@ public class PriorityCommand extends Command {
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
 
-        boolean hasDncTag = personToEdit.getTags().stream().anyMatch(t -> t instanceof DncTag);
-        if (hasDncTag) {
+        if (personToEdit.isDncTagged()) {
             throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
         }
 
