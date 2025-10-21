@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
@@ -28,6 +29,8 @@ public class ParserUtilTest {
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
     private static final String INVALID_PRIORITY = "INVALID";
+    private static final String INVALID_DATE = "2025/10/21"; // wrong format
+    private static final String INVALID_DATE_2 = "2025-13-21"; // invalid month
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
@@ -36,6 +39,7 @@ public class ParserUtilTest {
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
     private static final String VALID_PRIORITY = "HIGH";
+    private static final String VALID_DATE = "2025-10-21";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -244,5 +248,39 @@ public class ParserUtilTest {
         assertEquals(new Priority("HIGH"), ParserUtil.parsePriority("HIGH"));
         assertEquals(new Priority("HIGH"), ParserUtil.parsePriority("high"));
         assertEquals(new Priority("HIGH"), ParserUtil.parsePriority("High"));
+    }
+
+    @Test
+    public void parseLastContactedDate_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseLastContactedDate(null));
+    }
+
+    @Test
+    public void parseLastContactedDate_invalidFormat_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLastContactedDate(INVALID_DATE));
+    }
+
+    @Test
+    public void parseLastContactedDate_invalidDate_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseLastContactedDate(INVALID_DATE_2));
+    }
+
+    @Test
+    public void parseLastContactedDate_validValueWithoutWhitespace_returnsLastContactedDate() throws Exception {
+        LastContactedDate expectedDate = new LastContactedDate(VALID_DATE);
+        assertEquals(expectedDate, ParserUtil.parseLastContactedDate(VALID_DATE));
+    }
+
+    @Test
+    public void parseLastContactedDate_validValueWithWhitespace_returnsTrimmedLastContactedDate() throws Exception {
+        String dateWithWhitespace = WHITESPACE + VALID_DATE + WHITESPACE;
+        LastContactedDate expectedDate = new LastContactedDate(VALID_DATE);
+        assertEquals(expectedDate, ParserUtil.parseLastContactedDate(dateWithWhitespace));
+    }
+
+    @Test
+    public void parseLastContactedDate_emptyString_returnsEmptyLastContactedDate() throws Exception {
+        LastContactedDate expectedDate = new LastContactedDate("");
+        assertEquals(expectedDate, ParserUtil.parseLastContactedDate(""));
     }
 }
