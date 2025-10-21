@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -17,36 +16,29 @@ import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 /**
- * Changes the tag of an existing person in the address book.
+ * Marks a person as "Do Not Call" in the address book.
  */
-public class TagCommand extends Command {
+public class DncCommand extends Command {
 
-    public static final String COMMAND_WORD = "tag";
+    public static final String COMMAND_WORD = "dnc";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the tag of the person identified "
-            + "by the index number used in the last person listing. "
-            + "Existing tag will be overwritten by the input.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_TAG + "[TAG]\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TAG + "interested.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Marks the person identified "
+            + "by the index number used in the last person listing as Do Not Call.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_TAG_PERSON_SUCCESS = "Changed tag of Person: %s";
-    public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify tags of a Do Not Call contact.";
-
-    public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Tag command not implemented yet";
+    public static final String MESSAGE_DNC_SUCCESS = "Marked person as Do Not Call: %s";
 
     private final Index targetIndex;
-    private final Tag tag;
+    private final DncTag tag;
 
     /**
-     * Creates a TagCommand to add a tag to the person at the specified index.
+     * Creates a DncCommand to mark the person at the specified index as Do Not Call.
      */
-    public TagCommand(Index targetIndex, Tag tag) {
+    public DncCommand(Index targetIndex) {
         requireNonNull(targetIndex);
-        requireNonNull(tag);
         this.targetIndex = targetIndex;
-        this.tag = tag;
+        this.tag = new DncTag();
     }
 
     @Override
@@ -59,12 +51,6 @@ public class TagCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
-
-        if (personToEdit.getTags().stream()
-                .anyMatch(t -> t instanceof DncTag)) {
-            throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
-        }
-
         Set<Tag> newTagsSet = Collections.singleton(tag);
         Person editedPerson = new Person(
                 personToEdit.getName(),
@@ -78,7 +64,7 @@ public class TagCommand extends Command {
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        return new CommandResult(String.format(MESSAGE_TAG_PERSON_SUCCESS,
+        return new CommandResult(String.format(MESSAGE_DNC_SUCCESS,
                 Messages.format(editedPerson)));
     }
 
@@ -88,11 +74,11 @@ public class TagCommand extends Command {
             return true;
         }
 
-        if (!(other instanceof TagCommand)) {
+        if (!(other instanceof DncCommand)) {
             return false;
         }
 
-        TagCommand e = (TagCommand) other;
+        DncCommand e = (DncCommand) other;
         return targetIndex.equals(e.targetIndex)
                 && tag.equals(e.tag);
     }
@@ -104,7 +90,6 @@ public class TagCommand extends Command {
 
     @Override
     public String toString() {
-        return "TagCommand{targetIndex=Index{value=" + (targetIndex.getOneBased())
-            + "}, tag=Tag{tagName='" + tag.tagName + "'}}";
+        return "DncCommand{targetIndex=Index{value=" + (targetIndex.getOneBased()) + "}}";
     }
 }
