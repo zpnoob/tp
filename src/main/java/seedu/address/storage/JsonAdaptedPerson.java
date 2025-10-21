@@ -17,6 +17,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.person.LastContactedDate;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -31,6 +32,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final String priority;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String lastContactedDate;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -39,12 +41,14 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("priority") String priority,
+            @JsonProperty("lastContactedDate") String lastContactedDate,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.priority = priority;
+        this.lastContactedDate = lastContactedDate;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -59,6 +63,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         priority = source.getPriority().toString();
+        lastContactedDate = source.getLastContactedDate().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -118,8 +123,20 @@ class JsonAdaptedPerson {
             modelPriority = new Priority(priority);
         }
 
+        // Handle lastContactedDate field - default to empty string ("") if missing/null for backward compatibility
+        LastContactedDate modelLastContactedDate;
+        if (lastContactedDate == null) {
+            modelLastContactedDate = new LastContactedDate("");
+        } else {
+            if (!LastContactedDate.isValidLastContactedDate(lastContactedDate)) {
+                throw new IllegalValueException(LastContactedDate.MESSAGE_CONSTRAINTS);
+            }
+            modelLastContactedDate = new LastContactedDate(lastContactedDate);
+        }
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority,
+                modelLastContactedDate);
     }
 
 }
