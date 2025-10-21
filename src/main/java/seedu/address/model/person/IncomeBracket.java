@@ -46,8 +46,10 @@ public class IncomeBracket {
     public IncomeBracket(String incomeBracket) {
         requireNonNull(incomeBracket);
         checkArgument(isValidIncomeBracket(incomeBracket), MESSAGE_CONSTRAINTS);
-        value = parseIncomeBracket(incomeBracket.toLowerCase());
+        value = parseIncomeBracket(incomeBracket.toLowerCase().trim());
     }
+
+
 
     /**
      * Constructs an {@code IncomeBracket}.
@@ -82,6 +84,20 @@ public class IncomeBracket {
         default:
             throw new IllegalArgumentException("Invalid income bracket: " + incomeBracket);
         }
+    }
+
+    /**
+     * Creates an IncomeBracket from a string representation.
+     *
+     * @param incomeBracket A valid string representation of income bracket.
+     * @return An IncomeBracket object.
+     * @throws IllegalArgumentException if the string is not a valid income bracket.
+     */
+    public static IncomeBracket fromString(String incomeBracket) {
+        if (!isValidIncomeBracket(incomeBracket)) {
+            throw new IllegalArgumentException("Invalid income bracket: " + incomeBracket);
+        }
+        return new IncomeBracket(parseIncomeBracket(incomeBracket.toLowerCase().trim()));
     }
 
     /**

@@ -109,7 +109,7 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && priority.equals(otherPerson.priority)
-                && incomeBracket.equals(otherPerson.incomeBracket)
+                && Objects.equals(incomeBracket, otherPerson.incomeBracket)
                 && tags.equals(otherPerson.tags);
     }
 
