@@ -5,7 +5,6 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
@@ -13,7 +12,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.DncTag;
-import seedu.address.model.tag.Tag;
 
 /**
  * Marks a person as "Do Not Call" in the address book.
@@ -28,6 +26,7 @@ public class DncCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DNC_SUCCESS = "Marked person as Do Not Call: %s";
+    public static final String MESSAGE_ALREADY_DNC = "This contact is already marked as Do Not Call.";
 
     private final Index targetIndex;
     private final DncTag tag;
@@ -51,13 +50,17 @@ public class DncCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
-        Set<Tag> newTagsSet = Collections.singleton(tag);
+
+        if (personToEdit.isDncTagged()) {
+            throw new CommandException(MESSAGE_ALREADY_DNC);
+        }
+
         Person editedPerson = new Person(
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
-                newTagsSet,
+                Collections.singleton(tag),
                 personToEdit.getPriority()
         );
 
