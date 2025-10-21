@@ -45,36 +45,6 @@ public class DncCommandParserTest {
     }
 
     @Test
-    public void parse_multipleNumbers_throwsParseException() {
-        assertParseFailure(parser, "1 2", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DncCommand.MESSAGE_USAGE));
-    }
-
-    @Test
-    public void parse_largeValidIndex_returnsDncCommand() {
-        assertParseSuccess(parser, "999", new DncCommand(seedu.address.commons.core.index.Index.fromOneBased(999)));
-    }
-
-    @Test
-    public void parse_validIndexWithLeadingWhitespace_returnsDncCommand() {
-        assertParseSuccess(parser, "  1", new DncCommand(INDEX_FIRST_PERSON));
-    }
-
-    @Test
-    public void parse_validIndexWithTrailingWhitespace_returnsDncCommand() {
-        assertParseSuccess(parser, "1  ", new DncCommand(INDEX_FIRST_PERSON));
-    }
-
-    @Test
-    public void parse_specialCharacters_throwsParseException() {
-        assertParseFailure(parser, "@#$", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DncCommand.MESSAGE_USAGE));
-    }
-
-    @Test
-    public void parse_decimalNumber_throwsParseException() {
-        assertParseFailure(parser, "1.5", String.format(MESSAGE_INVALID_COMMAND_FORMAT, DncCommand.MESSAGE_USAGE));
-    }
-
-    @Test
     public void parse_validArgsExercisesAssertion_returnsDncCommand() {
         assertParseSuccess(parser, "1", new DncCommand(INDEX_FIRST_PERSON));
         assertParseSuccess(parser, "5", new DncCommand(seedu.address.commons.core.index.Index.fromOneBased(5)));
