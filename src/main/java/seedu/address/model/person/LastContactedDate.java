@@ -29,8 +29,11 @@ public class LastContactedDate {
      */
     public LastContactedDate(String dateString){
         requireNonNull(dateString);
+        assert dateString != null : "Date string must not be null after requireNonNull check.";
         checkArgument(isValidLastContactedDate(dateString), MESSAGE_CONSTRAINTS);
+        assert isValidLastContactedDate(dateString) : MESSAGE_CONSTRAINTS;
         this.value = dateString;
+        assert this.value != null;
     }
 
     /**
@@ -41,7 +44,9 @@ public class LastContactedDate {
             return true; // Empty string is valid for optional fields
         }
         try {
-            LocalDate.parse(test, FORMATTER);
+            LocalDate parsed = LocalDate.parse(test, FORMATTER);
+            assert parsed != null;
+            assert parsed.toString().equals(test) : "Parsed date normalized does not match input";
             return true;
         } catch (DateTimeParseException e) {
             return false;
