@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DncCommand;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.DncCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
