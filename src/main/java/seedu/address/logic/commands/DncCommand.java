@@ -50,6 +50,7 @@ public class DncCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
+        assert personToEdit != null : "Person retrieved from FilteredPersonList should not be null";
 
         if (personToEdit.isDncTagged()) {
             throw new CommandException(MESSAGE_ALREADY_DNC);
@@ -63,6 +64,9 @@ public class DncCommand extends Command {
                 Collections.singleton(tag),
                 personToEdit.getPriority()
         );
+        
+        assert !editedPerson.getTags().isEmpty() : "Edited person should have at least the DNC tag";
+        assert editedPerson.isDncTagged() : "Edited person should be marked as DNC after adding DNC tag";
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

@@ -16,6 +16,8 @@ public class DncCommandParser implements Parser<DncCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public DncCommand parse(String args) throws ParseException {
+        assert args != null : "Args should not be null";
+
         try {
             Index index = ParserUtil.parseIndex(args);
             return new DncCommand(index);
