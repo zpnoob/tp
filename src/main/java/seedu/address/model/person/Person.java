@@ -25,11 +25,13 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
     private final Priority priority;
+    private final LastContactedDate lastContactedDate;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority,
+            LastContactedDate lastContactedDate) {
         requireAllNonNull(name, phone, email, address, tags, priority);
         this.name = name;
         this.phone = phone;
@@ -37,6 +39,7 @@ public class Person {
         this.address = address;
         this.priority = priority;
         this.tags.addAll(tags);
+        this.lastContactedDate = lastContactedDate;
     }
 
     public Name getName() {
@@ -65,6 +68,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public LastContactedDate getLastContactedDate() {
+        return lastContactedDate;
     }
 
     /**
@@ -102,13 +109,14 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && priority.equals(otherPerson.priority)
-                && tags.equals(otherPerson.tags);
+                && tags.equals(otherPerson.tags)
+                && lastContactedDate.equals(otherPerson.lastContactedDate);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, priority, tags);
+        return Objects.hash(name, phone, email, address, priority, tags, lastContactedDate);
     }
 
     @Override
@@ -120,7 +128,7 @@ public class Person {
                 .add("address", address)
                 .add("tags", tags)
                 .add("priority", priority)
+                .add("LastContactedDate", lastContactedDate)
                 .toString();
     }
-
 }
