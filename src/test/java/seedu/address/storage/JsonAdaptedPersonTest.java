@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.storage.JsonAdaptedPerson.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -127,6 +128,16 @@ public class JsonAdaptedPersonTest {
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                 VALID_ADDRESS, VALID_AGE, VALID_PRIORITY, invalidTags);
         assertThrows(IllegalValueException.class, person::toModelType);
+    }
+
+    @Test
+    public void toModelType_personWithDncTag_returnsPerson() throws Exception {
+        List<JsonAdaptedTag> dncTags = new ArrayList<>();
+        dncTags.add(new JsonAdaptedTag("Do Not Call"));
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
+                VALID_ADDRESS, VALID_PRIORITY, dncTags);
+        seedu.address.model.person.Person modelPerson = person.toModelType();
+        assertTrue(modelPerson.isDncTagged());
     }
 
 }

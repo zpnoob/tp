@@ -27,6 +27,7 @@ public class PriorityCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 HIGH";
 
     public static final String MESSAGE_PRIORITY_PERSON_SUCCESS = "Changed priority of Person: %1$s to %2$s";
+    public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify priority of a Do Not Call contact.";
 
     private final Index targetIndex;
     private final Priority newPriority;
@@ -51,6 +52,11 @@ public class PriorityCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
+
+        if (personToEdit.isDncTagged()) {
+            throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
+        }
+
         Person editedPerson = new Person(
                 personToEdit.getName(),
                 personToEdit.getPhone(),
