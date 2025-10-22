@@ -13,4 +13,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_PRIORITY = new Prefix("pr/");
     public static final Prefix PREFIX_AGE = new Prefix("age/");
+    public static final Prefix PREFIX_INCOME_BRACKET = new Prefix("i/");
 }
+

@@ -64,8 +64,8 @@ public class PriorityCommand extends Command {
                 personToEdit.getAddress(),
                 personToEdit.getTags(),
                 newPriority,
-                personToEdit.getAge()
-        );
+                personToEdit.getAge(),
+                personToEdit.getIncomeBracket());
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

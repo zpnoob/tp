@@ -17,6 +17,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -59,8 +60,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Priority priority = ParserUtil.parsePriority(
                 argMultimap.getValue(PREFIX_PRIORITY).orElse(Priority.Level.NONE.toString()));
+        // Default income bracket for new persons is null
+        IncomeBracket incomeBracket = null;
 
-        Person person = new Person(name, phone, email, address, tagList, priority, age);
+        Person person = new Person(name, phone, email, address, tagList, priority, age, incomeBracket);
 
         return new AddCommand(person);
     }

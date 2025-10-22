@@ -6,6 +6,7 @@ import java.util.Set;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -31,6 +32,7 @@ public class PersonBuilder {
     private Address address;
     private Age age;
     private Priority priority;
+    private IncomeBracket incomeBracket;
     private Set<Tag> tags;
 
     /**
@@ -43,6 +45,7 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         age = new Age(DEFAULT_AGE);
         priority = new Priority(DEFAULT_PRIORITY);
+        incomeBracket = null; // Default to null for new persons
         tags = new HashSet<>();
     }
 
@@ -56,6 +59,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         age = personToCopy.getAge();
         priority = personToCopy.getPriority();
+        incomeBracket = personToCopy.getIncomeBracket();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -115,8 +119,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code IncomeBracket} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withIncomeBracket(String incomeBracket) {
+        this.incomeBracket = new IncomeBracket(incomeBracket);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, priority, age);
+        return new Person(name, phone, email, address, tags, priority, age, incomeBracket);
     }
 
 }

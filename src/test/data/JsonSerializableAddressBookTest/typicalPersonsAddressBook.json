@@ -7,6 +7,7 @@
     "address" : "123, Jurong West Ave 6, #08-111",
     "age" : "25",
     "priority" : "NONE",
+    "incomeBracket" : "HIGH",
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
@@ -15,6 +16,7 @@
     "address" : "311, Clementi Ave 2, #02-25",
     "age" : "25",
     "priority" : "NONE",
+    "incomeBracket" : "MIDDLE",
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
@@ -23,6 +25,7 @@
     "address" : "wall street",
     "age" : "25",
     "priority" : "NONE",
+    "incomeBracket" : null,
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
@@ -31,6 +34,7 @@
     "address" : "10th street",
     "age" : "25",
     "priority" : "NONE",
+    "incomeBracket" : null,
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
@@ -39,6 +43,7 @@
     "address" : "michegan ave",
     "age" : "25",
     "priority" : "NONE",
+    "incomeBracket" : null,
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
@@ -47,6 +52,7 @@
     "address" : "little tokyo",
     "age" : "25",
     "priority" : "NONE",
+    "incomeBracket" : null,
     "tags" : [ ]
   }, {
     "name" : "George Best",
@@ -55,6 +61,7 @@
     "address" : "4th street",
     "age" : "25",
     "priority" : "NONE",
+    "incomeBracket" : null,
     "tags" : [ ]
   } ]
 }
