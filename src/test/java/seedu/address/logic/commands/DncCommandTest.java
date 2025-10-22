@@ -209,7 +209,9 @@ public class DncCommandTest {
                 person.getEmail(),
                 person.getAddress(),
                 Collections.singleton(new DncTag()),
-                person.getPriority()
+                person.getPriority(),
+                person.getAge(),
+                person.getIncomeBracket()
         );
     }
 }

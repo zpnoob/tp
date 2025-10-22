@@ -65,13 +65,12 @@ public class PersonCard extends UiPart<Region> {
         priority.setText("Priority: " + person.getPriority().getValue());
         setPriorityStyle(person.getPriority());
 
-        if (person.isDncTagged()) {
-            dncLabel.setVisible(true);
+        if (person.getTags().isEmpty()) {
             tags.setManaged(false);
             tags.setVisible(false);
         } else {
             setIncomeBracketText(person);
-        person.getTags().stream()
+            person.getTags().stream()
                     .sorted(Comparator.comparing(tag -> tag.tagName))
                     .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         }

@@ -83,7 +83,9 @@ public class TagCommandTest {
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 Collections.singleton(new DncTag()),
-                personToEdit.getPriority()
+                personToEdit.getPriority(),
+                personToEdit.getAge(),
+                personToEdit.getIncomeBracket()
         );
         model.setPerson(personToEdit, dncPerson);
 

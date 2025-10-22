@@ -148,7 +148,7 @@ public class JsonAdaptedPersonTest {
         List<JsonAdaptedTag> dncTags = new ArrayList<>();
         dncTags.add(new JsonAdaptedTag("Do Not Call"));
         JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
-                VALID_ADDRESS, VALID_PRIORITY, dncTags);
+                VALID_ADDRESS, VALID_AGE, VALID_PRIORITY, "MIDDLE", dncTags);
         seedu.address.model.person.Person modelPerson = person.toModelType();
         assertTrue(modelPerson.isDncTagged());
     }
