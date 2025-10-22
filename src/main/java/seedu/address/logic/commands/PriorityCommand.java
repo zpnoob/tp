@@ -64,16 +64,10 @@ public class PriorityCommand extends Command {
                 personToEdit.getAddress(),
                 personToEdit.getOccupation(),
                 personToEdit.getTags(),
-<<<<<<< HEAD
-                new Priority(newPriority.getValue())
-        );
-=======
                 newPriority,
                 personToEdit.getAge(),
                 personToEdit.getIncomeBracket(),
                 personToEdit.getLastContactedDate());
-
->>>>>>> upstream
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_PRIORITY_PERSON_SUCCESS,
