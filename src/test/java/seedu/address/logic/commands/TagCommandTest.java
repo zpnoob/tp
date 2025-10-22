@@ -29,7 +29,7 @@ public class TagCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validInfexUnfilteredList_success() {
+    public void execute_validIndexUnfilteredList_success() {
         Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Tag newTag = new Tag("friend");
         TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
@@ -40,13 +40,16 @@ public class TagCommandTest {
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 newTagsSet,
-                personToEdit.getPriority());
+                personToEdit.getPriority(),
+                personToEdit.getAge()
+        );
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)
                     .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                                            + "; Age: " + editedPerson.getAge()
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
