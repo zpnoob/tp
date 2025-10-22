@@ -22,6 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 public class TagCommandTest {
@@ -29,7 +30,7 @@ public class TagCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validInfexUnfilteredList_success() {
+    public void execute_validIndexUnfilteredList_success() {
         Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Tag newTag = new Tag("friend");
         TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
@@ -40,13 +41,16 @@ public class TagCommandTest {
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 newTagsSet,
-                personToEdit.getPriority());
+                personToEdit.getPriority(),
+                personToEdit.getAge(),
+                personToEdit.getIncomeBracket());
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)
                     .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                                            + "; Age: " + editedPerson.getAge()
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
@@ -68,6 +72,27 @@ public class TagCommandTest {
         TagCommand tagCommand = new TagCommand(outOfBoundIndex, newTag);
 
         assertCommandFailure(tagCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_dncContactTag_throwsCommandException() {
+        Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person dncPerson = new Person(
+                personToEdit.getName(),
+                personToEdit.getPhone(),
+                personToEdit.getEmail(),
+                personToEdit.getAddress(),
+                Collections.singleton(new DncTag()),
+                personToEdit.getPriority(),
+                personToEdit.getAge(),
+                personToEdit.getIncomeBracket()
+        );
+        model.setPerson(personToEdit, dncPerson);
+
+        Tag newTag = new Tag("friend");
+        TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
+
+        assertCommandFailure(tagCommand, model, TagCommand.MESSAGE_DNC_CANNOT_MODIFY);
     }
 
     @Test

@@ -40,9 +40,15 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label age;
+    @FXML
     private Label priority;
     @FXML
+    private Label incomeBracket;
+    @FXML
     private FlowPane tags;
+    @FXML
+    private Label dncLabel;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -55,11 +61,19 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        age.setText("Age: " + person.getAge().value);
         priority.setText("Priority: " + person.getPriority().getValue());
         setPriorityStyle(person.getPriority());
-        person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+
+        if (person.getTags().isEmpty()) {
+            tags.setManaged(false);
+            tags.setVisible(false);
+        } else {
+            setIncomeBracketText(person);
+            person.getTags().stream()
+                    .sorted(Comparator.comparing(tag -> tag.tagName))
+                    .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        }
     }
 
     /**
@@ -82,6 +96,24 @@ public class PersonCard extends UiPart<Region> {
         default:
             this.priority.getStyleClass().add("priority-none");
             break;
+        }
+    }
+
+    /**
+     * Sets the income bracket text and style.
+     */
+    private void setIncomeBracketText(Person person) {
+        if (person.getIncomeBracket() == null) {
+            this.incomeBracket.setText("Income Bracket: Not Set");
+            this.incomeBracket.getStyleClass().clear();
+            this.incomeBracket.getStyleClass().add("income-bracket-label");
+            this.incomeBracket.getStyleClass().add("income-bracket-not-set");
+        } else {
+            this.incomeBracket.setText("Income Bracket: " + person.getIncomeBracket().getValue());
+            this.incomeBracket.getStyleClass().clear();
+            this.incomeBracket.getStyleClass().add("income-bracket-label");
+            String bracketLevel = person.getIncomeBracket().getValue().toLowerCase().replace(" ", "-");
+            this.incomeBracket.getStyleClass().add("income-bracket-" + bracketLevel);
         }
     }
 }
