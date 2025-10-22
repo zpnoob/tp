@@ -42,14 +42,10 @@ public class Messages {
         if (!person.getOccupation().toString().isEmpty()) {
             builder.append("; Occupation: ").append(person.getOccupation());
         }
-        builder.append("; Priority: ")
+        builder.append("; Age: ")
+            .append(person.getAge())
+            .append("; Priority: ")
             .append(person.getPriority());
-                .append("; Phone: ")
-                .append(person.getPhone())
-                .append("; Age: ")
-                .append(person.getAge())
-                .append("; Priority: ")
-                .append(person.getPriority());
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }
@@ -61,8 +57,10 @@ public class Messages {
             builder.append("; Last Contacted: ").append(person.getLastContactedDate().toDisplayString());
         }
         if (!person.getTags().isEmpty()) {
-            builder.append("; Tags: ");
-            person.getTags().forEach(builder::append);
+            String tagsString = person.getTags().stream()
+                    .map(Object::toString)
+                    .collect(Collectors.joining(", "));
+            builder.append("; Tags: ").append(tagsString);
         }
         return builder.toString();
     }

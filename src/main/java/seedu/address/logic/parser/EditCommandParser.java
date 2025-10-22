@@ -37,10 +37,9 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                PREFIX_OCCUPATION, PREFIX_PRIORITY, PREFIX_TAG);
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_PRIORITY, PREFIX_INCOME_BRACKET, PREFIX_TAG, PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE);
+                PREFIX_OCCUPATION, PREFIX_PRIORITY, PREFIX_INCOME_BRACKET, PREFIX_TAG, PREFIX_AGE,
+                PREFIX_LAST_CONTACTED_DATE);
 
         Index index;
 
@@ -50,16 +49,9 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(
-            PREFIX_NAME,
-            PREFIX_PHONE,
-            PREFIX_EMAIL,
-            PREFIX_ADDRESS,
-            PREFIX_OCCUPATION,
-            PREFIX_PRIORITY
-        );
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                PREFIX_PRIORITY, PREFIX_AGE, PREFIX_INCOME_BRACKET, PREFIX_LAST_CONTACTED_DATE);
+                PREFIX_OCCUPATION, PREFIX_PRIORITY, PREFIX_AGE, PREFIX_INCOME_BRACKET,
+                PREFIX_LAST_CONTACTED_DATE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -79,6 +71,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setOccupation(
                 ParserUtil.parseOccupation(argMultimap.getValue(PREFIX_OCCUPATION).get())
             );
+        }
         if (argMultimap.getValue(PREFIX_AGE).isPresent()) {
             editPersonDescriptor.setAge(ParserUtil.parseAge(argMultimap.getValue(PREFIX_AGE).get()));
         }

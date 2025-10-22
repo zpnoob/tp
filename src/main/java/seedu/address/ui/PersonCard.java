@@ -47,6 +47,7 @@ public class PersonCard extends UiPart<Region> {
     private Label priority;
     @FXML
     private Label occupation;
+    @FXML
     private Label incomeBracket;
     @FXML
     private Label lastContactedDate;
@@ -71,9 +72,6 @@ public class PersonCard extends UiPart<Region> {
         priority.setText("Priority: " + person.getPriority().getValue());
         lastContactedDate.setText("Last Contacted: " + person.getLastContactedDate().toDisplayString());
         setPriorityStyle(person.getPriority());
-        person.getTags().stream()
-            .sorted(Comparator.comparing(tag -> tag.tagName))
-            .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
 
         if (person.getTags().isEmpty()) {
             tags.setManaged(false);

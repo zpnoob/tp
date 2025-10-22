@@ -38,17 +38,11 @@ public class PriorityCommandTest {
         PriorityCommand priorityCommand = new PriorityCommand(INDEX_FIRST_PERSON, newPriority);
 
         Person editedPerson = new Person(
-            personToEdit.getName(),
-            personToEdit.getPhone(),
-            personToEdit.getEmail(),
-            personToEdit.getAddress(),
-            personToEdit.getOccupation(),
-            personToEdit.getTags(),
-            newPriority);
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 personToEdit.getTags(),
                 newPriority,
                 personToEdit.getAge(),
@@ -82,17 +76,11 @@ public class PriorityCommandTest {
         PriorityCommand priorityCommand = new PriorityCommand(INDEX_FIRST_PERSON, newPriority);
 
         Person editedPerson = new Person(
-            personToEdit.getName(),
-            personToEdit.getPhone(),
-            personToEdit.getEmail(),
-            personToEdit.getAddress(),
-            personToEdit.getOccupation(),
-            personToEdit.getTags(),
-            newPriority);
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 personToEdit.getTags(),
                 newPriority,
                 personToEdit.getAge(),
@@ -130,6 +118,7 @@ public class PriorityCommandTest {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 Collections.singleton(new DncTag()),
                 personToEdit.getPriority(),
                 personToEdit.getAge(),

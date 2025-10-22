@@ -1,16 +1,13 @@
 {
-  "persons": [ {
-  "name": "Hans Muster",
-  "phone": "9482424",
-  "email": "invalid@email!3e",
-  "address": "4th street",
-  "occupation": "Engineer",
-  "priority": "HIGH"
-    "name": "Hans Muster",
-    "phone": "9482424",
-    "email": "invalid@email!3e",
-    "address": "4th street",
-    "priority": "LOW",
-    "lastContactedDate": "2025-13-45"
-  } ]
+  "persons": [
+    {
+      "name": "Hans Muster",
+      "phone": "9482424",
+      "email": "invalid@email!3e",
+      "address": "4th street",
+      "occupation": "Engineer",
+      "priority": "LOW",
+      "lastContactedDate": "2025-13-45"
+    }
+  ]
 }

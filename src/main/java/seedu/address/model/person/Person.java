@@ -34,13 +34,9 @@ public class Person {
     /**
      * Most fields must be present and not null. IncomeBracket can be null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Occupation occupation,
-            Set<Tag> tags, Priority priority) {
-        requireAllNonNull(name, phone, email, address, occupation, tags, priority);
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority, Age age,
-                  IncomeBracket incomeBracket,
-            LastContactedDate lastContactedDate) {
-        requireAllNonNull(name, phone, email, address, tags, priority, lastContactedDate);
+    public Person(Name name, Phone phone, Email email, Address address, Occupation occupation, Set<Tag> tags,
+        Priority priority, Age age, IncomeBracket incomeBracket, LastContactedDate lastContactedDate) {
+        requireAllNonNull(name, phone, email, address, occupation, tags, priority, lastContactedDate);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -128,15 +124,10 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
-            && phone.equals(otherPerson.phone)
-            && email.equals(otherPerson.email)
-            && address.equals(otherPerson.address)
-            && occupation.equals(otherPerson.occupation)
-            && priority.equals(otherPerson.priority)
-            && tags.equals(otherPerson.tags);
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
+                && occupation.equals(otherPerson.occupation)
                 && priority.equals(otherPerson.priority)
                 && Objects.equals(incomeBracket, otherPerson.incomeBracket)
                 && age.equals(otherPerson.age)
@@ -147,25 +138,18 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, occupation, priority, tags);
-        return Objects.hash(name, phone, email, address, priority, age, incomeBracket, tags, lastContactedDate);
+        return Objects.hash(name, phone, email, address, occupation, priority, age,
+        incomeBracket, tags, lastContactedDate);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-            .add("name", name)
-            .add("phone", phone)
-            .add("email", email)
-            .add("address", address)
-            .add("occupation", occupation)
-            .add("priority", priority)
-            .add("tags", tags)
-            .toString();
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
+                .add("occupations", occupation)
                 .add("tags", tags)
                 .add("priority", priority)
                 .add("incomeBracket", incomeBracket)

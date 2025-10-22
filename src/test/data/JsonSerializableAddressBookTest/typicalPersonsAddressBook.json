@@ -1,136 +1,89 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
-  "persons" : [ {
-  "name" : "Alice Pauline",
-  "phone" : "94351253",
-  "email" : "alice@example.com",
-  "address" : "123, Jurong West Ave 6, #08-111",
-  "occupation" : "Engineer",
-  "priority" : "HIGH",
-  "tags" : [ "friends" ]
-  }, {
-  "name" : "Benson Meier",
-  "phone" : "98765432",
-  "email" : "johnd@example.com",
-  "address" : "311, Clementi Ave 2, #02-25",
-  "occupation" : "Manager",
-  "priority" : "MEDIUM",
-  "tags" : [ "owesMoney", "friends" ]
-  }, {
-  "name" : "Carl Kurz",
-  "phone" : "95352563",
-  "email" : "heinz@example.com",
-  "address" : "wall street",
-  "occupation" : "Teacher",
-  "priority" : "LOW",
-  "tags" : [ ]
-  }, {
-  "name" : "Daniel Meier",
-  "phone" : "87652533",
-  "email" : "cornelia@example.com",
-  "address" : "10th street",
-  "occupation" : "Student",
-  "priority" : "HIGH",
-  "tags" : [ "friends" ]
-  }, {
-  "name" : "Elle Meyer",
-  "phone" : "9482224",
-  "email" : "werner@example.com",
-  "address" : "michegan ave",
-  "occupation" : "Designer",
-  "priority" : "NONE",
-  "tags" : [ ]
-  }, {
-  "name" : "Fiona Kunz",
-  "phone" : "9482427",
-  "email" : "lydia@example.com",
-  "address" : "little tokyo",
-  "occupation" : "Chef",
-  "priority" : "MEDIUM",
-  "tags" : [ ]
-  }, {
-  "name" : "George Best",
-  "phone" : "9482442",
-  "email" : "anna@example.com",
-  "address" : "4th street",
-  "occupation" : "Student",
-  "priority" : "LOW",
-  "tags" : [ ]
-    "name" : "Alice Pauline",
-    "phone" : "94351253",
-    "email" : "alice@example.com",
-    "address" : "123, Jurong West Ave 6, #08-111",
-    "age" : "25",
-    "priority" : "NONE",
-    "incomeBracket" : "HIGH",
-    "tags" : [ "friends" ],
-    "priority" : "NONE",
-    "lastContactedDate" : "2025-10-21"
-  }, {
-    "name" : "Benson Meier",
-    "phone" : "98765432",
-    "email" : "johnd@example.com",
-    "address" : "311, Clementi Ave 2, #02-25",
-    "age" : "25",
-    "priority" : "NONE",
-    "incomeBracket" : "MIDDLE",
-    "tags" : [ "owesMoney", "friends" ],
-    "priority" : "NONE",
-    "lastContactedDate" : "2025-10-21"
-  }, {
-    "name" : "Carl Kurz",
-    "phone" : "95352563",
-    "email" : "heinz@example.com",
-    "address" : "wall street",
-    "age" : "25",
-    "priority" : "NONE",
-    "incomeBracket" : null,
-    "tags" : [ ],
-    "priority" : "NONE",
-    "lastContactedDate" : "2025-10-21"
-  }, {
-    "name" : "Daniel Meier",
-    "phone" : "87652533",
-    "email" : "cornelia@example.com",
-    "address" : "10th street",
-    "age" : "25",
-    "priority" : "NONE",
-    "incomeBracket" : null,
-    "tags" : [ "friends" ],
-    "priority" : "NONE",
-    "lastContactedDate" : "2025-10-21"
-  }, {
-    "name" : "Elle Meyer",
-    "phone" : "9482224",
-    "email" : "werner@example.com",
-    "address" : "michegan ave",
-    "age" : "25",
-    "priority" : "NONE",
-    "incomeBracket" : null,
-    "tags" : [ ],
-    "priority" : "NONE",
-    "lastContactedDate" : "2025-10-21"
-  }, {
-    "name" : "Fiona Kunz",
-    "phone" : "9482427",
-    "email" : "lydia@example.com",
-    "address" : "little tokyo",
-    "age" : "25",
-    "priority" : "NONE",
-    "incomeBracket" : null,
-    "tags" : [ ],
-    "priority" : "NONE",
-    "lastContactedDate" : "2025-10-21"
-  }, {
-    "name" : "George Best",
-    "phone" : "9482442",
-    "email" : "anna@example.com",
-    "address" : "4th street",
-    "age" : "25",
-    "priority" : "NONE",
-    "incomeBracket" : null,
-    "tags" : [ ],
-    "priority" : "NONE",
-    "lastContactedDate" : "2025-10-21"
-  } ]
+  "persons": [
+    {
+      "name": "Alice Pauline",
+      "phone": "94351253",
+      "email": "alice@example.com",
+      "address": "123, Jurong West Ave 6, #08-111",
+      "occupation": "Engineer",
+      "age": "25",
+      "priority": "HIGH",
+      "incomeBracket": "HIGH",
+      "tags": ["friends"],
+      "lastContactedDate": "2025-10-21"
+    },
+    {
+      "name": "Benson Meier",
+      "phone": "98765432",
+      "email": "johnd@example.com",
+      "address": "311, Clementi Ave 2, #02-25",
+      "occupation": "Manager",
+      "age": "25",
+      "priority": "MEDIUM",
+      "incomeBracket": "MIDDLE",
+      "tags": ["owesMoney", "friends"],
+      "lastContactedDate": "2025-10-21"
+    },
+    {
+      "name": "Carl Kurz",
+      "phone": "95352563",
+      "email": "heinz@example.com",
+      "address": "wall street",
+      "occupation": "Teacher",
+      "age": "25",
+      "priority": "LOW",
+      "incomeBracket": null,
+      "tags": [],
+      "lastContactedDate": "2025-10-21"
+    },
+    {
+      "name": "Daniel Meier",
+      "phone": "87652533",
+      "email": "cornelia@example.com",
+      "address": "10th street",
+      "occupation": "Student",
+      "age": "25",
+      "priority": "HIGH",
+      "incomeBracket": null,
+      "tags": ["friends"],
+      "lastContactedDate": "2025-10-21"
+    },
+    {
+      "name": "Elle Meyer",
+      "phone": "9482224",
+      "email": "werner@example.com",
+      "address": "michegan ave",
+      "occupation": "Designer",
+      "age": "25",
+      "priority": "NONE",
+      "incomeBracket": null,
+      "tags": [],
+      "lastContactedDate": "2025-10-21"
+    },
+    {
+      "name": "Fiona Kunz",
+      "phone": "9482427",
+      "email": "lydia@example.com",
+      "address": "little tokyo",
+      "occupation": "Chef",
+      "age": "25",
+      "priority": "MEDIUM",
+      "incomeBracket": null,
+      "tags": [],
+      "lastContactedDate": "2025-10-21"
+    },
+    {
+      "name": "George Best",
+      "phone": "9482442",
+      "email": "anna@example.com",
+      "address": "4th street",
+      "occupation": "Student",
+      "age": "25",
+      "priority": "LOW",
+      "incomeBracket": null,
+      "tags": [],
+      "lastContactedDate": "2025-10-21"
+    }
+  ]
 }

@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OCCUPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -43,18 +44,6 @@ import seedu.address.model.tag.Tag;
 public class EditCommand extends Command {
     public static final String COMMAND_WORD = "edit";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-        + "by the index number used in the displayed person list. "
-        + "Existing values will be overwritten by the input values.\n"
-        + "Parameters: INDEX (must be a positive integer) "
-        + PREFIX_NAME + "NAME "
-        + PREFIX_PHONE + "PHONE "
-        + PREFIX_EMAIL + "EMAIL "
-        + PREFIX_ADDRESS + "ADDRESS "
-        + "o/OCCUPATION "
-        + PREFIX_PRIORITY + "PRIORITY "
-        + PREFIX_TAG + "TAG...\n"
-        + "Example: " + COMMAND_WORD + " 1 " + PREFIX_PHONE + "91234567 "
-        + PREFIX_EMAIL + "johndoe@example.com";
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
@@ -62,6 +51,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_OCCUPATION + "OCCUPATION] "
             + "[" + PREFIX_AGE + "AGE] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_INCOME_BRACKET + "INCOME_BRACKET] "
@@ -128,13 +118,7 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Occupation updatedOccupation = editPersonDescriptor.getOccupation() != null
-            ? editPersonDescriptor.getOccupation() : personToEdit.getOccupation();
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-        Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
-
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
-            updatedOccupation, updatedTags, updatedPriority);
+        Occupation updatedOccupation = editPersonDescriptor.getOccupation().orElse(personToEdit.getOccupation());
         Age updatedAge = editPersonDescriptor.getAge().orElse(personToEdit.getAge());
         Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
         IncomeBracket updatedIncomeBracket = editPersonDescriptor.getIncomeBracket()
@@ -144,7 +128,7 @@ public class EditCommand extends Command {
                 .orElse(personToEdit.getLastContactedDate());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
-                updatedTags, updatedPriority, updatedAge,
+                updatedOccupation, updatedTags, updatedPriority, updatedAge,
                 updatedIncomeBracket,
                 updatedLastContactedDate);
     }
@@ -201,8 +185,6 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setOccupation(toCopy.occupation);
-            setTags(toCopy.tags);
-            setPriority(toCopy.priority);
             setAge(toCopy.age);
             setPriority(toCopy.priority);
             setIncomeBracket(toCopy.incomeBracket);
@@ -214,7 +196,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, age, priority,
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, occupation, age, priority,
                 incomeBracket, tags, lastContactedDate);
         }
 
@@ -254,8 +236,8 @@ public class EditCommand extends Command {
             this.occupation = occupation;
         }
 
-        public Occupation getOccupation() {
-            return occupation;
+        public Optional<Occupation> getOccupation() {
+            return Optional.ofNullable(occupation);
         }
 
         public void setTags(Set<Tag> tags) {
@@ -264,6 +246,8 @@ public class EditCommand extends Command {
 
         public Optional<Set<Tag>> getTags() {
             return Optional.ofNullable(tags);
+        }
+
         public void setAge(Age age) {
             this.age = age;
         }
@@ -296,13 +280,6 @@ public class EditCommand extends Command {
             return Optional.ofNullable(lastContactedDate);
         }
 
-        /**
-         * Returns true if at least one field is edited.
-         */
-        public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, occupation, tags, priority);
-        }
-
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -313,19 +290,12 @@ public class EditCommand extends Command {
                 return false;
             }
 
-            EditPersonDescriptor otherDescriptor = (EditPersonDescriptor) other;
-            return Objects.equals(name, otherDescriptor.name)
-                    && Objects.equals(phone, otherDescriptor.phone)
-                    && Objects.equals(email, otherDescriptor.email)
-                    && Objects.equals(address, otherDescriptor.address)
-                    && Objects.equals(occupation, otherDescriptor.occupation)
-                    && Objects.equals(tags, otherDescriptor.tags)
-                    && Objects.equals(priority, otherDescriptor.priority);
             EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
+                    && Objects.equals(occupation, otherEditPersonDescriptor.occupation)
                     && Objects.equals(age, otherEditPersonDescriptor.age)
                     && Objects.equals(priority, otherEditPersonDescriptor.priority)
                     && Objects.equals(incomeBracket, otherEditPersonDescriptor.incomeBracket)
@@ -335,20 +305,12 @@ public class EditCommand extends Command {
 
         @Override
         public String toString() {
-            return new seedu.address.commons.util.ToStringBuilder(this)
-                .add("name", getName().orElse(null))
-                .add("phone", getPhone().orElse(null))
-                .add("email", getEmail().orElse(null))
-                .add("address", getAddress().orElse(null))
-                .add("occupation", getOccupation())
-                .add("priority", getPriority().orElse(null))
-                .add("tags", getTags().orElse(null))
-                .toString();
             return new ToStringBuilder(this)
                     .add("name", name)
                     .add("phone", phone)
                     .add("email", email)
                     .add("address", address)
+                    .add("occupation", occupation)
                     .add("age", age)
                     .add("priority", priority)
                     .add("incomeBracket", incomeBracket)

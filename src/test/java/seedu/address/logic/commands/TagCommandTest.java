@@ -36,17 +36,11 @@ public class TagCommandTest {
         TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
         Set<Tag> newTagsSet = Collections.singleton(newTag);
         Person editedPerson = new Person(
-            personToEdit.getName(),
-            personToEdit.getPhone(),
-            personToEdit.getEmail(),
-            personToEdit.getAddress(),
-            personToEdit.getOccupation(),
-            newTagsSet,
-            personToEdit.getPriority());
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 newTagsSet,
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
@@ -93,6 +87,7 @@ public class TagCommandTest {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 Collections.singleton(new DncTag()),
                 personToEdit.getPriority(),
                 personToEdit.getAge(),

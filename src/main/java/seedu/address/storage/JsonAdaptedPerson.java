@@ -48,7 +48,6 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("occupation") String occupation,
-            @JsonProperty("priority") String priority,
             @JsonProperty("age") String age, @JsonProperty("priority") String priority,
             @JsonProperty("incomeBracket") String incomeBracket,
             @JsonProperty("lastContactedDate") String lastContactedDate,
@@ -181,10 +180,8 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         Occupation modelOccupation = new Occupation(occupation);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority, modelAge,
-                modelIncomeBracket,
-                modelLastContactedDate);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority,
+        modelAge, modelIncomeBracket, modelLastContactedDate);
     }
 
 }

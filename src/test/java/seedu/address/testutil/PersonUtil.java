@@ -38,6 +38,8 @@ public class PersonUtil {
         sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
         sb.append(PREFIX_OCCUPATION + person.getOccupation().toString() + " ");
         sb.append(PREFIX_AGE + person.getAge().value + " ");
+        sb.append(seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE
+            + person.getLastContactedDate().toString() + " ");
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -53,13 +55,14 @@ public class PersonUtil {
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
-        if (descriptor.getOccupation() != null) {
-            sb.append(PREFIX_OCCUPATION).append(descriptor.getOccupation().toString()).append(" ");
-        }
-        if (descriptor.getPriority().isPresent()) {
-            sb.append("pr/").append(descriptor.getPriority().get().getValue()).append(" ");
-        }
+        descriptor.getOccupation().ifPresent(occ -> sb.append(PREFIX_OCCUPATION).append(occ.toString()).append(" "));
+        descriptor.getPriority().ifPresent(pr -> sb.append(seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY)
+                .append(pr.getValue()).append(" "));
         descriptor.getAge().ifPresent(age -> sb.append(PREFIX_AGE).append(age.value).append(" "));
+        if (descriptor.getLastContactedDate().isPresent()) {
+            sb.append(seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE)
+                    .append(descriptor.getLastContactedDate().get().toString()).append(" ");
+        }
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

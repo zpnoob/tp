@@ -40,10 +40,7 @@ public class EditCommandTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder()
-                .withLastContactedDate(personToEdit.getLastContactedDate().toString())
-                .withIncomeBracket("HIGH").build();
+        Person editedPerson = new PersonBuilder().withIncomeBracket("HIGH").build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedPerson).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
@@ -209,10 +206,8 @@ public class EditCommandTest {
         Index index = Index.fromOneBased(1);
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         EditCommand editCommand = new EditCommand(index, editPersonDescriptor);
-        String expected = new seedu.address.commons.util.ToStringBuilder(editCommand)
-            .add("index", index)
-            .add("editPersonDescriptor", editPersonDescriptor)
-            .toString();
+        String expected = EditCommand.class.getCanonicalName() + "{index=" + index + ", editPersonDescriptor="
+                + editPersonDescriptor + "}";
         assertEquals(expected, editCommand.toString());
     }
 
@@ -221,16 +216,17 @@ public class EditCommandTest {
      */
     private Person createDncPerson(Person person) {
         return new Person(
-                person.getName(),
-                person.getPhone(),
-                person.getEmail(),
-                person.getAddress(),
-                Collections.singleton(new DncTag()),
-                person.getPriority(),
-                person.getAge(),
-                person.getIncomeBracket(),
-                person.getLastContactedDate()
-        );
+            person.getName(),
+            person.getPhone(),
+            person.getEmail(),
+            person.getAddress(),
+            person.getOccupation(),
+            Collections.singleton(new DncTag()),
+            person.getPriority(),
+            person.getAge(),
+            person.getIncomeBracket(),
+            person.getLastContactedDate()
+    );
     }
 
 }

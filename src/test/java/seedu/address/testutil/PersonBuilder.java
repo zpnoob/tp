@@ -14,6 +14,7 @@ import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 /**
  * A utility class to help with building Person objects for tests.
@@ -33,8 +34,6 @@ public class PersonBuilder {
     private Email email;
     private Address address;
     private Occupation occupation;
-    private Priority priority;
-    private Set<seedu.address.model.tag.Tag> tags;
     private Age age;
     private Priority priority;
     private IncomeBracket incomeBracket;
@@ -152,9 +151,25 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Builds and returns a new {@link seedu.address.model.person.Person} using the current
+     * state of this builder.
+     *
+     * <p>Defaults used when fields are not modified:
+     * <ul>
+     *   <li>occupation: "Engineer"</li>
+     *   <li>age: "25"</li>
+     *   <li>priority: "NONE"</li>
+     *   <li>incomeBracket: null</li>
+     *   <li>lastContactedDate: empty string (no date)</li>
+     *   <li>tags: empty set</li>
+     * </ul>
+     *
+     * @return a newly constructed Person with the builder's current values.
+     */
     public Person build() {
-        return new Person(name, phone, email, address, occupation, tags, priority);
-        return new Person(name, phone, email, address, tags, priority, age, incomeBracket, lastContactedDate);
+        return new Person(name, phone, email, address, occupation, tags, priority,
+        age, incomeBracket, lastContactedDate);
     }
 
 }

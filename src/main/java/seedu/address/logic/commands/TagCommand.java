@@ -65,17 +65,11 @@ public class TagCommand extends Command {
 
         Set<Tag> newTagsSet = Collections.singleton(tag);
         Person editedPerson = new Person(
-            personToEdit.getName(),
-            personToEdit.getPhone(),
-            personToEdit.getEmail(),
-            personToEdit.getAddress(),
-            personToEdit.getOccupation(),
-            newTagsSet,
-            personToEdit.getPriority()
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 newTagsSet,
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
