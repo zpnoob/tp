@@ -48,6 +48,7 @@ public class TagCommandTest {
                     .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                                            + "; Occupation: " + editedPerson.getOccupation()
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()

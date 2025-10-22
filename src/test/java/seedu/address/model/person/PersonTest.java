@@ -142,8 +142,8 @@ public class PersonTest {
             .add("email", ALICE.getEmail())
             .add("address", ALICE.getAddress())
             .add("occupation", ALICE.getOccupation())
-            .add("tags", ALICE.getTags())
             .add("priority", ALICE.getPriority())
+            .add("tags", ALICE.getTags())
             .toString();
         assertEquals(expected, ALICE.toString());
     }

@@ -128,8 +128,8 @@ public class Person {
             .add("email", email)
             .add("address", address)
             .add("occupation", occupation)
-            .add("tags", tags)
             .add("priority", priority)
+            .add("tags", tags)
             .toString();
     }
 

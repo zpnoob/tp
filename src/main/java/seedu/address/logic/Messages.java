@@ -37,10 +37,13 @@ public class Messages {
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
-                .append("; Phone: ")
-                .append(person.getPhone())
-                .append("; Priority: ")
-                .append(person.getPriority());
+            .append("; Phone: ")
+            .append(person.getPhone());
+        if (!person.getOccupation().toString().isEmpty()) {
+            builder.append("; Occupation: ").append(person.getOccupation());
+        }
+        builder.append("; Priority: ")
+            .append(person.getPriority());
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }
