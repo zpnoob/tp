@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Name;
@@ -22,12 +23,14 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_AGE = "25";
     public static final String DEFAULT_PRIORITY = "NONE";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
+    private Age age;
     private Priority priority;
     private IncomeBracket incomeBracket;
     private Set<Tag> tags;
@@ -40,6 +43,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        age = new Age(DEFAULT_AGE);
         priority = new Priority(DEFAULT_PRIORITY);
         incomeBracket = null; // Default to null for new persons
         tags = new HashSet<>();
@@ -53,6 +57,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        age = personToCopy.getAge();
         priority = personToCopy.getPriority();
         incomeBracket = personToCopy.getIncomeBracket();
         tags = new HashSet<>(personToCopy.getTags());
@@ -107,6 +112,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Age} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withAge(String age) {
+        this.age = new Age(age);
+        return this;
+    }
+
+    /**
      * Sets the {@code IncomeBracket} of the {@code Person} that we are building.
      */
     public PersonBuilder withIncomeBracket(String incomeBracket) {
@@ -115,7 +128,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, tags, priority, incomeBracket);
+        return new Person(name, phone, email, address, tags, priority, age, incomeBracket);
     }
 
 }

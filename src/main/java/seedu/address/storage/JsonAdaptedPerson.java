@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Name;
@@ -30,6 +31,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String age;
     private final String priority;
     private final String incomeBracket;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
@@ -40,12 +42,14 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("priority") String priority, @JsonProperty("incomeBracket") String incomeBracket,
+            @JsonProperty("age") String age, @JsonProperty("priority") String priority,
+            @JsonProperty("incomeBracket") String incomeBracket,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.age = age;
         this.priority = priority;
         this.incomeBracket = incomeBracket;
         if (tags != null) {
@@ -61,6 +65,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        age = source.getAge().toString();
         priority = source.getPriority().toString();
         // Store income bracket as the enum name for consistent serialization
         incomeBracket = source.getIncomeBracket() != null ? source.getIncomeBracket().value.name() : null;
@@ -112,6 +117,17 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        // Handle age field - default to empty if missing for backward compatibility
+        Age modelAge;
+        if (age == null) {
+            modelAge = new Age("");
+        } else {
+            if (!Age.isValidAge(age)) {
+                throw new IllegalValueException(Age.MESSAGE_CONSTRAINTS);
+            }
+            modelAge = new Age(age);
+        }
+
         // Handle priority field - default to NONE if missing for backward compatibility
         Priority modelPriority;
         if (priority == null) {
@@ -141,7 +157,7 @@ class JsonAdaptedPerson {
         }
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority,
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority, modelAge,
                 modelIncomeBracket);
     }
 

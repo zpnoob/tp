@@ -41,6 +41,7 @@ public class PriorityCommandTest {
                 personToEdit.getAddress(),
                 personToEdit.getTags(),
                 newPriority,
+                personToEdit.getAge(),
                 personToEdit.getIncomeBracket());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,
@@ -76,6 +77,7 @@ public class PriorityCommandTest {
                 personToEdit.getAddress(),
                 personToEdit.getTags(),
                 newPriority,
+                personToEdit.getAge(),
                 personToEdit.getIncomeBracket());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,

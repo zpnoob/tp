@@ -65,6 +65,7 @@ public class TagCommand extends Command {
                 personToEdit.getAddress(),
                 newTagsSet,
                 personToEdit.getPriority(),
+                personToEdit.getAge(),
                 personToEdit.getIncomeBracket()
         );
 

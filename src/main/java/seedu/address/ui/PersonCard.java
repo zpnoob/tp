@@ -40,6 +40,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label age;
+    @FXML
     private Label priority;
     @FXML
     private Label incomeBracket;
@@ -57,6 +59,7 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        age.setText("Age: " + person.getAge().value);
         priority.setText("Priority: " + person.getPriority().getValue());
         setPriorityStyle(person.getPriority());
         setIncomeBracketText(person);
