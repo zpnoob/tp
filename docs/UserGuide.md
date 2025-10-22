@@ -147,7 +147,7 @@ Examples:
 * `find family` returns `David Li` as it matches their assigned tags
 * `find Alex family` returns `Alex Yeoh`, `David Li` 
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting a person : `delete`
 
