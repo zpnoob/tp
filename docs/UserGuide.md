@@ -67,7 +67,7 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a  Li
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+  </box>
 
 ### Viewing help : `help`
 
@@ -82,7 +82,7 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pr/PRIORITY] [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS o/OCCUPATION [pr/PRIORITY] [t/TAG]…​`
 
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
 * If priority is not specified, it defaults to `NONE`
@@ -95,14 +95,14 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pr/PRIORITY] [t/TAG]…​
 </box>
 <box type="warning" seamless>
 
-**Warning:** Adding another person with the same `NAME` as an existing person will be counted as a duplicate and is not allowed. 
+**Warning:** Adding another person with the same `NAME` as an existing person will be counted as a duplicate and is not allowed.
 
 </box>
 
 Examples:
 * `add n/John Doe p/98765432`
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal pr/HIGH`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 o/Financial Advicer t/criminal pr/HIGH`
 * `add n/Jane Smith p/87654321 e/jane@example.com a/456 Main St pr/MEDIUM t/colleague`
 
 ### Listing all persons : `list`
@@ -115,14 +115,14 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [pr/PRIORITY] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [pr/PRIORITY] [t/TAG]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+  specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
@@ -136,13 +136,16 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
+* Names, tags and phone numbers are searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
 * `find John` returns `john` and `John Doe`
+* `find 87438807` returns `Alex Yeoh` as it matches their phone number
+* `find family` returns `David Li` as it matches their assigned tags
+* `find Alex family` returns `Alex Yeoh`, `David Li`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
@@ -159,6 +162,28 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+### Editing the tag: `tag`
+
+Changes the tag of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tag.
+
+Format: `tag INDEX t/tag_name`
+
+* Changes the tag of the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* `tag` must be  Alphanumeric and spaces allowed. Maximum 30 characters. Case-insensitive (eg, Interested = interested). Leading/trailing spaces are trimmed
+* This command is equivalent to `edit INDEX t/tag_name`
+
+Examples:
+* `tag 1 t/interested` Sets the tag of the 1st person to `interested`.
+* `tag 2 t/follow up` Sets the tag of the 2nd person to `follow up`.
+* `tag 5 t/do not call` Sets the tag of the 5th person to `do not call`.
+
+<box type="tip" seamless>
+
+**Tip:** Use the `tag` command for quick tag changes, or the `edit` command when changing multiple fields at once.
+</box>
 
 ### Editing the priority: `priority`
 
@@ -233,10 +258,10 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pr/PRIORITY] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pr/HIGH t/friend t/colleague`
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS o/OCCUPATION [pr/PRIORITY] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pr/HIGH t/friend t/colleague`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [pr/PRIORITY] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [pr/PRIORITY] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Priority** | `priority INDEX PRIORITY`<br> e.g., `priority 1 HIGH`
