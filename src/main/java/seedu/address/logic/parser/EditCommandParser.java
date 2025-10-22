@@ -37,13 +37,10 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-<<<<<<< HEAD
             ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                 PREFIX_OCCUPATION, PREFIX_PRIORITY, PREFIX_TAG);
-=======
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_PRIORITY, PREFIX_INCOME_BRACKET, PREFIX_TAG, PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE);
->>>>>>> upstream
 
         Index index;
 
@@ -53,7 +50,6 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-<<<<<<< HEAD
         argMultimap.verifyNoDuplicatePrefixesFor(
             PREFIX_NAME,
             PREFIX_PHONE,
@@ -62,10 +58,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             PREFIX_OCCUPATION,
             PREFIX_PRIORITY
         );
-=======
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                 PREFIX_PRIORITY, PREFIX_AGE, PREFIX_INCOME_BRACKET, PREFIX_LAST_CONTACTED_DATE);
->>>>>>> upstream
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -81,24 +75,19 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
             editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
-<<<<<<< HEAD
         if (argMultimap.getValue(PREFIX_OCCUPATION).isPresent()) {
             editPersonDescriptor.setOccupation(
                 ParserUtil.parseOccupation(argMultimap.getValue(PREFIX_OCCUPATION).get())
             );
-=======
         if (argMultimap.getValue(PREFIX_AGE).isPresent()) {
             editPersonDescriptor.setAge(ParserUtil.parseAge(argMultimap.getValue(PREFIX_AGE).get()));
->>>>>>> upstream
         }
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
             editPersonDescriptor.setPriority(ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
         }
-<<<<<<< HEAD
         Optional<Set<Tag>> tagsForEdit =
             parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG));
         tagsForEdit.ifPresent(editPersonDescriptor::setTags);
-=======
         if (argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent()) {
             editPersonDescriptor.setIncomeBracket(ParserUtil.parseIncomeBracket(
                     argMultimap.getValue(PREFIX_INCOME_BRACKET).get()));
@@ -108,7 +97,6 @@ public class EditCommandParser implements Parser<EditCommand> {
                     argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
->>>>>>> upstream
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);

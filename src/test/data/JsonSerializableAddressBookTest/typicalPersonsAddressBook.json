@@ -1,7 +1,6 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
   "persons" : [ {
-<<<<<<< HEAD
   "name" : "Alice Pauline",
   "phone" : "94351253",
   "email" : "alice@example.com",
@@ -57,7 +56,6 @@
   "occupation" : "Student",
   "priority" : "LOW",
   "tags" : [ ]
-=======
     "name" : "Alice Pauline",
     "phone" : "94351253",
     "email" : "alice@example.com",
@@ -134,6 +132,5 @@
     "tags" : [ ],
     "priority" : "NONE",
     "lastContactedDate" : "2025-10-21"
->>>>>>> upstream
   } ]
 }

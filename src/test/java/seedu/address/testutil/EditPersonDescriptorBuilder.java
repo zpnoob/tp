@@ -40,13 +40,10 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());
-<<<<<<< HEAD
         descriptor.setOccupation(person.getOccupation());
         descriptor.setPriority(person.getPriority());
-=======
         descriptor.setAge(person.getAge());
         descriptor.setIncomeBracket(person.getIncomeBracket());
->>>>>>> upstream
         descriptor.setTags(person.getTags());
     }
 

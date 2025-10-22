@@ -27,19 +27,15 @@ public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
-<<<<<<< HEAD
             .withPhone("94351253")
             .withOccupation("Engineer")
             .withPriority("HIGH")
-=======
             .withPhone("94351253").withLastContactedDate("2025-10-21")
             .withIncomeBracket("HIGH")
->>>>>>> upstream
             .withTags("friends").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
             .withEmail("johnd@example.com").withPhone("98765432")
-<<<<<<< HEAD
             .withOccupation("Manager")
             .withPriority("MEDIUM")
             .withTags("owesMoney", "friends").build();
@@ -68,7 +64,6 @@ public class TypicalPersons {
             .withOccupation("Student")
             .withPriority("LOW")
             .build();
-=======
             .withIncomeBracket("MIDDLE")
             .withLastContactedDate("2025-10-21")
             .withTags("owesMoney", "friends").build();
@@ -87,7 +82,6 @@ public class TypicalPersons {
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com").withAddress("4th street")
             .withLastContactedDate("2025-10-21").build();
->>>>>>> upstream
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")

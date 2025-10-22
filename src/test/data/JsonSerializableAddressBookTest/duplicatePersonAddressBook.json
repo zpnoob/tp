@@ -1,6 +1,5 @@
 {
   "persons": [ {
-<<<<<<< HEAD
   "name": "Alice Pauline",
   "phone": "94351253",
   "email": "alice@example.com",
@@ -15,7 +14,6 @@
   "address": "4th street",
   "occupation": "Engineer",
   "priority": "HIGH"
-=======
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "alice@example.com",
@@ -30,6 +28,5 @@
     "address": "4th street",
     "priority": "LOW",
     "lastContactedDate": "2025-10-21"
->>>>>>> upstream
   } ]
 }

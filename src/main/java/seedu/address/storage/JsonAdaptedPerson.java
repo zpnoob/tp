@@ -34,11 +34,8 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
-<<<<<<< HEAD
     private final String occupation;
-=======
     private final String age;
->>>>>>> upstream
     private final String priority;
     private final String incomeBracket;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
@@ -50,24 +47,18 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-<<<<<<< HEAD
             @JsonProperty("occupation") String occupation,
             @JsonProperty("priority") String priority,
-=======
             @JsonProperty("age") String age, @JsonProperty("priority") String priority,
             @JsonProperty("incomeBracket") String incomeBracket,
             @JsonProperty("lastContactedDate") String lastContactedDate,
->>>>>>> upstream
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-<<<<<<< HEAD
         this.occupation = occupation;
-=======
         this.age = age;
->>>>>>> upstream
         this.priority = priority;
         this.incomeBracket = incomeBracket;
         this.lastContactedDate = lastContactedDate;
@@ -84,11 +75,8 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-<<<<<<< HEAD
         occupation = source.getOccupation().toString();
-=======
         age = source.getAge().toString();
->>>>>>> upstream
         priority = source.getPriority().toString();
         // Store income bracket as the enum name for consistent serialization
         incomeBracket = source.getIncomeBracket() != null ? source.getIncomeBracket().value.name() : null;
@@ -192,14 +180,11 @@ class JsonAdaptedPerson {
         }
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-<<<<<<< HEAD
         Occupation modelOccupation = new Occupation(occupation);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority);
-=======
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority, modelAge,
                 modelIncomeBracket,
                 modelLastContactedDate);
->>>>>>> upstream
     }
 
 }

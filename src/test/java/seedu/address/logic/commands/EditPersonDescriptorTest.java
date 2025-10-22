@@ -65,7 +65,6 @@ public class EditPersonDescriptorTest {
     @Test
     public void toStringMethod() {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
-<<<<<<< HEAD
         String expected = new seedu.address.commons.util.ToStringBuilder(editPersonDescriptor)
             .add("name", editPersonDescriptor.getName().orElse(null))
             .add("phone", editPersonDescriptor.getPhone().orElse(null))
@@ -75,7 +74,6 @@ public class EditPersonDescriptorTest {
             .add("priority", editPersonDescriptor.getPriority().orElse(null))
             .add("tags", editPersonDescriptor.getTags().orElse(null))
             .toString();
-=======
         String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
                 + editPersonDescriptor.getName().orElse(null) + ", phone="
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
@@ -86,7 +84,6 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getIncomeBracket().orElse(null) + ", tags="
                 + editPersonDescriptor.getTags().orElse(null) + ", lastContactedDate="
                 + editPersonDescriptor.getLastContactedDate().orElse(null) + "}";
->>>>>>> upstream
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

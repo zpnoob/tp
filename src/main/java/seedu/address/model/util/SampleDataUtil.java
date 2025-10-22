@@ -26,7 +26,6 @@ public class SampleDataUtil {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
-<<<<<<< HEAD
                     new Occupation("Engineer"), getTagSet("friends"), new Priority(Priority.Level.HIGH)),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
                 new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
@@ -43,7 +42,6 @@ public class SampleDataUtil {
             new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
                     new Occupation("Chef"), getTagSet("colleagues"), new Priority(Priority.Level.MEDIUM))
-=======
                 getTagSet("friends"), new Priority(Priority.Level.HIGH), new Age("28"),
                 new IncomeBracket(IncomeBracket.Level.HIGH),
                 new LastContactedDate("2024-10-15")),
@@ -69,7 +67,6 @@ public class SampleDataUtil {
                 new Address("Blk 45 Aljunied Street 85, #11-31"),
                 getTagSet("colleagues"), new Priority(Priority.Level.MEDIUM),
                 new Age(""), null, new LastContactedDate("2024-12-05"))
->>>>>>> upstream
         };
     }
 

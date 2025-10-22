@@ -32,17 +32,14 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Address address;
-<<<<<<< HEAD
     private Occupation occupation;
     private Priority priority;
     private Set<seedu.address.model.tag.Tag> tags;
-=======
     private Age age;
     private Priority priority;
     private IncomeBracket incomeBracket;
     private LastContactedDate lastContactedDate;
     private Set<Tag> tags;
->>>>>>> upstream
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -52,11 +49,8 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
-<<<<<<< HEAD
         occupation = new Occupation(DEFAULT_OCCUPATION);
-=======
         age = new Age(DEFAULT_AGE);
->>>>>>> upstream
         priority = new Priority(DEFAULT_PRIORITY);
         incomeBracket = null; // Default to null for new persons
         lastContactedDate = new LastContactedDate(DEFAULT_LAST_CONTACTED_DATE);
@@ -71,11 +65,8 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
-<<<<<<< HEAD
         occupation = personToCopy.getOccupation();
-=======
         age = personToCopy.getAge();
->>>>>>> upstream
         priority = personToCopy.getPriority();
         incomeBracket = personToCopy.getIncomeBracket();
         lastContactedDate = personToCopy.getLastContactedDate();
@@ -162,11 +153,8 @@ public class PersonBuilder {
     }
 
     public Person build() {
-<<<<<<< HEAD
         return new Person(name, phone, email, address, occupation, tags, priority);
-=======
         return new Person(name, phone, email, address, tags, priority, age, incomeBracket, lastContactedDate);
->>>>>>> upstream
     }
 
 }

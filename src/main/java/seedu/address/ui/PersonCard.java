@@ -46,13 +46,10 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label priority;
     @FXML
-<<<<<<< HEAD
     private Label occupation;
-=======
     private Label incomeBracket;
     @FXML
     private Label lastContactedDate;
->>>>>>> upstream
     @FXML
     private FlowPane tags;
     @FXML
@@ -69,19 +66,14 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
-<<<<<<< HEAD
         occupation.setText(person.getOccupation().toString());
-=======
         age.setText("Age: " + person.getAge().value);
->>>>>>> upstream
         priority.setText("Priority: " + person.getPriority().getValue());
         lastContactedDate.setText("Last Contacted: " + person.getLastContactedDate().toDisplayString());
         setPriorityStyle(person.getPriority());
-<<<<<<< HEAD
         person.getTags().stream()
             .sorted(Comparator.comparing(tag -> tag.tagName))
             .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-=======
 
         if (person.getTags().isEmpty()) {
             tags.setManaged(false);
@@ -92,7 +84,6 @@ public class PersonCard extends UiPart<Region> {
                     .sorted(Comparator.comparing(tag -> tag.tagName))
                     .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         }
->>>>>>> upstream
     }
 
     /**

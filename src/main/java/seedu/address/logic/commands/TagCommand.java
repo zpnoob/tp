@@ -65,7 +65,6 @@ public class TagCommand extends Command {
 
         Set<Tag> newTagsSet = Collections.singleton(tag);
         Person editedPerson = new Person(
-<<<<<<< HEAD
             personToEdit.getName(),
             personToEdit.getPhone(),
             personToEdit.getEmail(),
@@ -73,7 +72,6 @@ public class TagCommand extends Command {
             personToEdit.getOccupation(),
             newTagsSet,
             personToEdit.getPriority()
-=======
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
@@ -83,7 +81,6 @@ public class TagCommand extends Command {
                 personToEdit.getAge(),
                 personToEdit.getIncomeBracket(),
                 personToEdit.getLastContactedDate()
->>>>>>> upstream
         );
 
         model.setPerson(personToEdit, editedPerson);

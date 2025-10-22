@@ -40,11 +40,8 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
-<<<<<<< HEAD
                         PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_PRIORITY, PREFIX_OCCUPATION);
-=======
                  PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_PRIORITY, PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE);
->>>>>>> upstream
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -68,12 +65,10 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Priority priority = ParserUtil.parsePriority(
                 argMultimap.getValue(PREFIX_PRIORITY).orElse(Priority.Level.NONE.toString()));
-<<<<<<< HEAD
         Occupation occupation = argMultimap.getValue(PREFIX_OCCUPATION).isPresent()
                 ? ParserUtil.parseOccupation(argMultimap.getValue(PREFIX_OCCUPATION).get())
                 : new Occupation("Engineer");
         Person person = new Person(name, phone, email, address, occupation, tagList, priority);
-=======
         // Default income bracket for new persons is null
         IncomeBracket incomeBracket = null;
         LastContactedDate lastContactedDate = argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).isPresent()
@@ -83,7 +78,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         Person person = new Person(name, phone, email, address, tagList, priority,
                 age, incomeBracket, lastContactedDate);
 
->>>>>>> upstream
         return new AddCommand(person);
     }
 

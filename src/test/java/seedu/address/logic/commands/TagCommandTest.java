@@ -36,7 +36,6 @@ public class TagCommandTest {
         TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
         Set<Tag> newTagsSet = Collections.singleton(newTag);
         Person editedPerson = new Person(
-<<<<<<< HEAD
             personToEdit.getName(),
             personToEdit.getPhone(),
             personToEdit.getEmail(),
@@ -44,7 +43,6 @@ public class TagCommandTest {
             personToEdit.getOccupation(),
             newTagsSet,
             personToEdit.getPriority());
-=======
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
@@ -54,18 +52,14 @@ public class TagCommandTest {
                 personToEdit.getAge(),
                 personToEdit.getIncomeBracket(),
                 personToEdit.getLastContactedDate());
->>>>>>> upstream
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)
                     .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
-<<<<<<< HEAD
                                             + "; Occupation: " + editedPerson.getOccupation()
-=======
                                             + "; Age: " + editedPerson.getAge()
->>>>>>> upstream
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
