@@ -47,6 +47,8 @@ public class PersonCard extends UiPart<Region> {
     private Label incomeBracket;
     @FXML
     private FlowPane tags;
+    @FXML
+    private Label dncLabel;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -62,10 +64,17 @@ public class PersonCard extends UiPart<Region> {
         age.setText("Age: " + person.getAge().value);
         priority.setText("Priority: " + person.getPriority().getValue());
         setPriorityStyle(person.getPriority());
-        setIncomeBracketText(person);
+
+        if (person.isDncTagged()) {
+            dncLabel.setVisible(true);
+            tags.setManaged(false);
+            tags.setVisible(false);
+        } else {
+            setIncomeBracketText(person);
         person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+                    .sorted(Comparator.comparing(tag -> tag.tagName))
+                    .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        }
     }
 
     /**

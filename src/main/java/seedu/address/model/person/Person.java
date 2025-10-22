@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -137,6 +138,13 @@ public class Person {
                 .add("incomeBracket", incomeBracket)
                 .add("age", age)
                 .toString();
+    }
+
+    /**
+     * Returns true if this person is marked as Do Not Call.
+     */
+    public boolean isDncTagged() {
+        return tags.stream().anyMatch(t -> t instanceof DncTag);
     }
 
 }

@@ -22,6 +22,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 public class TagCommandTest {
@@ -71,6 +72,25 @@ public class TagCommandTest {
         TagCommand tagCommand = new TagCommand(outOfBoundIndex, newTag);
 
         assertCommandFailure(tagCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_dncContactTag_throwsCommandException() {
+        Person personToEdit = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person dncPerson = new Person(
+                personToEdit.getName(),
+                personToEdit.getPhone(),
+                personToEdit.getEmail(),
+                personToEdit.getAddress(),
+                Collections.singleton(new DncTag()),
+                personToEdit.getPriority()
+        );
+        model.setPerson(personToEdit, dncPerson);
+
+        Tag newTag = new Tag("friend");
+        TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, newTag);
+
+        assertCommandFailure(tagCommand, model, TagCommand.MESSAGE_DNC_CANNOT_MODIFY);
     }
 
     @Test
