@@ -46,6 +46,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label incomeBracket;
     @FXML
+    private Label lastContactedDate;
+    @FXML
     private FlowPane tags;
     @FXML
     private Label dncLabel;
@@ -63,6 +65,7 @@ public class PersonCard extends UiPart<Region> {
         email.setText(person.getEmail().value);
         age.setText("Age: " + person.getAge().value);
         priority.setText("Priority: " + person.getPriority().getValue());
+        lastContactedDate.setText("Last Contacted: " + person.getLastContactedDate().toDisplayString());
         setPriorityStyle(person.getPriority());
 
         if (person.getTags().isEmpty()) {

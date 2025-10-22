@@ -211,7 +211,8 @@ public class DncCommandTest {
                 Collections.singleton(new DncTag()),
                 person.getPriority(),
                 person.getAge(),
-                person.getIncomeBracket()
+                person.getIncomeBracket(),
+                person.getLastContactedDate()
         );
     }
 }

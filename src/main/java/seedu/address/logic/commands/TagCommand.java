@@ -72,7 +72,8 @@ public class TagCommand extends Command {
                 newTagsSet,
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
-                personToEdit.getIncomeBracket()
+                personToEdit.getIncomeBracket(),
+                personToEdit.getLastContactedDate()
         );
 
         model.setPerson(personToEdit, editedPerson);

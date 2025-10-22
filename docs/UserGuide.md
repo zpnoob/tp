@@ -95,7 +95,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [pr/PRIORITY] [t/TAG]…​
 </box>
 <box type="warning" seamless>
 
-**Warning:** Adding another person with the same `NAME` as an existing person will be counted as a duplicate and is not allowed. 
+**Warning:** Adding another person with the same `NAME` as an existing person will be counted as a duplicate and is not allowed.
 
 </box>
 
@@ -145,7 +145,7 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find 87438807` returns `Alex Yeoh` as it matches their phone number
 * `find family` returns `David Li` as it matches their assigned tags
-* `find Alex family` returns `Alex Yeoh`, `David Li` 
+* `find Alex family` returns `Alex Yeoh`, `David Li`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 

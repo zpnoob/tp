@@ -7,6 +7,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
+import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -25,6 +26,7 @@ public class PersonBuilder {
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_AGE = "25";
     public static final String DEFAULT_PRIORITY = "NONE";
+    public static final String DEFAULT_LAST_CONTACTED_DATE = ""; // Empty string for no date set
 
     private Name name;
     private Phone phone;
@@ -33,6 +35,7 @@ public class PersonBuilder {
     private Age age;
     private Priority priority;
     private IncomeBracket incomeBracket;
+    private LastContactedDate lastContactedDate;
     private Set<Tag> tags;
 
     /**
@@ -46,6 +49,7 @@ public class PersonBuilder {
         age = new Age(DEFAULT_AGE);
         priority = new Priority(DEFAULT_PRIORITY);
         incomeBracket = null; // Default to null for new persons
+        lastContactedDate = new LastContactedDate(DEFAULT_LAST_CONTACTED_DATE);
         tags = new HashSet<>();
     }
 
@@ -60,6 +64,7 @@ public class PersonBuilder {
         age = personToCopy.getAge();
         priority = personToCopy.getPriority();
         incomeBracket = personToCopy.getIncomeBracket();
+        lastContactedDate = personToCopy.getLastContactedDate();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -127,8 +132,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code LastContactedDate} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withLastContactedDate(String date) {
+        this.lastContactedDate = new LastContactedDate(date);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, tags, priority, age, incomeBracket);
+        return new Person(name, phone, email, address, tags, priority, age, incomeBracket, lastContactedDate);
     }
 
 }

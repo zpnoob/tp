@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -36,7 +37,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                        PREFIX_PRIORITY, PREFIX_INCOME_BRACKET, PREFIX_TAG, PREFIX_AGE);
+                        PREFIX_PRIORITY, PREFIX_INCOME_BRACKET, PREFIX_TAG, PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE);
 
         Index index;
 
@@ -47,7 +48,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
-                PREFIX_PRIORITY, PREFIX_AGE, PREFIX_INCOME_BRACKET);
+                PREFIX_PRIORITY, PREFIX_AGE, PREFIX_INCOME_BRACKET, PREFIX_LAST_CONTACTED_DATE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -72,6 +73,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent()) {
             editPersonDescriptor.setIncomeBracket(ParserUtil.parseIncomeBracket(
                     argMultimap.getValue(PREFIX_INCOME_BRACKET).get()));
+        }
+        if (argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).isPresent()) {
+            editPersonDescriptor.setLastContactedDate(ParserUtil.parseLastContactedDate(
+                    argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 

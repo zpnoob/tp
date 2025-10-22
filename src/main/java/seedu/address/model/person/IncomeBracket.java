@@ -109,7 +109,7 @@ public class IncomeBracket {
 
     @Override
     public String toString() {
-        return value.toString();
+        return value.name();
     }
 
     @Override

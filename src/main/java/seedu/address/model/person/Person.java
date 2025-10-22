@@ -28,13 +28,15 @@ public class Person {
     private final Priority priority;
     private final Age age;
     private final IncomeBracket incomeBracket;
+    private final LastContactedDate lastContactedDate;
 
     /**
      * Most fields must be present and not null. IncomeBracket can be null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority, Age age,
-                  IncomeBracket incomeBracket) {
-        requireAllNonNull(name, phone, email, address, tags, priority);
+                  IncomeBracket incomeBracket,
+            LastContactedDate lastContactedDate) {
+        requireAllNonNull(name, phone, email, address, tags, priority, lastContactedDate);
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -43,6 +45,7 @@ public class Person {
         this.incomeBracket = incomeBracket; // Can be null
         this.age = age;
         this.tags.addAll(tags);
+        this.lastContactedDate = lastContactedDate;
     }
 
     public Name getName() {
@@ -78,6 +81,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public LastContactedDate getLastContactedDate() {
+        return lastContactedDate;
     }
 
     /**
@@ -117,13 +124,14 @@ public class Person {
                 && priority.equals(otherPerson.priority)
                 && Objects.equals(incomeBracket, otherPerson.incomeBracket)
                 && age.equals(otherPerson.age)
-                && tags.equals(otherPerson.tags);
+                && tags.equals(otherPerson.tags)
+                && lastContactedDate.equals(otherPerson.lastContactedDate);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, priority, age, incomeBracket, tags);
+        return Objects.hash(name, phone, email, address, priority, age, incomeBracket, tags, lastContactedDate);
     }
 
     @Override
@@ -137,9 +145,9 @@ public class Person {
                 .add("priority", priority)
                 .add("incomeBracket", incomeBracket)
                 .add("age", age)
+                .add("lastContactedDate", lastContactedDate)
                 .toString();
     }
-
     /**
      * Returns true if this person is marked as Do Not Call.
      */

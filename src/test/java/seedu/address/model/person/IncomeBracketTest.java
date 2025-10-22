@@ -95,9 +95,9 @@ public class IncomeBracketTest {
 
     @Test
     public void toString_test() {
-        assertEquals("Low Income", new IncomeBracket(IncomeBracket.Level.LOW).toString());
-        assertEquals("Middle Income", new IncomeBracket(IncomeBracket.Level.MIDDLE).toString());
-        assertEquals("High Income", new IncomeBracket(IncomeBracket.Level.HIGH).toString());
+        assertEquals("LOW", new IncomeBracket(IncomeBracket.Level.LOW).toString());
+        assertEquals("MIDDLE", new IncomeBracket(IncomeBracket.Level.MIDDLE).toString());
+        assertEquals("HIGH", new IncomeBracket(IncomeBracket.Level.HIGH).toString());
     }
 
     @Test

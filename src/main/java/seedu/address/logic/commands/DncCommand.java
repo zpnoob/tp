@@ -64,7 +64,8 @@ public class DncCommand extends Command {
                 Collections.singleton(tag),
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
-                personToEdit.getIncomeBracket()
+                personToEdit.getIncomeBracket(),
+                personToEdit.getLastContactedDate()
         );
 
         assert !editedPerson.getTags().isEmpty() : "Edited person should have at least the DNC tag";

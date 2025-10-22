@@ -43,7 +43,8 @@ public class TagCommandTest {
                 newTagsSet,
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
-                personToEdit.getIncomeBracket());
+                personToEdit.getIncomeBracket(),
+                personToEdit.getLastContactedDate());
 
         String tagsString = editedPerson.getTags().stream()
                     .map(Tag::toString)
@@ -54,6 +55,8 @@ public class TagCommandTest {
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
+                                           + "; Last Contacted: " + editedPerson.getLastContactedDate()
+                                                        .toDisplayString()
                                            + "; Tags: " + tagsString);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
@@ -85,7 +88,8 @@ public class TagCommandTest {
                 Collections.singleton(new DncTag()),
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
-                personToEdit.getIncomeBracket()
+                personToEdit.getIncomeBracket(),
+                personToEdit.getLastContactedDate()
         );
         model.setPerson(personToEdit, dncPerson);
 

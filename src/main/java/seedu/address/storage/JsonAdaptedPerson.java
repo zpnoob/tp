@@ -14,11 +14,13 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
+import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
+
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -35,6 +37,7 @@ class JsonAdaptedPerson {
     private final String priority;
     private final String incomeBracket;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String lastContactedDate;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -44,6 +47,7 @@ class JsonAdaptedPerson {
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("age") String age, @JsonProperty("priority") String priority,
             @JsonProperty("incomeBracket") String incomeBracket,
+            @JsonProperty("lastContactedDate") String lastContactedDate,
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
@@ -52,6 +56,7 @@ class JsonAdaptedPerson {
         this.age = age;
         this.priority = priority;
         this.incomeBracket = incomeBracket;
+        this.lastContactedDate = lastContactedDate;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -69,6 +74,7 @@ class JsonAdaptedPerson {
         priority = source.getPriority().toString();
         // Store income bracket as the enum name for consistent serialization
         incomeBracket = source.getIncomeBracket() != null ? source.getIncomeBracket().value.name() : null;
+        lastContactedDate = source.getLastContactedDate().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -156,9 +162,21 @@ class JsonAdaptedPerson {
             }
         }
 
+        // Handle lastContactedDate field - default to empty string ("") if missing/null for backward compatibility
+        LastContactedDate modelLastContactedDate;
+        if (lastContactedDate == null) {
+            modelLastContactedDate = new LastContactedDate("");
+        } else {
+            if (!LastContactedDate.isValidLastContactedDate(lastContactedDate)) {
+                throw new IllegalValueException(LastContactedDate.MESSAGE_CONSTRAINTS);
+            }
+            modelLastContactedDate = new LastContactedDate(lastContactedDate);
+        }
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority, modelAge,
-                modelIncomeBracket);
+                modelIncomeBracket,
+                modelLastContactedDate);
     }
 
 }

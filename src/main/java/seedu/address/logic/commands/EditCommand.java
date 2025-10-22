@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
@@ -28,11 +29,13 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
+import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
+
 
 /**
  * Edits the details of an existing person in the address book.
@@ -52,11 +55,13 @@ public class EditCommand extends Command {
             + "[" + PREFIX_AGE + "AGE] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_INCOME_BRACKET + "INCOME_BRACKET] "
+            + "[" + PREFIX_LAST_CONTACTED_DATE + "LAST_CONTACTED_DATE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com "
-            + PREFIX_INCOME_BRACKET + "high";
+            + PREFIX_INCOME_BRACKET + "high"
+            + PREFIX_LAST_CONTACTED_DATE + "2025-09-22";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -120,10 +125,13 @@ public class EditCommand extends Command {
         IncomeBracket updatedIncomeBracket = editPersonDescriptor.getIncomeBracket()
                 .orElse(personToEdit.getIncomeBracket());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        LastContactedDate updatedLastContactedDate = editPersonDescriptor.getLastContactedDate()
+                .orElse(personToEdit.getLastContactedDate());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
                 updatedTags, updatedPriority, updatedAge,
-                updatedIncomeBracket);
+                updatedIncomeBracket,
+                updatedLastContactedDate);
     }
 
     @Override
@@ -163,6 +171,7 @@ public class EditCommand extends Command {
         private Set<Tag> tags;
         private Priority priority;
         private IncomeBracket incomeBracket;
+        private LastContactedDate lastContactedDate;
 
         public EditPersonDescriptor() {}
 
@@ -179,13 +188,15 @@ public class EditCommand extends Command {
             setPriority(toCopy.priority);
             setIncomeBracket(toCopy.incomeBracket);
             setTags(toCopy.tags);
+            setLastContactedDate(toCopy.lastContactedDate);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, age, priority, incomeBracket, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, age, priority,
+                incomeBracket, tags, lastContactedDate);
         }
 
         public void setName(Name name) {
@@ -244,6 +255,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(incomeBracket);
         }
 
+        public void setLastContactedDate(LastContactedDate lastContactedDate) {
+            this.lastContactedDate = lastContactedDate;
+        }
+
+        public Optional<LastContactedDate> getLastContactedDate() {
+            return Optional.ofNullable(lastContactedDate);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -280,7 +299,8 @@ public class EditCommand extends Command {
                     && Objects.equals(age, otherEditPersonDescriptor.age)
                     && Objects.equals(priority, otherEditPersonDescriptor.priority)
                     && Objects.equals(incomeBracket, otherEditPersonDescriptor.incomeBracket)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(tags, otherEditPersonDescriptor.tags)
+                    && Objects.equals(lastContactedDate, otherEditPersonDescriptor.lastContactedDate);
         }
 
         @Override
@@ -294,6 +314,7 @@ public class EditCommand extends Command {
                     .add("priority", priority)
                     .add("incomeBracket", incomeBracket)
                     .add("tags", tags)
+                    .add("lastContactedDate", lastContactedDate)
                     .toString();
         }
     }

@@ -73,7 +73,8 @@ public class EditPersonDescriptorTest {
                 + editPersonDescriptor.getAge().orElse(null) + ", priority="
                 + editPersonDescriptor.getPriority().orElse(null) + ", incomeBracket="
                 + editPersonDescriptor.getIncomeBracket().orElse(null) + ", tags="
-                + editPersonDescriptor.getTags().orElse(null) + "}";
+                + editPersonDescriptor.getTags().orElse(null) + ", lastContactedDate="
+                + editPersonDescriptor.getLastContactedDate().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

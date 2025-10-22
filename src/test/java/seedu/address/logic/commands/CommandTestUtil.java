@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
@@ -42,6 +43,7 @@ public class CommandTestUtil {
     public static final String VALID_INCOME_BRACKET_BOB = "LOW";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_LAST_CONTACTED_DATE = "2025-10-21";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -57,14 +59,17 @@ public class CommandTestUtil {
     public static final String INCOME_BRACKET_DESC_BOB = " " + PREFIX_INCOME_BRACKET + VALID_INCOME_BRACKET_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
+    public static final String LAST_CONTACTED_DATE_DESC = " " + PREFIX_LAST_CONTACTED_DATE + VALID_LAST_CONTACTED_DATE;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
-    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS + " invalid"; // starts with whitespace
+    public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty address not allowed
     public static final String INVALID_AGE_DESC = " " + PREFIX_AGE + "abc"; // 'abc' not a valid age
     public static final String INVALID_INCOME_BRACKET_DESC = " " + PREFIX_INCOME_BRACKET + "INVALID"; // invalid bracket
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+    public static final String INVALID_LAST_CONTACTED_DATE_DESC = " " + PREFIX_LAST_CONTACTED_DATE
+            + "2025/10/21"; // wrong format
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

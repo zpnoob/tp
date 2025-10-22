@@ -45,7 +45,8 @@ public class PriorityCommandTest {
                 personToEdit.getTags(),
                 newPriority,
                 personToEdit.getAge(),
-                personToEdit.getIncomeBracket());
+                personToEdit.getIncomeBracket(),
+                personToEdit.getLastContactedDate());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,
                 Messages.format(editedPerson), newPriority.getValue());
@@ -81,7 +82,8 @@ public class PriorityCommandTest {
                 personToEdit.getTags(),
                 newPriority,
                 personToEdit.getAge(),
-                personToEdit.getIncomeBracket());
+                personToEdit.getIncomeBracket(),
+                personToEdit.getLastContactedDate());
 
         String expectedMessage = String.format(PriorityCommand.MESSAGE_PRIORITY_PERSON_SUCCESS,
                 Messages.format(editedPerson), newPriority.getValue());
@@ -117,7 +119,8 @@ public class PriorityCommandTest {
                 Collections.singleton(new DncTag()),
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
-                personToEdit.getIncomeBracket()
+                personToEdit.getIncomeBracket(),
+                personToEdit.getLastContactedDate()
         );
         model.setPerson(personToEdit, dncPerson);
 
