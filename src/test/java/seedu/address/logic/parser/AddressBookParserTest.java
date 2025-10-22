@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DncCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
@@ -102,6 +103,13 @@ public class AddressBookParserTest {
         PriorityCommand command = (PriorityCommand) parser.parseCommand(
                 PriorityCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " high");
         assertEquals(new PriorityCommand(INDEX_FIRST_PERSON, new seedu.address.model.person.Priority("high")), command);
+    }
+
+    @Test
+    public void parseCommand_dnc() throws Exception {
+        DncCommand command = (DncCommand) parser.parseCommand(
+                DncCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new DncCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test

@@ -10,12 +10,16 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
+import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
+
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -137,6 +141,33 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String age} into an {@code Age}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code age} is invalid.
+     */
+    public static Age parseAge(String age) throws ParseException {
+        requireNonNull(age);
+        String trimmedAge = age.trim();
+        if (!Age.isValidAge(trimmedAge)) {
+            throw new ParseException(Age.MESSAGE_CONSTRAINTS);
+        }
+        return new Age(trimmedAge);
+    }
+
+    /**
+     * Parses {@code String incomeBracket} into an {@code IncomeBracket}.
+     */
+    public static IncomeBracket parseIncomeBracket(String incomeBracket) throws ParseException {
+        requireNonNull(incomeBracket);
+        String trimmedIncomeBracket = incomeBracket.trim();
+        if (!IncomeBracket.isValidIncomeBracket(trimmedIncomeBracket)) {
+            throw new ParseException(IncomeBracket.MESSAGE_CONSTRAINTS);
+        }
+        return new IncomeBracket(trimmedIncomeBracket);
+    }
+
+    /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
      */
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
@@ -146,5 +177,20 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code LastContactedDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static LastContactedDate parseLastContactedDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!LastContactedDate.isValidLastContactedDate(trimmedDate)) {
+            throw new ParseException(LastContactedDate.MESSAGE_CONSTRAINTS);
+        }
+        return new LastContactedDate(trimmedDate);
     }
 }

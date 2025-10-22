@@ -11,13 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
+import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
+
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -30,9 +34,15 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+<<<<<<< HEAD
     private final String occupation;
+=======
+    private final String age;
+>>>>>>> upstream
     private final String priority;
+    private final String incomeBracket;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String lastContactedDate;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -40,15 +50,27 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
+<<<<<<< HEAD
             @JsonProperty("occupation") String occupation,
             @JsonProperty("priority") String priority,
+=======
+            @JsonProperty("age") String age, @JsonProperty("priority") String priority,
+            @JsonProperty("incomeBracket") String incomeBracket,
+            @JsonProperty("lastContactedDate") String lastContactedDate,
+>>>>>>> upstream
             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+<<<<<<< HEAD
         this.occupation = occupation;
+=======
+        this.age = age;
+>>>>>>> upstream
         this.priority = priority;
+        this.incomeBracket = incomeBracket;
+        this.lastContactedDate = lastContactedDate;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -62,8 +84,15 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+<<<<<<< HEAD
         occupation = source.getOccupation().toString();
+=======
+        age = source.getAge().toString();
+>>>>>>> upstream
         priority = source.getPriority().toString();
+        // Store income bracket as the enum name for consistent serialization
+        incomeBracket = source.getIncomeBracket() != null ? source.getIncomeBracket().value.name() : null;
+        lastContactedDate = source.getLastContactedDate().toString();
         tags.addAll(source.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList()));
@@ -112,6 +141,17 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
+        // Handle age field - default to empty if missing for backward compatibility
+        Age modelAge;
+        if (age == null) {
+            modelAge = new Age("");
+        } else {
+            if (!Age.isValidAge(age)) {
+                throw new IllegalValueException(Age.MESSAGE_CONSTRAINTS);
+            }
+            modelAge = new Age(age);
+        }
+
         // Handle priority field - default to NONE if missing for backward compatibility
         Priority modelPriority;
         if (priority == null) {
@@ -123,9 +163,43 @@ class JsonAdaptedPerson {
             modelPriority = new Priority(priority);
         }
 
+        // Handle income bracket field - can be null
+        IncomeBracket modelIncomeBracket = null;
+        if (incomeBracket != null && !incomeBracket.trim().isEmpty()) {
+            try {
+                // First try to parse as enum name (e.g., "LOW", "MIDDLE", "HIGH")
+                IncomeBracket.Level level = IncomeBracket.Level.valueOf(incomeBracket.toUpperCase());
+                modelIncomeBracket = new IncomeBracket(level);
+            } catch (IllegalArgumentException e) {
+                // Fallback: try to parse as user-friendly string (e.g., "low", "middle", "high")
+                if (IncomeBracket.isValidIncomeBracket(incomeBracket)) {
+                    modelIncomeBracket = new IncomeBracket(incomeBracket);
+                } else {
+                    throw new IllegalValueException(IncomeBracket.MESSAGE_CONSTRAINTS);
+                }
+            }
+        }
+
+        // Handle lastContactedDate field - default to empty string ("") if missing/null for backward compatibility
+        LastContactedDate modelLastContactedDate;
+        if (lastContactedDate == null) {
+            modelLastContactedDate = new LastContactedDate("");
+        } else {
+            if (!LastContactedDate.isValidLastContactedDate(lastContactedDate)) {
+                throw new IllegalValueException(LastContactedDate.MESSAGE_CONSTRAINTS);
+            }
+            modelLastContactedDate = new LastContactedDate(lastContactedDate);
+        }
+
         final Set<Tag> modelTags = new HashSet<>(personTags);
+<<<<<<< HEAD
         Occupation modelOccupation = new Occupation(occupation);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority);
+=======
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority, modelAge,
+                modelIncomeBracket,
+                modelLastContactedDate);
+>>>>>>> upstream
     }
 
 }

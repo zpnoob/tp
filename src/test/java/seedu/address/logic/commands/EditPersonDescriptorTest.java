@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_AGE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -52,6 +53,10 @@ public class EditPersonDescriptorTest {
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
+        // different age -> returns false
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withAge(VALID_AGE_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
         // different tags -> returns false
         editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(DESC_AMY.equals(editedAmy));
@@ -60,6 +65,7 @@ public class EditPersonDescriptorTest {
     @Test
     public void toStringMethod() {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+<<<<<<< HEAD
         String expected = new seedu.address.commons.util.ToStringBuilder(editPersonDescriptor)
             .add("name", editPersonDescriptor.getName().orElse(null))
             .add("phone", editPersonDescriptor.getPhone().orElse(null))
@@ -69,6 +75,18 @@ public class EditPersonDescriptorTest {
             .add("priority", editPersonDescriptor.getPriority().orElse(null))
             .add("tags", editPersonDescriptor.getTags().orElse(null))
             .toString();
+=======
+        String expected = EditPersonDescriptor.class.getCanonicalName() + "{name="
+                + editPersonDescriptor.getName().orElse(null) + ", phone="
+                + editPersonDescriptor.getPhone().orElse(null) + ", email="
+                + editPersonDescriptor.getEmail().orElse(null) + ", address="
+                + editPersonDescriptor.getAddress().orElse(null) + ", age="
+                + editPersonDescriptor.getAge().orElse(null) + ", priority="
+                + editPersonDescriptor.getPriority().orElse(null) + ", incomeBracket="
+                + editPersonDescriptor.getIncomeBracket().orElse(null) + ", tags="
+                + editPersonDescriptor.getTags().orElse(null) + ", lastContactedDate="
+                + editPersonDescriptor.getLastContactedDate().orElse(null) + "}";
+>>>>>>> upstream
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

@@ -132,10 +132,15 @@ public class PersonTest {
         // different tags -> returns false
         editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));
+
+        // different lastContactedDate -> returns false
+        editedAlice = new PersonBuilder(ALICE).withLastContactedDate("2025-10-22").build();
+        assertFalse(ALICE.equals(editedAlice));
     }
 
     @Test
     public void toStringMethod() {
+<<<<<<< HEAD
         String expected = new seedu.address.commons.util.ToStringBuilder(ALICE)
             .add("name", ALICE.getName())
             .add("phone", ALICE.getPhone())
@@ -145,6 +150,12 @@ public class PersonTest {
             .add("priority", ALICE.getPriority())
             .add("tags", ALICE.getTags())
             .toString();
+=======
+        String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
+                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
+                + ", priority=" + ALICE.getPriority() + ", incomeBracket=" + ALICE.getIncomeBracket()
+                + ", age=" + ALICE.getAge() + ", lastContactedDate=" + ALICE.getLastContactedDate() + "}";
+>>>>>>> upstream
         assertEquals(expected, ALICE.toString());
     }
 }

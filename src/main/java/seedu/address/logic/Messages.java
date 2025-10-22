@@ -37,6 +37,7 @@ public class Messages {
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
+<<<<<<< HEAD
             .append("; Phone: ")
             .append(person.getPhone());
         if (!person.getOccupation().toString().isEmpty()) {
@@ -44,11 +45,23 @@ public class Messages {
         }
         builder.append("; Priority: ")
             .append(person.getPriority());
+=======
+                .append("; Phone: ")
+                .append(person.getPhone())
+                .append("; Age: ")
+                .append(person.getAge())
+                .append("; Priority: ")
+                .append(person.getPriority());
+>>>>>>> upstream
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }
         if (!person.getAddress().toString().isEmpty()) {
             builder.append("; Address: ").append(person.getAddress());
+        }
+        if (!person.getLastContactedDate().toDisplayString().isEmpty()
+                && !person.getLastContactedDate().toDisplayString().equals("N/A")) {
+            builder.append("; Last Contacted: ").append(person.getLastContactedDate().toDisplayString());
         }
         if (!person.getTags().isEmpty()) {
             builder.append("; Tags: ");
