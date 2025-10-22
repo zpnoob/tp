@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Age;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -22,6 +24,7 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_AGE = "25";
     public static final String DEFAULT_PRIORITY = "NONE";
     public static final String DEFAULT_LAST_CONTACTED_DATE = ""; // Empty string for no date set
 
@@ -29,7 +32,9 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Address address;
+    private Age age;
     private Priority priority;
+    private IncomeBracket incomeBracket;
     private LastContactedDate lastContactedDate;
     private Set<Tag> tags;
 
@@ -41,7 +46,9 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        age = new Age(DEFAULT_AGE);
         priority = new Priority(DEFAULT_PRIORITY);
+        incomeBracket = null; // Default to null for new persons
         lastContactedDate = new LastContactedDate(DEFAULT_LAST_CONTACTED_DATE);
         tags = new HashSet<>();
     }
@@ -54,7 +61,9 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        age = personToCopy.getAge();
         priority = personToCopy.getPriority();
+        incomeBracket = personToCopy.getIncomeBracket();
         lastContactedDate = personToCopy.getLastContactedDate();
         tags = new HashSet<>(personToCopy.getTags());
     }
@@ -108,6 +117,22 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Age} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withAge(String age) {
+        this.age = new Age(age);
+        return this;
+    }
+
+    /**
+     * Sets the {@code IncomeBracket} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withIncomeBracket(String incomeBracket) {
+        this.incomeBracket = new IncomeBracket(incomeBracket);
+        return this;
+    }
+
+    /**
      * Sets the {@code LastContactedDate} of the {@code Person} that we are building.
      */
     public PersonBuilder withLastContactedDate(String date) {
@@ -116,7 +141,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, tags, priority, lastContactedDate);
+        return new Person(name, phone, email, address, tags, priority, age, incomeBracket, lastContactedDate);
     }
 
 }

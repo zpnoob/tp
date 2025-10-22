@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -25,12 +26,15 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
     private final Priority priority;
+    private final Age age;
+    private final IncomeBracket incomeBracket;
     private final LastContactedDate lastContactedDate;
 
     /**
-     * Every field must be present and not null.
+     * Most fields must be present and not null. IncomeBracket can be null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority,
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority, Age age,
+                  IncomeBracket incomeBracket,
             LastContactedDate lastContactedDate) {
         requireAllNonNull(name, phone, email, address, tags, priority, lastContactedDate);
         this.name = name;
@@ -38,6 +42,8 @@ public class Person {
         this.email = email;
         this.address = address;
         this.priority = priority;
+        this.incomeBracket = incomeBracket; // Can be null
+        this.age = age;
         this.tags.addAll(tags);
         this.lastContactedDate = lastContactedDate;
     }
@@ -60,6 +66,13 @@ public class Person {
 
     public Priority getPriority() {
         return priority;
+    }
+
+    public IncomeBracket getIncomeBracket() {
+        return incomeBracket;
+    }
+    public Age getAge() {
+        return age;
     }
 
     /**
@@ -109,6 +122,8 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && priority.equals(otherPerson.priority)
+                && Objects.equals(incomeBracket, otherPerson.incomeBracket)
+                && age.equals(otherPerson.age)
                 && tags.equals(otherPerson.tags)
                 && lastContactedDate.equals(otherPerson.lastContactedDate);
     }
@@ -116,7 +131,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, priority, tags, lastContactedDate);
+        return Objects.hash(name, phone, email, address, priority, age, incomeBracket, tags, lastContactedDate);
     }
 
     @Override
@@ -128,7 +143,16 @@ public class Person {
                 .add("address", address)
                 .add("tags", tags)
                 .add("priority", priority)
+                .add("incomeBracket", incomeBracket)
+                .add("age", age)
                 .add("lastContactedDate", lastContactedDate)
                 .toString();
     }
+    /**
+     * Returns true if this person is marked as Do Not Call.
+     */
+    public boolean isDncTagged() {
+        return tags.stream().anyMatch(t -> t instanceof DncTag);
+    }
+
 }
