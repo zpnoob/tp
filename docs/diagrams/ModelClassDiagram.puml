@@ -22,6 +22,7 @@ Class Occupation
 Class Tag
 Class Priority
 Class IncomeBracket
+Class LastContactedDate
 
 Class I #FFFFFF
 }
@@ -45,6 +46,7 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> Occupation
+Person *--> LastContactedDate
 Person *--> "*" Tag
 Person *--> Priority
 Person *--> IncomeBracket
