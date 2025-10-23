@@ -37,12 +37,15 @@ public class Messages {
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
-                .append("; Phone: ")
-                .append(person.getPhone())
-                .append("; Age: ")
-                .append(person.getAge())
-                .append("; Priority: ")
-                .append(person.getPriority());
+            .append("; Phone: ")
+            .append(person.getPhone());
+        if (!person.getOccupation().toString().isEmpty()) {
+            builder.append("; Occupation: ").append(person.getOccupation());
+        }
+        builder.append("; Age: ")
+            .append(person.getAge())
+            .append("; Priority: ")
+            .append(person.getPriority());
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }
@@ -54,8 +57,10 @@ public class Messages {
             builder.append("; Last Contacted: ").append(person.getLastContactedDate().toDisplayString());
         }
         if (!person.getTags().isEmpty()) {
-            builder.append("; Tags: ");
-            person.getTags().forEach(builder::append);
+            String tagsString = person.getTags().stream()
+                    .map(Object::toString)
+                    .collect(Collectors.joining(", "));
+            builder.append("; Tags: ").append(tagsString);
         }
         return builder.toString();
     }

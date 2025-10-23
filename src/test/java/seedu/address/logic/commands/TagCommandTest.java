@@ -40,6 +40,7 @@ public class TagCommandTest {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 newTagsSet,
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
@@ -51,6 +52,7 @@ public class TagCommandTest {
                     .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                                            + "; Occupation: " + editedPerson.getOccupation()
                                             + "; Age: " + editedPerson.getAge()
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
@@ -85,6 +87,7 @@ public class TagCommandTest {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 Collections.singleton(new DncTag()),
                 personToEdit.getPriority(),
                 personToEdit.getAge(),

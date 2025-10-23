@@ -1,3 +1,4 @@
+
 package seedu.address.testutil;
 
 import java.util.HashSet;
@@ -9,17 +10,17 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
-
 /**
- * A utility class to help with building Person objects.
+ * A utility class to help with building Person objects for tests.
  */
 public class PersonBuilder {
-
+    public static final String DEFAULT_OCCUPATION = "Engineer";
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
@@ -32,6 +33,7 @@ public class PersonBuilder {
     private Phone phone;
     private Email email;
     private Address address;
+    private Occupation occupation;
     private Age age;
     private Priority priority;
     private IncomeBracket incomeBracket;
@@ -46,6 +48,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        occupation = new Occupation(DEFAULT_OCCUPATION);
         age = new Age(DEFAULT_AGE);
         priority = new Priority(DEFAULT_PRIORITY);
         incomeBracket = null; // Default to null for new persons
@@ -61,11 +64,19 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
+        occupation = personToCopy.getOccupation();
         age = personToCopy.getAge();
         priority = personToCopy.getPriority();
         incomeBracket = personToCopy.getIncomeBracket();
         lastContactedDate = personToCopy.getLastContactedDate();
         tags = new HashSet<>(personToCopy.getTags());
+    }
+    /**
+     * Sets the occupation for the person being built.
+     */
+    public PersonBuilder withOccupation(String occupation) {
+        this.occupation = new Occupation(occupation);
+        return this;
     }
 
     /**
@@ -140,8 +151,25 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Builds and returns a new {@link seedu.address.model.person.Person} using the current
+     * state of this builder.
+     *
+     * <p>Defaults used when fields are not modified:
+     * <ul>
+     *   <li>occupation: "Engineer"</li>
+     *   <li>age: "25"</li>
+     *   <li>priority: "NONE"</li>
+     *   <li>incomeBracket: null</li>
+     *   <li>lastContactedDate: empty string (no date)</li>
+     *   <li>tags: empty set</li>
+     * </ul>
+     *
+     * @return a newly constructed Person with the builder's current values.
+     */
     public Person build() {
-        return new Person(name, phone, email, address, tags, priority, age, incomeBracket, lastContactedDate);
+        return new Person(name, phone, email, address, occupation, tags, priority,
+        age, incomeBracket, lastContactedDate);
     }
 
 }
