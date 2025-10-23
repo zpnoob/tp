@@ -20,6 +20,8 @@ Class Name
 Class Phone
 Class Occupation
 Class Tag
+Class Priority
+Class IncomeBracket
 
 Class I #FFFFFF
 }
@@ -44,6 +46,8 @@ Person *--> Email
 Person *--> Address
 Person *--> Occupation
 Person *--> "*" Tag
+Person *--> Priority
+Person *--> IncomeBracket
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
