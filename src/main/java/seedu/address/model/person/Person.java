@@ -48,7 +48,6 @@ public class Person {
         this.tags.addAll(tags);
         this.lastContactedDate = lastContactedDate;
     }
-    // removed stray closing brace
 
     public Occupation getOccupation() {
         return occupation;

@@ -120,7 +120,7 @@ public class PersonBuilder {
     }
 
     /**
-     * Returns a new Person with the current builder state.
+     * Sets the {@code Priority} of the {@code Person} that we are building.
      */
     public PersonBuilder withPriority(String priority) {
         this.priority = new Priority(priority);
