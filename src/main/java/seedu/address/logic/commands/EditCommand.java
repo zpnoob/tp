@@ -7,12 +7,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OCCUPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +31,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
@@ -41,9 +42,7 @@ import seedu.address.model.tag.Tag;
  * Edits the details of an existing person in the address book.
  */
 public class EditCommand extends Command {
-
     public static final String COMMAND_WORD = "edit";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
@@ -52,6 +51,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + "[" + PREFIX_OCCUPATION + "OCCUPATION] "
             + "[" + PREFIX_AGE + "AGE] "
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_INCOME_BRACKET + "INCOME_BRACKET] "
@@ -78,7 +78,6 @@ public class EditCommand extends Command {
     public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
         requireNonNull(index);
         requireNonNull(editPersonDescriptor);
-
         this.index = index;
         this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
     }
@@ -91,7 +90,6 @@ public class EditCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
-
         Person personToEdit = lastShownList.get(index.getZeroBased());
 
         if (personToEdit.isDncTagged() && editPersonDescriptor.isAnyFieldEdited()) {
@@ -99,27 +97,28 @@ public class EditCommand extends Command {
         }
 
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
-
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
-
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS,
+            Messages.format(editedPerson)));
     }
 
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static Person createEditedPerson(Person personToEdit,
+            EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
+        Occupation updatedOccupation = editPersonDescriptor.getOccupation().orElse(personToEdit.getOccupation());
         Age updatedAge = editPersonDescriptor.getAge().orElse(personToEdit.getAge());
         Priority updatedPriority = editPersonDescriptor.getPriority().orElse(personToEdit.getPriority());
         IncomeBracket updatedIncomeBracket = editPersonDescriptor.getIncomeBracket()
@@ -129,7 +128,7 @@ public class EditCommand extends Command {
                 .orElse(personToEdit.getLastContactedDate());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
-                updatedTags, updatedPriority, updatedAge,
+                updatedOccupation, updatedTags, updatedPriority, updatedAge,
                 updatedIncomeBracket,
                 updatedLastContactedDate);
     }
@@ -167,6 +166,7 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
+        private Occupation occupation;
         private Age age;
         private Set<Tag> tags;
         private Priority priority;
@@ -184,6 +184,7 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
+            setOccupation(toCopy.occupation);
             setAge(toCopy.age);
             setPriority(toCopy.priority);
             setIncomeBracket(toCopy.incomeBracket);
@@ -195,7 +196,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, age, priority,
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, occupation, age, priority,
                 incomeBracket, tags, lastContactedDate);
         }
 
@@ -231,6 +232,22 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
+        public void setOccupation(Occupation occupation) {
+            this.occupation = occupation;
+        }
+
+        public Optional<Occupation> getOccupation() {
+            return Optional.ofNullable(occupation);
+        }
+
+        public void setTags(Set<Tag> tags) {
+            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        }
+
+        public Optional<Set<Tag>> getTags() {
+            return Optional.ofNullable(tags);
+        }
+
         public void setAge(Age age) {
             this.age = age;
         }
@@ -263,30 +280,12 @@ public class EditCommand extends Command {
             return Optional.ofNullable(lastContactedDate);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        }
-
         @Override
         public boolean equals(Object other) {
             if (other == this) {
                 return true;
             }
 
-            // instanceof handles nulls
             if (!(other instanceof EditPersonDescriptor)) {
                 return false;
             }
@@ -296,6 +295,7 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
+                    && Objects.equals(occupation, otherEditPersonDescriptor.occupation)
                     && Objects.equals(age, otherEditPersonDescriptor.age)
                     && Objects.equals(priority, otherEditPersonDescriptor.priority)
                     && Objects.equals(incomeBracket, otherEditPersonDescriptor.incomeBracket)
@@ -310,6 +310,7 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("address", address)
+                    .add("occupation", occupation)
                     .add("age", age)
                     .add("priority", priority)
                     .add("incomeBracket", incomeBracket)

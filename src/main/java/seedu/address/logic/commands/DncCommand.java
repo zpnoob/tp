@@ -61,6 +61,7 @@ public class DncCommand extends Command {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 Collections.singleton(tag),
                 personToEdit.getPriority(),
                 personToEdit.getAge(),

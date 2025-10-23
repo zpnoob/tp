@@ -18,5 +18,6 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> Occupation
 Person *--> LastContactedDate
 @enduml

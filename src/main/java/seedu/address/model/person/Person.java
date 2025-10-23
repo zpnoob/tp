@@ -24,6 +24,7 @@ public class Person {
 
     // Data fields
     private final Address address;
+    private final Occupation occupation;
     private final Set<Tag> tags = new HashSet<>();
     private final Priority priority;
     private final Age age;
@@ -33,19 +34,23 @@ public class Person {
     /**
      * Most fields must be present and not null. IncomeBracket can be null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Priority priority, Age age,
-                  IncomeBracket incomeBracket,
-            LastContactedDate lastContactedDate) {
-        requireAllNonNull(name, phone, email, address, tags, priority, lastContactedDate);
+    public Person(Name name, Phone phone, Email email, Address address, Occupation occupation, Set<Tag> tags,
+        Priority priority, Age age, IncomeBracket incomeBracket, LastContactedDate lastContactedDate) {
+        requireAllNonNull(name, phone, email, address, occupation, tags, priority, lastContactedDate);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.occupation = occupation;
         this.priority = priority;
         this.incomeBracket = incomeBracket; // Can be null
         this.age = age;
         this.tags.addAll(tags);
         this.lastContactedDate = lastContactedDate;
+    }
+
+    public Occupation getOccupation() {
+        return occupation;
     }
 
     public Name getName() {
@@ -97,8 +102,8 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getName().equals(getName())
-                && otherPerson.getPhone().equals(getPhone());
+            && otherPerson.getName().equals(getName())
+            && otherPerson.getPhone().equals(getPhone());
     }
 
     /**
@@ -121,6 +126,7 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
+                && occupation.equals(otherPerson.occupation)
                 && priority.equals(otherPerson.priority)
                 && Objects.equals(incomeBracket, otherPerson.incomeBracket)
                 && age.equals(otherPerson.age)
@@ -131,7 +137,8 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, priority, age, incomeBracket, tags, lastContactedDate);
+        return Objects.hash(name, phone, email, address, occupation, priority, age,
+        incomeBracket, tags, lastContactedDate);
     }
 
     @Override
@@ -141,6 +148,7 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
+                .add("occupations", occupation)
                 .add("tags", tags)
                 .add("priority", priority)
                 .add("incomeBracket", incomeBracket)

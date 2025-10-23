@@ -69,6 +69,7 @@ public class TagCommand extends Command {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 newTagsSet,
                 personToEdit.getPriority(),
                 personToEdit.getAge(),

@@ -62,12 +62,12 @@ public class PriorityCommand extends Command {
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
+                personToEdit.getOccupation(),
                 personToEdit.getTags(),
                 newPriority,
                 personToEdit.getAge(),
                 personToEdit.getIncomeBracket(),
                 personToEdit.getLastContactedDate());
-
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_PRIORITY_PERSON_SUCCESS,

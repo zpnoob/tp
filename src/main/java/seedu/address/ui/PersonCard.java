@@ -1,5 +1,5 @@
-package seedu.address.ui;
 
+package seedu.address.ui;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -9,6 +9,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Priority;
+
+
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -44,6 +46,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label priority;
     @FXML
+    private Label occupation;
+    @FXML
     private Label incomeBracket;
     @FXML
     private Label lastContactedDate;
@@ -63,6 +67,7 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
+        occupation.setText(person.getOccupation().toString());
         age.setText("Age: " + person.getAge().value);
         priority.setText("Priority: " + person.getPriority().getValue());
         lastContactedDate.setText("Last Contacted: " + person.getLastContactedDate().toDisplayString());

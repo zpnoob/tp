@@ -208,6 +208,7 @@ public class DncCommandTest {
                 person.getPhone(),
                 person.getEmail(),
                 person.getAddress(),
+                person.getOccupation(),
                 Collections.singleton(new DncTag()),
                 person.getPriority(),
                 person.getAge(),

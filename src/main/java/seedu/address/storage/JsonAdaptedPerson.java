@@ -16,6 +16,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
@@ -33,6 +34,7 @@ class JsonAdaptedPerson {
     private final String phone;
     private final String email;
     private final String address;
+    private final String occupation;
     private final String age;
     private final String priority;
     private final String incomeBracket;
@@ -45,6 +47,7 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
+            @JsonProperty("occupation") String occupation,
             @JsonProperty("age") String age, @JsonProperty("priority") String priority,
             @JsonProperty("incomeBracket") String incomeBracket,
             @JsonProperty("lastContactedDate") String lastContactedDate,
@@ -53,6 +56,7 @@ class JsonAdaptedPerson {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.occupation = occupation;
         this.age = age;
         this.priority = priority;
         this.incomeBracket = incomeBracket;
@@ -70,14 +74,15 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        occupation = source.getOccupation().toString();
         age = source.getAge().toString();
         priority = source.getPriority().toString();
         // Store income bracket as the enum name for consistent serialization
         incomeBracket = source.getIncomeBracket() != null ? source.getIncomeBracket().value.name() : null;
         lastContactedDate = source.getLastContactedDate().toString();
         tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
+            .map(JsonAdaptedTag::new)
+            .collect(Collectors.toList()));
     }
 
     /**
@@ -174,9 +179,9 @@ class JsonAdaptedPerson {
         }
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelPriority, modelAge,
-                modelIncomeBracket,
-                modelLastContactedDate);
+        Occupation modelOccupation = new Occupation(occupation);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority,
+        modelAge, modelIncomeBracket, modelLastContactedDate);
     }
 
 }
