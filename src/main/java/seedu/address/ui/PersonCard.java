@@ -69,7 +69,14 @@ public class PersonCard extends UiPart<Region> {
         setFieldVisibility(email, person.getEmail().value, null);
         setFieldVisibility(occupation, person.getOccupation().toString(), "Occupation: ");
         setFieldVisibility(age, person.getAge().value, "Age: ");
-        setFieldVisibility(lastContactedDate, person.getLastContactedDate().toDisplayString(), "Last Contacted: ");
+
+        // Handle last contacted date - hide if N/A
+        String lastContactedValue = person.getLastContactedDate().toDisplayString();
+        if (lastContactedValue.equals("N/A")) {
+            hideField(lastContactedDate);
+        } else {
+            lastContactedDate.setText("Last Contacted: " + lastContactedValue);
+        }
 
         // Handle priority with styling
         if (isFieldEmpty(person.getPriority().getValue()) || person.getPriority().getValue().equalsIgnoreCase("NONE")) {
