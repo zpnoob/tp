@@ -1,4 +1,3 @@
-
 package seedu.address.ui;
 import java.util.Comparator;
 
@@ -64,24 +63,61 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
-        occupation.setText(person.getOccupation().toString());
-        age.setText("Age: " + person.getAge().value);
-        priority.setText("Priority: " + person.getPriority().getValue());
-        lastContactedDate.setText("Last Contacted: " + person.getLastContactedDate().toDisplayString());
-        setPriorityStyle(person.getPriority());
 
+        setFieldVisibility(phone, person.getPhone().value, null);
+        setFieldVisibility(address, person.getAddress().value, null);
+        setFieldVisibility(email, person.getEmail().value, null);
+        setFieldVisibility(occupation, person.getOccupation().toString(), "Occupation: ");
+        setFieldVisibility(age, person.getAge().value, "Age: ");
+        setFieldVisibility(lastContactedDate, person.getLastContactedDate().toDisplayString(), "Last Contacted: ");
+
+        // Handle priority with styling
+        if (isFieldEmpty(person.getPriority().getValue()) || person.getPriority().getValue().equalsIgnoreCase("NONE")) {
+            hideField(priority);
+        } else {
+            priority.setText("Priority: " + person.getPriority().getValue());
+            setPriorityStyle(person.getPriority());
+        }
+
+        // Handle tags
         if (person.getTags().isEmpty()) {
             tags.setManaged(false);
             tags.setVisible(false);
         } else {
-            setIncomeBracketText(person);
             person.getTags().stream()
                     .sorted(Comparator.comparing(tag -> tag.tagName))
                     .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         }
+
+        // Handle income bracket
+        setIncomeBracketText(person);
+    }
+
+    /**
+     * Sets the visibility of a field based on whether its value is empty.
+     */
+    private void setFieldVisibility(Label label, String value, String prefix) {
+        if (isFieldEmpty(value)) {
+            hideField(label);
+        } else {
+            String displayText = (prefix != null) ? prefix + value : value;
+            label.setText(displayText);
+        }
+    }
+
+    /**
+     * Hides a field by setting both managed and visible to false.
+     */
+    private void hideField(Label label) {
+        label.setManaged(false);
+        label.setVisible(false);
+    }
+
+    /**
+     * Checks if a field value is empty or null.
+     */
+    private boolean isFieldEmpty(String value) {
+        return value == null || value.trim().isEmpty();
     }
 
     /**
@@ -112,10 +148,7 @@ public class PersonCard extends UiPart<Region> {
      */
     private void setIncomeBracketText(Person person) {
         if (person.getIncomeBracket() == null) {
-            this.incomeBracket.setText("Income Bracket: Not Set");
-            this.incomeBracket.getStyleClass().clear();
-            this.incomeBracket.getStyleClass().add("income-bracket-label");
-            this.incomeBracket.getStyleClass().add("income-bracket-not-set");
+            hideField(this.incomeBracket);
         } else {
             this.incomeBracket.setText("Income Bracket: " + person.getIncomeBracket().getValue());
             this.incomeBracket.getStyleClass().clear();
