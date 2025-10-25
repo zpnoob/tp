@@ -49,6 +49,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
+        //  Verify that no prefix appears more than once except for tags
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                 PREFIX_OCCUPATION, PREFIX_PRIORITY, PREFIX_AGE, PREFIX_INCOME_BRACKET,
                 PREFIX_LAST_CONTACTED_DATE);
