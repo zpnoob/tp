@@ -109,6 +109,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (tags.isEmpty()) {
             return Optional.empty();
         }
+
+        // Special handling: "t/" with no value clears all tags,
+        // while omitting "t/" keeps existing tags
         Collection<String> tagSet = tags.size() == 1 && tags.contains("")
             ? Collections.emptySet()
             : tags;
