@@ -13,8 +13,8 @@ import java.util.Objects;
  */
 public class LastContactedDate {
     public static final String MESSAGE_CONSTRAINTS =
-            "Last contacted date should be in YYYY-MM-DD format (e.g., 2025-09-20) "
-            + "and should be a valid calendar date.";
+            "Last contacted date should be in YYYY-MM-DD format (e.g., 2025-09-20), "
+            + "should be a valid calendar date, and cannot be a future date.";
 
     // Using ISO standard YYYY-MM-DD
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
@@ -38,6 +38,7 @@ public class LastContactedDate {
 
     /**
      * Returns true if a given string is a valid date in YYYY-MM-DD format, or an empty string.
+     * The date must not be in the future.
      */
     public static boolean isValidLastContactedDate(String test) {
         if (test.isEmpty()) {
@@ -47,6 +48,13 @@ public class LastContactedDate {
             LocalDate parsed = LocalDate.parse(test, FORMATTER);
             assert parsed != null;
             assert parsed.toString().equals(test) : "Parsed date normalized does not match input";
+
+            // Check that the date is not in the future
+            LocalDate today = LocalDate.now();
+            if (parsed.isAfter(today)) {
+                return false;
+            }
+
             return true;
         } catch (DateTimeParseException e) {
             return false;
