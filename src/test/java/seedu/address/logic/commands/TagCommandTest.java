@@ -52,11 +52,11 @@ public class TagCommandTest {
                     .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
                                         editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                                           + "; Email: " + editedPerson.getEmail()
+                                           + "; Address: " + editedPerson.getAddress()
                                             + "; Occupation: " + editedPerson.getOccupation()
                                             + "; Age: " + editedPerson.getAge()
                                             + "; Priority: " + editedPerson.getPriority()
-                                           + "; Email: " + editedPerson.getEmail()
-                                           + "; Address: " + editedPerson.getAddress()
                                            + "; Income: " + editedPerson.getIncomeBracket()
                                            + "; Last Contacted: " + editedPerson.getLastContactedDate()
                                                         .toDisplayString()
