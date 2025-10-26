@@ -36,7 +36,9 @@ public class PersonUtil {
         sb.append(PREFIX_PHONE + person.getPhone().value + " ");
         sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
         sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
-        sb.append(PREFIX_OCCUPATION + person.getOccupation().toString() + " ");
+        if (!person.getOccupation().toString().isEmpty()) {
+            sb.append(PREFIX_OCCUPATION + person.getOccupation().toString() + " ");
+        }
         sb.append(PREFIX_AGE + person.getAge().value + " ");
         sb.append(seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE
             + person.getLastContactedDate().toString() + " ");
@@ -55,7 +57,16 @@ public class PersonUtil {
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
-        descriptor.getOccupation().ifPresent(occ -> sb.append(PREFIX_OCCUPATION).append(occ.toString()).append(" "));
+        // For edit descriptors, when occupation is present we must include the prefix.
+        // If the occupation is empty it represents clearing the occupation, so we
+        // append the prefix with no value (e.g. "o/") to indicate this to the parser.
+        descriptor.getOccupation().ifPresent(occ -> {
+            sb.append(PREFIX_OCCUPATION);
+            if (!occ.toString().isEmpty()) {
+                sb.append(occ.toString());
+            }
+            sb.append(" ");
+        });
         descriptor.getPriority().ifPresent(pr -> sb.append(seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY)
                 .append(pr.getValue()).append(" "));
         descriptor.getAge().ifPresent(age -> sb.append(PREFIX_AGE).append(age.value).append(" "));

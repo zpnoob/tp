@@ -66,7 +66,7 @@ public class AddCommandParser implements Parser<AddCommand> {
                 argMultimap.getValue(PREFIX_PRIORITY).orElse(Priority.Level.NONE.toString()));
         Occupation occupation = argMultimap.getValue(PREFIX_OCCUPATION).isPresent()
                 ? ParserUtil.parseOccupation(argMultimap.getValue(PREFIX_OCCUPATION).get())
-                : new Occupation("Engineer");
+                : new Occupation("");
         // Default income bracket for new persons is null
         IncomeBracket incomeBracket = null;
         LastContactedDate lastContactedDate = argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).isPresent()

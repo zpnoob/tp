@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Occupation {
 
-    public static final String MESSAGE_CONSTRAINTS = "Occupation can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Occupation can take any values.";
 
     /*
      * The first character of the occupation must not be a whitespace,
@@ -26,8 +26,14 @@ public class Occupation {
      */
     public Occupation(String occupation) {
         requireNonNull(occupation);
-        checkArgument(isValidOccupation(occupation), MESSAGE_CONSTRAINTS);
-        value = occupation;
+        String trimmed = occupation.trim();
+        // Allow empty occupation as a valid default value (represents blank/no occupation)
+        if (trimmed.isEmpty()) {
+            value = "";
+            return;
+        }
+        checkArgument(isValidOccupation(trimmed), MESSAGE_CONSTRAINTS);
+        value = trimmed;
     }
 
     /**
