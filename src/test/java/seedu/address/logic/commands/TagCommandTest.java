@@ -57,6 +57,7 @@ public class TagCommandTest {
                                             + "; Priority: " + editedPerson.getPriority()
                                            + "; Email: " + editedPerson.getEmail()
                                            + "; Address: " + editedPerson.getAddress()
+                                           + "; Income: " + editedPerson.getIncomeBracket()
                                            + "; Last Contacted: " + editedPerson.getLastContactedDate()
                                                         .toDisplayString()
                                            + "; Tags: " + tagsString);
