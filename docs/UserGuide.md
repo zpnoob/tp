@@ -82,10 +82,11 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [pr/PRIORITY] [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [t/TAG]…​`
 
 * `PRIORITY` must be one of: `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
-* Email, address, occupation, age, priority and tag fields are optional, only name and phone fields are required when adding a new contact
+* `LAST_CONTACTED` must not be a future date. Format: `DD-MM-YYYY` e.g. `25-12-2023`
+* Email, address, occupation, age, last contacted, priority and tag fields are optional, only name and phone fields are required when adding a new contact
 
 <box type="tip" seamless>
 
@@ -114,7 +115,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [pr/PRIORITY] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [t/TAG]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
