@@ -82,19 +82,20 @@ public class Messages {
         builder.append(person.getName())
             .append("; Phone: ")
             .append(person.getPhone());
-        if (!person.getOccupation().toString().isEmpty()) {
-            builder.append("; Occupation: ").append(person.getOccupation());
-        }
-        builder.append("; Age: ")
-            .append(person.getAge())
-            .append("; Priority: ")
-            .append(person.getPriority());
         if (!person.getEmail().toString().isEmpty()) {
             builder.append("; Email: ").append(person.getEmail());
         }
         if (!person.getAddress().toString().isEmpty()) {
             builder.append("; Address: ").append(person.getAddress());
         }
+        if (!person.getOccupation().toString().isEmpty()) {
+            builder.append("; Occupation: ").append(person.getOccupation());
+        }
+        if (!person.getAge().toString().isEmpty()) {
+            builder.append("; Age: ").append(person.getAge());
+        }
+        builder.append("; Priority: ")
+            .append(person.getPriority());
         if (person.getIncomeBracket() != null) {
             builder.append("; Income: ").append(person.getIncomeBracket());
         }
