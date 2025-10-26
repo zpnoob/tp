@@ -4,6 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OCCUPATION;
@@ -41,14 +42,18 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE,
                 PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_OCCUPATION, PREFIX_TAG, PREFIX_PRIORITY,
-                PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE);
+                PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE, PREFIX_INCOME_BRACKET);
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
+<<<<<<< HEAD
                 PREFIX_OCCUPATION, PREFIX_PRIORITY, PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE);
+=======
+                PREFIX_PRIORITY, PREFIX_AGE, PREFIX_LAST_CONTACTED_DATE, PREFIX_INCOME_BRACKET);
+>>>>>>> upstream
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         // make email and address optional fields for add command
@@ -66,9 +71,16 @@ public class AddCommandParser implements Parser<AddCommand> {
                 argMultimap.getValue(PREFIX_PRIORITY).orElse(Priority.Level.NONE.toString()));
         Occupation occupation = argMultimap.getValue(PREFIX_OCCUPATION).isPresent()
                 ? ParserUtil.parseOccupation(argMultimap.getValue(PREFIX_OCCUPATION).get())
+<<<<<<< HEAD
                 : new Occupation("");
         // Default income bracket for new persons is null
         IncomeBracket incomeBracket = null;
+=======
+                : new Occupation("Engineer");
+        IncomeBracket incomeBracket = argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent()
+                ? ParserUtil.parseIncomeBracket(argMultimap.getValue(PREFIX_INCOME_BRACKET).get())
+                : null;
+>>>>>>> upstream
         LastContactedDate lastContactedDate = argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).isPresent()
                 ? ParserUtil.parseLastContactedDate(argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).get())
                 : new LastContactedDate("");
