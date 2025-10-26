@@ -72,6 +72,10 @@ public class ArgumentMultimap {
                 .toArray(Prefix[]::new);
 
         if (duplicatedPrefixes.length > 0) {
+            if (duplicatedPrefixes.length == 1 && duplicatedPrefixes[0].toString().equals("o/")) {
+                throw new ParseException("Only one o/ (occupation) input is allowed. "
+                        + "Remove the extra occurrences and try again.");
+            }
             throw new ParseException(Messages.getErrorMessageForDuplicatePrefixes(duplicatedPrefixes));
         }
     }
