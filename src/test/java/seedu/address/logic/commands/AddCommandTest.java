@@ -54,6 +54,21 @@ public class AddCommandTest {
     }
 
     @Test
+    public void execute_duplicatePhone_throwsCommandException() {
+        Person validPerson = new PersonBuilder().withPhone("12345678").build();
+        Person personWithSamePhone = new PersonBuilder()
+                .withName("Different Name")
+                .withPhone("12345678")
+                .build();
+        AddCommand addCommand = new AddCommand(personWithSamePhone);
+        ModelStubWithPerson modelStub = new ModelStubWithPerson(validPerson);
+
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PHONE, () -> addCommand.execute(modelStub));
+    }
+
+
+
+    @Test
     public void equals() {
         Person alice = new PersonBuilder().withName("Alice").build();
         Person bob = new PersonBuilder().withName("Bob").build();
@@ -139,6 +154,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasPersonWithPhone(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -175,6 +195,13 @@ public class AddCommandTest {
             requireNonNull(person);
             return this.person.isSamePerson(person);
         }
+
+        @Override
+        public boolean hasPersonWithPhone(Person person) {
+            requireNonNull(person);
+            return this.person.hasSamePhone(person);
+        }
+
     }
 
     /**
@@ -188,6 +215,13 @@ public class AddCommandTest {
             requireNonNull(person);
             return personsAdded.stream().anyMatch(person::isSamePerson);
         }
+
+        @Override
+        public boolean hasPersonWithPhone(Person person) {
+            requireNonNull(person);
+            return personsAdded.stream().anyMatch(p -> p.hasSamePhone(person));
+        }
+
 
         @Override
         public void addPerson(Person person) {
