@@ -70,4 +70,46 @@ public class MessagesTest {
         assertTrue(formatted.contains("Tags: "));
         assertTrue(formatted.contains("friend") && formatted.contains("colleague"));
     }
+
+    @Test
+    public void getErrorMessageForDuplicatePrefixes_priorityPrefix_returnsFriendlyName() {
+        Prefix priority = new Prefix("pr/");
+        String message = Messages.getErrorMessageForDuplicatePrefixes(priority);
+
+        assertTrue(message.contains("pr/ (priority)"));
+        assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
+    }
+
+    @Test
+    public void getErrorMessageForDuplicatePrefixes_agePrefix_returnsFriendlyName() {
+        Prefix age = new Prefix("age/");
+        String message = Messages.getErrorMessageForDuplicatePrefixes(age);
+
+        assertTrue(message.contains("age/ (age)"));
+        assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
+    }
+
+    @Test
+    public void getErrorMessageForDuplicatePrefixes_unknownPrefix_returnsDefaultPrefix() {
+        Prefix unknown = new Prefix("xyz/");
+        String message = Messages.getErrorMessageForDuplicatePrefixes(unknown);
+
+        assertTrue(message.contains("xyz/"));
+        assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
+    }
+
+    @Test
+    public void getErrorMessageForDuplicatePrefixes_multipleIncludingPriorityAndAge_containsAllFriendlyNames() {
+        Prefix priority = new Prefix("pr/");
+        Prefix age = new Prefix("age/");
+        Prefix occupation = new Prefix("o/");
+
+        String message = Messages.getErrorMessageForDuplicatePrefixes(priority, age, occupation);
+
+        assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
+        assertTrue(message.contains("pr/ (priority)"));
+        assertTrue(message.contains("age/ (age)"));
+        assertTrue(message.contains("o/ (occupation)"));
+        assertTrue(message.endsWith(". Remove duplicate entries and try again."));
+    }
 }
