@@ -294,5 +294,6 @@ Action     | Format, Examples
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [pr/PRIORITY] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
+**Tag**    | `tag INDEX t/tagname` <br> e.g., `tag 1 t/interested`
 **Priority** | `priority INDEX PRIORITY`<br> e.g., `priority 1 HIGH`
 **Help**   | `help`
