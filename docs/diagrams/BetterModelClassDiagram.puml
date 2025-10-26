@@ -21,4 +21,5 @@ Person *--> Address
 Person *--> Age
 Person *--> Occupation
 Person *--> LastContactedDate
+Person *--> IncomeBracket
 @enduml
