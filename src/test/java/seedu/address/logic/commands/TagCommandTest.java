@@ -12,6 +12,7 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -46,8 +47,19 @@ public class TagCommandTest {
                 personToEdit.getIncomeBracket(),
                 personToEdit.getLastContactedDate());
 
+        String tagsString = editedPerson.getTags().stream()
+                    .map(Tag::toString)
+                    .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
-                                        Messages.format(editedPerson));
+                                        editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
+                                            + "; Occupation: " + editedPerson.getOccupation()
+                                            + "; Age: " + editedPerson.getAge()
+                                            + "; Priority: " + editedPerson.getPriority()
+                                           + "; Email: " + editedPerson.getEmail()
+                                           + "; Address: " + editedPerson.getAddress()
+                                           + "; Last Contacted: " + editedPerson.getLastContactedDate()
+                                                        .toDisplayString()
+                                           + "; Tags: " + tagsString);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.setPerson(personToEdit, editedPerson);
