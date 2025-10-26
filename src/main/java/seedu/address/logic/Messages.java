@@ -69,7 +69,8 @@ public class Messages {
                 .collect(Collectors.toSet());
 
         String joined = String.join(", ", duplicateFields);
-        return String.format("Please specify each of the following fields at most once: %s. Remove duplicate entries and try again.",
+        return String.format("Please specify each of the following fields at most once:"
+        + "%s. Remove duplicate entries and try again.",
                 joined);
     }
 
