@@ -82,11 +82,10 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS o/OCCUPATION [pr/PRIORITY] [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [pr/PRIORITY] [t/TAG]…​`
 
-* `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
-* If priority is not specified, it defaults to `NONE`
-* Email, address and priority fields are optional, only name and phone fields are required when adding a new contact
+* `PRIORITY` must be one of: `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
+* Email, address, occupation, age, priority and tag fields are optional, only name and phone fields are required when adding a new contact
 
 <box type="tip" seamless>
 
@@ -101,8 +100,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS o/OCCUPATION [pr/PRIORITY] 
 
 Examples:
 * `add n/John Doe p/98765432`
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 o/Financial Advicer t/criminal pr/HIGH`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 age/28`
+* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 o/Financial Adviser t/criminal pr/HIGH`
 * `add n/Jane Smith p/87654321 e/jane@example.com a/456 Main St pr/MEDIUM t/colleague`
 
 ### Listing all persons : `list`
@@ -115,7 +114,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [pr/PRIORITY] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [pr/PRIORITY] [t/TAG]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
