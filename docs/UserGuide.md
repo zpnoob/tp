@@ -187,6 +187,33 @@ Examples:
 **Tip:** Use the `tag` command for quick tag changes, or the `edit` command when changing multiple fields at once.
 </box>
 
+### Marking a contact as Do Not Call: `dnc`
+
+Marks a contact as Do Not Call (DNC) in the address book.
+
+Format: `dnc INDEX`
+
+* Marks the person at the specified `INDEX` as Do Not Call.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* A special "Do Not Call" tag (displayed in red) will be applied to the contact.
+* Once a contact is marked as DNC, **none of its fields can be edited** through any commands (including `edit`, `tag`, `priority`, etc.).
+* The DNC status **cannot be removed** from a contact.
+
+<box type="warning" seamless>
+
+**Warning:** Once a contact is marked as DNC, you cannot edit any of their information.
+</box>
+
+Examples:
+* `dnc 1` Marks the 1st person as Do Not Call.
+* `dnc 3` Marks the 3rd person as Do Not Call.
+
+<box type="tip" seamless>
+
+**Tip:** If a contact was wrongly assigned as DNC, delete the contact and re-add them to the system.
+</box>
+
 ### Editing the priority: `priority`
 
 Changes the priority of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
@@ -263,6 +290,7 @@ Action     | Format, Examples
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS o/OCCUPATION [pr/PRIORITY] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pr/HIGH t/friend t/colleague`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
+**DNC**    | `dnc INDEX`<br> e.g., `dnc 1`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [pr/PRIORITY] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
