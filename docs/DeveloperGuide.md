@@ -325,32 +325,33 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `InsuraBook` and the **Actor** is the `user`, unless specified otherwise)
+#### UC1 - Delete a Person
+<box>
+Software System: InsuraBook<br>
+Use case: UC1 - Delete a Person<br>
+Actor: User<br>
 
-**Use case: Delete a person**
+<pre>
+MSS: 
+   1.  User requests to list persons
+   2.  AddressBook shows a list of persons
+   3.  User requests to delete a specific person in the list
+   4.  AddressBook deletes the person
+   Use case ends.
 
-**MSS**
+Extensions:
+   2a. The list is empty.
+   Use case ends.
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
+   3a. The given index is invalid.
+      3a1. AddressBook shows an error message.
       Use case resumes at step 2.
+</pre>
+</box>
 
-*{To be updated}*
+<box type="warning" light>
+   This section is still currently being updated. More to come! 
+</box>
 
 ### Non-Functional Requirements
 
@@ -358,7 +359,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-*{More to be added}*
+<box type="warning" light>
+   This section is still currently being updated. More to come! 
+</box>
 
 ### Glossary
 
@@ -379,43 +382,46 @@ testers are expected to do more *exploratory* testing.
 </box>
 
 ### Launch and shutdown
+<box>
+<md>
 
-1. Initial launch
+   1. Initial launch
+      1. Download the jar file and copy into an empty folder
+      2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Saving window preferences
+      1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+      2. Re-launch the app by double-clicking the jar file.
+         Expected: The most recent window size and location is retained.
+   3. _{ more test cases …​ }_
+</md>
+</box>
 
-   1. Download the jar file and copy into an empty folder
-
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
-
-1. Saving window preferences
-
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
-
-1. _{ more test cases …​ }_
 
 ### Deleting a person
 
-1. Deleting a person while all persons are being shown
+<box>
+<md>
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Deleting a person while all persons are being shown
+      1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+      2. Test case: `delete 1`
+         Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      3. Test case: `delete 0`
+         Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)
+         Expected: Similar to previous.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
+   2. _{ more test cases …​ }_
+</md>
+</box>
 
 ### Saving data
 
+<box>
+<md>
+
 1. Dealing with missing/corrupted data files
-
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+2. _{ more test cases …​ }_
+</md>
+</box>
