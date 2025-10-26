@@ -27,6 +27,7 @@ public class Occupation {
     public Occupation(String occupation) {
         requireNonNull(occupation);
         String trimmed = occupation.trim();
+
         if (trimmed.isEmpty()) {
             value = "";
             return;

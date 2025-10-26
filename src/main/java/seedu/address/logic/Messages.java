@@ -95,6 +95,9 @@ public class Messages {
         if (!person.getAddress().toString().isEmpty()) {
             builder.append("; Address: ").append(person.getAddress());
         }
+        if (person.getIncomeBracket() != null) {
+            builder.append("; Income: ").append(person.getIncomeBracket());
+        }
         if (!person.getLastContactedDate().toDisplayString().isEmpty()
                 && !person.getLastContactedDate().toDisplayString().equals("N/A")) {
             builder.append("; Last Contacted: ").append(person.getLastContactedDate().toDisplayString());
