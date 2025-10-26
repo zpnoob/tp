@@ -57,9 +57,6 @@ public class PersonUtil {
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
-        // For edit descriptors, when occupation is present we must include the prefix.
-        // If the occupation is empty it represents clearing the occupation, so we
-        // append the prefix with no value (e.g. "o/") to indicate this to the parser.
         descriptor.getOccupation().ifPresent(occ -> {
             sb.append(PREFIX_OCCUPATION);
             if (!occ.toString().isEmpty()) {
