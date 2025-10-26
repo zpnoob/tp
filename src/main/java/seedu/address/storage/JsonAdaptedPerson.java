@@ -179,7 +179,7 @@ class JsonAdaptedPerson {
         }
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        Occupation modelOccupation = new Occupation(occupation);
+        Occupation modelOccupation = new Occupation(occupation == null ? "" : occupation);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelOccupation, modelTags, modelPriority,
         modelAge, modelIncomeBracket, modelLastContactedDate);
     }

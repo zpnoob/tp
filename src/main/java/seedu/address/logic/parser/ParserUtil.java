@@ -34,6 +34,12 @@ public class ParserUtil {
     public static Occupation parseOccupation(String occupation) throws ParseException {
         requireNonNull(occupation);
         String trimmedOccupation = occupation.trim();
+        // Allow an explicit empty occupation (e.g. user types "o/" with no value) to be
+        // interpreted as a blank occupation. This is useful for edit commands that
+        // clear the occupation.
+        if (trimmedOccupation.isEmpty()) {
+            return new Occupation("");
+        }
         if (!Occupation.isValidOccupation(trimmedOccupation)) {
             throw new ParseException(Occupation.MESSAGE_CONSTRAINTS);
         }

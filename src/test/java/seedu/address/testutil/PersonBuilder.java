@@ -20,14 +20,14 @@ import seedu.address.model.util.SampleDataUtil;
  * A utility class to help with building Person objects for tests.
  */
 public class PersonBuilder {
-    public static final String DEFAULT_OCCUPATION = "Engineer";
+    public static final String DEFAULT_OCCUPATION = "";
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_AGE = "25";
     public static final String DEFAULT_PRIORITY = "NONE";
-    public static final String DEFAULT_LAST_CONTACTED_DATE = ""; // Empty string for no date set
+    public static final String DEFAULT_LAST_CONTACTED_DATE = "";
 
     private Name name;
     private Phone phone;
