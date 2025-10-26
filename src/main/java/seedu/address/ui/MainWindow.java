@@ -189,7 +189,6 @@ public class MainWindow extends UiPart<Stage> {
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
-            // Log the feedback message so we can see exactly what is shown in the UI result display.
             logger.info("Feedback to user: " + e.getMessage());
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;

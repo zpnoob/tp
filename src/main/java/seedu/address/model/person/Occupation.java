@@ -27,7 +27,6 @@ public class Occupation {
     public Occupation(String occupation) {
         requireNonNull(occupation);
         String trimmed = occupation.trim();
-        // Allow empty occupation as a valid default value (represents blank/no occupation)
         if (trimmed.isEmpty()) {
             value = "";
             return;

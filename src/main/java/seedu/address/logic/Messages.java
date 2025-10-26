@@ -17,7 +17,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
-            "Multiple values specified for the following single-valued field(s): ";
+        "Multiple values specified for the following single-valued field(s): ";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -25,10 +25,52 @@ public class Messages {
     public static String getErrorMessageForDuplicatePrefixes(Prefix... duplicatePrefixes) {
         assert duplicatePrefixes.length > 0;
 
-        Set<String> duplicateFields =
-                Stream.of(duplicatePrefixes).map(Prefix::toString).collect(Collectors.toSet());
+        if (duplicatePrefixes.length == 1 && duplicatePrefixes[0].toString().equals("o/")) {
+            return "Only one o/ (occupation) input is allowed. Remove the extra occurrences and try again.";
+        }
 
-        return MESSAGE_DUPLICATE_FIELDS + String.join(" ", duplicateFields);
+        Set<String> duplicateFields = Stream.of(duplicatePrefixes)
+                .map(prefix -> {
+                    String p = prefix.toString();
+                    String friendly;
+                    switch (p) {
+                    case "n/":
+                        friendly = "name";
+                        break;
+                    case "p/":
+                        friendly = "phone";
+                        break;
+                    case "e/":
+                        friendly = "email";
+                        break;
+                    case "a/":
+                        friendly = "address";
+                        break;
+                    case "o/":
+                        friendly = "occupation";
+                        break;
+                    case "pr/":
+                        friendly = "priority";
+                        break;
+                    case "age/":
+                        friendly = "age";
+                        break;
+                    case "i/":
+                        friendly = "income bracket";
+                        break;
+                    case "lc/":
+                        friendly = "last contacted date";
+                        break;
+                    default:
+                        friendly = p;
+                    }
+                    return String.format("%s (%s)", p, friendly);
+                })
+                .collect(Collectors.toSet());
+
+        String joined = String.join(", ", duplicateFields);
+        return String.format("Please specify each of the following fields at most once: %s. Remove duplicate entries and try again.",
+                joined);
     }
 
     /**
