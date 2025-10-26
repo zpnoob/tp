@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Objects;
@@ -18,6 +19,9 @@ public class LastContactedDate {
 
     // Using ISO standard YYYY-MM-DD
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
+
+    // Using Singapore timezone for consistent date validation
+    private static final ZoneId SINGAPORE_ZONE = ZoneId.of("Asia/Singapore");
 
     // Null or empty string to represent no date set as its optional at the start
     public final String value;
@@ -38,7 +42,7 @@ public class LastContactedDate {
 
     /**
      * Returns true if a given string is a valid date in YYYY-MM-DD format, or an empty string.
-     * The date must not be in the future.
+     * The date must not be in the future (based on Singapore timezone).
      */
     public static boolean isValidLastContactedDate(String test) {
         if (test.isEmpty()) {
@@ -49,8 +53,8 @@ public class LastContactedDate {
             assert parsed != null;
             assert parsed.toString().equals(test) : "Parsed date normalized does not match input";
 
-            // Check that the date is not in the future
-            LocalDate today = LocalDate.now();
+            // Check that the date is not in the future (using Singapore timezone)
+            LocalDate today = LocalDate.now(SINGAPORE_ZONE);
             if (parsed.isAfter(today)) {
                 return false;
             }

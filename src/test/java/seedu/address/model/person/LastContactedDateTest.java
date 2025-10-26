@@ -5,11 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
 
 public class LastContactedDateTest {
+
+    private static final ZoneId SINGAPORE_ZONE = ZoneId.of("Asia/Singapore");
 
     @Test
     public void constructor_null_throwsNullPointerException() {
@@ -29,10 +32,10 @@ public class LastContactedDateTest {
     @Test
     public void constructor_futureDate_throwsIllegalArgumentException() {
         // Future dates should be rejected
-        LocalDate tomorrow = LocalDate.now().plusDays(1);
-        LocalDate nextWeek = LocalDate.now().plusWeeks(1);
-        LocalDate nextMonth = LocalDate.now().plusMonths(1);
-        LocalDate nextYear = LocalDate.now().plusYears(1);
+        LocalDate tomorrow = LocalDate.now(SINGAPORE_ZONE).plusDays(1);
+        LocalDate nextWeek = LocalDate.now(SINGAPORE_ZONE).plusWeeks(1);
+        LocalDate nextMonth = LocalDate.now(SINGAPORE_ZONE).plusMonths(1);
+        LocalDate nextYear = LocalDate.now(SINGAPORE_ZONE).plusYears(1);
 
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -64,11 +67,11 @@ public class LastContactedDateTest {
         assertFalse(LastContactedDate.isValidLastContactedDate("2023-02-29")); // Feb 29 in non-leap year
 
         // future dates - should all be invalid
-        LocalDate tomorrow = LocalDate.now().plusDays(1);
-        LocalDate nextWeek = LocalDate.now().plusWeeks(1);
-        LocalDate nextMonth = LocalDate.now().plusMonths(1);
-        LocalDate nextYear = LocalDate.now().plusYears(1);
-        LocalDate farFuture = LocalDate.now().plusYears(10);
+        LocalDate tomorrow = LocalDate.now(SINGAPORE_ZONE).plusDays(1);
+        LocalDate nextWeek = LocalDate.now(SINGAPORE_ZONE).plusWeeks(1);
+        LocalDate nextMonth = LocalDate.now(SINGAPORE_ZONE).plusMonths(1);
+        LocalDate nextYear = LocalDate.now(SINGAPORE_ZONE).plusYears(1);
+        LocalDate farFuture = LocalDate.now(SINGAPORE_ZONE).plusYears(10);
 
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
 
@@ -79,11 +82,11 @@ public class LastContactedDateTest {
         assertFalse(LastContactedDate.isValidLastContactedDate(farFuture.format(formatter)));
 
         // valid dates - today and past dates
-        LocalDate today = LocalDate.now();
-        LocalDate yesterday = LocalDate.now().minusDays(1);
-        LocalDate lastWeek = LocalDate.now().minusWeeks(1);
-        LocalDate lastMonth = LocalDate.now().minusMonths(1);
-        LocalDate lastYear = LocalDate.now().minusYears(1);
+        LocalDate today = LocalDate.now(SINGAPORE_ZONE);
+        LocalDate yesterday = LocalDate.now(SINGAPORE_ZONE).minusDays(1);
+        LocalDate lastWeek = LocalDate.now(SINGAPORE_ZONE).minusWeeks(1);
+        LocalDate lastMonth = LocalDate.now(SINGAPORE_ZONE).minusMonths(1);
+        LocalDate lastYear = LocalDate.now(SINGAPORE_ZONE).minusYears(1);
 
         assertTrue(LastContactedDate.isValidLastContactedDate(today.format(formatter))); // today is valid
         assertTrue(LastContactedDate.isValidLastContactedDate(yesterday.format(formatter)));
@@ -131,4 +134,3 @@ public class LastContactedDateTest {
         assertTrue(emptyDate1.equals(emptyDate2));
     }
 }
-
