@@ -287,13 +287,13 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [i/INCOME_BRACKET] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pr/HIGH t/friend t/colleague`
+**Add**    | `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [i/INCOME_BRACKET] [t/TAG]…​` <br><br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pr/HIGH t/friend t/colleague`
 **Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**DNC**    | `dnc INDEX`<br> e.g., `dnc 1`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [i/INCOME_BRACKET] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Delete** | `delete INDEX`<br><br> e.g., `delete 3`
+**DNC**    | `dnc INDEX`<br><br> e.g., `dnc 1`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [i/INCOME_BRACKET] [t/TAG]…​`<br><br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
+**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br><br> e.g., `find James Jake`
 **List**   | `list`
-**Tag**    | `tag INDEX t/tagname` <br> e.g., `tag 1 t/interested`
-**Priority** | `priority INDEX PRIORITY`<br> e.g., `priority 1 HIGH`
+**Tag**    | `tag INDEX t/tagname` <br><br> e.g., `tag 1 t/interested`
+**Priority** | `priority INDEX PRIORITY`<br><br> e.g., `priority 1 HIGH`
 **Help**   | `help`
