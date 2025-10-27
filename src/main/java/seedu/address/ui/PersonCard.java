@@ -94,7 +94,6 @@ public class PersonCard extends UiPart<Region> {
         } else {
             dncLabel.setVisible(false);
             dncLabel.setManaged(false);
-            
             if (person.getTags().isEmpty()) {
                 tags.setManaged(false);
                 tags.setVisible(false);
