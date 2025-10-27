@@ -86,14 +86,25 @@ public class PersonCard extends UiPart<Region> {
             setPriorityStyle(person.getPriority());
         }
 
-        // Handle tags
-        if (person.getTags().isEmpty()) {
+        if (person.isDncTagged()) {
+            dncLabel.setVisible(true);
+            dncLabel.setManaged(true);
             tags.setManaged(false);
             tags.setVisible(false);
         } else {
-            person.getTags().stream()
-                    .sorted(Comparator.comparing(tag -> tag.tagName))
-                    .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            dncLabel.setVisible(false);
+            dncLabel.setManaged(false);
+            
+            if (person.getTags().isEmpty()) {
+                tags.setManaged(false);
+                tags.setVisible(false);
+            } else {
+                tags.setManaged(true);
+                tags.setVisible(true);
+                person.getTags().stream()
+                        .sorted(Comparator.comparing(tag -> tag.tagName))
+                        .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            }
         }
 
         // Handle income bracket
