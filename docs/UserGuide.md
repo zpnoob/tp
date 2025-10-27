@@ -82,7 +82,7 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [i/INCOME_BRACKET] [t/TAG]…`
 
 * `PRIORITY` must be one of: `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
 * `LAST_CONTACTED` must not be a future date. Format: `DD-MM-YYYY` e.g. `25-12-2023`
