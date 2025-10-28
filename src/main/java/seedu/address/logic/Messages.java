@@ -80,34 +80,34 @@ public class Messages {
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
         builder.append(person.getName())
-            .append("; Phone: ")
+            .append("\nPhone: ")
             .append(person.getPhone());
         if (!person.getEmail().toString().isEmpty()) {
-            builder.append("; Email: ").append(person.getEmail());
+            builder.append("\nEmail: ").append(person.getEmail());
         }
         if (!person.getAddress().toString().isEmpty()) {
-            builder.append("; Address: ").append(person.getAddress());
+            builder.append("\nAddress: ").append(person.getAddress());
         }
         if (!person.getOccupation().toString().isEmpty()) {
-            builder.append("; Occupation: ").append(person.getOccupation());
+            builder.append("\nOccupation: ").append(person.getOccupation());
         }
         if (!person.getAge().toString().isEmpty()) {
-            builder.append("; Age: ").append(person.getAge());
+            builder.append("\nAge: ").append(person.getAge());
         }
-        builder.append("; Priority: ")
+        builder.append("\nPriority: ")
             .append(person.getPriority());
         if (person.getIncomeBracket() != null) {
-            builder.append("; Income: ").append(person.getIncomeBracket());
+            builder.append("\nIncome: ").append(person.getIncomeBracket());
         }
         if (!person.getLastContactedDate().toDisplayString().isEmpty()
                 && !person.getLastContactedDate().toDisplayString().equals("N/A")) {
-            builder.append("; Last Contacted: ").append(person.getLastContactedDate().toDisplayString());
+            builder.append("\nLast Contacted: ").append(person.getLastContactedDate().toDisplayString());
         }
         if (!person.getTags().isEmpty()) {
             String tagsString = person.getTags().stream()
                     .map(Object::toString)
                     .collect(Collectors.joining(", "));
-            builder.append("; Tags: ").append(tagsString);
+            builder.append("\nTags: ").append(tagsString);
         }
         return builder.toString();
     }
