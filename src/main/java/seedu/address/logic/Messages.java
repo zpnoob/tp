@@ -107,7 +107,7 @@ public class Messages {
             String tagsString = person.getTags().stream()
                     .map(Object::toString)
                     .collect(Collectors.joining(", "));
-            builder.append("; Tags: ").append(tagsString);
+            builder.append("\nTags: ").append(tagsString);
         }
         return builder.toString();
     }
