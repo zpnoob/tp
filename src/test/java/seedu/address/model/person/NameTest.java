@@ -62,7 +62,7 @@ public class NameTest {
     @Test
     public void hashCode_sameValue_equal() {
         Name name1 = new Name("Valid Name");
-        Name name2 = new Name("Valid Name");
+        Name name2 = new Name("valid name");
         assertEquals(name1.hashCode(), name2.hashCode());
     }
 }
