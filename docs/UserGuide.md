@@ -167,20 +167,22 @@ Examples:
 
 ### Editing the tag: `tag`
 
-Changes the tag of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tag.
+Changes the tags of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tags.
 
-Format: `tag INDEX t/tag_name`
+Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 
-* Changes the tag of the person at the specified `INDEX`.
+* Changes the tags of the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
-* `tag` must be  Alphanumeric and spaces allowed. Maximum 30 characters. Case-insensitive (eg, Interested = interested). Leading/trailing spaces are trimmed
-* This command is equivalent to `edit INDEX t/tag_name`
+* You can specify multiple tags by using multiple `t/` prefixes
+* All existing tags will be replaced by the new tags specified
+* Each `TAG_NAME` must be alphanumeric and spaces allowed. Maximum 30 characters. Case-insensitive (eg, Interested = interested). Leading/trailing spaces are trimmed
 
 Examples:
 * `tag 1 t/interested` Sets the tag of the 1st person to `interested`.
 * `tag 2 t/follow up` Sets the tag of the 2nd person to `follow up`.
 * `tag 5 t/do not call` Sets the tag of the 5th person to `do not call`.
+* `tag 7 t/follow up t/interested` Sets the tags of the 7th person to `follow up` and `interested`.
 
 <box type="tip" seamless>
 
@@ -294,5 +296,6 @@ Action     | Format, Examples
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [pr/PRIORITY] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
+**Tag**    | `tag INDEX t/TAG_NAME [t/TAG_NAME]...` <br> e.g., `tag 1 t/interested t/follow up`
 **Priority** | `priority INDEX PRIORITY`<br> e.g., `priority 1 HIGH`
 **Help**   | `help`

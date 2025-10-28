@@ -10,6 +10,10 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
@@ -49,8 +53,7 @@ public class TagCommandParserTest {
 
     @Test
     public void parse_invalidTagValue_failure() {
-        assertParseFailure(parser, "1 t/!!invalid!!",
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "1 t/!!invalid!!", seedu.address.model.tag.Tag.MESSAGE_CONSTRAINTS);
     }
     // ---------- SUCCESS CASES ----------
 
@@ -58,7 +61,8 @@ public class TagCommandParserTest {
     public void parse_validSingleTag_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        TagCommand expectedCommand = new TagCommand(targetIndex, new Tag(VALID_TAG_FRIEND));
+        Set<Tag> tagSet = Collections.singleton(new Tag(VALID_TAG_FRIEND));
+        TagCommand expectedCommand = new TagCommand(targetIndex, tagSet);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -66,7 +70,8 @@ public class TagCommandParserTest {
     public void parse_validTagWithExtraWhitespace_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = "  " + targetIndex.getOneBased() + "   " + TAG_DESC_HUSBAND + "  ";
-        TagCommand expectedCommand = new TagCommand(targetIndex, new Tag(VALID_TAG_HUSBAND));
+        Set<Tag> tagSet = Collections.singleton(new Tag(VALID_TAG_HUSBAND));
+        TagCommand expectedCommand = new TagCommand(targetIndex, tagSet);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -74,7 +79,19 @@ public class TagCommandParserTest {
     public void parse_tagWithSpaces_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + " t/follow up";
-        TagCommand expectedCommand = new TagCommand(targetIndex, new Tag("follow up"));
+        Set<Tag> tagSet = Collections.singleton(new Tag("follow up"));
+        TagCommand expectedCommand = new TagCommand(targetIndex, tagSet);
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_multipleTags_success() {
+        Index targetIndex = INDEX_FIRST_PERSON;
+        String userInput = targetIndex.getOneBased() + " t/follow up t/interested";
+        Set<Tag> tagSet = new HashSet<>();
+        tagSet.add(new Tag("follow up"));
+        tagSet.add(new Tag("interested"));
+        TagCommand expectedCommand = new TagCommand(targetIndex, tagSet);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 }
