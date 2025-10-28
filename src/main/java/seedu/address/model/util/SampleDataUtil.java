@@ -24,32 +24,84 @@ public class SampleDataUtil {
     // ...existing imports...
     public static Person[] getSamplePersons() {
         return new Person[] {
-            new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email(""),
-                new Address(""), new Occupation(""),
-                getTagSet("no attempt"), new Priority(Priority.Level.NONE), new Age(""), null,
-                new LastContactedDate("")),
-            new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email(""),
-                new Address(""), new Occupation("Engineer"),
-                getTagSet("interested", "follow up"), new Priority(Priority.Level.HIGH), new Age(""), null,
-                new LastContactedDate("2025-10-01")),
-            new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email(""),
-                new Address(""), new Occupation("Teacher"),
-                getTagSet("attempted"), new Priority(Priority.Level.LOW), new Age("40"),
+            // Alex Yeoh - only name, phone and tag fields
+            new Person(
+                new Name("Alex Yeoh"),
+                new Phone("87438807"),
+                new Email(""),
+                new Address(""),
+                new Occupation(""),
+                getTagSet("no attempt"),
+                new Priority(Priority.Level.NONE),
+                new Age(""),
+                null,
+                new LastContactedDate("")
+            ),
+            // Bernice Yu - all fields except email, address, age and income bracket
+            new Person(
+                new Name("Bernice Yu"),
+                new Phone("99272758"),
+                new Email(""),
+                new Address(""),
+                new Occupation("Engineer"),
+                getTagSet("interested", "follow up"),
+                new Priority(Priority.Level.HIGH),
+                new Age(""),
+                null,
+                new LastContactedDate("2025-10-01")
+            ),
+            // Charlotte Oliveiro - all fields except email and address
+            new Person(
+                new Name("Charlotte Oliveiro"),
+                new Phone("93210283"),
+                new Email(""),
+                new Address(""),
+                new Occupation("Teacher"),
+                getTagSet("attempted"),
+                new Priority(Priority.Level.LOW),
+                new Age("40"),
                 new IncomeBracket(IncomeBracket.Level.LOW),
-                new LastContactedDate("2025-10-20")),
-            new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), new Occupation("Student"),
-                getTagSet("interested"), new Priority(Priority.Level.HIGH), new Age("24"), null,
-                new LastContactedDate("2025-05-20")),
-            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                new Address(""), new Occupation("Designer"),
-                getTagSet("no attempt", "follow up"), new Priority(Priority.Level.NONE), new Age("23"),
+                new LastContactedDate("2025-10-20")
+            ),
+            // David Li - all fields except income bracket
+            new Person(
+                new Name("David Li"),
+                new Phone("91031282"),
+                new Email("lidavid@example.com"),
+                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
+                new Occupation("Student"),
+                getTagSet("interested"),
+                new Priority(Priority.Level.HIGH),
+                new Age("24"),
+                null,
+                new LastContactedDate("2025-05-20")
+            ),
+            // Irfan Ibrahim - all fields except email, address, priority and last contacted date
+            new Person(
+                new Name("Irfan Ibrahim"),
+                new Phone("92492021"),
+                new Email(""),
+                new Address(""),
+                new Occupation("Designer"),
+                getTagSet("no attempt", "follow up"),
+                new Priority(Priority.Level.NONE),
+                new Age("23"),
                 new IncomeBracket(IncomeBracket.Level.MIDDLE),
-                new LastContactedDate("")),
-            new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"), new Occupation("Chef"),
-                getTagSet("converted"), new Priority(Priority.Level.MEDIUM),
-                new Age("35"), new IncomeBracket(IncomeBracket.Level.HIGH), new LastContactedDate("2024-12-05"))
+                new LastContactedDate("")
+            ),
+            // Roy Balakrishnan - all fields
+            new Person(
+                new Name("Roy Balakrishnan"),
+                new Phone("92624417"),
+                new Email("royb@example.com"),
+                new Address("Blk 45 Aljunied Street 85, #11-31"),
+                new Occupation("Chef"),
+                getTagSet("converted"),
+                new Priority(Priority.Level.MEDIUM),
+                new Age("35"),
+                new IncomeBracket(IncomeBracket.Level.HIGH),
+                new LastContactedDate("2024-12-05")
+            )
         };
     }
 
