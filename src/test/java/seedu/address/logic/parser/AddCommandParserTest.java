@@ -202,4 +202,146 @@ public class AddCommandParserTest {
                 + ADDRESS_DESC_BOB + AGE_DESC_BOB + INCOME_BRACKET_DESC_BOB + TAG_DESC_FRIEND,
                 new AddCommand(expectedPerson));
     }
+
+    @Test
+    public void parse_emptyIncomeBracket_success() {
+        // Empty income bracket should be treated as null
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withOccupation("")
+                .withAge("")
+                .withPriority("NONE")
+                .withIncomeBracket((seedu.address.model.person.IncomeBracket) null)
+                .withLastContactedDate("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB + " i/ ", new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_emptyPriority_success() {
+        // Empty priority should be treated as NONE
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withOccupation("")
+                .withAge("")
+                .withPriority("NONE")
+                .withLastContactedDate("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB + " pr/ ", new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_emptyTag_success() {
+        // Empty tag should be filtered out
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withOccupation("")
+                .withAge("")
+                .withPriority("NONE")
+                .withLastContactedDate("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB + " t/ ", new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_multipleEmptyTags_success() {
+        // Multiple empty tags should all be filtered out
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withOccupation("")
+                .withAge("")
+                .withPriority("NONE")
+                .withLastContactedDate("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB + " t/ " + " t/ ", new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_mixedEmptyAndValidTags_success() {
+        // Mix of empty and valid tags - empty should be filtered out
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withOccupation("")
+                .withAge("")
+                .withPriority("NONE")
+                .withLastContactedDate("")
+                .withTags(VALID_TAG_FRIEND)
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB + " t/ " + TAG_DESC_FRIEND, new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_nonEmptyPreamble_failure() {
+        // Non-empty preamble should fail
+        assertParseFailure(parser, "some random text " + NAME_DESC_BOB + PHONE_DESC_BOB,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_priorityNotPresent_defaultsToNone() {
+        // When priority is not provided, it should default to NONE
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withOccupation("")
+                .withAge("")
+                .withPriority("NONE")
+                .withLastContactedDate("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB, new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_incomeBracketNotPresent_defaultsToNull() {
+        // When income bracket is not provided, it should default to null
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withOccupation("")
+                .withAge("")
+                .withPriority("NONE")
+                .withLastContactedDate("")
+                .withIncomeBracket((seedu.address.model.person.IncomeBracket) null)
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                + ADDRESS_DESC_BOB, new AddCommand(expectedPerson));
+    }
 }

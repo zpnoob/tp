@@ -22,6 +22,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.IncomeBracket;
+import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -76,15 +78,26 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_AGE).isPresent()) {
             editPersonDescriptor.setAge(ParserUtil.parseAge(argMultimap.getValue(PREFIX_AGE).get()));
         }
+        // Handle priority: empty value clears to NONE
         if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
-            editPersonDescriptor.setPriority(ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY).get()));
+            String priorityValue = argMultimap.getValue(PREFIX_PRIORITY).get();
+            if (priorityValue.trim().isEmpty()) {
+                editPersonDescriptor.setPriority(new Priority(Priority.Level.NONE));
+            } else {
+                editPersonDescriptor.setPriority(ParserUtil.parsePriority(priorityValue));
+            }
         }
         Optional<Set<Tag>> tagsForEdit =
             parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG));
         tagsForEdit.ifPresent(editPersonDescriptor::setTags);
+        // Handle income bracket: empty value clears to NONE
         if (argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent()) {
-            editPersonDescriptor.setIncomeBracket(ParserUtil.parseIncomeBracket(
-                    argMultimap.getValue(PREFIX_INCOME_BRACKET).get()));
+            String incomeBracketValue = argMultimap.getValue(PREFIX_INCOME_BRACKET).get();
+            if (incomeBracketValue.trim().isEmpty()) {
+                editPersonDescriptor.setIncomeBracket(new IncomeBracket(IncomeBracket.Level.NONE));
+            } else {
+                editPersonDescriptor.setIncomeBracket(ParserUtil.parseIncomeBracket(incomeBracketValue));
+            }
         }
         if (argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).isPresent()) {
             editPersonDescriptor.setLastContactedDate(ParserUtil.parseLastContactedDate(

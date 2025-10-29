@@ -65,17 +65,38 @@ public class AddCommandParser implements Parser<AddCommand> {
                 ? ParserUtil.parseAge(argMultimap.getValue(PREFIX_AGE).get())
                 : new Age("");
 
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        // Handle tags: filter out empty values, treat as no tags
+        Set<Tag> tagList = ParserUtil.parseTags(
+                argMultimap.getAllValues(PREFIX_TAG).stream()
+                        .filter(tag -> !tag.trim().isEmpty())
+                        .collect(java.util.stream.Collectors.toList())
+        );
 
-        Priority priority = ParserUtil.parsePriority(argMultimap.getValue(PREFIX_PRIORITY)
-                .orElse(Priority.Level.NONE.toString()));
+        // Handle priority: if present but empty, treat as not passed (default NONE)
+        Priority priority;
+        if (argMultimap.getValue(PREFIX_PRIORITY).isPresent()) {
+            String priorityValue = argMultimap.getValue(PREFIX_PRIORITY).get();
+            priority = priorityValue.trim().isEmpty()
+                    ? new Priority(Priority.Level.NONE)
+                    : ParserUtil.parsePriority(priorityValue);
+        } else {
+            priority = new Priority(Priority.Level.NONE);
+        }
 
         Occupation occupation = argMultimap.getValue(PREFIX_OCCUPATION).isPresent()
                 ? ParserUtil.parseOccupation(argMultimap.getValue(PREFIX_OCCUPATION).get())
                 : new Occupation("");
-        IncomeBracket incomeBracket = argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent()
-                ? ParserUtil.parseIncomeBracket(argMultimap.getValue(PREFIX_INCOME_BRACKET).get())
-                : null;
+
+        // Handle income bracket: if present but empty, treat as not passed (null)
+        IncomeBracket incomeBracket;
+        if (argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent()) {
+            String incomeBracketValue = argMultimap.getValue(PREFIX_INCOME_BRACKET).get();
+            incomeBracket = incomeBracketValue.trim().isEmpty()
+                    ? null
+                    : ParserUtil.parseIncomeBracket(incomeBracketValue);
+        } else {
+            incomeBracket = null;
+        }
 
         LastContactedDate lastContactedDate = argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).isPresent()
                 ? ParserUtil.parseLastContactedDate(argMultimap.getValue(PREFIX_LAST_CONTACTED_DATE).get())

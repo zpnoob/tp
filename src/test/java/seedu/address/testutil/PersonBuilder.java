@@ -144,6 +144,22 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code IncomeBracket} of the {@code Person} that we are building using a Level enum.
+     */
+    public PersonBuilder withIncomeBracket(IncomeBracket.Level level) {
+        this.incomeBracket = new IncomeBracket(level);
+        return this;
+    }
+
+    /**
+     * Sets the {@code IncomeBracket} of the {@code Person} that we are building to null.
+     */
+    public PersonBuilder withIncomeBracket(IncomeBracket incomeBracket) {
+        this.incomeBracket = incomeBracket;
+        return this;
+    }
+
+    /**
      * Sets the {@code LastContactedDate} of the {@code Person} that we are building.
      */
     public PersonBuilder withLastContactedDate(String date) {
