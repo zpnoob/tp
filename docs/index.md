@@ -8,7 +8,9 @@
 [![Java CI](https://github.com/AY2526S1-CS2103T-F15a-2/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2526S1-CS2103T-F15a-2/tp/actions/workflows/gradle.yml)
 [![codecov](https://codecov.io/gh/AY2526S1-CS2103T-F15a-2/tp/branch/master/graph/badge.svg?token=354WJSWX3E)](https://codecov.io/gh/AY2526S1-CS2103T-F15a-2/tp)
 
-![Ui](images/Ui.png)
+<div style="text-align: center;">
+    <img src="images/Ui.png" alt="Ui" style="border: 5px solid black; border-radius: 40px; max-width: 30%; height: auto; margin: 20px 0px;"/>
+</div>
 
 **InsuraBook** eliminates the hassle of manual lead tracking by providing a **structured digital system** that **saves time, prevents lost information, ensures timely follow-ups**, and **streamlines management**, making it easier to handle a large number of leads and convert *potential* customers into *recurring* ones.
 
