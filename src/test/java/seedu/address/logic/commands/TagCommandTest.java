@@ -50,16 +50,16 @@ public class TagCommandTest {
                     .map(Tag::toString)
                     .collect(Collectors.joining(", "));
         String expectedMessage = String.format(TagCommand.MESSAGE_TAG_PERSON_SUCCESS,
-                                        editedPerson.getName() + "; Phone: " + editedPerson.getPhone()
-                                           + "; Email: " + editedPerson.getEmail()
-                                           + "; Address: " + editedPerson.getAddress()
-                                            + "; Occupation: " + editedPerson.getOccupation()
-                                            + "; Age: " + editedPerson.getAge()
-                                            + "; Priority: " + editedPerson.getPriority()
-                                           + "; Income: " + editedPerson.getIncomeBracket()
-                                           + "; Last Contacted: " + editedPerson.getLastContactedDate()
+                                        editedPerson.getName() + "\nPhone: " + editedPerson.getPhone()
+                                           + "\nEmail: " + editedPerson.getEmail()
+                                           + "\nAddress: " + editedPerson.getAddress()
+                                           + "\nOccupation: " + editedPerson.getOccupation()
+                                           + "\nAge: " + editedPerson.getAge()
+                                           + "\nPriority: " + editedPerson.getPriority()
+                                           + "\nIncome: " + editedPerson.getIncomeBracket()
+                                           + "\nLast Contacted: " + editedPerson.getLastContactedDate()
                                                         .toDisplayString()
-                                           + "; Tags: " + tagsString);
+                                           + "\nTags: " + tagsString);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.setPerson(personToEdit, editedPerson);

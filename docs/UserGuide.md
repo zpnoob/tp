@@ -6,7 +6,7 @@
 
 # InsuraBook User Guide
 
-InsuraBook is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InsuraBook can get your contact management tasks done faster than traditional GUI apps.
+InsuraBook is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InsuraBook can get your contact management tasks done faster than traditional GUI apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -82,8 +82,9 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
 
+* For details on available `PERSON_PARAMS`, click [here](#person-params)
 * `PRIORITY` must be one of: `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
 * `LAST_CONTACTED` must not be a future date. Format: `DD-MM-YYYY` e.g. `25-12-2023`
 * Email, address, occupation, age, last contacted, priority and tag fields are optional, only name and phone fields are required when adding a new contact
@@ -115,13 +116,14 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [age/AGE] [lc/LAST_CONTACTED] [pr/PRIORITY] [i/INCOME_BRACKET] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
+* For details on available `PERSON_PARAMS`, click [here](#person-params)
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
+* You can remove all the person's tags by typing `t/` without
   specifying any tags after it.
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
 * `INCOME_BRACKET` must be one of `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
@@ -271,6 +273,34 @@ _Details coming soon ..._
 
 --------------------------------------------------------------------------------------------------------------------
 
+## PERSON_PARAMS
+
+The following parameters can be used when adding or editing a person. All parameters are optional unless otherwise specified:
+
+Parameter | Description | Format | Constraints
+----------|-------------|--------|------------
+`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`)
+`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string
+`o/OCCUPATION` | Person's occupation | `o/OCCUPATION` | Any text string
+`age/AGE` | Person's age | `age/AGE` | Must be a positive integer
+`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `DD-MM-YYYY` (e.g., `25-12-2023`)
+`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
+`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
+`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. Can be used multiple times (e.g., `t/friend t/colleague`)
+
+<box type="info" seamless>
+
+**Notes about PERSON_PARAMS:**
+* These parameters can be used in any combination with the `add` and `edit` commands
+* Parameters can be specified in any order
+* For the `edit` command, at least one parameter must be provided
+* When editing tags with the `edit` command, existing tags will be replaced (not added to)
+* To remove all tags, use `t/` without specifying any tags after it
+
+</box>
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
@@ -289,13 +319,13 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS o/OCCUPATION [pr/PRIORITY] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pr/HIGH t/friend t/colleague`
+**Add**    | `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]` <br><br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pr/HIGH t/friend t/colleague`
 **Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**DNC**    | `dnc INDEX`<br> e.g., `dnc 1`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [o/OCCUPATION] [pr/PRIORITY] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Delete** | `delete INDEX`<br><br> e.g., `delete 3`
+**DNC**    | `dnc INDEX`<br><br> e.g., `dnc 1`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`<br><br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
+**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br><br> e.g., `find James Jake`
 **List**   | `list`
-**Tag**    | `tag INDEX t/TAG_NAME [t/TAG_NAME]...` <br> e.g., `tag 1 t/interested t/follow up`
-**Priority** | `priority INDEX PRIORITY`<br> e.g., `priority 1 HIGH`
+**Tag**    | `tag INDEX t/TAG_NAME [t/TAG_NAME]...` <br><br> e.g., `tag 1 t/interested t/follow up`
+**Priority** | `priority INDEX PRIORITY`<br><br> e.g., `priority 1 HIGH`
 **Help**   | `help`

@@ -4,9 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LAST_CONTACTED_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_OCCUPATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -22,14 +25,17 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. \n"
             + "Parameters: "
             + PREFIX_NAME + "NAME "
-            + PREFIX_PHONE + "PHONE "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_OCCUPATION + "OCCUPATION] "
-            + "[" + PREFIX_AGE + "AGE] "
+            + PREFIX_PHONE + "PHONE \n"
+            + "[" + PREFIX_EMAIL + "EMAIL] \n"
+            + "[" + PREFIX_ADDRESS + "ADDRESS] \n"
+            + "[" + PREFIX_OCCUPATION + "OCCUPATION] \n"
+            + "[" + PREFIX_AGE + "AGE] \n"
+            + "[" + PREFIX_PRIORITY + "PRIORITY] \n"
+            + "[" + PREFIX_INCOME_BRACKET + "INCOME_BRACKET] \n"
+            + "[" + PREFIX_LAST_CONTACTED_DATE + "LAST_CONTACTED_DATE] \n"
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
@@ -43,6 +49,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_PHONE = "This phone number already exists in the address book";
 
     private final Person toAdd;
 
@@ -60,6 +67,10 @@ public class AddCommand extends Command {
 
         if (model.hasPerson(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        }
+
+        if (model.hasPersonWithPhone(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_PHONE);
         }
 
         model.addPerson(toAdd);
