@@ -365,8 +365,12 @@ Extensions:
 
 ### Glossary
 
+* **CLI**: Command Line Interface - a text-based interface where users type commands to interact with the application
+* **DNC**: Do Not Call - a regulatory compliance feature that marks contacts who should not be contacted for telemarketing
+* **GUI**: Graphical User Interface - a visual interface that allows users to interact through graphical elements
+* **JavaFX**: A Java library used for creating desktop applications with graphical user interfaces
+* **JSON**: JavaScript Object Notation - a lightweight data format used for storing and exchanging data
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
