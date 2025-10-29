@@ -264,6 +264,7 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("12.5"));
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("-5"));
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("20a"));
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("1234")); // more than 3 digits
     }
 
     @Test
