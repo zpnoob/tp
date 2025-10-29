@@ -349,10 +349,10 @@ Extensions:
 </pre>
 </box>
 
-#### UC2 - Add a New Contact
+#### UC2 - Add New Contact
 <box>
 Software System: InsuraBook<br>
-Use case: UC2 - Add a New Contact<br>
+Use case: UC2 - Add New Contact<br>
 Actor: User<br>
 
 <pre>
