@@ -8,6 +8,9 @@
 
 InsuraBook is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InsuraBook can get your contact management tasks done faster than traditional GUI apps.
 
+
+**Target User**: Telemarketing Agents selling insurance who may need to manage large contact list.
+
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -15,18 +18,43 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+1. Ensure you have Java `17` or above installed in your Computer.
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+  **To check if Java 17+ is installed:**
+  Open a command terminal/command prompt and type the following:
+  ```
+  java -version
+  ```
+  If Java 17 or higher is installed, you should see output similar to:
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+  ```
+  java version "17.0.x" or higher
+  ```
+  If Java is not installed or the version is below 17, proceed to install Java 17+
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+  **Installation links:**
+  * **Mac users:** Follow the precise installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+  * **Windows/Linux users:** Download Java 17+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+2. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases) **remember to change!**.
+
+3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+
+4. **To run the application:**<br>
+    Open a command terminal/command prompt<br>
+    Navigate to the folder containing the `.jar` file:
+    ```
+    cd path/to/your/folder
+    ```
+    Run the application:
+    ```
+    java -jar insurabook.jar
+    ```
+    
+    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+    ![Ui](images/Ui.png)
+
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -41,7 +69,7 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
 
    * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
