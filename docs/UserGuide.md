@@ -139,7 +139,7 @@ Shows a list of all persons sorted by index in the address book.
     <img src="images/features/listCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
 </div>
 
-Format: `list [pr/asc] [pr/desc] [i/asc] [i/asc]`
+Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`
 - Addition of `pr/asc` lists the the contacts sorted by priority in ascending order while `pr/desc` sorts in descending order.
 - Addition of `i/asc` lists the contacts sorted by income bracket in ascending order while `i/desc` sorts in descending order.
 
@@ -381,7 +381,7 @@ Action     | Format, Examples
 **DNC**    | `dnc INDEX`<br><br> e.g., `dnc 1`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`<br><br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br><br> e.g., `find James Jake`
-**List**   | `list [pr/asc] [pr/desc] [i/asc] [i/asc]`
+**List**   | `list [pr/asc] [pr/desc] [i/asc] [i/desc]`
 **Tag**    | `tag INDEX t/TAG_NAME [t/TAG_NAME]...` <br><br> e.g., `tag 1 t/interested t/follow up`
 **Priority** | `priority INDEX PRIORITY`<br><br> e.g., `priority 1 HIGH`
 **Help**   | `help`
