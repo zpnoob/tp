@@ -25,10 +25,6 @@ public class Messages {
     public static String getErrorMessageForDuplicatePrefixes(Prefix... duplicatePrefixes) {
         assert duplicatePrefixes.length > 0;
 
-        if (duplicatePrefixes.length == 1 && duplicatePrefixes[0].toString().equals("o/")) {
-            return "Only one o/ (occupation) input is allowed. Remove the extra occurrences and try again.";
-        }
-
         Set<String> duplicateFields = Stream.of(duplicatePrefixes)
                 .map(prefix -> {
                     String p = prefix.toString();
@@ -64,12 +60,12 @@ public class Messages {
                     default:
                         friendly = p;
                     }
-                    return String.format("%s (%s)", p, friendly);
+                    return String.format("%s(%s)", p, friendly);
                 })
                 .collect(Collectors.toSet());
 
         String joined = String.join(", ", duplicateFields);
-        return String.format("Please specify each of the following fields at most once:"
+        return String.format("Please specify each of the following fields at most once: "
         + "%s. Remove duplicate entries and try again.",
                 joined);
     }
