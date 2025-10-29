@@ -217,11 +217,11 @@ Examples:
 
 ### Editing the tag: `tag`
 
-Changes the tag of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tag.
+Changes the tags of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tags.
 
-Format: `tag INDEX t/tag_name`
+Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 
-* Changes the tag of the person at the specified `INDEX`.
+* Changes the tags of the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * `tag_name` must be  Alphanumeric and spaces allowed. 
@@ -234,6 +234,7 @@ Examples:
 * `tag 1 t/interested` Sets the tag of the 1st person to `interested`.
 * `tag 2 t/follow up` Sets the tag of the 2nd person to `follow up`.
 * `tag 5 t/do not call` Sets the tag of the 5th person to `do not call`.
+* `tag 7 t/follow up t/interested` Sets the tags of the 7th person to `follow up` and `interested`.
 
 <box type="tip" seamless>
 
@@ -357,7 +358,7 @@ Action     | Format, Examples
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`<br><br> e.g.,`edit 2 n/James Lee e/jameslee@example.com pr/MEDIUM`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br><br> e.g., `find James Jake`
 **List**   | `list [pr/asc] [pr/desc] [i/asc] [i/asc]`
-**Tag**    | `tag INDEX t/tagname` <br><br> e.g., `tag 1 t/interested`
+**Tag**    | `tag INDEX t/TAG_NAME [t/TAG_NAME]...` <br><br> e.g., `tag 1 t/interested t/follow up`
 **Priority** | `priority INDEX PRIORITY`<br><br> e.g., `priority 1 HIGH`
 **Help**   | `help`
 

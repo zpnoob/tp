@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -16,36 +15,37 @@ import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
 /**
- * Changes the tag of an existing person in the address book.
+ * Changes the tags of an existing person in the address book.
  */
 public class TagCommand extends Command {
 
     public static final String COMMAND_WORD = "tag";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the tag of the person identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the tags of the person identified "
             + "by the index number used in the last person listing. "
-            + "Existing tag will be overwritten by the input.\n"
+            + "Existing tags will be overwritten by the input.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_TAG + "[TAG]\n"
+            + PREFIX_TAG + "TAG [" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TAG + "interested.";
+            + PREFIX_TAG + "interested "
+            + PREFIX_TAG + "follow up";
 
-    public static final String MESSAGE_TAG_PERSON_SUCCESS = "Changed tag of Person: %s";
+    public static final String MESSAGE_TAG_PERSON_SUCCESS = "Changed tags of Person: %s";
     public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify tags of a Do Not Call contact.";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Tag command not implemented yet";
 
     private final Index targetIndex;
-    private final Tag tag;
+    private final Set<Tag> tags;
 
     /**
-     * Creates a TagCommand to add a tag to the person at the specified index.
+     * Creates a TagCommand to add tags to the person at the specified index.
      */
-    public TagCommand(Index targetIndex, Tag tag) {
+    public TagCommand(Index targetIndex, Set<Tag> tags) {
         requireNonNull(targetIndex);
-        requireNonNull(tag);
+        requireNonNull(tags);
         this.targetIndex = targetIndex;
-        this.tag = tag;
+        this.tags = tags;
     }
 
     @Override
@@ -63,14 +63,13 @@ public class TagCommand extends Command {
             throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
         }
 
-        Set<Tag> newTagsSet = Collections.singleton(tag);
         Person editedPerson = new Person(
                 personToEdit.getName(),
                 personToEdit.getPhone(),
                 personToEdit.getEmail(),
                 personToEdit.getAddress(),
                 personToEdit.getOccupation(),
-                newTagsSet,
+                tags,
                 personToEdit.getPriority(),
                 personToEdit.getAge(),
                 personToEdit.getIncomeBracket(),
@@ -96,17 +95,17 @@ public class TagCommand extends Command {
 
         TagCommand e = (TagCommand) other;
         return targetIndex.equals(e.targetIndex)
-                && tag.equals(e.tag);
+                && tags.equals(e.tags);
     }
 
     @Override
     public int hashCode() {
-        return targetIndex.hashCode() + tag.hashCode();
+        return targetIndex.hashCode() + tags.hashCode();
     }
 
     @Override
     public String toString() {
         return "TagCommand{targetIndex=Index{value=" + (targetIndex.getOneBased())
-            + "}, tag=Tag{tagName='" + tag.tagName + "'}}";
+            + "}, tags=" + tags + "}";
     }
 }

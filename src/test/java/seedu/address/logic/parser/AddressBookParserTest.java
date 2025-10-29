@@ -89,7 +89,9 @@ public class AddressBookParserTest {
     public void parseCommand_tag() throws Exception {
         TagCommand command = (TagCommand) parser.parseCommand(
                 TagCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " t/friend");
-        assertEquals(new TagCommand(INDEX_FIRST_PERSON, new seedu.address.model.tag.Tag("friend")), command);
+        java.util.Set<seedu.address.model.tag.Tag> expectedTags =
+                java.util.Collections.singleton(new seedu.address.model.tag.Tag("friend"));
+        assertEquals(new TagCommand(INDEX_FIRST_PERSON, expectedTags), command);
     }
 
     @Test
