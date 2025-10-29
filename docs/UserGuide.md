@@ -184,6 +184,10 @@ Examples:
 
 Finds persons whose names contain any of the given keywords.
 
+<div style="text-align: center;">
+    <img src="images/features/findCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
+
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
@@ -199,11 +203,15 @@ Examples:
 * `find family` returns `David Li` as it matches their assigned tags
 * `find Alex family` returns `Alex Yeoh`, `David Li`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-![result for 'find alex david'](images/findAlexDavidResult.png)
+
 
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
+
+<div style="text-align: center;">
+    <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
 
 Format: `delete INDEX`
 
@@ -218,6 +226,10 @@ Examples:
 ### Editing the tag: `tag`
 
 Changes the tags of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tags.
+
+<div style="text-align: center;">
+    <img src="images/features/tagCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
 
 Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 
@@ -244,6 +256,10 @@ Examples:
 ### Marking a contact as Do Not Call: `dnc`
 
 Marks a contact as Do Not Call (DNC) in the address book.
+
+<div style="text-align: center;">
+    <img src="images/features/dncCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
 
 Format: `dnc INDEX`
 
@@ -272,6 +288,10 @@ Examples:
 
 Changes the priority of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
 
+<div style="text-align: center;">
+    <img src="images/features/priorityCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
+
 Format: `priority INDEX PRIORITY`
 
 * Changes the priority of the person at the specified `INDEX`.
@@ -293,6 +313,10 @@ Examples:
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
+
+<div style="text-align: center;">
+    <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
 
 Format: `clear`
 
