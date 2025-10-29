@@ -70,7 +70,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PHONE =
             "A person with this phone number already exists in the address book.";
     public static final String MESSAGE_DUPLICATE_NAME_AND_PHONE =
-            "A person with this name and/or phone number already exists in the address book.";
+            "A person with this name and phone number already exists in the address book.";
     public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify fields of a Do Not Call contact.";
 
     private final Index index;
