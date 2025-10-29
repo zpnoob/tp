@@ -20,9 +20,9 @@ Software System: InsuraBook<br>
 Use case: UC1 - Delete a Person<br>
 Actor: User<br> <pre>MSS: 
    1.  User requests to list persons
-   2.  AddressBook shows a list of persons
+   2.  InsuraBook shows a list of persons
    3.  User requests to delete a specific person in the list
-   4.  AddressBook deletes the person
+   4.  InsuraBook deletes the person
    Use case ends.
 
 Extensions:
@@ -30,11 +30,127 @@ Extensions:
    Use case ends.
 
    3a. The given index is invalid.
-      3a1. AddressBook shows an error message.
+      3a1. InsuraBook shows an error message.
       Use case resumes at step 2.
+</pre><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h4 id="uc2-add-new-contact">UC2 - Add New Contact<a class="fa fa-anchor" href="#uc2-add-new-contact" onclick="event.stopPropagation()"></a></h4> <div class="alert box-container alert-default" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><!----><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
+Software System: InsuraBook<br>
+Use case: UC2 - Add New Contact<br>
+Actor: User<br> <pre>MSS: 
+   1.  User requests to add a new contact with details (name, phone, email, etc.)
+   2.  InsuraBook validates the contact information
+   3.  InsuraBook adds the contact to the list
+   4.  InsuraBook displays success message with contact details
+   Use case ends.
+
+Extensions:
+   2a. Required fields are missing.
+      2a1. InsuraBook shows an error message indicating missing fields.
+      Use case ends.
+
+   2b. Phone number format is invalid.
+      2b1. InsuraBook shows an error message about invalid phone format.
+      Use case ends.
+
+   2c. Email format is invalid.
+      2c1. InsuraBook shows an error message about invalid email format.
+      Use case ends.
+
+   2d. Contact with same name and phone already exists.
+      2d1. InsuraBook shows an error message about duplicate contact.
+      Use case ends.
+</pre><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h4 id="uc3-edit-contact-details">UC3 - Edit Contact Details<a class="fa fa-anchor" href="#uc3-edit-contact-details" onclick="event.stopPropagation()"></a></h4> <div class="alert box-container alert-default" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><!----><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
+Software System: InsuraBook<br>
+Use case: UC3 - Edit Contact Details<br>
+Actor: User<br> <pre>MSS: 
+   1.  User requests to list persons
+   2.  InsuraBook shows a list of persons
+   3.  User requests to edit a specific person&#39;s details with new information
+   4.  InsuraBook validates the new information
+   5.  InsuraBook updates the contact details
+   6.  InsuraBook displays success message with updated details
+   Use case ends.
+
+Extensions:
+   2a. The list is empty.
+   Use case ends.
+
+   3a. The given index is invalid.
+      3a1. InsuraBook shows an error message.
+      Use case resumes at step 2.
+
+   4a. New information format is invalid.
+      4a1. InsuraBook shows an error message indicating invalid format.
+      Use case resumes at step 3.
+
+   4b. Edited contact would become a duplicate of an existing contact.
+      4b1. InsuraBook shows an error message about duplicate contact.
+      Use case resumes at step 3.
+</pre><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h4 id="uc4-find-contacts-by-keywords">UC4 - Find Contacts by Keywords<a class="fa fa-anchor" href="#uc4-find-contacts-by-keywords" onclick="event.stopPropagation()"></a></h4> <div class="alert box-container alert-default" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><!----><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
+Software System: InsuraBook<br>
+Use case: UC4 - Find Contacts by Keywords<br>
+Actor: User<br> <pre>MSS: 
+   1.  User requests to find contacts using search keywords
+   2.  InsuraBook searches for matching contacts by name
+   3.  InsuraBook displays a list of matching contacts
+   Use case ends.
+
+Extensions:
+   1a. No keywords provided.
+      1a1. InsuraBook shows an error message about missing keywords.
+      Use case ends.
+
+   3a. No contacts match the search criteria.
+      3a1. InsuraBook displays an empty list with a message indicating no matches.
+      Use case ends.
+</pre><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h4 id="uc5-tag-a-contact">UC5 - Tag a Contact<a class="fa fa-anchor" href="#uc5-tag-a-contact" onclick="event.stopPropagation()"></a></h4> <div class="alert box-container alert-default" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><!----><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
+Software System: InsuraBook<br>
+Use case: UC5 - Tag a Contact<br>
+Actor: User<br> <pre>MSS: 
+   1.  User requests to list persons
+   2.  InsuraBook shows a list of persons
+   3.  User requests to add tags to a specific person
+   4.  InsuraBook validates the tag format
+   5.  InsuraBook adds the tags to the contact
+   6.  InsuraBook displays success message with updated contact
+   Use case ends.
+
+Extensions:
+   2a. The list is empty.
+   Use case ends.
+
+   3a. The given index is invalid.
+      3a1. InsuraBook shows an error message.
+      Use case resumes at step 2.
+
+   4a. Tag format is invalid (e.g., contains special characters).
+      4a1. InsuraBook shows an error message about invalid tag format.
+      Use case resumes at step 3.
+</pre><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h4 id="uc6-set-contact-priority">UC6 - Set Contact Priority<a class="fa fa-anchor" href="#uc6-set-contact-priority" onclick="event.stopPropagation()"></a></h4> <div class="alert box-container alert-default" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><!----><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
+Software System: InsuraBook<br>
+Use case: UC6 - Set Contact Priority<br>
+Actor: User<br> <pre>MSS: 
+   1.  User requests to list persons
+   2.  InsuraBook shows a list of persons
+   3.  User requests to set priority for a specific person (HIGH, MEDIUM, or LOW)
+   4.  InsuraBook validates the priority value
+   5.  InsuraBook updates the contact&#39;s priority
+   6.  InsuraBook displays success message with updated priority
+   Use case ends.
+
+Extensions:
+   2a. The list is empty.
+   Use case ends.
+
+   3a. The given index is invalid.
+      3a1. InsuraBook shows an error message.
+      Use case resumes at step 2.
+
+   4a. Priority value is invalid.
+      4a1. InsuraBook shows an error message indicating valid priority levels.
+      Use case resumes at step 3.
 </pre><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <div class="alert box-container border-warning alert-border-left" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><div class="icon-wrapper text-warning" style="" data-v-19514615><!--[--><i class="fas fa-exclamation" data-v-19514615></i><!--]--></div><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
    This section is still currently being updated. More to come! 
-<!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h3 id="non-functional-requirements">Non-Functional Requirements<a class="fa fa-anchor" href="#non-functional-requirements" onclick="event.stopPropagation()"></a></h3> <ol><li>Should work on any <em>mainstream OS</em> as long as it has Java <code class="hljs inline no-lang">17</code> or above installed.</li> <li>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</li> <li>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</li></ol> <div class="alert box-container border-warning alert-border-left" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><div class="icon-wrapper text-warning" style="" data-v-19514615><!--[--><i class="fas fa-exclamation" data-v-19514615></i><!--]--></div><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
+<!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h3 id="non-functional-requirements">Non-Functional Requirements<a class="fa fa-anchor" href="#non-functional-requirements" onclick="event.stopPropagation()"></a></h3> <h4 id="technical-requirements">Technical Requirements<a class="fa fa-anchor" href="#technical-requirements" onclick="event.stopPropagation()"></a></h4> <ol><li>Should work on any <em>mainstream OS</em> as long as it has Java <code class="hljs inline no-lang">17</code> or above installed.</li> <li>Should work without requiring an installer or any additional software installation beyond Java.</li> <li>Should function offline without requiring an internet connection for core features.</li></ol> <h4 id="usability-requirements">Usability Requirements<a class="fa fa-anchor" href="#usability-requirements" onclick="event.stopPropagation()"></a></h4> <ol start="4"><li>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</li> <li>The system should be usable by telemarketing agents who are novice users of CLI applications, with minimal training required.</li> <li>Error messages should be clear and provide actionable guidance to help users correct their inputs.</li> <li>The user interface should remain responsive and not freeze during operations.</li></ol> <h4 id="reliability-and-data-integrity">Reliability and Data Integrity<a class="fa fa-anchor" href="#reliability-and-data-integrity" onclick="event.stopPropagation()"></a></h4> <ol start="8"><li>Should not lose any data during normal operations or graceful shutdowns.</li> <li>Should automatically save data after each modification to prevent data loss.</li> <li>Should provide data validation to prevent corruption of the contact database.</li> <li>Should handle corrupted data files gracefully by alerting the user rather than crashing.</li></ol> <h4 id="scalability-requirements">Scalability Requirements<a class="fa fa-anchor" href="#scalability-requirements" onclick="event.stopPropagation()"></a></h4> <ol start="12"><li>Should maintain performance even when the database grows from 100 to 1000 contacts.</li> <li>Sorting and filtering operations should scale linearly with the number of contacts.</li></ol> <h4 id="portability-requirements">Portability Requirements<a class="fa fa-anchor" href="#portability-requirements" onclick="event.stopPropagation()"></a></h4> <ol start="14"><li>Should store data in a human-editable text format (JSON) for easy portability and backup.</li> <li>Should be able to run from any directory without requiring installation to a specific location.</li> <li>Data files should be portable across different operating systems without modification.</li></ol> <h4 id="compliance-and-privacy-requirements">Compliance and Privacy Requirements<a class="fa fa-anchor" href="#compliance-and-privacy-requirements" onclick="event.stopPropagation()"></a></h4> <ol start="17"><li>Should provide a &quot;Do Not Call&quot; (DNC) feature to comply with telemarketing regulations.</li></ol> <h4 id="documentation-requirements">Documentation Requirements<a class="fa fa-anchor" href="#documentation-requirements" onclick="event.stopPropagation()"></a></h4> <ol start="18"><li>Should provide comprehensive user documentation covering all features and commands.</li> <li>Should include example commands and use cases in the user guide for common tasks.</li> <li>Developer documentation should be sufficient for new developers to set up and contribute to the project.</li></ol> <h4 id="constraints">Constraints<a class="fa fa-anchor" href="#constraints" onclick="event.stopPropagation()"></a></h4> <ol start="21"><li>The project should be completed within the semester timeline with regular iterative releases.</li> <li>The system should work without requiring elevated permissions or administrator rights.</li> <li>Should not use any paid third-party libraries or services.</li></ol> <h4 id="quality-requirements">Quality Requirements<a class="fa fa-anchor" href="#quality-requirements" onclick="event.stopPropagation()"></a></h4> <ol start="24"><li>The user interface should be intuitive enough that common tasks can be performed without referring to documentation.</li> <li>Command syntax should be consistent across all features to reduce learning curve.</li></ol> <div class="alert box-container border-warning alert-border-left" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><div class="icon-wrapper text-warning" style="" data-v-19514615><!--[--><i class="fas fa-exclamation" data-v-19514615></i><!--]--></div><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[-->
    This section is still currently being updated. More to come! 
 <!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h3 id="glossary">Glossary<a class="fa fa-anchor" href="#glossary" onclick="event.stopPropagation()"></a></h3> <ul><li><strong>CLI</strong>: Command Line Interface - a text-based interface where users type commands to interact with the application</li> <li><strong>DNC</strong>: Do Not Call - a regulatory compliance feature that marks contacts who should not be contacted for telemarketing</li> <li><strong>GUI</strong>: Graphical User Interface - a visual interface that allows users to interact through graphical elements</li> <li><strong>JavaFX</strong>: A Java library used for creating desktop applications with graphical user interfaces</li> <li><strong>JSON</strong>: JavaScript Object Notation - a lightweight data format used for storing and exchanging data</li> <li><strong>Mainstream OS</strong>: Windows, Linux, Unix, MacOS</li></ul> <hr> <h2 id="appendix-instructions-for-manual-testing"><strong>Appendix: Instructions for manual testing</strong><a class="fa fa-anchor" href="#appendix-instructions-for-manual-testing" onclick="event.stopPropagation()"></a></h2> <p>Given below are instructions to test the app manually.</p> <div class="alert box-container seamless" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><div class="icon-wrapper text-info" style="" data-v-19514615><!--[--><i class="fas fa-info" data-v-19514615></i><!--]--></div><!-- Icon -- content divider for seamless boxes without the header attribute --><div class="alert-info vertical-divider" aria-hidden="true" data-v-19514615></div><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[--><p><strong>Note:</strong> These instructions only provide a starting point for testers to work on;
 testers are expected to do more <em>exploratory</em> testing.</p><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h3 id="launch-and-shutdown">Launch and shutdown<a class="fa fa-anchor" href="#launch-and-shutdown" onclick="event.stopPropagation()"></a></h3> <div class="alert box-container alert-default" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><!----><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[--><span><ol><li>Initial launch
@@ -44,7 +160,7 @@ Expected: The most recent window size and location is retained.</li></ol></li> <
 Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</li> <li>Test case: <code class="hljs inline no-lang">delete 0</code>
 Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</li> <li>Other incorrect delete commands to try: <code class="hljs inline no-lang">delete</code>, <code class="hljs inline no-lang">delete x</code>, <code class="hljs inline no-lang">...</code> (where x is larger than the list size)
 Expected: Similar to previous.</li></ol></li> <li><p><em>{ more test cases …​ }</em></p></li></ol></span><p></p><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div> <h3 id="saving-data">Saving data<a class="fa fa-anchor" href="#saving-data" onclick="event.stopPropagation()"></a></h3> <div class="alert box-container alert-default" style="" data-v-19514615><!--Icon and vertical divider for seamless header box--><!----><div class="header-and-body" data-v-19514615><!-- Header wrapper, not rendered if there is no header attribute --><!----><!-- Body wrapper --><div class="box-body-wrapper" data-v-19514615><!-- icon on the left, not shown if there is a header --><!----><!-- Icon -- content divider for seamless boxes without the header attribute --><!----><!-- Content wrapper --><div class="contents" style="" data-v-19514615><!--[--><span><ol><li>Dealing with missing/corrupted data files
-<ol><li><em>{explain how to simulate a missing/corrupted file, and the expected behavior}</em></li></ol></li> <li><em>{ more test cases …​ }</em></li></ol></span><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div></div> <nav id="page-nav" data-v-6b1b63d2><!--[--><div class="nav-component slim-scroll"><nav id="mb-page-nav" class="nav nav-pills flex-column my-0 small no-flex-wrap" data-v-6b1b63d2><!--[--><a class="nav-link py-1" href="#insurabook-developer-guide">InsuraBook Developer Guide‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#acknowledgements">Acknowledgements‎</a> <a class="nav-link py-1" href="#setting-up-getting-started">Setting up, getting started‎</a> <a class="nav-link py-1" href="#design">Design‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#architecture">Architecture‎</a> <a class="nav-link py-1" href="#ui-component">UI component‎</a> <a class="nav-link py-1" href="#logic-component">Logic component‎</a> <a class="nav-link py-1" href="#model-component">Model component‎</a> <a class="nav-link py-1" href="#storage-component">Storage component‎</a> <a class="nav-link py-1" href="#common-classes">Common classes‎</a></nav> <a class="nav-link py-1" href="#implementation">Implementation‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#proposed-undo-redo-feature">[Proposed] Undo/redo feature‎</a> <a class="nav-link py-1" href="#proposed-data-archiving">[Proposed] Data archiving‎</a></nav> <a class="nav-link py-1" href="#documentation-logging-testing-configuration-dev-ops">Documentation, logging, testing, configuration, dev-ops‎</a> <a class="nav-link py-1" href="#appendix-requirements">Appendix: Requirements‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#product-scope">Product scope‎</a> <a class="nav-link py-1" href="#user-stories">User stories‎</a> <a class="nav-link py-1" href="#use-cases">Use cases‎</a> <a class="nav-link py-1" href="#non-functional-requirements">Non-Functional Requirements‎</a> <a class="nav-link py-1" href="#glossary">Glossary‎</a></nav> <a class="nav-link py-1" href="#appendix-instructions-for-manual-testing">Appendix: Instructions for manual testing‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#launch-and-shutdown">Launch and shutdown‎</a> <a class="nav-link py-1" href="#deleting-a-person">Deleting a person‎</a> <a class="nav-link py-1" href="#saving-data">Saving data‎</a></nav></nav><!--]--><!--v-if--></nav></div><!--]--><!--v-if--></nav> <div class="scroll-top-button fa-lg d-print-none" style="display:none;bottom:2%;right:2%;position:fixed;" aria-hidden="true"><!--[--><i class="fas fa-arrow-circle-up"></i><!--]--></div></div> <footer><div class="text-center"><small>[<span><strong>Powered by</strong></span> <img src="https://markbind.org/favicon.ico" width="30"> <a href="https://markbind.org/">MarkBind 6.0.2</a>, generated on Wed, 29 Oct 2025, 15:55:12 GMT+8]</small></div></footer><!--]--></div>
+<ol><li><em>{explain how to simulate a missing/corrupted file, and the expected behavior}</em></li></ol></li> <li><em>{ more test cases …​ }</em></li></ol></span><!--]--></div><!-- dismiss button on the right, not shown if there is a header --><!----></div></div></div></div> <nav id="page-nav" data-v-6b1b63d2><!--[--><div class="nav-component slim-scroll"><nav id="mb-page-nav" class="nav nav-pills flex-column my-0 small no-flex-wrap" data-v-6b1b63d2><!--[--><a class="nav-link py-1" href="#insurabook-developer-guide">InsuraBook Developer Guide‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#acknowledgements">Acknowledgements‎</a> <a class="nav-link py-1" href="#setting-up-getting-started">Setting up, getting started‎</a> <a class="nav-link py-1" href="#design">Design‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#architecture">Architecture‎</a> <a class="nav-link py-1" href="#ui-component">UI component‎</a> <a class="nav-link py-1" href="#logic-component">Logic component‎</a> <a class="nav-link py-1" href="#model-component">Model component‎</a> <a class="nav-link py-1" href="#storage-component">Storage component‎</a> <a class="nav-link py-1" href="#common-classes">Common classes‎</a></nav> <a class="nav-link py-1" href="#implementation">Implementation‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#proposed-undo-redo-feature">[Proposed] Undo/redo feature‎</a> <a class="nav-link py-1" href="#proposed-data-archiving">[Proposed] Data archiving‎</a></nav> <a class="nav-link py-1" href="#documentation-logging-testing-configuration-dev-ops">Documentation, logging, testing, configuration, dev-ops‎</a> <a class="nav-link py-1" href="#appendix-requirements">Appendix: Requirements‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#product-scope">Product scope‎</a> <a class="nav-link py-1" href="#user-stories">User stories‎</a> <a class="nav-link py-1" href="#use-cases">Use cases‎</a> <a class="nav-link py-1" href="#non-functional-requirements">Non-Functional Requirements‎</a> <a class="nav-link py-1" href="#glossary">Glossary‎</a></nav> <a class="nav-link py-1" href="#appendix-instructions-for-manual-testing">Appendix: Instructions for manual testing‎</a> <nav class="nav nav-pills flex-column my-0 nested no-flex-wrap"><a class="nav-link py-1" href="#launch-and-shutdown">Launch and shutdown‎</a> <a class="nav-link py-1" href="#deleting-a-person">Deleting a person‎</a> <a class="nav-link py-1" href="#saving-data">Saving data‎</a></nav></nav><!--]--><!--v-if--></nav></div><!--]--><!--v-if--></nav> <div class="scroll-top-button fa-lg d-print-none" style="display:none;bottom:2%;right:2%;position:fixed;" aria-hidden="true"><!--[--><i class="fas fa-arrow-circle-up"></i><!--]--></div></div> <footer><div class="text-center"><small>[<span><strong>Powered by</strong></span> <img src="https://markbind.org/favicon.ico" width="30"> <a href="https://markbind.org/">MarkBind 6.0.2</a>, generated on Wed, 29 Oct 2025, 17:18:01 GMT+8]</small></div></footer><!--]--></div>
 </body><script src="/tp/markbind/js/bootstrap-utility.min.js"></script>
 <script src="/tp/markbind/js/polyfill.min.js"></script>
 <script src="/tp/markbind/js/vue.global.prod.min.js"></script>
