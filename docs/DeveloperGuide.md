@@ -506,9 +506,48 @@ Extensions:
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+#### Technical Requirements
+1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2. Should work without requiring an installer or any additional software installation beyond Java.
+3. Should function offline without requiring an internet connection for core features.
+
+#### Usability Requirements
+4. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+5. The system should be usable by telemarketing agents who are novice users of CLI applications, with minimal training required.
+6. Error messages should be clear and provide actionable guidance to help users correct their inputs.
+7. The user interface should remain responsive and not freeze during operations.
+
+#### Reliability and Data Integrity
+8. Should not lose any data during normal operations or graceful shutdowns.
+9. Should automatically save data after each modification to prevent data loss.
+10. Should provide data validation to prevent corruption of the contact database.
+11. Should handle corrupted data files gracefully by alerting the user rather than crashing.
+
+#### Scalability Requirements
+12. Should maintain performance even when the database grows from 100 to 1000 contacts.
+13. Sorting and filtering operations should scale linearly with the number of contacts.
+
+#### Portability Requirements
+14. Should store data in a human-editable text format (JSON) for easy portability and backup.
+15. Should be able to run from any directory without requiring installation to a specific location.
+16. Data files should be portable across different operating systems without modification.
+
+#### Compliance and Privacy Requirements
+17. Should provide a "Do Not Call" (DNC) feature to comply with telemarketing regulations.
+
+#### Documentation Requirements
+18. Should provide comprehensive user documentation covering all features and commands.
+19. Should include example commands and use cases in the user guide for common tasks.
+20. Developer documentation should be sufficient for new developers to set up and contribute to the project.
+
+#### Constraints
+21. The project should be completed within the semester timeline with regular iterative releases.
+22. The system should work without requiring elevated permissions or administrator rights.
+23. Should not use any paid third-party libraries or services.
+
+#### Quality Requirements
+24. The user interface should be intuitive enough that common tasks can be performed without referring to documentation.
+25. Command syntax should be consistent across all features to reduce learning curve.
 
 <box type="warning" light>
    This section is still currently being updated. More to come! 
