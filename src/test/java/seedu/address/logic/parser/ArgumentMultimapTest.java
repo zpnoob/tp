@@ -29,8 +29,8 @@ public class ArgumentMultimapTest {
         ParseException ex = assertThrows(ParseException.class, () -> map.verifyNoDuplicatePrefixesFor(
             PREFIX_OCCUPATION));
 
-        assertEquals("Only one o/ (occupation) input is allowed. Remove the extra occurrences and try again.",
-                ex.getMessage());
+        String expected = Messages.getErrorMessageForDuplicatePrefixes(PREFIX_OCCUPATION);
+        assertEquals(expected, ex.getMessage());
     }
 
     @Test

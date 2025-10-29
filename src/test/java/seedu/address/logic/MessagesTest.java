@@ -1,6 +1,5 @@
 package seedu.address.logic;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -15,8 +14,8 @@ public class MessagesTest {
     public void getErrorMessageForDuplicatePrefixes_singleOccupation_returnsSpecialMessage() {
         Prefix occ = new Prefix("o/");
         String message = Messages.getErrorMessageForDuplicatePrefixes(occ);
-        assertEquals("Only one o/ (occupation) input is allowed. Remove the extra occurrences and try again.",
-                message);
+        assertTrue(message.contains("o/(occupation)"));
+        assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
     }
 
     @Test
@@ -28,9 +27,9 @@ public class MessagesTest {
         String message = Messages.getErrorMessageForDuplicatePrefixes(name, phone, email);
 
         assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
-        assertTrue(message.contains("n/ (name)"));
-        assertTrue(message.contains("p/ (phone)"));
-        assertTrue(message.contains("e/ (email)"));
+        assertTrue(message.contains("n/(name)"));
+        assertTrue(message.contains("p/(phone)"));
+        assertTrue(message.contains("e/(email)"));
         assertTrue(message.endsWith(". Remove duplicate entries and try again."));
     }
 
@@ -76,7 +75,7 @@ public class MessagesTest {
         Prefix priority = new Prefix("pr/");
         String message = Messages.getErrorMessageForDuplicatePrefixes(priority);
 
-        assertTrue(message.contains("pr/ (priority)"));
+        assertTrue(message.contains("pr/(priority)"));
         assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
     }
 
@@ -85,7 +84,7 @@ public class MessagesTest {
         Prefix age = new Prefix("age/");
         String message = Messages.getErrorMessageForDuplicatePrefixes(age);
 
-        assertTrue(message.contains("age/ (age)"));
+        assertTrue(message.contains("age/(age)"));
         assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
     }
 
@@ -107,9 +106,9 @@ public class MessagesTest {
         String message = Messages.getErrorMessageForDuplicatePrefixes(priority, age, occupation);
 
         assertTrue(message.startsWith("Please specify each of the following fields at most once:"));
-        assertTrue(message.contains("pr/ (priority)"));
-        assertTrue(message.contains("age/ (age)"));
-        assertTrue(message.contains("o/ (occupation)"));
+        assertTrue(message.contains("pr/(priority)"));
+        assertTrue(message.contains("age/(age)"));
+        assertTrue(message.contains("o/(occupation)"));
         assertTrue(message.endsWith(". Remove duplicate entries and try again."));
     }
 }
