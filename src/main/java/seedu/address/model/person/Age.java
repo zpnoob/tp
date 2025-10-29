@@ -10,8 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Age {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Age should be a non-negative integer and should not be blank";
-    public static final String VALIDATION_REGEX = "\\d+";
+            "Age should be a non-negative integer with at most 3 digits.";
+    public static final String VALIDATION_REGEX = "\\d{1,3}";
     public final String value;
 
     /**
