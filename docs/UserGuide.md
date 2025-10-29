@@ -49,9 +49,10 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
     ```
     java -jar insurabook.jar
     ```
-    
     A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-    ![Ui](images/Ui.png)
+    <div style="text-align: center;">
+        <img src="images/Ui.png" alt="Ui" style="border: 5px solid black; border-radius: 40px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    </div>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -100,7 +101,9 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
 
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessage.png)
+<div style="text-align: center;">
+    <img src="images/helpMessage.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 70%; height: auto; margin: 20px 0px;"/>
+</div>
 
 Format: `help`
 
@@ -108,6 +111,10 @@ Format: `help`
 ### Adding a person: `add`
 
 Adds a person to the address book.
+
+<div style="text-align: center;">
+    <img src="images/features/addCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
 
 Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
 
@@ -128,6 +135,10 @@ Examples:
 
 Shows a list of all persons sorted by index in the address book.
 
+<div style="text-align: center;">
+    <img src="images/features/listCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
+
 Format: `list [pr/asc] [pr/desc] [i/asc] [i/asc]`
 - Addition of `pr/asc` lists the the contacts sorted by priority in ascending order while `pr/desc` sorts in descending order.
 - Addition of `i/asc` lists the contacts sorted by income bracket in ascending order while `i/desc` sorts in descending order.
@@ -141,6 +152,10 @@ Format: `list [pr/asc] [pr/desc] [i/asc] [i/asc]`
 ### Editing a person : `edit`
 
 Edits an existing person in the address book.
+
+<div style="text-align: center;">
+    <img src="images/features/editCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+</div>
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
