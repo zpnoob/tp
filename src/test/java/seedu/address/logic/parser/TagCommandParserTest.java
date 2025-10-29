@@ -55,7 +55,6 @@ public class TagCommandParserTest {
     public void parse_invalidTagValue_failure() {
         assertParseFailure(parser, "1 t/!!invalid!!", seedu.address.model.tag.Tag.MESSAGE_CONSTRAINTS);
     }
-    // ---------- SUCCESS CASES ----------
 
     @Test
     public void parse_validSingleTag_success() {
