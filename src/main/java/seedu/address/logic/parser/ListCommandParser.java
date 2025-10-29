@@ -30,6 +30,8 @@ public class ListCommandParser implements Parser<ListCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
         }
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PRIORITY, PREFIX_INCOME_BRACKET);
+
         boolean hasPriority = argMultimap.getValue(PREFIX_PRIORITY).isPresent();
         boolean hasIncomeBracket = argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent();
 

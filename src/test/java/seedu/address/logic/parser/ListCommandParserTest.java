@@ -1,11 +1,14 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INCOME_BRACKET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRIORITY;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ListCommand;
 
 public class ListCommandParserTest {
@@ -76,5 +79,23 @@ public class ListCommandParserTest {
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
         assertParseFailure(parser, " i/",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_duplicatePriorityPrefix_throwsParseException() {
+        assertParseFailure(parser, " pr/asc pr/desc",
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY));
+    }
+
+    @Test
+    public void parse_duplicateIncomeBracketPrefix_throwsParseException() {
+        assertParseFailure(parser, " i/asc i/desc",
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_INCOME_BRACKET));
+    }
+
+    @Test
+    public void parse_multipleDuplicates_throwsParseException() {
+        assertParseFailure(parser, " pr/asc pr/desc pr/asc",
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PRIORITY));
     }
 }
