@@ -97,6 +97,14 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
+     * Sets the {@code IncomeBracket} of the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withIncomeBracket(IncomeBracket.Level level) {
+        descriptor.setIncomeBracket(new IncomeBracket(level));
+        return this;
+    }
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */

@@ -168,4 +168,43 @@ public class JsonAdaptedPersonTest {
         assertTrue(modelPerson.isDncTagged());
     }
 
+    @Test
+    public void toModelType_nullIncomeBracket_returnsPersonWithNullIncomeBracket() throws Exception {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
+                VALID_ADDRESS, VALID_OCCUPATION, VALID_AGE, VALID_PRIORITY, null,
+                VALID_LAST_CONTACTED_DATE, VALID_TAGS);
+        seedu.address.model.person.Person modelPerson = person.toModelType();
+        assertEquals(null, modelPerson.getIncomeBracket());
+    }
+
+    @Test
+    public void toModelType_emptyIncomeBracket_returnsPersonWithNullIncomeBracket() throws Exception {
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
+                VALID_ADDRESS, VALID_OCCUPATION, VALID_AGE, VALID_PRIORITY, "",
+                VALID_LAST_CONTACTED_DATE, VALID_TAGS);
+        seedu.address.model.person.Person modelPerson = person.toModelType();
+        assertEquals(null, modelPerson.getIncomeBracket());
+    }
+
+    @Test
+    public void constructor_personWithNoneIncomeBracket_savesAsNull() throws Exception {
+        seedu.address.model.person.Person personWithNone = new seedu.address.testutil.PersonBuilder()
+                .withName("Alice")
+                .withPhone("99999999")
+                .withEmail("alice@example.com")
+                .withAddress("1 Example St")
+                .withOccupation("Engineer")
+                .withAge("30")
+                .withPriority("HIGH")
+                .withIncomeBracket(seedu.address.model.person.IncomeBracket.Level.NONE)
+                .withLastContactedDate("2020-01-01")
+                .build();
+
+        JsonAdaptedPerson jsonPerson = new JsonAdaptedPerson(personWithNone);
+        // Convert back to model and verify income bracket is null
+        seedu.address.model.person.Person modelPerson = jsonPerson.toModelType();
+        assertEquals(null, modelPerson.getIncomeBracket());
+    }
+
 }
+

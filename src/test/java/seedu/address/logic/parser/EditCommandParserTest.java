@@ -228,6 +228,18 @@ public class EditCommandParserTest {
     }
 
     @Test
+    public void parse_emptyIncomeBracket_success() {
+        Index targetIndex = INDEX_FIRST_PERSON;
+        String userInput = targetIndex.getOneBased() + " " + PREFIX_INCOME_BRACKET;
+
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
+                .withIncomeBracket(IncomeBracket.Level.NONE).build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
     public void parse_lastContactedDate_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + LAST_CONTACTED_DATE_DESC;

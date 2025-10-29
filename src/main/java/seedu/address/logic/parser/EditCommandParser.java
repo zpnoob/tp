@@ -22,6 +22,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.IncomeBracket;
 import seedu.address.model.person.Priority;
 import seedu.address.model.tag.Tag;
 
@@ -89,11 +90,11 @@ public class EditCommandParser implements Parser<EditCommand> {
         Optional<Set<Tag>> tagsForEdit =
             parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG));
         tagsForEdit.ifPresent(editPersonDescriptor::setTags);
-        // Handle income bracket: empty value clears to null
+        // Handle income bracket: empty value clears to NONE
         if (argMultimap.getValue(PREFIX_INCOME_BRACKET).isPresent()) {
             String incomeBracketValue = argMultimap.getValue(PREFIX_INCOME_BRACKET).get();
             if (incomeBracketValue.trim().isEmpty()) {
-                editPersonDescriptor.setIncomeBracket(null);
+                editPersonDescriptor.setIncomeBracket(new IncomeBracket(IncomeBracket.Level.NONE));
             } else {
                 editPersonDescriptor.setIncomeBracket(ParserUtil.parseIncomeBracket(incomeBracketValue));
             }

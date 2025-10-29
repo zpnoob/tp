@@ -16,6 +16,7 @@ public class IncomeBracket {
      * Enum representing the income bracket levels.
      */
     public enum Level {
+        NONE(""),
         LOW("Low Income"),
         MIDDLE("Middle Income"),
         HIGH("High Income");

@@ -182,12 +182,38 @@ public class IncomeBracketTest {
 
     @Test
     public void levelEnum_displayValues() {
+        assertEquals("", IncomeBracket.Level.NONE.getDisplayValue());
         assertEquals("Low Income", IncomeBracket.Level.LOW.getDisplayValue());
         assertEquals("Middle Income", IncomeBracket.Level.MIDDLE.getDisplayValue());
         assertEquals("High Income", IncomeBracket.Level.HIGH.getDisplayValue());
 
+        assertEquals("", IncomeBracket.Level.NONE.toString());
         assertEquals("Low Income", IncomeBracket.Level.LOW.toString());
         assertEquals("Middle Income", IncomeBracket.Level.MIDDLE.toString());
         assertEquals("High Income", IncomeBracket.Level.HIGH.toString());
+    }
+
+    @Test
+    public void constructor_noneLevel_success() {
+        IncomeBracket none = new IncomeBracket(IncomeBracket.Level.NONE);
+        assertEquals(IncomeBracket.Level.NONE, none.value);
+        assertEquals("", none.getValue());
+        assertEquals("NONE", none.toString());
+    }
+
+    @Test
+    public void equals_noneLevel() {
+        IncomeBracket none1 = new IncomeBracket(IncomeBracket.Level.NONE);
+        IncomeBracket none2 = new IncomeBracket(IncomeBracket.Level.NONE);
+        IncomeBracket low = new IncomeBracket("low");
+
+        // same NONE values -> returns true
+        assertTrue(none1.equals(none2));
+
+        // same object -> returns true
+        assertTrue(none1.equals(none1));
+
+        // different values -> returns false
+        assertFalse(none1.equals(low));
     }
 }

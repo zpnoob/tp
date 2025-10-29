@@ -112,4 +112,47 @@ public class MessagesTest {
         assertTrue(message.contains("o/ (occupation)"));
         assertTrue(message.endsWith(". Remove duplicate entries and try again."));
     }
+
+    @Test
+    public void format_personWithNoneIncomeBracket_doesNotIncludeIncome() {
+        Person p = new PersonBuilder()
+                .withName("Bob")
+                .withPhone("88888888")
+                .withEmail("bob@example.com")
+                .withAddress("2 Example Road")
+                .withOccupation("Teacher")
+                .withAge("25")
+                .withPriority("MEDIUM")
+                .withIncomeBracket(seedu.address.model.person.IncomeBracket.Level.NONE)
+                .withLastContactedDate("2020-01-01")
+                .build();
+
+        String formatted = Messages.format(p);
+
+        // Should not contain income bracket when it's NONE
+        assertTrue(!formatted.contains("Income:"));
+        assertTrue(formatted.contains("Bob"));
+        assertTrue(formatted.contains("Phone: 88888888"));
+    }
+
+    @Test
+    public void format_personWithIncomeBracket_includesIncome() {
+        Person p = new PersonBuilder()
+                .withName("Charlie")
+                .withPhone("77777777")
+                .withEmail("charlie@example.com")
+                .withAddress("3 Example Road")
+                .withOccupation("Doctor")
+                .withAge("35")
+                .withPriority("HIGH")
+                .withIncomeBracket("high")
+                .withLastContactedDate("2020-01-01")
+                .build();
+
+        String formatted = Messages.format(p);
+
+        // Should contain income bracket when it's not NONE
+        assertTrue(formatted.contains("Income:"));
+        assertTrue(formatted.contains("HIGH"));
+    }
 }
