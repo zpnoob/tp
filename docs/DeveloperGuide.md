@@ -334,9 +334,9 @@ Actor: User<br>
 <pre>
 MSS: 
    1.  User requests to list persons
-   2.  AddressBook shows a list of persons
+   2.  InsuraBook shows a list of persons
    3.  User requests to delete a specific person in the list
-   4.  AddressBook deletes the person
+   4.  InsuraBook deletes the person
    Use case ends.
 
 Extensions:
@@ -344,8 +344,159 @@ Extensions:
    Use case ends.
 
    3a. The given index is invalid.
-      3a1. AddressBook shows an error message.
+      3a1. InsuraBook shows an error message.
       Use case resumes at step 2.
+</pre>
+</box>
+
+#### UC2 - Add New Contact
+<box>
+Software System: InsuraBook<br>
+Use case: UC2 - Add New Contact<br>
+Actor: User<br>
+
+<pre>
+MSS: 
+   1.  User requests to add a new contact with details (name, phone, email, etc.)
+   2.  InsuraBook validates the contact information
+   3.  InsuraBook adds the contact to the list
+   4.  InsuraBook displays success message with contact details
+   Use case ends.
+
+Extensions:
+   2a. Required fields are missing.
+      2a1. InsuraBook shows an error message indicating missing fields.
+      Use case ends.
+
+   2b. Phone number format is invalid.
+      2b1. InsuraBook shows an error message about invalid phone format.
+      Use case ends.
+
+   2c. Email format is invalid.
+      2c1. InsuraBook shows an error message about invalid email format.
+      Use case ends.
+
+   2d. Contact with same name and phone already exists.
+      2d1. InsuraBook shows an error message about duplicate contact.
+      Use case ends.
+</pre>
+</box>
+
+#### UC3 - Edit Contact Details
+<box>
+Software System: InsuraBook<br>
+Use case: UC3 - Edit Contact Details<br>
+Actor: User<br>
+
+<pre>
+MSS: 
+   1.  User requests to list persons
+   2.  InsuraBook shows a list of persons
+   3.  User requests to edit a specific person's details with new information
+   4.  InsuraBook validates the new information
+   5.  InsuraBook updates the contact details
+   6.  InsuraBook displays success message with updated details
+   Use case ends.
+
+Extensions:
+   2a. The list is empty.
+   Use case ends.
+
+   3a. The given index is invalid.
+      3a1. InsuraBook shows an error message.
+      Use case resumes at step 2.
+
+   4a. New information format is invalid.
+      4a1. InsuraBook shows an error message indicating invalid format.
+      Use case resumes at step 3.
+
+   4b. Edited contact would become a duplicate of an existing contact.
+      4b1. InsuraBook shows an error message about duplicate contact.
+      Use case resumes at step 3.
+</pre>
+</box>
+
+#### UC4 - Find Contacts by Keywords
+<box>
+Software System: InsuraBook<br>
+Use case: UC4 - Find Contacts by Keywords<br>
+Actor: User<br>
+
+<pre>
+MSS: 
+   1.  User requests to find contacts using search keywords
+   2.  InsuraBook searches for matching contacts by name
+   3.  InsuraBook displays a list of matching contacts
+   Use case ends.
+
+Extensions:
+   1a. No keywords provided.
+      1a1. InsuraBook shows an error message about missing keywords.
+      Use case ends.
+
+   3a. No contacts match the search criteria.
+      3a1. InsuraBook displays an empty list with a message indicating no matches.
+      Use case ends.
+</pre>
+</box>
+
+#### UC5 - Tag a Contact
+<box>
+Software System: InsuraBook<br>
+Use case: UC5 - Tag a Contact<br>
+Actor: User<br>
+
+<pre>
+MSS: 
+   1.  User requests to list persons
+   2.  InsuraBook shows a list of persons
+   3.  User requests to add tags to a specific person
+   4.  InsuraBook validates the tag format
+   5.  InsuraBook adds the tags to the contact
+   6.  InsuraBook displays success message with updated contact
+   Use case ends.
+
+Extensions:
+   2a. The list is empty.
+   Use case ends.
+
+   3a. The given index is invalid.
+      3a1. InsuraBook shows an error message.
+      Use case resumes at step 2.
+
+   4a. Tag format is invalid (e.g., contains special characters).
+      4a1. InsuraBook shows an error message about invalid tag format.
+      Use case resumes at step 3.
+</pre>
+</box>
+
+#### UC6 - Set Contact Priority
+<box>
+Software System: InsuraBook<br>
+Use case: UC6 - Set Contact Priority<br>
+Actor: User<br>
+
+<pre>
+MSS: 
+   1.  User requests to list persons
+   2.  InsuraBook shows a list of persons
+   3.  User requests to set priority for a specific person (HIGH, MEDIUM, or LOW)
+   4.  InsuraBook validates the priority value
+   5.  InsuraBook updates the contact's priority
+   6.  InsuraBook displays success message with updated priority
+   Use case ends.
+
+Extensions:
+   2a. The list is empty.
+   Use case ends.
+
+   3a. The given index is invalid.
+      3a1. InsuraBook shows an error message.
+      Use case resumes at step 2.
+
+   4a. Priority value is invalid.
+      4a1. InsuraBook shows an error message indicating valid priority levels.
+      Use case resumes at step 3.
 </pre>
 </box>
 

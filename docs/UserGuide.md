@@ -8,7 +8,7 @@
 InsuraBook is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InsuraBook can get your contact management tasks done faster than traditional GUI apps.
 
 
-**Target User**: Telemarketing Agents selling insurance who may need to manage large contact list.
+**Target User**: Telemarketing Agents selling insurance who may need to manage a large contact list.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -29,7 +29,7 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
   ```
   java version "17.0.x" or higher
   ```
-  If Java is not installed or the version is below 17, proceed to install Java 17+
+  If Java is not installed, or the Java version is below Java 17, proceed to install Java 17+
 
   **Installation links:**
   * **Mac users:** Follow the precise installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
@@ -49,7 +49,7 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
     ```
     java -jar insurabook.jar
     ```
-    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+    A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
     <div style="text-align: center;">
         <img src="images/Ui.png" alt="Ui" style="border: 5px solid black; border-radius: 40px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     </div>
