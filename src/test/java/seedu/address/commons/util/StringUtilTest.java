@@ -50,42 +50,50 @@ public class StringUtilTest {
 
     /*
      * Invalid equivalence partitions for substring: null, empty
+     * Invalid equivalence partitions for sentence: null
      * The three test cases below test one invalid input at a time.
      */
 
     @Test
     public void containsSubstringIgnoreCase_nullSubstring_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () ->
-                StringUtil.containsSubstringIgnoreCase("test string", null));
+                StringUtil.containsSubstringIgnoreCase("typical sentence", null));
     }
 
     @Test
     public void containsSubstringIgnoreCase_emptySubstring_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, "Substring parameter cannot be empty", ()
-            -> StringUtil.containsSubstringIgnoreCase("test string", "  "));
+            -> StringUtil.containsSubstringIgnoreCase("typical sentence", "  "));
     }
 
     @Test
-    public void containsSubstringIgnoreCase_nullString_throwsNullPointerException() {
+    public void containsSubstringIgnoreCase_nullSentence_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () ->
                 StringUtil.containsSubstringIgnoreCase(null, "abc"));
     }
 
     /*
+     * Valid equivalence partitions for sentence:
+     *   - empty sentence
+     *   - one word
+     *   - multiple words
+     *   - sentence with special characters
+     *
      * Valid equivalence partitions for substring:
-     *   - partial match (beginning, middle, end of string)
+     *   - partial match (beginning, middle, end of sentence)
      *   - exact match
      *   - substring with symbols/numbers
-     *   - substring with spaces
+     *   - substring with leading/trailing spaces
      *
      * Possible scenarios returning true:
      *   - case-insensitive match
      *   - substring trimmed before matching
-     *   - partial match in email/special formats
+     *   - partial match within a word
+     *   - partial match spanning multiple words
      *
      * Possible scenarios returning false:
-     *   - empty string being searched
-     *   - substring not found
+     *   - empty sentence
+     *   - substring not in sentence
      *
      * The test method below verifies the above scenarios.
      */
@@ -97,13 +105,17 @@ public class StringUtilTest {
         assertFalse(StringUtil.containsSubstringIgnoreCase("", "abc"));
         assertFalse(StringUtil.containsSubstringIgnoreCase("    ", "123"));
 
-        // Substring not found
+        // Substring not in sentence
         assertFalse(StringUtil.containsSubstringIgnoreCase("hello world", "xyz"));
 
-        // Partial matches - case insensitive
-        assertTrue(StringUtil.containsSubstringIgnoreCase("Hello World", "hel")); // Beginning
-        assertTrue(StringUtil.containsSubstringIgnoreCase("Hello World", "Wor")); // Middle
-        assertTrue(StringUtil.containsSubstringIgnoreCase("Hello World", "RLD")); // End
+        // Partial match at beginning of sentence - case insensitive
+        assertTrue(StringUtil.containsSubstringIgnoreCase("Hello World", "hel"));
+
+        // Partial match in middle of sentence - case insensitive
+        assertTrue(StringUtil.containsSubstringIgnoreCase("Hello World", "Wor"));
+
+        // Partial match at end of sentence - case insensitive
+        assertTrue(StringUtil.containsSubstringIgnoreCase("Hello World", "RLD"));
 
         // Exact match - case insensitive
         assertTrue(StringUtil.containsSubstringIgnoreCase("Hello", "hello"));
@@ -115,11 +127,11 @@ public class StringUtilTest {
         assertTrue(StringUtil.containsSubstringIgnoreCase("test@123", "@123"));
         assertTrue(StringUtil.containsSubstringIgnoreCase("user@example.com", "example"));
 
-        // Real use case: email partial match
+        // Partial match in email address
         assertTrue(StringUtil.containsSubstringIgnoreCase("lidavid@example.com", "lidavid"));
         assertTrue(StringUtil.containsSubstringIgnoreCase("lidavid@example.com", "david"));
 
-        // Substring spanning multiple words/characters
+        // Substring spanning multiple words in sentence
         assertTrue(StringUtil.containsSubstringIgnoreCase("abc def ghi", "c d"));
     }
 
