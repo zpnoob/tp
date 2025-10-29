@@ -79,7 +79,7 @@ class JsonAdaptedPerson {
         priority = source.getPriority().toString();
         // Store income bracket as the enum name for consistent serialization
         // NONE level is saved as null for cleaner JSON
-        incomeBracket = source.getIncomeBracket() != null 
+        incomeBracket = source.getIncomeBracket() != null
                 && source.getIncomeBracket().value != seedu.address.model.person.IncomeBracket.Level.NONE
                 ? source.getIncomeBracket().value.name() : null;
         lastContactedDate = source.getLastContactedDate().toString();

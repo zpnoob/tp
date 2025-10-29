@@ -164,7 +164,7 @@ public class PersonCard extends UiPart<Region> {
      * Sets the income bracket text and style.
      */
     private void setIncomeBracketText(Person person) {
-        if (person.getIncomeBracket() == null 
+        if (person.getIncomeBracket() == null
                 || person.getIncomeBracket().value == seedu.address.model.person.IncomeBracket.Level.NONE) {
             hideField(this.incomeBracket);
         } else {

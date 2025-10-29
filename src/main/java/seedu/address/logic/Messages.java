@@ -96,7 +96,7 @@ public class Messages {
         }
         builder.append("\nPriority: ")
             .append(person.getPriority());
-        if (person.getIncomeBracket() != null 
+        if (person.getIncomeBracket() != null
                 && person.getIncomeBracket().value != seedu.address.model.person.IncomeBracket.Level.NONE) {
             builder.append("\nIncome: ").append(person.getIncomeBracket());
         }
