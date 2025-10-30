@@ -159,7 +159,7 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#person-params)
+* For details on available `PERSON_PARAMS`, click [here](#person_params)
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
@@ -176,7 +176,7 @@ Examples:
 </box>
 <box type="tip" seamless>
 
-**Tip:** You can remove all the person's tags using `edit INDEX t/`.
+**Tip:** You can remove any optional field by using the prefix without a value (e.g., `edit INDEX t/` removes all tags, `edit INDEX e/` removes email, `edit INDEX a/` removes address).
 
 </box>
 
@@ -365,7 +365,7 @@ Parameter | Description | Format | Constraints
 * Parameters can be specified in any order
 * For the `edit` command, at least one parameter must be provided
 * When editing tags with the `edit` command, existing tags will be replaced (not added to)
-* To remove all tags, use `t/` without specifying any tags after it
+* To remove any field, use the prefix without specifying a value after it (e.g. `t/` to remove all tags, `e/` to remove email, `a/` to remove address, etc.)
 
 </box>
 
