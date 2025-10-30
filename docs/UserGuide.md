@@ -37,9 +37,9 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
   * **Mac users:** Follow the precise installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
   * **Windows/Linux users:** Download Java 17+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/)
 
-2. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases) **remember to change!**.
+2. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-F15a-2/tp/releases/tag/v1.5).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your InsuraBook.
 
 4. **To run the application:**<br>
     Open a command terminal/command prompt<br>
