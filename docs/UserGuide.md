@@ -15,6 +15,8 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.
@@ -51,7 +53,7 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
     ```
     A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
     <div style="text-align: center;">
-        <img src="images/Ui.png" alt="Ui" style="border: 4px solid black; border-radius: 20px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+        <img src="images/Ui.png" alt="Ui" style="border: 4px solid black; border-radius: 20px; max-width: 43%; height: auto; margin: 20px 0px;"/>
     </div>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -72,6 +74,8 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
 6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -97,6 +101,8 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
+<div style="page-break-after: always;"></div>
+
 ### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
@@ -107,6 +113,7 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+<div style="page-break-after: always;"></div>
 
 ### Adding a person: `add`
 
@@ -127,9 +134,11 @@ Examples:
 
 <box type="warning" seamless>
 
-**Warning:** Adding another person with the same `NAME` or `PHONE_NUMBER` as an existing person will be counted as a duplicate and is not allowed.
+**Warning:** Adding another person with the same `PHONE_NUMBER` as an existing person will be counted as a duplicate and is not allowed.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Listing all persons : `list`
 
@@ -148,6 +157,8 @@ Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`
 **Warning:** You can only have up to **one** of the optional parameters.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Editing a person : `edit`
 
@@ -180,6 +191,8 @@ Examples:
 
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ### Locating persons by name: `find`
 
 Finds persons whose names contain any of the given keywords.
@@ -204,6 +217,7 @@ Examples:
 * `find Alex family` returns `Alex Yeoh`, `David Li`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
+<div style="page-break-after: always;"></div>
 
 ### Deleting a person : `delete`
 
@@ -222,6 +236,8 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+<div style="page-break-after: always;"></div>
 
 ### Editing the tag: `tag`
 
@@ -252,6 +268,8 @@ Examples:
 
 **Tip:** Use the `tag` command for quick tag changes, or the `edit` command when changing multiple fields at once.
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Marking a contact as Do Not Call: `dnc`
 
@@ -284,6 +302,8 @@ Examples:
 **Tip:** If a contact was wrongly assigned as DNC, delete the contact and re-add them to the system.
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ### Editing the priority: `priority`
 
 Changes the priority of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
@@ -309,6 +329,8 @@ Examples:
 
 **Tip:** Use the `priority` command for quick priority changes, or the `edit` command when changing multiple fields at once.
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Clearing all entries : `clear`
 
@@ -343,6 +365,8 @@ Furthermore, certain edits can cause the InsuraBook to behave in unexpected ways
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## PERSON_PARAMS
 
 The following parameters can be used when adding or editing a person. All parameters are optional unless otherwise specified:
@@ -370,6 +394,8 @@ Parameter | Description | Format | Constraints
 </box>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 
