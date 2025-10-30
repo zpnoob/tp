@@ -116,7 +116,8 @@ public class EditCommand extends Command {
 
     /**
      * Checks if the edited person conflicts with any existing person in the address book.
-     * A conflict occurs if another person (not the one being edited) has the same name or phone number.
+     * A conflict occurs if another person (not the one being edited) has the same phone number,
+     * or the same name AND phone number combination.
      *
      * @param model The model containing the address book.
      * @param personToEdit The original person being edited.
@@ -148,8 +149,6 @@ public class EditCommand extends Command {
 
         if (hasNameConflict && hasPhoneConflict) {
             throw new CommandException(MESSAGE_DUPLICATE_NAME_AND_PHONE);
-        } else if (hasNameConflict) {
-            throw new CommandException(MESSAGE_DUPLICATE_NAME);
         } else if (hasPhoneConflict) {
             throw new CommandException(MESSAGE_DUPLICATE_PHONE);
         }
