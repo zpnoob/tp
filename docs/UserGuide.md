@@ -51,7 +51,7 @@ InsuraBook is a **desktop app for managing contacts, optimized for use via a Com
     ```
     A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
     <div style="text-align: center;">
-        <img src="images/Ui.png" alt="Ui" style="border: 5px solid black; border-radius: 40px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+        <img src="images/Ui.png" alt="Ui" style="border: 4px solid black; border-radius: 20px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     </div>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
