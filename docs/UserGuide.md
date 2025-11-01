@@ -13,6 +13,45 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 <strong>InsuraBook is a one-stop solution for telemarketers and their daily contact management needs.</strong>
 </div>
 
+--------------------------------------------------------------------------------------------------------------------
+
+## How to Use This Guide
+
+<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+
+**New to InsuraBook?**
+
+* Start with the [Quick start](#quick-start) section to install and run the application.
+* Refer to the [Command summary](#command-summary) for a quick overview of all commands.
+
+</div>
+
+<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+
+**Experienced user looking for specific information?**
+
+* Use the [Features](#features) section to find detailed explanations of specific commands.
+* Check out [PERSON_PARAMS](#person_params) for information on the available contact parameters.
+
+</div>
+
+<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+
+**Need help with something specific?**
+
+* Browse the [FAQ](#faq) section for answers to common questions.
+* Check the [Known issues](#known-issues) section if you're experiencing problems.
+
+</div>
+
+<box type="tip" seamless>
+
+**Pro Tip:** Use `Ctrl+F` (or `Cmd+F` on Mac) to search for specific keywords/commands in this guide.
+
+</box>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -173,7 +212,7 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#person_params)
+* For details on available `PERSON_PARAMS`, click [here](#person-params)
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
