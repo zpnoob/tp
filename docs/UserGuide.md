@@ -5,9 +5,11 @@
 --- 
 # InsuraBook User Guide
 
-Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls instead of fumbling around with a mouse to find the right contact information.
+**Every sales day starts the same:** a long list of leads, a tighter list of callbacks, and too much information - spreadsheets, sticky notes, scattered files. In the middle of a call with an important client, one cannot afford to hunt for the right number, the last note, or the correct spelling of a client’s name. Miss a detail and just like that, a warm lead goes cold!
 
-InsuraBook keeps essential **client names, phone numbers and other miscellaneous info** organized. It's **optimized for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. 
+InsuraBook exists to stop prevent that from happening. Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls as the information you need is always where you expect it to be.
+
+InsuraBook keeps essential **client names, phone numbers and other miscellaneous info** organized. It's **optimized for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. InsuraBook transforms messy binders filled with client details into a steady, repeatable workflow optimized for high-volume calling - so busy agents can spend their energy making deals, and not chasing information.
 
 <div style="text-align: center; font-style: italic; font-size: 1.1em; margin: 20px 0; padding: 15px; background-color: #f0f0f0; border-left: 4px solid #0366d6;">
 <strong>InsuraBook is a one-stop solution for telemarketers and their daily contact management needs.</strong>
