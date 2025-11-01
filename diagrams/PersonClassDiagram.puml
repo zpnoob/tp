@@ -1,0 +1,20 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+Person *--> "1" Name
+Person *--> "1" Phone
+Person *--> "0..1" Email
+Person *--> "0..1" Address
+Person *--> "0..1" Occupation
+Person *--> "0..1" Age
+Person *--> "0..1" Priority
+Person *--> "0..1" IncomeBracket
+Person *--> "0..1" LastContactedDate
+Person *--> "*" Tag
+
+DncTag -up-|> Tag
+
+@enduml
