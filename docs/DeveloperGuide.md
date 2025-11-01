@@ -13,7 +13,7 @@
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+_This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org)._
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -126,7 +126,7 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="900" />
 
 
 The `Model` component,
@@ -135,6 +135,18 @@ The `Model` component,
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
+
+#### Person Class
+
+For a detailed view of the `Person` class and its associated attribute classes (Name, Phone, Email, etc.), refer to the dedicated diagram below:
+
+<puml src="diagrams/PersonClassDiagram.puml" width="1000" />
+
+The `Person` class encapsulates all contact information for InsuraBook users. Key design decisions:
+* **Required Fields**: Only Name and Phone are required fields. All other fields (Email, Address, Occupation, Age, Priority, Income Bracket, Tags) are optional.
+* **Validation**: Each attribute class (Name, Phone, Email, etc.) performs its own validation upon construction.
+* **Editability**: Person fields can be modified through the `edit` command, allowing users to update contact information as needed.
+* **Tag Support**: Persons can have multiple tags, including a special `DncTag` for "Do Not Call" compliance
 
 <box type="info" seamless>
 
@@ -156,6 +168,7 @@ The `Storage` component,
 * can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* uses Jackson-friendly adapter classes (`JsonAdaptedPerson`, `JsonAdaptedTag`) to bridge between domain models and JSON representation
 
 ### Common classes
 
@@ -261,13 +274,6 @@ The following activity diagram summarizes what happens when a user executes a ne
   itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -519,10 +525,6 @@ Extensions:
 </pre>
 </box>
 
-<box type="warning" light>
-   This section is still currently being updated. More to come! 
-</box>
-
 <div style="page-break-after: always;"></div>
 
 ### Non-Functional Requirements
@@ -570,10 +572,6 @@ Extensions:
 24. The user interface should be intuitive enough that common tasks can be performed without referring to documentation.
 25. Command syntax should be consistent across all features to reduce learning curve.
 
-<box type="warning" light>
-   This section is still currently being updated. More to come! 
-</box>
-
 ### Glossary
 
 * **CLI**: Command Line Interface - a text-based interface where users type commands to interact with the application
@@ -597,46 +595,507 @@ testers are expected to do more *exploratory* testing.
 </box>
 
 ### Launch and shutdown
-<box>
-<md>
 
-   1. Initial launch
-      1. Download the jar file and copy into an empty folder
-      2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
-   2. Saving window preferences
-      1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-      2. Re-launch the app by double-clicking the jar file.
-         Expected: The most recent window size and location is retained.
-   3. _{ more test cases …​ }_
-</md>
+<box>
+
+**Test: Initial launch**
+
+**Preconditions**: Java 17 or above is installed on the system.
+
+1. Download the jar file and copy into an empty folder. 
+2. Open a command terminal and navigate to the folder containing the jar file. Run the command `java -jar InsuraBook.jar`.
+
+**Expected**: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+
+----
+
+**Test: Saving window preferences**
+
+**Preconditions**: Application has been launched at least once.
+
+1. Resize the window to an optimum size and move the window to a different location.
+2. Close the window.
+3. Re-launch the app by running `java -jar InsuraBook.jar` in the command terminal.
+
+**Expected**: The most recent window size and location is retained.
+
+----
+
+**Test: Graceful shutdown**
+
+**Preconditions**: Application is running with some contacts added.
+
+1. Add or modify some contacts.
+2. Close the application using the window's close button (X).
+3. Re-launch the application.
+
+**Expected**: All changes are persisted and displayed when relaunching.
+
+----
+
+**Test: Exit command**
+
+**Preconditions**: Application is running.
+
+1. Type `exit` in the command box.
+2. Press Enter.
+
+**Expected**: Application closes gracefully.
+
 </box>
 
 
 ### Deleting a person
 
 <box>
-<md>
 
-   1. Deleting a person while all persons are being shown
-      1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-      2. Test case: `delete 1`
-         Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-      3. Test case: `delete 0`
-         Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-      4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)
-         Expected: Similar to previous.
+**Test: Deleting a person while all persons are being shown**
 
-   2. _{ more test cases …​ }_
-</md>
+**Preconditions**: List all persons using the `list` command. Multiple persons in the list.
+
+1. Execute `delete 1`.
+
+**Expected**: First contact is deleted from the list. Details of the deleted contact shown in the message box.
+
+----
+
+**Test: Delete with invalid index zero**
+
+**Preconditions**: List all persons using the `list` command. Multiple persons in the list.
+
+1. Execute `delete 0`.
+
+**Expected**: No person is deleted. Error message: "Invalid command format! Index must be a positive integer."
+
+----
+
+**Test: Delete with negative index**
+
+**Preconditions**: List all persons using the `list` command. Multiple persons in the list.
+
+1. Execute `delete -1`.
+
+**Expected**: No person is deleted. Error message shown indicating invalid index.
+
+----
+
+**Test: Delete with out-of-bounds index**
+
+**Preconditions**: List all persons using the `list` command. Multiple persons in the list.
+
+1. Execute `delete 999` (where 999 is larger than the list size).
+
+**Expected**: No person is deleted. Error message: "The person index provided is invalid."
+
+----
+
+**Test: Delete without index**
+
+**Preconditions**: Application is running.
+
+1. Execute `delete`.
+
+**Expected**: No person is deleted. Error message about invalid command format shown.
+
+----
+
+**Test: Delete with non-numeric index**
+
+**Preconditions**: Application is running.
+
+1. Execute `delete abc`.
+
+**Expected**: No person is deleted. Error message about invalid command format shown.
+
+----
+
+**Test: Deleting from filtered list**
+
+**Preconditions**: Use `find` command to filter the list (e.g., `find Alice`).
+
+1. Note the persons shown in the filtered list.
+2. Execute `delete 1`.
+
+**Expected**: First contact in the filtered list is deleted, not necessarily the first in the full list.
+
+----
+
+**Test: Deleting last person in list**
+
+**Preconditions**: List has at least one person. Note the size of the list.
+
+1. Execute `delete N` where N is the size of the list.
+
+**Expected**: Last contact is deleted successfully. List size decreases by one.
+
 </box>
 
 ### Saving data
 
 <box>
-<md>
 
-1. Dealing with missing/corrupted data files
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-2. _{ more test cases …​ }_
-</md>
+**Test: Dealing with missing data files**
+
+**Preconditions**: Application has been run at least once with data saved.
+
+1. Close the application.
+2. Navigate to the data folder and delete `insurabook.json`.
+3. Relaunch the application.
+
+**Expected**: Application starts with sample data loaded. No error messages displayed.
+
+----
+
+**Test: Dealing with corrupted data files**
+
+**Preconditions**: Application has been run at least once with data saved.
+
+1. Close the application.
+2. Navigate to the data folder and open `insurabook.json` in a text editor.
+3. Corrupt the file by removing a closing brace `}` or adding invalid JSON.
+4. Save the file and relaunch the application.
+
+**Expected**: Application starts with an empty contact list. Warning message is logged in the console indicating that the corrupted data file could not be loaded and will be starting with an empty contact list.
+
+----
+
+**Test: Data persistence after adding contacts**
+
+**Preconditions**: Application is running.
+
+1. Add a new contact using `add n/Test Person p/91234567 e/test@example.com a/123 Test St`.
+2. Close the application without using any save command.
+3. Relaunch the application.
+
+**Expected**: The newly added contact "Test Person" appears in the contact list.
+
+----
+
+**Test: Data persistence after editing contacts**
+
+**Preconditions**: Application is running with at least one contact.
+
+1. Edit an existing contact using `edit 1 n/New Name`.
+2. Close the application.
+3. Relaunch the application.
+
+**Expected**: The edited contact shows "New Name" as the name.
+
+----
+
+**Test: Data file location**
+
+**Preconditions**: Application has been run at least once.
+
+1. Close the application.
+2. Navigate to the application folder.
+3. Check for `data/insurabook.json` file.
+
+**Expected**: File exists at `[JAR location]/data/insurabook.json` and is readable JSON.
+
 </box>
+
+### Adding a person
+
+<box>
+
+**Test: Adding a person with all fields**
+
+**Preconditions**: Application is running.
+
+1. Execute `add n/John Doe p/98765432 e/johnd@example.com a/123 Main St o/Engineer age/30 pr/HIGH ib/UPPER t/friend t/colleague`.
+
+**Expected**: New contact "John Doe" is added with all specified fields. Success message displayed with contact details.
+
+----
+
+**Test: Adding a person with only required fields**
+
+**Preconditions**: Application is running.
+
+1. Execute `add n/Jane Smith p/87654321 e/janes@example.com a/456 Second Ave`.
+
+**Expected**: New contact "Jane Smith" is added. Optional fields (occupation, age, priority, income bracket) use default values.
+
+----
+
+**Test: Adding a person with duplicate name and phone**
+
+**Preconditions**: Contact "Alice Tan" with phone "91234567" already exists.
+
+1. Execute `add n/Alice Tan p/91234567 e/different@email.com a/Different Address`.
+
+**Expected**: Error message: "This person already exists in the address book."
+
+----
+
+**Test: Adding a person with invalid phone number**
+
+**Preconditions**: Application is running.
+
+1. Execute `add n/Bob Lee p/123 e/bob@example.com a/789 Third St`.
+
+**Expected**: Error message about invalid phone number format.
+
+----
+
+**Test: Adding a person with invalid email**
+
+**Preconditions**: Application is running.
+
+1. Execute `add n/Charlie Brown p/98765432 e/invalid-email a/101 Fourth Ave`.
+
+**Expected**: Error message about invalid email format.
+
+----
+
+**Test: Adding a person with missing required fields**
+
+**Preconditions**: Application is running.
+
+1. Execute `add n/David Lee`.
+
+**Expected**: Error message indicating missing required field (phone number).
+
+</box>
+
+### Editing a person
+
+<box>
+
+**Test: Editing a person's name**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 n/New Name`.
+
+**Expected**: First contact's name is changed to "New Name". Success message displayed.
+
+----
+
+**Test: Editing multiple fields**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 p/99998888 e/newemail@example.com pr/HIGH`.
+
+**Expected**: First contact's phone, email, and priority are updated. Success message displayed.
+
+----
+
+**Test: Editing with invalid index**
+
+**Preconditions**: List has N persons.
+
+1. Execute `edit 999 n/Test` (where 999 > N).
+
+**Expected**: Error message: "The person index provided is invalid."
+
+----
+
+**Test: Editing to create duplicate**
+
+**Preconditions**: Two contacts exist: "Alice" with phone "91111111" and "Bob" with phone "92222222".
+
+1. Execute `edit 2 n/Alice p/91111111`.
+
+**Expected**: Error message: "This person already exists in the address book."
+
+----
+
+**Test: Editing tags**
+
+**Preconditions**: First contact has existing tags.
+
+1. Execute `edit 1 t/newTag`.
+
+**Expected**: First contact's tags are replaced with only "newTag". Previous tags removed.
+
+----
+
+**Test: Clearing all tags**
+
+**Preconditions**: First contact has existing tags.
+
+1. Execute `edit 1 t/`.
+
+**Expected**: All tags removed from first contact.
+
+</box>
+
+### Finding persons
+
+<box>
+
+**Test: Finding by single keyword**
+
+**Preconditions**: Contact list contains "Alice Tan" and "Bob Lee".
+
+1. Execute `find Alice`.
+
+**Expected**: Only "Alice Tan" is shown in the filtered list.
+
+----
+
+**Test: Finding by multiple keywords**
+
+**Preconditions**: Contact list contains "Alice Tan", "Alice Wong", and "Bob Lee".
+
+1. Execute `find Alice Bob`.
+
+**Expected**: "Alice Tan", "Alice Wong", and "Bob Lee" are shown.
+
+----
+
+**Test: Case-insensitive search**
+
+**Preconditions**: Contact list contains "Alice Tan".
+
+1. Execute `find alice`.
+
+**Expected**: "Alice Tan" is found and displayed.
+
+----
+
+**Test: Finding with no matches**
+
+**Preconditions**: Application is running with contacts.
+
+1. Execute `find NonexistentName`.
+
+**Expected**: Empty list displayed with message "0 persons listed!"
+
+----
+
+**Test: Finding without keywords**
+
+**Preconditions**: Application is running.
+
+1. Execute `find`.
+
+**Expected**: Error message about invalid command format.
+
+----
+
+**Test: Returning to full list after find**
+
+**Preconditions**: A find operation has filtered the list.
+
+1. Execute `list`.
+
+**Expected**: Full contact list is displayed again.
+
+</box>
+
+### Priority management
+
+<box>
+
+**Test: Setting priority to HIGH**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 pr/HIGH`.
+
+**Expected**: First contact's priority is set to HIGH. Priority indicator updated in display.
+
+----
+
+**Test: Setting priority to MEDIUM**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 pr/MEDIUM`.
+
+**Expected**: First contact's priority is set to MEDIUM.
+
+----
+
+**Test: Setting priority to LOW**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 pr/LOW`.
+
+**Expected**: First contact's priority is set to LOW.
+
+----
+
+**Test: Setting invalid priority**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 pr/URGENT`.
+
+**Expected**: Error message about invalid priority value. Valid values shown.
+
+</box>
+
+### Income bracket management
+
+<box>
+
+**Test: Setting income bracket**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 ib/UPPER`.
+
+**Expected**: First contact's income bracket is set to UPPER.
+
+----
+
+**Test: Testing all income bracket levels**
+
+**Preconditions**: List has at least one person.
+
+1. Execute each command: `edit 1 ib/LOWER`, `edit 1 ib/MIDDLE`, `edit 1 ib/UPPER`.
+
+**Expected**: Each command successfully updates the income bracket.
+
+----
+
+**Test: Setting invalid income bracket**
+
+**Preconditions**: List has at least one person.
+
+1. Execute `edit 1 ib/RICH`.
+
+**Expected**: Error message about invalid income bracket. Valid values shown.
+
+</box>
+
+### Do Not Call (DNC) tag management
+
+<box>
+
+**Test: Adding DNC tag**
+
+**Preconditions**: First contact does not have DNC tag.
+
+1. Execute `edit 1 t/Do Not Call`.
+
+**Expected**: Contact is marked with DNC indicator. Special visual indication shown.
+
+----
+
+**Test: Removing DNC tag**
+
+**Preconditions**: First contact has DNC tag.
+
+1. Execute `edit 1 t/` to remove all tags, or replace with other tags.
+
+**Expected**: DNC indicator removed from contact display.
+
+----
+
+**Test: DNC tag persistence**
+
+**Preconditions**: Contact with DNC tag exists.
+
+1. Close and relaunch application.
+
+**Expected**: DNC tag and indicator persist across sessions.
+
+</box>
+
