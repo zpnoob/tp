@@ -5,10 +5,13 @@
 --- 
 # InsuraBook User Guide
 
-InsuraBook is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InsuraBook can get your contact management tasks done faster than traditional GUI apps.
+Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls instead of fumbling around with a mouse to find the right contact information.
 
+InsuraBook keeps essential **client names, phone numbers and other miscellaneous info** organized. It's **optimized for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. 
 
-**Target User**: Telemarketing Agents selling insurance who may need to manage a large contact list.
+<div style="text-align: center; font-style: italic; font-size: 1.1em; margin: 20px 0; padding: 15px; background-color: #f0f0f0; border-left: 4px solid #0366d6;">
+<strong>InsuraBook is a one-stop solution for telemarketers and their daily contact management needs.</strong>
+</div>
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -425,4 +428,3 @@ Action     | Format, Examples
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-
