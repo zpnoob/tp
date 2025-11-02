@@ -122,7 +122,6 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 <div style="page-break-after: always;"></div>
 
 ## Features
-
 <box type="info" seamless>
 
 **Notes about the command format:**<br>
@@ -169,12 +168,16 @@ Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#person-params).
+* For details on available `PERSON_PARAMS`, click [here](#PERSON-PARAMS).
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 age/28`
-* `add n/Betsy Crowe p/1234567 t/friend a/Newgate Prison o/Financial Adviser t/criminal pr/HIGH`
-* `add n/Jane Smith p/87654321 e/jane@example.com a/456 Main St pr/MEDIUM t/colleague`
+  * Adds a person named `John Doe` with the phone number `98765432`, email `johnd@example.com`,
+  address `John street, block 123, #01-01`, age `28`.
+* `add n/Betsy Crowe p/82345678 t/interested a/The Gardens at Bishan o/Engineer i/high pr/HIGH`
+    * Adds a person named `Betsy Crowe` with phone number `82345678`, tagged as `interested`,
+      address `The Gardens at Bishan`, occupation `Engineer`, income bracket `high`,
+      and priority level `HIGH`.
 
 <box type="warning" seamless>
 
@@ -193,7 +196,7 @@ Shows a list of all persons sorted by index in the address book.
 </div>
 
 Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`
-- Addition of `pr/asc` lists the the contacts sorted by priority in ascending order while `pr/desc` sorts in descending order.
+- Addition of `pr/asc` lists the contacts sorted by priority in ascending order while `pr/desc` sorts in descending order.
 - Addition of `i/asc` lists the contacts sorted by income bracket in ascending order while `i/desc` sorts in descending order.
 
 <box type="warning" seamless>
@@ -214,7 +217,7 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#person-params)
+* For details on available `PERSON_PARAMS`, click [here](#PERSON-PARAMS)
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
@@ -412,6 +415,17 @@ Furthermore, certain edits can cause the InsuraBook to behave in unexpected ways
 <div style="page-break-after: always;"></div>
 
 ## PERSON_PARAMS
+
+### Reading Parameter Formats
+
+Before diving into each parameter, here's how to read the command formats:
+
+| Format | Meaning | Example |
+|--------|---------|---------|
+| `PARAMETER` | Required, must provide | `n/NAME` must be included |
+| `[PARAMETER]` | Optional, can skip | `[e/EMAIL]` can be omitted |
+| `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip` |
+| `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket |
 
 The following parameters can be used when adding or editing a person. All parameters are optional unless otherwise specified:
 
