@@ -5,10 +5,54 @@
 --- 
 # InsuraBook User Guide
 
-InsuraBook is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InsuraBook can get your contact management tasks done faster than traditional GUI apps.
+**Every sales day starts the same:** a long list of leads, a tighter list of callbacks, and too much information - spreadsheets, sticky notes, scattered files. In the middle of a call with an important client, one cannot afford to hunt for the right number, the last note, or the correct spelling of a client’s name. Miss a detail and just like that, a warm lead goes cold!
 
+InsuraBook exists to stop prevent that from happening. Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls as the information you need is always where you expect it to be.
 
-**Target User**: Telemarketing Agents selling insurance who may need to manage a large contact list.
+InsuraBook keeps essential **client names, phone numbers and other miscellaneous info** organized. It's **optimized for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. InsuraBook transforms messy binders filled with client details into a steady, repeatable workflow optimized for high-volume calling - so busy agents can spend their energy making deals, and not chasing information.
+
+<div style="text-align: center; font-style: italic; font-size: 1.1em; margin: 20px 0; padding: 15px; background-color: #f0f0f0; border-left: 4px solid #0366d6;">
+<strong>InsuraBook is a one-stop solution for telemarketers and their daily contact management needs.</strong>
+</div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## How to Use This Guide
+
+<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+
+**New to InsuraBook?**
+
+* Start with the [Quick start](#quick-start) section to install and run the application.
+* Refer to the [Command summary](#command-summary) for a quick overview of all commands.
+
+</div>
+
+<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+
+**Experienced user looking for specific information?**
+
+* Use the [Features](#features) section to find detailed explanations of specific commands.
+* Check out [PERSON_PARAMS](#person_params) for information on the available contact parameters.
+
+</div>
+
+<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+
+**Need help with something specific?**
+
+* Browse the [FAQ](#faq) section for answers to common questions.
+* Check the [Known issues](#known-issues) section if you're experiencing problems.
+
+</div>
+
+<box type="tip" seamless>
+
+**Pro Tip:** Use `Ctrl+F` (or `Cmd+F` on Mac) to search for specific keywords/commands in this guide.
+
+</box>
+
+--------------------------------------------------------------------------------------------------------------------
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -170,7 +214,7 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#person_params)
+* For details on available `PERSON_PARAMS`, click [here](#person-params)
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
@@ -425,4 +469,3 @@ Action     | Format, Examples
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-
