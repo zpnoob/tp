@@ -96,8 +96,9 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
     java -jar insurabook.jar
     ```
     A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
-    <div style="text-align: center;">
-        <img src="images/Ui.png" alt="Ui" style="border: 4px solid black; border-radius: 20px; max-width: 43%; height: auto; margin: 20px 0px;"/>
+    <div style="text-align: center; ">
+        <img src="images/features/Labelled.png" alt="Ui" style="max-width: 70%; height: auto; margin: 20px 0px;"/>
+        <p>Insurabook User Interface labelled<p> 
     </div>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -164,6 +165,7 @@ Adds a person to the address book.
 
 <div style="text-align: center;">
     <img src="images/features/addCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Adding a client on InsuraBook</p>
 </div>
 
 Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
@@ -193,6 +195,7 @@ Shows a list of all persons sorted by index in the address book.
 
 <div style="text-align: center;">
     <img src="images/features/listCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Listing all clients on InsuraBook</p>
 </div>
 
 Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`
@@ -213,6 +216,7 @@ Edits an existing person in the address book.
 
 <div style="text-align: center;">
     <img src="images/features/editCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Editing details of the first client on InsuraBook</p>
 </div>
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
@@ -246,6 +250,7 @@ Finds persons whose names contain any of the given keywords.
 
 <div style="text-align: center;">
     <img src="images/features/findCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Searching for a client by name</p>
 </div>
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -272,6 +277,7 @@ Deletes the specified person from the address book.
 
 <div style="text-align: center;">
     <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Deleting the first client from InsuraBook</p>
 </div>
 
 Format: `delete INDEX`
@@ -292,6 +298,7 @@ Changes the tags of an existing person in the address book. This is a convenient
 
 <div style="text-align: center;">
     <img src="images/features/tagCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Adding a tag to the first client on InsuraBook</p>
 </div>
 
 Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
@@ -324,6 +331,7 @@ Marks a contact as Do Not Call (DNC) in the address book.
 
 <div style="text-align: center;">
     <img src="images/features/dncCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Marking the second client on InsuraBook as DNC</p>
 </div>
 
 Format: `dnc INDEX`
@@ -357,6 +365,7 @@ Changes the priority of an existing person in the address book. This is a conven
 
 <div style="text-align: center;">
     <img src="images/features/priorityCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Setting the priority of the first client on InsuraBook as high</p>
 </div>
 
 Format: `priority INDEX PRIORITY`
@@ -385,6 +394,7 @@ Clears all entries from the address book.
 
 <div style="text-align: center;">
     <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Clearing details of all clients from InsuraBook</p>
 </div>
 
 Format: `clear`
