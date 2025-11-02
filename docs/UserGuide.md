@@ -63,30 +63,30 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.
+1. Ensure you have Java `17` or above installed in your Computer.<br>
 
-  **To check if Java 17+ is installed:**
-  Open a command terminal/command prompt and type the following:
-  ```
-  java -version
-  ```
-  If Java 17 or higher is installed, you should see output similar to:
+   **To check if Java 17+ is installed:**
+   Open a command terminal/command prompt and type the following:
+   ```
+   java -version
+   ```
+   If Java 17 or higher is installed, you should see output similar to:
 
-  ```
-  java version "17.0.x" or higher
-  ```
-  If Java is not installed, or the Java version is below Java 17, proceed to install Java 17+
-
-  **Installation links:**
-  * **Mac users:** Follow the precise installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html)
-  * **Windows/Linux users:** Download Java 17+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/)
-
+   ```
+   java version "17.0.x" or higher
+   ```
+   If Java is not installed, or the Java version is below Java 17, proceed to install Java 17+.
+ 
+   **Installation links:**
+   * **Mac users:** Follow the precise installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+   * **Windows/Linux users:** Download Java 17+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/).
+<br><br>
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-F15a-2/tp/releases/tag/v1.5).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your InsuraBook.
 
 4. **To run the application:**<br>
-    Open a command terminal/command prompt<br>
+    Open a command terminal/command prompt<br>.
     Navigate to the folder containing the `.jar` file:
     ```
     cd path/to/your/folder
@@ -98,15 +98,15 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
     A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
     <div style="text-align: center; ">
         <img src="images/features/Labelled.png" alt="Ui" style="max-width: 70%; height: auto; margin: 20px 0px;"/>
-        <p>Insurabook User Interface labelled<p> 
+        <p>Insurabook User Interface labelled</p> 
     </div>
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it, e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe`, with phone number `98765432`, email `johnd@example.com`, and address `John street, block 123, #01-01`.
 
    * `priority 1 HIGH` : Sets the priority of the 1st contact to HIGH.
 
@@ -159,9 +159,9 @@ Format: `help`
 
 <div style="page-break-after: always;"></div>
 
-### Adding a person: `add`
+### Adding a client: `add`
 
-Adds a person to the address book.
+Adds a client to InsuraBook.
 
 <div style="text-align: center;">
     <img src="images/features/addCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -174,33 +174,44 @@ Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 age/28`
-  * Adds a person named `John Doe` with the phone number `98765432`, email `johnd@example.com`,
+  * Adds a client named `John Doe` with the phone number `98765432`, email `johnd@example.com`,
   address `John street, block 123, #01-01`, age `28`.
 * `add n/Betsy Crowe p/82345678 t/interested a/The Gardens at Bishan o/Engineer i/high pr/HIGH`
-    * Adds a person named `Betsy Crowe` with phone number `82345678`, tagged as `interested`,
+    * Adds a client named `Betsy Crowe` with phone number `82345678`, tagged as `interested`,
       address `The Gardens at Bishan`, occupation `Engineer`, income bracket `high`,
       and priority level `HIGH`.
 
 <box type="warning" seamless>
 
-**Warning:** Adding another person with the same `PHONE_NUMBER` as an existing person will be counted as a duplicate and is not allowed.
+**Warning:** Adding another client with the same `PHONE_NUMBER` as an existing client will be counted as a duplicate and is not allowed.
 
 </box>
 
 <div style="page-break-after: always;"></div>
 
-### Listing all persons : `list`
+### Listing all clients : `list`
 
-Shows a list of all persons sorted by index in the address book.
+Shows a list of all contacts sorted by index in the InsuraBook.
 
 <div style="text-align: center;">
     <img src="images/features/listCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Listing all clients on InsuraBook</p>
 </div>
 
-Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`
-- Addition of `pr/asc` lists the contacts sorted by priority in ascending order while `pr/desc` sorts in descending order.
-- Addition of `i/asc` lists the contacts sorted by income bracket in ascending order while `i/desc` sorts in descending order.
+Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`<br>
+
+Examples:
+- `list` - Shows all clients sorted by index.
+- `list pr/asc` - Shows all clients sorted by priority in ascending order.
+- `list pr/desc` - Shows all clients sorted by priority in descending order.
+- `list i/asc` - Shows all clients sorted by income bracket in ascending order.
+- `list i/desc` - Shows all clients sorted by income bracket in descending order.
+
+<box type="note" seamless>
+
+**Note:** Clients that do not have values for `PRIORITY` and `INCOME_BRACKET` will be listed at the bottom when using sorting commands (for example, `list pr/asc` or `list i/desc`).
+
+</box>
 
 <box type="warning" seamless>
 
@@ -210,9 +221,9 @@ Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`
 
 <div style="page-break-after: always;"></div>
 
-### Editing a person : `edit`
+### Editing a client : `edit`
 
-Edits an existing person in the address book.
+Edits an existing contact in InsuraBook.
 
 <div style="text-align: center;">
     <img src="images/features/editCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -221,7 +232,7 @@ Edits an existing person in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#PERSON-PARAMS)
+* For details on available `PERSON_PARAMS`, click [here](#PERSON-PARAMS).
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
@@ -244,9 +255,9 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Locating persons by name: `find`
+### Locating clients by fields: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds clients whose fields contain any of the given keywords.
 
 <div style="text-align: center;">
     <img src="images/features/findCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -267,13 +278,14 @@ Examples:
 * `find 87438807` returns `Alex Yeoh` as it matches their phone number
 * `find family` returns `David Li` as it matches their assigned tags
 * `find Alex family` returns `Alex Yeoh`, `David Li`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+* `find alex david` returns `Alex Yeoh`, `David Li`
+* `find 2023-12-25` returns clients with `LAST_CONTACTED` = `2023-12-25`<br>
 
 <div style="page-break-after: always;"></div>
 
-### Deleting a person : `delete`
+### Deleting a client : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified contact from InsuraBook.
 
 <div style="text-align: center;">
     <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -292,9 +304,9 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Editing the tag: `tag`
+### Editing a tag: `tag`
 
-Changes the tags of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the tags.
+Changes the tags of an existing client in Insurabook. This is a convenient shortcut for the edit command when you only want to change the tags.
 
 <div style="text-align: center;">
     <img src="images/features/tagCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -327,7 +339,7 @@ Examples:
 
 ### Marking a contact as Do Not Call: `dnc`
 
-Marks a contact as Do Not Call (DNC) in the address book.
+Marks a contact as Do Not Call (DNC) in InsuraBook.
 
 <div style="text-align: center;">
     <img src="images/features/dncCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -361,7 +373,7 @@ Examples:
 
 ### Editing the priority: `priority`
 
-Changes the priority of an existing person in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
+Changes the priority of an existing client in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
 
 <div style="text-align: center;">
     <img src="images/features/priorityCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -373,8 +385,8 @@ Format: `priority INDEX PRIORITY`
 * Changes the priority of the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
-* `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
-* This command is equivalent to `edit INDEX pr/PRIORITY`
+* `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
+* This command is equivalent to `edit INDEX pr/PRIORITY`.
 
 Examples:
 * `priority 1 HIGH` Sets the priority of the 1st person to `HIGH`.
@@ -411,7 +423,7 @@ InsuraBook data are saved in the hard disk automatically after any command that 
 
 ### Editing the data file
 
-InsuraBook data are saved automatically as a JSON file `[JAR file location]/data/InsuraBook.json`. Advanced users are welcome to update data directly by editing that data file.
+InsuraBook data are saved automatically as a JSON file `[JAR file location]/data/insurabook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
@@ -441,23 +453,23 @@ The following parameters can be used when adding or editing a person. All parame
 
 Parameter | Description | Format | Constraints
 ----------|-------------|--------|------------
-`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`)
-`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string
-`o/OCCUPATION` | Person's occupation | `o/OCCUPATION` | Any text string
-`age/AGE` | Person's age | `age/AGE` | Must be a positive integer
-`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `DD-MM-YYYY` (e.g., `25-12-2023`)
-`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
-`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive)
-`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`)
+`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
+`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string.
+`o/OCCUPATION` | Person's occupation | `o/OCCUPATION` | Any text string.
+`age/AGE` | Person's age | `age/AGE` | Must be a non-negative integer.
+`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`)
+`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
+`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
+`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
 
 <box type="info" seamless>
 
 **Notes about PERSON_PARAMS:**
-* These parameters can be used in any combination with the `add` and `edit` commands
-* Parameters can be specified in any order
-* For the `edit` command, at least one parameter must be provided
-* When editing tags with the `edit` command, existing tags will be replaced (not added to)
-* To remove any field, use the prefix without specifying a value after it (e.g. `t/` to remove all tags, `e/` to remove email, `a/` to remove address, etc.)
+* These parameters can be used in any combination with the `add` and `edit` commands.
+* Parameters can be specified in any order.
+* For the `edit` command, at least one parameter must be provided.
+* When editing tags with the `edit` command, existing tags will be replaced (not added to).
+* To remove any field, use the prefix without specifying a value after it (e.g. `t/` to remove all tags, `e/` to remove email, `a/` to remove address, etc.).
 
 </box>
 
@@ -485,7 +497,7 @@ Action     | Format, Examples
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite `[JAR file location]/data/InsuraBook.json` with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite `[JAR file location]/data/insurabook.json` with the file that contains the data of your previous AddressBook home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
