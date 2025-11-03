@@ -9,13 +9,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Address {
 
-    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Addresses should only contain alphanumeric characters, spaces, "
+            + "and these special characters: comma (,), period (.), hyphen (-), hash (#), forward slash (/), "
+            + "and it should not be blank";
 
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * Address must start with an alphanumeric character.
+     * Can contain: letters, numbers, spaces, commas, periods, hyphens, hash symbols, and forward slashes.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9][a-zA-Z0-9 ,.\\-#/]*$";
 
     public final String value;
 
