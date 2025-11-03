@@ -143,25 +143,26 @@ Before diving into each parameter, here's how to read the command formats:
 ### Common Parameters
 The following are **compulsory** parameters to the `add` and `edit` command.
 
-Parameter | Description | Format | Constraints
-----------|-------------|--------|------------
-`n/NAME` | Client's name | `n/NAME` | Must consist of alphabets or the following characters: `-`/ `'`/ `/`/ `@`.
-`p/PHONE_NUMBER` | Client's phone number | `p/PHONE_NUMBER` | Must be a number between 4-17 digits.
+Parameter | Description | Constraints
+----------|-------------|------------
+`INDEX` | Position of the client in InsuraBook | Must be a non-negative integer within the displayed contact list.
+`n/NAME` | Client's name | Must consist of alphabets or the following characters: `-`/ `'`/ `/`/ `@`.
+`p/PHONE_NUMBER` | Client's phone number | Must be a number between 4-17 digits.
 
 
 ### Optional Parameters: PERSON_PARAMS
 The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAMS]`
 
-Parameter | Description | Format | Constraints
-----------|-------------|--------|------------
-`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
-`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string.
-`o/OCCUPATION` | Client's occupation | `o/OCCUPATION` | Any text string.
-`age/AGE` | Client's age | `age/AGE` | Must be a non-negative integer between 10-120 inclusive.
-`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`).
-`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
-`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
-`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
+Parameter | Description | Constraints
+----------|-------------|------------
+`e/EMAIL` | Email address | Must be a valid email format (e.g., `user@example.com`).
+`a/ADDRESS` | Physical address | Any text string.
+`o/OCCUPATION` | Client's occupation | Any text string.
+`age/AGE` | Client's age | Must be a non-negative integer between 10-120 inclusive.
+`lc/LAST_CONTACTED` | Last contact date | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`).
+`pr/PRIORITY` | Contact priority level | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
+`i/INCOME_BRACKET` | Income bracket classification | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
+`t/TAG` | Tags for categorization | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
 
 <div style="page-break-after: always;"></div>
 
@@ -272,7 +273,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 </div>
 
 * For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
-* Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the client at the specified `INDEX`.
 * At least one of the optional fields must be provided.
 
 Examples:
@@ -306,8 +307,6 @@ Format: `delete INDEX`
 </div>
 
 * Deletes the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `delete 2`
@@ -424,8 +423,6 @@ Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 </div>
 
 * Changes the tags of the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 * `tag_name` must be  Alphanumeric and spaces allowed.
     * Maximum 30 characters.
     * Case-insensitive (eg, Interested = interested).
@@ -470,8 +467,6 @@ Format: `dnc INDEX`
 </div>
 
 * Marks the contact at the specified `INDEX` as Do Not Call.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 * A special "Do Not Call" tag (displayed in red) will be applied to the contact.
 * The DNC status **cannot be removed** from a contact.
 
@@ -504,8 +499,6 @@ Format: `priority INDEX PRIORITY`
 </div>
 
 * Changes the priority of the client at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
 
 Examples:
