@@ -125,6 +125,57 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 
 <div style="page-break-after: always;"></div>
 
+## Parameters 
+
+The following are the parameters we will be using in InusraBook.
+
+### Reading Parameter Formats
+
+Before diving into each parameter, here's how to read the command formats:
+
+| Format | Meaning | Example |
+|--------|---------|---------|
+| `PARAMETER` | Required, must provide | `n/NAME` must be included |
+| `[PARAMETER]` | Optional, can skip | `[e/EMAIL]` can be omitted |
+| `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip` |
+| `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket |
+
+### Common Parameters 
+The following are **compulsory** parameters to the `add` and `edit` command.
+
+Parameter | Description | Format | Constraints
+----------|-------------|--------|------------
+`n/NAME` | Client's name | `n/NAME` | Must consist of alphabets or the following characters: `-`/ `'`/ `/`/ `@`.
+`p/PHONE_NUMBER` | Client's phone number | `p/PHONE_NUMBER` | Must be a number between 4-17 digits.
+
+
+### Optional Parameters: PERSON_PARAM 
+The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAM]`
+
+Parameter | Description | Format | Constraints
+----------|-------------|--------|------------
+`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
+`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string.
+`o/OCCUPATION` | Client's occupation | `o/OCCUPATION` | Any text string.
+`age/AGE` | Client's age | `age/AGE` | Must be a non-negative integer.
+`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`)
+`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
+`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
+`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
+
+<box type="info" seamless>
+
+**Notes about PERSON_PARAMS:**
+* These parameters can be used in any combination with the `add` and `edit` commands.
+* Parameters can be specified in any order.
+* For the `edit` command, at least one parameter must be provided.
+* When editing tags with the `edit` command, existing tags will be replaced (not added to).
+* To remove any field, use the prefix without specifying a value after it (e.g. `t/` to remove all tags, `e/` to remove email, `a/` to remove address, etc.).
+
+</box>
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Features
 <box type="info" seamless>
 
@@ -468,44 +519,6 @@ Furthermore, certain edits can cause the InsuraBook to behave in unexpected ways
 
 <div style="page-break-after: always;"></div>
 
-## PERSON_PARAMS
-
-### Reading Parameter Formats
-
-Before diving into each parameter, here's how to read the command formats:
-
-| Format | Meaning | Example |
-|--------|---------|---------|
-| `PARAMETER` | Required, must provide | `n/NAME` must be included |
-| `[PARAMETER]` | Optional, can skip | `[e/EMAIL]` can be omitted |
-| `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip` |
-| `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket |
-
-The following parameters can be used when adding or editing a person. All parameters are optional unless otherwise specified:
-
-Parameter | Description | Format | Constraints
-----------|-------------|--------|------------
-`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
-`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string.
-`o/OCCUPATION` | Person's occupation | `o/OCCUPATION` | Any text string.
-`age/AGE` | Person's age | `age/AGE` | Must be a non-negative integer.
-`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`)
-`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
-`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
-`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
-
-<box type="info" seamless>
-
-**Notes about PERSON_PARAMS:**
-* These parameters can be used in any combination with the `add` and `edit` commands.
-* Parameters can be specified in any order.
-* For the `edit` command, at least one parameter must be provided.
-* When editing tags with the `edit` command, existing tags will be replaced (not added to).
-* To remove any field, use the prefix without specifying a value after it (e.g. `t/` to remove all tags, `e/` to remove email, `a/` to remove address, etc.).
-
-</box>
-
---------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
 
