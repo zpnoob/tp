@@ -68,7 +68,8 @@
         "finding-persons": "Finding persons",
         "priority-management": "Priority management",
         "income-bracket-management": "Income bracket management",
-        "do-not-call-dnc-tag-management": "Do Not Call (DNC) tag management"
+        "do-not-call-dnc-tag-management": "Do Not Call (DNC) tag management",
+        "appendix-future-enhancements": "Appendix: Future Enhancements"
       },
       "headingKeywords": {}
     },
@@ -115,6 +116,10 @@
         "insurabook-user-guide": "InsuraBook User Guide",
         "how-to-use-this-guide": "How to Use This Guide",
         "quick-start": "Quick start",
+        "parameters": "Parameters",
+        "reading-parameter-formats": "Reading Parameter Formats",
+        "common-parameters": "Common Parameters",
+        "optional-parameters-person-param": "Optional Parameters: PERSON_PARAM",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
         "adding-a-client-add": "Adding a client: add",
@@ -129,8 +134,6 @@
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
         "editing-the-data-file": "Editing the data file",
-        "person-params": "PERSON_PARAMS",
-        "reading-parameter-formats": "Reading Parameter Formats",
         "command-summary": "Command summary",
         "faq": "FAQ",
         "known-issues": "Known issues"
@@ -167,14 +170,6 @@
         "my-portfolio": "My Portfolio",
         "tanbucha": "Tanbucha",
         "pollinator": "Pollinator"
-      },
-      "headingKeywords": {}
-    },
-    {
-      "src": "team/johndoe.md",
-      "title": "John Doe's Project Portfolio Page",
-      "headings": {
-        "project-addressbook-level-3": "Project: AddressBook Level 3"
       },
       "headingKeywords": {}
     },
