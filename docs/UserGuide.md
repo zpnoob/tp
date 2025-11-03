@@ -3,6 +3,10 @@
   title: "User Guide"
   pageNav: 3
 --- 
+
+<!-- * Table of Contents -->
+<page-nav-print />
+
 # InsuraBook User Guide
 
 **Every sales day starts the same:** a long list of leads, a tighter list of callbacks, and too much information - spreadsheets, sticky notes, scattered files. In the middle of a call with an important client, one cannot afford to hunt for the right number, the last note, or the correct spelling of a client’s name. Miss a detail and just like that, a warm lead goes cold!
@@ -54,8 +58,7 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 
 --------------------------------------------------------------------------------------------------------------------
 
-<!-- * Table of Contents -->
-<page-nav-print />
+
 
 --------------------------------------------------------------------------------------------------------------------
 
