@@ -239,6 +239,13 @@ Examples:
       address `The Gardens at Bishan`, occupation `Engineer`, income bracket `high`,
       and priority level `HIGH`.
 
+<box type="info" seamless>
+
+**Note:** `n/NAME` and `p/PHONE_NUMBER` are required for `add`. All other prefixes under `PERSON_PARAMS` are optional.
+- If an optional prefix is *omitted*, that field is left unset.
+- If an optional prefix is *present but has no value* (for example `e/` or `a/`) when adding a client, the application accepts and stores that field as an empty string.
+</box>
+
 <box type="warning" seamless>
 
 **Warning:** Adding another client with the same `PHONE_NUMBER` as an existing client will be counted as a duplicate and is not allowed.
@@ -296,18 +303,18 @@ Edits an existing contact in InsuraBook.
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
 * For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com`
-    * Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+    * Edits the phone number and email address of the first contact to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/ pr/HIGH`
-    * Edits the name of the 2nd person to be `Betsy Crower`, clears all existing tags and changes the priority to HIGH.
+    * Edits the name of the second contact to be `Betsy Crower`, clears all existing tags and changes the priority to HIGH.
 
 <box type="warning" seamless>
 
-**Warning:** When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+**Warning:** When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
 
 </box>
 <box type="tip" seamless>
@@ -332,7 +339,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Partial words will be matched e.g. `find Han` will match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Clients matching at least one keyword will be returned (i.e. `OR` search).
     * e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 * Values from fields `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `OCCUPATION`, `AGE`, `LAST_CONTACTED`, `TAG` are searched.
 
@@ -363,15 +370,15 @@ Deletes the specified contact from InsuraBook.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `delete 2` 
-  * Deletes the second person in InsuraBook, after carrying out the `list` command.
+  * Deletes the second contact in InsuraBook, after carrying out the `list` command.
 * `find Betsy` followed by `delete 1` 
-  * Deletes the first person in the results of the `find` command.
+  * Deletes the first contact in the results of the `find` command.
 
 <div style="page-break-after: always;"></div>
 
@@ -386,8 +393,8 @@ Changes the tags of an existing client in Insurabook. This is a convenient short
 
 Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 
-* Changes the tags of the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Changes the tags of the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * `tag_name` must be  Alphanumeric and spaces allowed. 
     * Maximum 30 characters.
@@ -396,10 +403,10 @@ Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 * This command is equivalent to `edit INDEX t/tag_name`.
 
 Examples:
-* `tag 1 t/interested` Sets the tag of the 1st person to `interested`.
-* `tag 2 t/follow up` Sets the tag of the 2nd person to `follow up`.
-* `tag 5 t/do not call` Sets the tag of the 5th person to `do not call`.
-* `tag 7 t/follow up t/interested` Sets the tags of the 7th person to `follow up` and `interested`.
+* `tag 1 t/interested` Sets the tag of the first contact to `interested`.
+* `tag 2 t/follow up` Sets the tag of the second client to `follow up`.
+* `tag 5 t/do not call` Sets the tag of the fifth client to `do not call`.
+* `tag 7 t/follow up t/interested` Sets the tags of the seventh client to `follow up` and `interested`.
 
 <box type="note" seamless>
 
@@ -415,7 +422,7 @@ Examples:
 
 <box type="warning" seamless>
 
-**Warning:** Similar to the `edit`command, when adding tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+**Warning:** Similar to the `edit`command, when adding tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
 
 </box>
 
@@ -432,19 +439,19 @@ Marks a contact as Do Not Call (DNC) in InsuraBook.
 
 Format: `dnc INDEX`
 
-* Marks the person at the specified `INDEX` as Do Not Call.
-* The index refers to the index number shown in the displayed person list.
+* Marks the contact at the specified `INDEX` as Do Not Call.
+* The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * A special "Do Not Call" tag (displayed in red) will be applied to the contact.
 * The DNC status **cannot be removed** from a contact.
 
 Examples:
-* `dnc 1` Marks the 1st person as Do Not Call.
-* `dnc 3` Marks the 3rd person as Do Not Call.
+* `dnc 1` Marks the first contact on the list as Do Not Call.
+* `dnc 3` Marks the third contact on the list as Do Not Call.
 
 <box type="warning" seamless>
 
-**Warning:** Once a contact is marked as DNC, you cannot edit any of their information through any commands (including `edit`, `tag`, `priority`, etc.).
+**Warning:** The `dnc` command applies an irreversible Do Not Call status by setting a special DNC tag. Executing `dnc INDEX` will remove all other tags on the contact. Because DNC contacts cannot be edited, tags cannot be restored.
 
 </box>
 
@@ -470,7 +477,6 @@ Format: `priority INDEX PRIORITY`
 * The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
-* This command is equivalent to `edit INDEX pr/PRIORITY`.
 
 Examples:
 * `priority 1 HIGH` 
@@ -497,6 +503,13 @@ Clears all entries from InsuraBook.
 </div>
 
 Format: `clear`
+
+<!-- Insert after the Clear command description in `docs/UserGuide.md` -->
+<box type="warning" seamless>
+
+**Warning:** The `clear` command permanently deletes *all* contacts and cannot be undone. Only use this command if you are sure you want to permanently remove all data. Confirm carefully before proceeding.
+
+</box>
 
 ### Exiting the program : `exit`
 
@@ -547,7 +560,7 @@ Click [here](#) to go back to the content page.
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite `[JAR file location]/data/insurabook.json` with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite `[JAR file location]/data/insurabook.json` with the file that contains the data of your previous InsuraBook home folder.
 
 Click [here](#) to go back to the content page.
 
