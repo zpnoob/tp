@@ -1124,4 +1124,5 @@ Team size: 5
    Currently, the "Do Not Call" (DNC) feature prevents editing any field of contacts tagged with DNC, including
    non-call-related information like address or occupation. For example, if a client with a DNC tag moves, the agent
    cannot update the address without removing the DNC tag first. To address this, we plan to reduce the restrictions to
-   only prevent editing of name and phone number fields, while allowing updates to other contact information.
+   only prevent editing of name and phone number fields, while allowing updates to other contact information. We also
+   plan to add a dedicated reversal command to eliminate the need to delete/re-add workaround.
