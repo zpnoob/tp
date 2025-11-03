@@ -144,15 +144,26 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String age} into an {@code Age}.
-     * Leading and trailing whitespaces will be trimmed.
+     * Parses {@code String age} into an {@code Age}.
+     * Leading whitespace and trailing whitespace will be trimmed.
      *
      * @throws ParseException if the given {@code age} is invalid.
      */
     public static Age parseAge(String age) throws ParseException {
         requireNonNull(age);
         String trimmedAge = age.trim();
-        if (!Age.isValidAge(trimmedAge)) {
+
+        // Normalize age by removing leading zeros before validation
+        String normalizedAge = trimmedAge;
+        if (!trimmedAge.isEmpty()) {
+            try {
+                normalizedAge = String.valueOf(Integer.parseInt(trimmedAge));
+            } catch (NumberFormatException e) {
+                throw new ParseException(Age.MESSAGE_CONSTRAINTS);
+            }
+        }
+
+        if (!Age.isValidAge(normalizedAge)) {
             throw new ParseException(Age.MESSAGE_CONSTRAINTS);
         }
         return new Age(trimmedAge);

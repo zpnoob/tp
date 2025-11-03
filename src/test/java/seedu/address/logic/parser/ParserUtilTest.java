@@ -264,7 +264,15 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("12.5"));
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("-5"));
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("20a"));
+
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("1234")); // more than 3 digits
+
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("5")); // below minimum age
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("9")); // below minimum age
+
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("1234")); // more than 3 digits
+
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("5")); // below minimum age
     }
 
     @Test
@@ -294,27 +302,33 @@ public class ParserUtilTest {
         assertEquals(expectedAge20, ParserUtil.parseAge("020"));
         assertEquals("20", ParserUtil.parseAge("020").value);
 
-        // Leading zero with single digit result
-        Age expectedAge5 = new Age("5");
-        assertEquals(expectedAge5, ParserUtil.parseAge("05"));
-        assertEquals("5", ParserUtil.parseAge("05").value);
+        // Multiple leading zeros - 4 digits becomes valid 2 digits
+        assertEquals(expectedAge20, ParserUtil.parseAge("0020"));
+        assertEquals("20", ParserUtil.parseAge("0020").value);
 
-        // All zeros except last digit
-        Age expectedAge1 = new Age("1");
-        assertEquals(expectedAge1, ParserUtil.parseAge("001"));
-        assertEquals("1", ParserUtil.parseAge("001").value);
+        // Leading zero with two digit result
+        Age expectedAge15 = new Age("15");
+        assertEquals(expectedAge15, ParserUtil.parseAge("015"));
+        assertEquals("15", ParserUtil.parseAge("015").value);
 
-        // Just zero
-        Age expectedAge0 = new Age("0");
-        assertEquals(expectedAge0, ParserUtil.parseAge("00"));
-        assertEquals("0", ParserUtil.parseAge("00").value);
-        assertEquals(expectedAge0, ParserUtil.parseAge("000"));
-        assertEquals("0", ParserUtil.parseAge("000").value);
+        // Leading zeros with minimum valid age
+        Age expectedAge10 = new Age("10");
+        assertEquals(expectedAge10, ParserUtil.parseAge("010"));
+        assertEquals("10", ParserUtil.parseAge("010").value);
+
+        // 4 digits with leading zeros becomes valid minimum age
+        assertEquals(expectedAge10, ParserUtil.parseAge("0010"));
+        assertEquals("10", ParserUtil.parseAge("0010").value);
 
         // Three digit age without leading zeros should remain unchanged
         Age expectedAge100 = new Age("100");
         assertEquals(expectedAge100, ParserUtil.parseAge("100"));
         assertEquals("100", ParserUtil.parseAge("100").value);
+
+        // Maximum valid age
+        Age expectedAge120 = new Age("120");
+        assertEquals(expectedAge120, ParserUtil.parseAge("120"));
+        assertEquals("120", ParserUtil.parseAge("120").value);
     }
 
     @Test
