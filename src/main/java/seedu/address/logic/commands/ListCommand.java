@@ -17,7 +17,7 @@ public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Lists all persons in the address book.\n"
+            + ": Lists all persons in the InsuraBook.\n"
             + "Optionally sorts by priority or income bracket.\n"
             + "Parameters: [pr/ORDER] or [i/ORDER] where ORDER is 'asc' or 'desc'\n"
             + "Examples:\n"
