@@ -26,7 +26,7 @@ public class PriorityCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) PRIORITY (must be NONE, LOW, MEDIUM, or HIGH)\n"
             + "Example: " + COMMAND_WORD + " 1 HIGH";
 
-    public static final String MESSAGE_PRIORITY_PERSON_SUCCESS = "Changed priority of Person: %1$s to %2$s";
+    public static final String MESSAGE_PRIORITY_PERSON_SUCCESS = "Changed priority of Person: %1$s";
     public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify priority of a Do Not Call contact.";
 
     private final Index targetIndex;
@@ -71,7 +71,7 @@ public class PriorityCommand extends Command {
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_PRIORITY_PERSON_SUCCESS,
-                Messages.format(editedPerson), newPriority.getValue()));
+                Messages.format(editedPerson)));
     }
 
     @Override
