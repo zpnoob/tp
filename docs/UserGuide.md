@@ -7,9 +7,9 @@
 
 **Every sales day starts the same:** a long list of leads, a tighter list of callbacks, and too much information - spreadsheets, sticky notes, scattered files. In the middle of a call with an important client, one cannot afford to hunt for the right number, the last note, or the correct spelling of a client’s name. Miss a detail and just like that, a warm lead goes cold!
 
-InsuraBook exists to stop prevent that from happening. Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls as the information you need is always where you expect it to be.
+InsuraBook exists to stop that from happening. Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls as the information you need is always where you expect it to be.
 
-InsuraBook keeps essential **client names, phone numbers and other miscellaneous info** organized. It's **optimized for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. InsuraBook transforms messy binders filled with client details into a steady, repeatable workflow optimized for high-volume calling - so busy agents can spend their energy making deals, and not chasing information.
+InsuraBook keeps essential **client names, phone numbers and other miscellaneous information** organized. It's **optimized for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. InsuraBook transforms messy binders filled with client details into a steady, repeatable workflow optimized for high-volume calling - so busy agents can spend their energy making deals, and not chasing information.
 
 <div style="text-align: center; font-style: italic; font-size: 1.1em; margin: 20px 0; padding: 15px; background-color: #f0f0f0; border-left: 4px solid #0366d6;">
 <strong>InsuraBook is a one-stop solution for telemarketers and their daily contact management needs.</strong>
@@ -86,7 +86,7 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 3. Copy the file to the folder you want to use as the _home folder_ for your InsuraBook.
 
 4. **To run the application:**<br>
-    Open a command terminal/command prompt<br>.
+    Open a command terminal/command prompt.<br>
     Navigate to the folder containing the `.jar` file:
     ```
     cd path/to/your/folder
@@ -201,11 +201,16 @@ Shows a list of all contacts sorted by index in the InsuraBook.
 Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`<br>
 
 Examples:
-- `list` - Shows all clients sorted by index.
-- `list pr/asc` - Shows all clients sorted by priority in ascending order.
-- `list pr/desc` - Shows all clients sorted by priority in descending order.
-- `list i/asc` - Shows all clients sorted by income bracket in ascending order.
-- `list i/desc` - Shows all clients sorted by income bracket in descending order.
+* `list` 
+  * Shows all clients sorted by index.
+* `list pr/asc`  
+  * Shows all clients sorted by priority in ascending order.
+* `list pr/desc`  
+  * Shows all clients sorted by priority in descending order.
+* `list i/asc`  
+  * Shows all clients sorted by income bracket in ascending order.
+* `list i/desc`  
+  * Shows all clients sorted by income bracket in descending order.
 
 <box type="note" seamless>
 
@@ -274,12 +279,18 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Values from fields `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `OCCUPATION`, `AGE`, `LAST_CONTACTED`, `TAG` are searched.
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find 87438807` returns `Alex Yeoh` as it matches their phone number
-* `find family` returns `David Li` as it matches their assigned tags
-* `find Alex family` returns `Alex Yeoh`, `David Li`
-* `find alex david` returns `Alex Yeoh`, `David Li`
-* `find 2023-12-25` returns clients with `LAST_CONTACTED` = `2023-12-25`<br>
+* `find John` 
+  * Returns `john` and `John Doe`
+* `find 87438807` 
+  * Returns `Alex Yeoh` as it matches their phone number.
+* `find family` 
+  * Returns `David Li` as it matches their assigned tags.
+* `find Alex family` 
+  * Returns `Alex Yeoh`, `David Li`.
+* `find alex david` 
+  * Returns `Alex Yeoh`, `David Li`.
+* `find 2023-12-25` 
+  * Returns clients with `LAST_CONTACTED` = `2023-12-25`.<br>
 
 <div style="page-break-after: always;"></div>
 
@@ -299,8 +310,10 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` 
+  * Deletes the second person in InsuraBook, after carrying out the `list` command.
+* `find Betsy` followed by `delete 1` 
+  * Deletes the first person in the results of the `find` command.
 
 <div style="page-break-after: always;"></div>
 
@@ -330,9 +343,22 @@ Examples:
 * `tag 5 t/do not call` Sets the tag of the 5th person to `do not call`.
 * `tag 7 t/follow up t/interested` Sets the tags of the 7th person to `follow up` and `interested`.
 
+<box type="note" seamless>
+
+**Note:** The `tag` command cannot be used to clear existing tags or remove all tags by supplying an empty `t/`. To remove all tags, use the `edit` command with an empty tag prefix, e.g. `edit INDEX t/`.
+
+</box>
+
+
 <box type="tip" seamless>
 
 **Tip:** Use the `tag` command for quick tag changes, or the `edit` command when changing multiple fields at once.
+</box>
+
+<box type="warning" seamless>
+
+**Warning:** Similar to the `edit`command, when adding tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+
 </box>
 
 <div style="page-break-after: always;"></div>
@@ -382,16 +408,19 @@ Changes the priority of an existing client in the address book. This is a conven
 
 Format: `priority INDEX PRIORITY`
 
-* Changes the priority of the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Changes the priority of the client at the specified `INDEX`.
+* The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
 * This command is equivalent to `edit INDEX pr/PRIORITY`.
 
 Examples:
-* `priority 1 HIGH` Sets the priority of the 1st person to `HIGH`.
-* `priority 3 NONE` Sets the priority of the 3rd person to `NONE`.
-* `priority 2 medium` Sets the priority of the 2nd person to `MEDIUM` (case-insensitive).
+* `priority 1 HIGH` 
+  * Sets the priority of the first contact to `HIGH`.
+* `priority 3 NONE` 
+  * Sets the priority of the third contact to `NONE`.
+* `priority 2 medium` 
+  * Sets the priority of the second contact to `MEDIUM` (case-insensitive).
 
 <box type="tip" seamless>
 
