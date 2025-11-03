@@ -1134,3 +1134,12 @@ Team size: 5
    power users who value staying within the terminal environment. To address this, we plan to update the `help`
    command to display a brief summary of all available commands and their basic syntax directly in the application.
    The external User Guide link can be retained as a secondary option for users needing more comprehensive details.
+
+5. **Improve Unicode character support for international contacts:**
+   Currently, the application handles Unicode characters inconsistently across different fields. The TAG field is
+   limited to alphanumeric characters and spaces, while the EMAIL field only accepts standard ASCII characters,
+   preventing agents from working with clients who use internationalized email addresses with native scripts (e.g.,
+   Chinese, Arabic). This creates barriers for telemarketing agents with diverse, multilingual client bases. To
+   address this, we plan to extend the TAG field to accept all Unicode characters and extend the EMAIL field to
+   support internationalized email addresses with foreign characters, while maintaining current restrictions for
+   NAME and other fields to ensure data consistency.
