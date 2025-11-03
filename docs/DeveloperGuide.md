@@ -1101,7 +1101,7 @@ testers are expected to do more *exploratory* testing.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Future Enhancement**
+## **Appendix: Future Enhancements**
 
 Team size: 5
 
