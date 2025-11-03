@@ -154,4 +154,45 @@ public class MessagesTest {
         assertTrue(formatted.contains("Income:"));
         assertTrue(formatted.contains("HIGH"));
     }
+
+    @Test
+    public void format_personWithNonePriority_doesNotIncludePriority() {
+        Person p = new PersonBuilder()
+                .withName("David")
+                .withPhone("66666666")
+                .withEmail("david@example.com")
+                .withAddress("4 Example Road")
+                .withOccupation("Nurse")
+                .withAge("28")
+                .withPriority("NONE")
+                .withLastContactedDate("2020-01-01")
+                .build();
+
+        String formatted = Messages.format(p);
+
+        // Should not contain priority when it's NONE
+        assertTrue(!formatted.contains("Priority:"));
+        assertTrue(formatted.contains("David"));
+        assertTrue(formatted.contains("Phone: 66666666"));
+    }
+
+    @Test
+    public void format_personWithHighPriority_includesPriority() {
+        Person p = new PersonBuilder()
+                .withName("Emma")
+                .withPhone("55555555")
+                .withEmail("emma@example.com")
+                .withAddress("5 Example Road")
+                .withOccupation("Lawyer")
+                .withAge("40")
+                .withPriority("HIGH")
+                .withLastContactedDate("2020-01-01")
+                .build();
+
+        String formatted = Messages.format(p);
+
+        // Should contain priority when it's not NONE
+        assertTrue(formatted.contains("Priority: HIGH"));
+        assertTrue(formatted.contains("Emma"));
+    }
 }

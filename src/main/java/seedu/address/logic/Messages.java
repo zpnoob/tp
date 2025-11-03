@@ -90,8 +90,10 @@ public class Messages {
         if (!person.getAge().toString().isEmpty()) {
             builder.append("\nAge: ").append(person.getAge());
         }
-        builder.append("\nPriority: ")
-            .append(person.getPriority());
+        if (person.getPriority() != null
+                && person.getPriority().value != seedu.address.model.person.Priority.Level.NONE) {
+            builder.append("\nPriority: ").append(person.getPriority());
+        }
         if (person.getIncomeBracket() != null
                 && person.getIncomeBracket().value != seedu.address.model.person.IncomeBracket.Level.NONE) {
             builder.append("\nIncome: ").append(person.getIncomeBracket());
