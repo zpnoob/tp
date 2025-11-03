@@ -157,7 +157,7 @@ Parameter | Description | Format | Constraints
 `e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
 `a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string.
 `o/OCCUPATION` | Client's occupation | `o/OCCUPATION` | Any text string.
-`age/AGE` | Client's age | `age/AGE` | Must be a non-negative integer.
+`age/AGE` | Client's age | `age/AGE` | Must be a non-negative integer between 10-120 inclusive.
 `lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`)
 `pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
 `i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
