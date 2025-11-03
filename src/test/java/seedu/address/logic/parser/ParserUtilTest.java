@@ -21,6 +21,7 @@ import seedu.address.model.person.LastContactedDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
@@ -182,6 +183,48 @@ public class ParserUtilTest {
         String tagWithWhitespace = WHITESPACE + VALID_TAG_1 + WHITESPACE;
         Tag expectedTag = new Tag(VALID_TAG_1);
         assertEquals(expectedTag, ParserUtil.parseTag(tagWithWhitespace));
+    }
+
+    @Test
+    public void parseTag_dncTagExactCase_returnsDncTag() throws Exception {
+        Tag result = ParserUtil.parseTag("Do Not Call");
+        assertTrue(result instanceof DncTag);
+        assertEquals("Do Not Call", result.tagName);
+    }
+
+    @Test
+    public void parseTag_dncTagLowercase_returnsDncTag() throws Exception {
+        Tag result = ParserUtil.parseTag("do not call");
+        assertTrue(result instanceof DncTag);
+        assertEquals("Do Not Call", result.tagName);
+    }
+
+    @Test
+    public void parseTag_dncTagUppercase_returnsDncTag() throws Exception {
+        Tag result = ParserUtil.parseTag("DO NOT CALL");
+        assertTrue(result instanceof DncTag);
+        assertEquals("Do Not Call", result.tagName);
+    }
+
+    @Test
+    public void parseTag_dncTagMixedCase_returnsDncTag() throws Exception {
+        Tag result = ParserUtil.parseTag("Do NoT cAlL");
+        assertTrue(result instanceof DncTag);
+        assertEquals("Do Not Call", result.tagName);
+    }
+
+    @Test
+    public void parseTag_dncTagWithWhitespace_returnsDncTag() throws Exception {
+        Tag result = ParserUtil.parseTag("  do not call  ");
+        assertTrue(result instanceof DncTag);
+        assertEquals("Do Not Call", result.tagName);
+    }
+
+    @Test
+    public void parseTag_dncTagWithMultipleSpaces_returnsDncTag() throws Exception {
+        Tag result = ParserUtil.parseTag("  do   not     call  ");
+        assertTrue(result instanceof DncTag);
+        assertEquals("Do Not Call", result.tagName);
     }
 
     @Test

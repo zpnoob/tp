@@ -169,6 +169,39 @@ public class JsonAdaptedPersonTest {
     }
 
     @Test
+    public void toModelType_personWithDncTagLowercase_returnsPerson() throws Exception {
+        List<JsonAdaptedTag> dncTags = new ArrayList<>();
+        dncTags.add(new JsonAdaptedTag("do not call"));
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
+                VALID_ADDRESS, VALID_OCCUPATION, VALID_AGE, VALID_PRIORITY, "MIDDLE",
+                VALID_LAST_CONTACTED_DATE, dncTags);
+        seedu.address.model.person.Person modelPerson = person.toModelType();
+        assertTrue(modelPerson.isDncTagged());
+    }
+
+    @Test
+    public void toModelType_personWithDncTagUppercase_returnsPerson() throws Exception {
+        List<JsonAdaptedTag> dncTags = new ArrayList<>();
+        dncTags.add(new JsonAdaptedTag("DO NOT CALL"));
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
+                VALID_ADDRESS, VALID_OCCUPATION, VALID_AGE, VALID_PRIORITY, "MIDDLE",
+                VALID_LAST_CONTACTED_DATE, dncTags);
+        seedu.address.model.person.Person modelPerson = person.toModelType();
+        assertTrue(modelPerson.isDncTagged());
+    }
+
+    @Test
+    public void toModelType_personWithDncTagMixedCase_returnsPerson() throws Exception {
+        List<JsonAdaptedTag> dncTags = new ArrayList<>();
+        dncTags.add(new JsonAdaptedTag("Do NoT cAlL"));
+        JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
+                VALID_ADDRESS, VALID_OCCUPATION, VALID_AGE, VALID_PRIORITY, "MIDDLE",
+                VALID_LAST_CONTACTED_DATE, dncTags);
+        seedu.address.model.person.Person modelPerson = person.toModelType();
+        assertTrue(modelPerson.isDncTagged());
+    }
+
+    @Test
     public void toModelType_nullIncomeBracket_returnsPersonWithNullIncomeBracket() throws Exception {
         JsonAdaptedPerson person = new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL,
                 VALID_ADDRESS, VALID_OCCUPATION, VALID_AGE, VALID_PRIORITY, null,

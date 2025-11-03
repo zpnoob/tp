@@ -205,6 +205,15 @@ public class EditCommandTest {
     }
 
     @Test
+    public void execute_addDncTagViaEdit_failure() {
+        EditPersonDescriptor descriptor = new EditPersonDescriptor();
+        descriptor.setTags(Collections.singleton(new DncTag()));
+        EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+
+        assertCommandFailure(editCommand, model, EditCommand.MESSAGE_CANNOT_ADD_DNC_TAG);
+    }
+
+    @Test
     public void equals() {
         final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_AMY);
 
