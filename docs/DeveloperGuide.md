@@ -1119,3 +1119,9 @@ Team size: 5
    significant risk for professionals managing hundreds of client records. To address this, we
    plan to implement a confirmation dialog that requires the user to explicitly confirm the
    action before deletion proceeds.
+
+3. **Reduce restriction on DNC feature:**
+   Currently, the "Do Not Call" (DNC) feature prevents editing any field of contacts tagged with DNC, including
+   non-call-related information like address or occupation. For example, if a client with a DNC tag moves, the agent
+   cannot update the address without removing the DNC tag first. To address this, we plan to reduce the restrictions to
+   only prevent editing of name and phone number fields, while allowing updates to other contact information.
