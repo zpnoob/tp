@@ -211,11 +211,11 @@ Click [here](#) to go back to the content page.
 
 Shows a message explaining how to access the help page.
 
+Format: `help`
+
 <div style="text-align: center;">
     <img src="images/helpMessage.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 70%; height: auto; margin: 20px 0px;"/>
 </div>
-
-Format: `help`
 
 <div style="page-break-after: always;"></div>
 
@@ -225,12 +225,12 @@ Format: `help`
 
 Adds a client to InsuraBook.
 
+Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
+
 <div style="text-align: center;">
     <img src="images/features/addCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Adding a client on InsuraBook</p>
 </div>
-
-Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
 
 * For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
 
@@ -262,12 +262,12 @@ Examples:
 
 Edits an existing contact in InsuraBook.
 
+Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
+
 <div style="text-align: center;">
     <img src="images/features/editCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Editing details of the first client on InsuraBook</p>
 </div>
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
 * For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
 * Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
@@ -296,12 +296,12 @@ Examples:
 
 Deletes the specified contact from InsuraBook.
 
+Format: `delete INDEX`
+
 <div style="text-align: center;">
     <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Deleting the first client from InsuraBook</p>
 </div>
-
-Format: `delete INDEX`
 
 * Deletes the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed contact list.
@@ -319,12 +319,12 @@ Examples:
 
 Clears all entries from InsuraBook.
 
+Format: `clear`
+
 <div style="text-align: center;">
     <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Clearing details of all clients from InsuraBook</p>
 </div>
-
-Format: `clear`
 
 <!-- Insert after the Clear command description in `docs/UserGuide.md` -->
 <box type="warning" seamless>
@@ -341,12 +341,12 @@ Format: `clear`
 
 Shows a list of all contacts sorted by index in the InsuraBook.
 
+Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`<br>
+
 <div style="text-align: center;">
     <img src="images/features/listCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Listing all clients on InsuraBook</p>
 </div>
-
-Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`<br>
 
 Examples:
 * `list`
@@ -378,12 +378,12 @@ Examples:
 
 Finds clients whose fields contain any of the given keywords.
 
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
 <div style="text-align: center;">
     <img src="images/features/findCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Searching for a client by name</p>
 </div>
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -414,12 +414,12 @@ Examples:
 
 Changes the tags of an existing client in Insurabook. This is a convenient shortcut for the edit command when you only want to change the tags.
 
+Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
+
 <div style="text-align: center;">
     <img src="images/features/tagCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Adding a tag to the first client on InsuraBook</p>
 </div>
-
-Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 
 * Changes the tags of the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed contact list.
@@ -460,12 +460,12 @@ Examples:
 
 Marks a contact as Do Not Call (DNC) in InsuraBook.
 
+Format: `dnc INDEX`
+
 <div style="text-align: center;">
     <img src="images/features/dncCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Marking the second client on InsuraBook as DNC</p>
 </div>
-
-Format: `dnc INDEX`
 
 * Marks the contact at the specified `INDEX` as Do Not Call.
 * The index refers to the index number shown in the displayed contact list.
@@ -494,12 +494,12 @@ Examples:
 
 Changes the priority of an existing client in InsuraBook. This is a convenient shortcut for the edit command when you only want to change the priority.
 
+Format: `priority INDEX PRIORITY`
+
 <div style="text-align: center;">
     <img src="images/features/priorityCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
     <p>Setting the priority of the first client on InsuraBook as high</p>
 </div>
-
-Format: `priority INDEX PRIORITY`
 
 * Changes the priority of the client at the specified `INDEX`.
 * The index refers to the index number shown in the displayed contact list.
