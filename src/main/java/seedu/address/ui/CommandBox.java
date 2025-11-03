@@ -37,7 +37,10 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleCommandEntered() {
         String commandText = commandTextField.getText();
-        if (commandText.equals("")) {
+
+        // Clear the input field if it's only whitespace
+        if (commandText.trim().isEmpty()) {
+            commandTextField.setText("");
             return;
         }
 
