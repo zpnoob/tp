@@ -205,6 +205,8 @@ Click [here](#) to go back to the content page.
 
 <div style="page-break-after: always;"></div>
 
+#### Getting Started
+
 ### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
@@ -216,6 +218,8 @@ Shows a message explaining how to access the help page.
 Format: `help`
 
 <div style="page-break-after: always;"></div>
+
+#### Managing Client Information
 
 ### Adding a client: `add`
 
@@ -253,6 +257,8 @@ Examples:
 </box>
 
 <div style="page-break-after: always;"></div>
+
+#### Organizing and Searching
 
 ### Listing all clients : `list`
 
@@ -382,6 +388,8 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
+#### Client Categorization
+
 ### Editing a tag: `tag`
 
 Changes the tags of an existing client in Insurabook. This is a convenient shortcut for the edit command when you only want to change the tags.
@@ -492,6 +500,8 @@ Examples:
 </box>
 
 <div style="page-break-after: always;"></div>
+
+#### System Commands
 
 ### Clearing all entries : `clear`
 
