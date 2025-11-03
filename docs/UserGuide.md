@@ -1,8 +1,8 @@
 ---
   layout: default.md
   title: "User Guide"
-  pageNav: 3
---- 
+  pageNav: 4
+---
 
 # InsuraBook User Guide
 
@@ -77,7 +77,7 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
    java version "17.0.x" or higher
    ```
    If Java is not installed, or the Java version is below Java 17, proceed to install Java 17+.
- 
+
    **Installation links:**
    * **Mac users:** Follow the precise installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
    * **Windows/Linux users:** Download Java 17+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/).
@@ -99,7 +99,7 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
     A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
     <div style="text-align: center; ">
         <img src="images/features/Labelled.png" alt="Ui" style="max-width: 70%; height: auto; margin: 20px 0px;"/>
-        <p>Insurabook User Interface labelled</p> 
+        <p>Insurabook User Interface labelled</p>
     </div>
 
 5. Type the command in the command box and press Enter to execute it, e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -125,7 +125,7 @@ Click [here](#) to go back to the content page.
 
 <div style="page-break-after: always;"></div>
 
-## Parameters 
+## Parameters
 
 The following are the parameters we will be using in InusraBook.
 
@@ -140,7 +140,7 @@ Before diving into each parameter, here's how to read the command formats:
 | `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip` |
 | `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket |
 
-### Common Parameters 
+### Common Parameters
 The following are **compulsory** parameters to the `add` and `edit` command.
 
 Parameter | Description | Format | Constraints
@@ -149,7 +149,7 @@ Parameter | Description | Format | Constraints
 `p/PHONE_NUMBER` | Client's phone number | `p/PHONE_NUMBER` | Must be a number between 4-17 digits.
 
 
-### Optional Parameters: PERSON_PARAM 
+### Optional Parameters: PERSON_PARAM
 The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAM]`
 
 Parameter | Description | Format | Constraints
@@ -205,7 +205,9 @@ Click [here](#) to go back to the content page.
 
 <div style="page-break-after: always;"></div>
 
-### Viewing help : `help`
+### Getting Started
+
+#### Viewing help : `help`
 
 Shows a message explaining how to access the help page.
 
@@ -217,7 +219,9 @@ Format: `help`
 
 <div style="page-break-after: always;"></div>
 
-### Adding a client: `add`
+### Managing Client Information
+
+#### Adding a client: `add`
 
 Adds a client to InsuraBook.
 
@@ -254,44 +258,7 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Listing all clients : `list`
-
-Shows a list of all contacts sorted by index in the InsuraBook.
-
-<div style="text-align: center;">
-    <img src="images/features/listCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
-    <p>Listing all clients on InsuraBook</p>
-</div>
-
-Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`<br>
-
-Examples:
-* `list` 
-  * Shows all clients sorted by index.
-* `list pr/asc`  
-  * Shows all clients sorted by priority in ascending order.
-* `list pr/desc`  
-  * Shows all clients sorted by priority in descending order.
-* `list i/asc`  
-  * Shows all clients sorted by income bracket in ascending order.
-* `list i/desc`  
-  * Shows all clients sorted by income bracket in descending order.
-
-<box type="note" seamless>
-
-**Note:** Clients that do not have values for `PRIORITY` and `INCOME_BRACKET` will be listed at the bottom when using sorting commands (for example, `list pr/asc` or `list i/desc`).
-
-</box>
-
-<box type="warning" seamless>
-
-**Warning:** You can only have up to **one** of the optional parameters.
-
-</box>
-
-<div style="page-break-after: always;"></div>
-
-### Editing a client : `edit`
+#### Editing a client : `edit`
 
 Edits an existing contact in InsuraBook.
 
@@ -325,7 +292,89 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Locating clients by fields: `find`
+#### Deleting a client : `delete`
+
+Deletes the specified contact from InsuraBook.
+
+<div style="text-align: center;">
+    <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Deleting the first client from InsuraBook</p>
+</div>
+
+Format: `delete INDEX`
+
+* Deletes the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed contact list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `delete 2`
+  * Deletes the second contact in InsuraBook, after carrying out the `list` command.
+* `find Betsy` followed by `delete 1`
+  * Deletes the first contact in the results of the `find` command.
+
+<div style="page-break-after: always;"></div>
+
+#### Clearing all entries : `clear`
+
+Clears all entries from InsuraBook.
+
+<div style="text-align: center;">
+    <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Clearing details of all clients from InsuraBook</p>
+</div>
+
+Format: `clear`
+
+<!-- Insert after the Clear command description in `docs/UserGuide.md` -->
+<box type="warning" seamless>
+
+**Warning:** The `clear` command permanently deletes *all* contacts and cannot be undone. Only use this command if you are sure you want to permanently remove all data. Confirm carefully before proceeding.
+
+</box>
+
+<div style="page-break-after: always;"></div>
+
+### Organizing and Searching
+
+#### Listing all clients : `list`
+
+Shows a list of all contacts sorted by index in the InsuraBook.
+
+<div style="text-align: center;">
+    <img src="images/features/listCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Listing all clients on InsuraBook</p>
+</div>
+
+Format: `list [pr/asc] [pr/desc] [i/asc] [i/desc]`<br>
+
+Examples:
+* `list`
+  * Shows all clients sorted by index.
+* `list pr/asc`
+  * Shows all clients sorted by priority in ascending order.
+* `list pr/desc`
+  * Shows all clients sorted by priority in descending order.
+* `list i/asc`
+  * Shows all clients sorted by income bracket in ascending order.
+* `list i/desc`
+  * Shows all clients sorted by income bracket in descending order.
+
+<box type="note" seamless>
+
+**Note:** Clients that do not have values for `PRIORITY` and `INCOME_BRACKET` will be listed at the bottom when using sorting commands (for example, `list pr/asc` or `list i/desc`).
+
+</box>
+
+<box type="warning" seamless>
+
+**Warning:** You can only have up to **one** of the optional parameters.
+
+</box>
+
+<div style="page-break-after: always;"></div>
+
+#### Locating clients by fields: `find`
 
 Finds clients whose fields contain any of the given keywords.
 
@@ -344,45 +393,24 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Values from fields `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `OCCUPATION`, `AGE`, `LAST_CONTACTED`, `TAG` are searched.
 
 Examples:
-* `find John` 
+* `find John`
   * Returns `john` and `John Doe`
-* `find 87438807` 
+* `find 87438807`
   * Returns `Alex Yeoh` as it matches their phone number.
-* `find family` 
+* `find family`
   * Returns `David Li` as it matches their assigned tags.
-* `find Alex family` 
+* `find Alex family`
   * Returns `Alex Yeoh`, `David Li`.
-* `find alex david` 
+* `find alex david`
   * Returns `Alex Yeoh`, `David Li`.
-* `find 2023-12-25` 
+* `find 2023-12-25`
   * Returns clients with `LAST_CONTACTED` = `2023-12-25`.<br>
 
 <div style="page-break-after: always;"></div>
 
-### Deleting a client : `delete`
+### Client Categorization
 
-Deletes the specified contact from InsuraBook.
-
-<div style="text-align: center;">
-    <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
-    <p>Deleting the first client from InsuraBook</p>
-</div>
-
-Format: `delete INDEX`
-
-* Deletes the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` 
-  * Deletes the second contact in InsuraBook, after carrying out the `list` command.
-* `find Betsy` followed by `delete 1` 
-  * Deletes the first contact in the results of the `find` command.
-
-<div style="page-break-after: always;"></div>
-
-### Editing a tag: `tag`
+#### Editing a tag: `tag`
 
 Changes the tags of an existing client in Insurabook. This is a convenient shortcut for the edit command when you only want to change the tags.
 
@@ -396,9 +424,9 @@ Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 * Changes the tags of the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
-* `tag_name` must be  Alphanumeric and spaces allowed. 
+* `tag_name` must be  Alphanumeric and spaces allowed.
     * Maximum 30 characters.
-    * Case-insensitive (eg, Interested = interested). 
+    * Case-insensitive (eg, Interested = interested).
     * Leading/trailing spaces are trimmed.
 * This command is equivalent to `edit INDEX t/tag_name`.
 
@@ -428,7 +456,7 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Marking a contact as Do Not Call: `dnc`
+#### Marking a contact as Do Not Call: `dnc`
 
 Marks a contact as Do Not Call (DNC) in InsuraBook.
 
@@ -462,7 +490,7 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Editing the priority: `priority`
+#### Editing the priority: `priority`
 
 Changes the priority of an existing client in InsuraBook. This is a convenient shortcut for the edit command when you only want to change the priority.
 
@@ -479,11 +507,11 @@ Format: `priority INDEX PRIORITY`
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
 
 Examples:
-* `priority 1 HIGH` 
+* `priority 1 HIGH`
   * Sets the priority of the first contact to `HIGH`.
-* `priority 3 NONE` 
+* `priority 3 NONE`
   * Sets the priority of the third contact to `NONE`.
-* `priority 2 medium` 
+* `priority 2 medium`
   * Sets the priority of the second contact to `MEDIUM` (case-insensitive).
 
 <box type="tip" seamless>
@@ -493,35 +521,19 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Clearing all entries : `clear`
+### System Commands
 
-Clears all entries from InsuraBook.
-
-<div style="text-align: center;">
-    <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
-    <p>Clearing details of all clients from InsuraBook</p>
-</div>
-
-Format: `clear`
-
-<!-- Insert after the Clear command description in `docs/UserGuide.md` -->
-<box type="warning" seamless>
-
-**Warning:** The `clear` command permanently deletes *all* contacts and cannot be undone. Only use this command if you are sure you want to permanently remove all data. Confirm carefully before proceeding.
-
-</box>
-
-### Exiting the program : `exit`
+#### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### Saving the data
+#### Saving the data
 
 InsuraBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### Editing the data file
+#### Editing the data file
 
 InsuraBook data are saved automatically as a JSON file `[JAR file location]/data/insurabook.json`. Advanced users are welcome to update data directly by editing that data file.
 
