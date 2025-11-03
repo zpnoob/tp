@@ -105,6 +105,14 @@ public class TagCommandTest {
     }
 
     @Test
+    public void execute_addDncTagViaTagCommand_failure() {
+        Set<Tag> dncTagSet = Collections.singleton(new DncTag());
+        TagCommand tagCommand = new TagCommand(INDEX_FIRST_PERSON, dncTagSet);
+
+        assertCommandFailure(tagCommand, model, TagCommand.MESSAGE_CANNOT_ADD_DNC_TAG);
+    }
+
+    @Test
     public void equals() {
         Tag tagFriend = new Tag("friend");
         Tag tagColleague = new Tag("colleague");

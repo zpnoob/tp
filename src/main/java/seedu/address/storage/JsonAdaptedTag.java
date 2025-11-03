@@ -45,7 +45,8 @@ class JsonAdaptedTag {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
 
-        if (DncTag.DNC_TAG_NAME.equals(tagName)) {
+        String normalisedTagName = tagName.trim().replaceAll("\\s+", " ");
+        if (DncTag.DNC_TAG_NAME.equalsIgnoreCase(normalisedTagName)) {
             return new DncTag();
         }
         return new Tag(tagName);

@@ -18,6 +18,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 
@@ -124,9 +125,12 @@ public class ParserUtil {
      */
     public static Tag parseTag(String tag) throws ParseException {
         requireNonNull(tag);
-        String trimmedTag = tag.trim();
+        String trimmedTag = tag.trim().replaceAll("\\s+", " ");
         if (!Tag.isValidTagName(trimmedTag)) {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+        }
+        if (DncTag.DNC_TAG_NAME.equalsIgnoreCase(trimmedTag)) {
+            return new DncTag();
         }
         return new Tag(trimmedTag);
     }
