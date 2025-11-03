@@ -6,9 +6,6 @@
 
 # InsuraBook User Guide
 
-<!-- * Table of Contents -->
-<page-nav-print />
-
 **Every sales day starts the same:** a long list of leads, a tighter list of callbacks, and too much information - spreadsheets, sticky notes, scattered files. In the middle of a call with an important client, one cannot afford to hunt for the right number, the last note, or the correct spelling of a client’s name. Miss a detail and just like that, a warm lead goes cold!
 
 InsuraBook exists to stop that from happening. Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls as the information you need is always where you expect it to be.
@@ -20,6 +17,9 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<!-- * Table of Contents -->
+<page-nav-print />
 
 <div style="page-break-after: always;"></div>
 
@@ -52,9 +52,9 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 
 </div>
 
-<box type="tip" seamless>
+<box type="tip">
 
-**Pro Tip:** Use `Ctrl+F` (or `Cmd+F` on Mac) to search for specific keywords/commands in this guide.
+**Tip:** Use `Ctrl+F` (or `Cmd+F` on Mac) to search for specific keywords/commands in this guide.
 
 </box>
 
@@ -98,7 +98,7 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
     ```
     A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
     <div style="text-align: center; ">
-        <img src="images/features/Labelled.png" alt="Ui" style="max-width: 70%; height: auto; margin: 20px 0px;"/>
+        <img src="images/features/Labelled.png" alt="Ui" style="max-width: 65%; height: auto; margin: 20px 0px;"/>
         <p>Insurabook User Interface labelled</p>
     </div>
 
@@ -127,7 +127,7 @@ Click [here](#) to go back to the content page.
 
 ## Parameters
 
-The following are the parameters we will be using in InusraBook.
+The following are the parameters we will be using in InsuraBook.
 
 ### Reading Parameter Formats
 
@@ -135,35 +135,38 @@ Before diving into each parameter, here's how to read the command formats:
 
 | Format | Meaning | Example |
 |--------|---------|---------|
-| `PARAMETER` | Required, must provide | `n/NAME` must be included |
-| `[PARAMETER]` | Optional, can skip | `[e/EMAIL]` can be omitted |
-| `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip` |
-| `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket |
+| `PARAMETER` | Required, must provide | `n/NAME` must be included. |
+| `[PARAMETER]` | Optional, can skip | `[e/EMAIL]` can be omitted. |
+| `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip`. |
+| `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket. |
 
 ### Common Parameters
 The following are **compulsory** parameters to the `add` and `edit` command.
 
-Parameter | Description | Format | Constraints
-----------|-------------|--------|------------
-`n/NAME` | Client's name | `n/NAME` | Must consist of alphabets or the following characters: `-`/ `'`/ `/`/ `@`.
-`p/PHONE_NUMBER` | Client's phone number | `p/PHONE_NUMBER` | Must be a number between 4-17 digits.
+Parameter | Description | Constraints
+----------|-------------|------------
+`INDEX` | Position of the client in InsuraBook | Must be a non-negative integer within the displayed contact list.
+`n/NAME` | Client's name | Must consist of alphabets or the following characters: `-`/ `'`/ `/`/ `@`.
+`p/PHONE_NUMBER` | Client's phone number | Must be a number between 4-17 digits.
 
 
-### Optional Parameters: PERSON_PARAM
-The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAM]`
+### Optional Parameters: PERSON_PARAMS
+The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAMS]`
 
-Parameter | Description | Format | Constraints
-----------|-------------|--------|------------
-`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
-`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string.
-`o/OCCUPATION` | Client's occupation | `o/OCCUPATION` | Any text string.
-`age/AGE` | Client's age | `age/AGE` | Must be a non-negative integer between 10-120 inclusive.
-`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`)
-`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
-`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
-`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
+Parameter | Description | Constraints
+----------|-------------|------------
+`e/EMAIL` | Email address | Must be a valid email format (e.g., `user@example.com`).
+`a/ADDRESS` | Physical address | Any text string.
+`o/OCCUPATION` | Client's occupation | Any text string.
+`age/AGE` | Client's age | Must be a positive integer between 10-120 inclusive.
+`lc/LAST_CONTACTED` | Last contact date | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`).
+`pr/PRIORITY` | Contact priority level | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
+`i/INCOME_BRACKET` | Income bracket classification | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
+`t/TAG` | Tags for categorization | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
 
-<box type="info" seamless>
+<div style="page-break-after: always;"></div>
+
+<box type="info">
 
 **Notes about PERSON_PARAMS:**
 * These parameters can be used in any combination with the `add` and `edit` commands.
@@ -181,7 +184,7 @@ Click [here](#) to go back to the content page.
 <div style="page-break-after: always;"></div>
 
 ## Features
-<box type="info" seamless>
+<box type="info">
 
 **Notes about the command format:**<br>
 
@@ -243,14 +246,14 @@ Examples:
       address `The Gardens at Bishan`, occupation `Engineer`, income bracket `high`,
       and priority level `HIGH`.
 
-<box type="info" seamless>
+<box type="info">
 
 **Note:** `n/NAME` and `p/PHONE_NUMBER` are required for `add`. All other prefixes under `PERSON_PARAMS` are optional.
 - If an optional prefix is *omitted*, that field is left unset.
 - If an optional prefix is *present but has no value* (for example `e/` or `a/`) when adding a client, the application accepts and stores that field as an empty string.
 </box>
 
-<box type="warning" seamless>
+<box type="warning">
 
 **Warning:** Adding another client with the same `PHONE_NUMBER` as an existing client will be counted as a duplicate and is not allowed.
 
@@ -270,7 +273,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 </div>
 
 * For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
-* Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the client at the specified `INDEX`.
 * At least one of the optional fields must be provided.
 
 Examples:
@@ -279,12 +282,12 @@ Examples:
 *  `edit 2 n/Betsy Crower t/ pr/HIGH`
     * Edits the name of the second contact to be `Betsy Crower`, clears all existing tags and changes the priority to HIGH.
 
-<box type="warning" seamless>
+<box type="warning">
 
 **Warning:** When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
 
 </box>
-<box type="tip" seamless>
+<box type="tip">
 
 **Tip:** You can remove any optional field by using the prefix without a value (e.g., `edit INDEX t/` removes all tags, `edit INDEX e/` removes email, `edit INDEX a/` removes address).
 
@@ -304,8 +307,6 @@ Format: `delete INDEX`
 </div>
 
 * Deletes the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `delete 2`
@@ -327,7 +328,7 @@ Format: `clear`
 </div>
 
 <!-- Insert after the Clear command description in `docs/UserGuide.md` -->
-<box type="warning" seamless>
+<box type="warning">
 
 **Warning:** The `clear` command permanently deletes *all* contacts and cannot be undone. Only use this command if you are sure you want to permanently remove all data. Confirm carefully before proceeding.
 
@@ -360,13 +361,13 @@ Examples:
 * `list i/desc`
   * Shows all clients sorted by income bracket in descending order.
 
-<box type="note" seamless>
+<box type="info">
 
 **Note:** Clients that do not have values for `PRIORITY` and `INCOME_BRACKET` will be listed at the bottom when using sorting commands (for example, `list pr/asc` or `list i/desc`).
 
 </box>
 
-<box type="warning" seamless>
+<box type="warning">
 
 **Warning:** You can only have up to **one** of the optional parameters.
 
@@ -385,16 +386,16 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
     <p>Searching for a client by name</p>
 </div>
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Partial words will be matched e.g. `find Han` will match `Hans`
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
+* Partial words will be matched e.g. `find Han` will match `Hans`.
 * Clients matching at least one keyword will be returned (i.e. `OR` search).
-    * e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+    * e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 * Values from fields `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `OCCUPATION`, `AGE`, `LAST_CONTACTED`, `TAG` are searched.
 
 Examples:
 * `find John`
-  * Returns `john` and `John Doe`
+  * Returns `john` and `John Doe`.
 * `find 87438807`
   * Returns `Alex Yeoh` as it matches their phone number.
 * `find family`
@@ -422,8 +423,6 @@ Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 </div>
 
 * Changes the tags of the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 * `tag_name` must be  Alphanumeric and spaces allowed.
     * Maximum 30 characters.
     * Case-insensitive (eg, Interested = interested).
@@ -436,19 +435,19 @@ Examples:
 * `tag 5 t/do not call` Sets the tag of the fifth client to `do not call`.
 * `tag 7 t/follow up t/interested` Sets the tags of the seventh client to `follow up` and `interested`.
 
-<box type="note" seamless>
+<box type="info">
 
 **Note:** The `tag` command cannot be used to clear existing tags or remove all tags by supplying an empty `t/`. To remove all tags, use the `edit` command with an empty tag prefix, e.g. `edit INDEX t/`.
 
 </box>
 
 
-<box type="tip" seamless>
+<box type="tip">
 
 **Tip:** Use the `tag` command for quick tag changes, or the `edit` command when changing multiple fields at once.
 </box>
 
-<box type="warning" seamless>
+<box type="warning">
 
 **Warning:** Similar to the `edit`command, when adding tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
 
@@ -468,8 +467,6 @@ Format: `dnc INDEX`
 </div>
 
 * Marks the contact at the specified `INDEX` as Do Not Call.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 * A special "Do Not Call" tag (displayed in red) will be applied to the contact.
 * The DNC status **cannot be removed** from a contact.
 
@@ -477,13 +474,13 @@ Examples:
 * `dnc 1` Marks the first contact on the list as Do Not Call.
 * `dnc 3` Marks the third contact on the list as Do Not Call.
 
-<box type="warning" seamless>
+<box type="warning">
 
 **Warning:** The `dnc` command applies an irreversible Do Not Call status by setting a special DNC tag. Executing `dnc INDEX` will remove all other tags on the contact. Because DNC contacts cannot be edited, tags cannot be restored.
 
 </box>
 
-<box type="tip" seamless>
+<box type="tip">
 
 **Tip:** If a contact was wrongly assigned as DNC, delete the contact and re-add them to the system.
 </box>
@@ -502,8 +499,6 @@ Format: `priority INDEX PRIORITY`
 </div>
 
 * Changes the priority of the client at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
 * `PRIORITY` must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
 
 Examples:
@@ -514,7 +509,7 @@ Examples:
 * `priority 2 medium`
   * Sets the priority of the second contact to `MEDIUM` (case-insensitive).
 
-<box type="tip" seamless>
+<box type="tip">
 
 **Tip:** Use the `priority` command for quick priority changes, or the `edit` command when changing multiple fields at once.
 </box>
@@ -537,7 +532,7 @@ InsuraBook data are saved in the hard disk automatically after any command that 
 
 InsuraBook data are saved automatically as a JSON file `[JAR file location]/data/insurabook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="warning">
 
 **Caution:**
 If your changes to the data file makes its format invalid, InsuraBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br><br>
