@@ -160,6 +160,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasPersonWithEmail(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -228,6 +233,11 @@ public class AddCommandTest {
             return personsAdded.stream().anyMatch(p -> p.hasSamePhone(person));
         }
 
+        @Override
+        public boolean hasPersonWithEmail(Person person) {
+            requireNonNull(person);
+            return personsAdded.stream().anyMatch(p -> p.hasSameEmail(person));
+        }
 
         @Override
         public void addPerson(Person person) {

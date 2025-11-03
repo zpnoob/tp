@@ -119,6 +119,20 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone());
     }
 
+    /**
+     * Returns true if both persons have the same email address.
+     * Returns false if either person has an empty email address.
+     */
+    public boolean hasSameEmail(Person otherPerson) {
+        if (otherPerson == this) {
+            return true;
+        }
+
+        return otherPerson != null
+                && !getEmail().value.isEmpty()
+                && !otherPerson.getEmail().value.isEmpty()
+                && otherPerson.getEmail().equals(getEmail());
+    }
 
     /**
      * Returns true if both persons have the same identity and data fields.

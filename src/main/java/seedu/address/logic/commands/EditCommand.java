@@ -67,6 +67,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_NAME =
             "A person with this name already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_EMAIL =
+            "A person with this email address already exists in the address book.";
     public static final String MESSAGE_DUPLICATE_PHONE =
             "A person with this phone number already exists in the address book.";
     public static final String MESSAGE_DUPLICATE_NAME_AND_PHONE =
@@ -106,6 +108,10 @@ public class EditCommand extends Command {
         // Check for conflicts with existing persons
         if (!personToEdit.isSamePerson(editedPerson)) {
             checkForDuplicates(model, personToEdit, editedPerson);
+        }
+
+        if (!personToEdit.hasSameEmail(editedPerson) && model.hasPersonWithEmail(editedPerson)) {
+            throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
         }
 
         model.setPerson(personToEdit, editedPerson);
