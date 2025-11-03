@@ -399,7 +399,7 @@ Examples:
 
 ### Editing the priority: `priority`
 
-Changes the priority of an existing client in the address book. This is a convenient shortcut for the edit command when you only want to change the priority.
+Changes the priority of an existing client in InsuraBook. This is a convenient shortcut for the edit command when you only want to change the priority.
 
 <div style="text-align: center;">
     <img src="images/features/priorityCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
@@ -431,7 +431,7 @@ Examples:
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from InsuraBook.
 
 <div style="text-align: center;">
     <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
