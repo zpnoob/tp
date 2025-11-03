@@ -29,7 +29,12 @@ public class NameTest {
         assertFalse(Name.isValidName("")); // empty string
         assertFalse(Name.isValidName(" ")); // spaces only
         assertFalse(Name.isValidName("^")); // only non-alphanumeric characters
-        assertFalse(Name.isValidName("peter*")); // contains non-alphanumeric characters
+        assertFalse(Name.isValidName("peter*")); // contains non-allowed special characters
+        assertFalse(Name.isValidName("peter!")); // contains exclamation mark
+        assertFalse(Name.isValidName("peter#")); // contains hash
+        assertFalse(Name.isValidName("-peter")); // starts with special character
+        assertFalse(Name.isValidName("'peter")); // starts with apostrophe
+        assertFalse(Name.isValidName("@peter")); // starts with at symbol
 
         // valid name
         assertTrue(Name.isValidName("peter jack")); // alphabets only
@@ -37,6 +42,14 @@ public class NameTest {
         assertTrue(Name.isValidName("peter the 2nd")); // alphanumeric characters
         assertTrue(Name.isValidName("Capital Tan")); // with capital letters
         assertTrue(Name.isValidName("David Roger Jackson Ray Jr 2nd")); // long names
+        // valid names with allowed special characters
+        assertTrue(Name.isValidName("Mary-Jane")); // with hyphen
+        assertTrue(Name.isValidName("O'Brien")); // with apostrophe
+        assertTrue(Name.isValidName("S/O John")); // with forward slash
+        assertTrue(Name.isValidName("Rachel@Company")); // with at symbol
+        assertTrue(Name.isValidName("Jean-Paul D'Arcy")); // multiple special characters
+        assertTrue(Name.isValidName("A-B-C")); // multiple hyphens
+        assertTrue(Name.isValidName("O'Neil-Smith")); // apostrophe and hyphen
     }
 
     @Test

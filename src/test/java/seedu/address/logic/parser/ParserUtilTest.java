@@ -25,7 +25,7 @@ import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
-    private static final String INVALID_NAME = "R@chel";
+    private static final String INVALID_NAME = "R@chel*"; // contains asterisk which is not allowed
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_ADDRESS = "invalid";
     private static final String INVALID_EMAIL = "example.com";
@@ -116,6 +116,34 @@ public class ParserUtilTest {
         String nameWithMultipleSpaces = "John   Paul    George   Ringo";
         Name expectedName = new Name("John Paul George Ringo");
         assertEquals(expectedName, ParserUtil.parseName(nameWithMultipleSpaces));
+    }
+
+    @Test
+    public void parseName_validNameWithHyphen_returnsName() throws Exception {
+        String nameWithHyphen = "Mary-Jane";
+        Name expectedName = new Name(nameWithHyphen);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithHyphen));
+    }
+
+    @Test
+    public void parseName_validNameWithApostrophe_returnsName() throws Exception {
+        String nameWithApostrophe = "O'Brien";
+        Name expectedName = new Name(nameWithApostrophe);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithApostrophe));
+    }
+
+    @Test
+    public void parseName_validNameWithSlash_returnsName() throws Exception {
+        String nameWithSlash = "S/O John";
+        Name expectedName = new Name(nameWithSlash);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithSlash));
+    }
+
+    @Test
+    public void parseName_validNameWithAtSymbol_returnsName() throws Exception {
+        String nameWithAt = "Rachel@Company";
+        Name expectedName = new Name(nameWithAt);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithAt));
     }
 
     @Test

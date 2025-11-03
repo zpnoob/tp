@@ -16,7 +16,7 @@ import seedu.address.model.person.Age;
 import seedu.address.model.person.IncomeBracket;
 
 public class JsonAdaptedPersonTest {
-    private static final String INVALID_NAME = "R@chel";
+    private static final String INVALID_NAME = "R@chel*"; // contains asterisk which is not allowed
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
@@ -57,6 +57,42 @@ public class JsonAdaptedPersonTest {
                 VALID_ADDRESS, VALID_OCCUPATION, VALID_AGE, VALID_PRIORITY, VALID_INCOME_BRACKET,
                 VALID_LAST_CONTACTED_DATE, VALID_TAGS);
         assertThrows(IllegalValueException.class, () -> person.toModelType());
+    }
+
+    @Test
+    public void toModelType_validNameWithHyphen_returnsPerson() throws Exception {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson("Mary-Jane", VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_OCCUPATION,
+                        VALID_AGE, VALID_PRIORITY, VALID_INCOME_BRACKET, VALID_LAST_CONTACTED_DATE, VALID_TAGS);
+        // Should not throw exception
+        person.toModelType();
+    }
+
+    @Test
+    public void toModelType_validNameWithApostrophe_returnsPerson() throws Exception {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson("O'Brien", VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_OCCUPATION,
+                        VALID_AGE, VALID_PRIORITY, VALID_INCOME_BRACKET, VALID_LAST_CONTACTED_DATE, VALID_TAGS);
+        // Should not throw exception
+        person.toModelType();
+    }
+
+    @Test
+    public void toModelType_validNameWithSlash_returnsPerson() throws Exception {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson("S/O John", VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_OCCUPATION,
+                        VALID_AGE, VALID_PRIORITY, VALID_INCOME_BRACKET, VALID_LAST_CONTACTED_DATE, VALID_TAGS);
+        // Should not throw exception
+        person.toModelType();
+    }
+
+    @Test
+    public void toModelType_validNameWithAtSymbol_returnsPerson() throws Exception {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson("Rachel@Company", VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_OCCUPATION,
+                        VALID_AGE, VALID_PRIORITY, VALID_INCOME_BRACKET, VALID_LAST_CONTACTED_DATE, VALID_TAGS);
+        // Should not throw exception
+        person.toModelType();
     }
 
     @Test
