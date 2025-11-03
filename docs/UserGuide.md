@@ -258,6 +258,83 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
+### Editing a client : `edit`
+
+Edits an existing contact in InsuraBook.
+
+<div style="text-align: center;">
+    <img src="images/features/editCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Editing details of the first client on InsuraBook</p>
+</div>
+
+Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
+
+* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
+* Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+
+Examples:
+*  `edit 1 p/91234567 e/johndoe@example.com`
+    * Edits the phone number and email address of the first contact to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/ pr/HIGH`
+    * Edits the name of the second contact to be `Betsy Crower`, clears all existing tags and changes the priority to HIGH.
+
+<box type="warning" seamless>
+
+**Warning:** When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
+
+</box>
+<box type="tip" seamless>
+
+**Tip:** You can remove any optional field by using the prefix without a value (e.g., `edit INDEX t/` removes all tags, `edit INDEX e/` removes email, `edit INDEX a/` removes address).
+
+</box>
+
+<div style="page-break-after: always;"></div>
+
+### Deleting a client : `delete`
+
+Deletes the specified contact from InsuraBook.
+
+<div style="text-align: center;">
+    <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Deleting the first client from InsuraBook</p>
+</div>
+
+Format: `delete INDEX`
+
+* Deletes the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed contact list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `delete 2` 
+  * Deletes the second contact in InsuraBook, after carrying out the `list` command.
+* `find Betsy` followed by `delete 1` 
+  * Deletes the first contact in the results of the `find` command.
+
+<div style="page-break-after: always;"></div>
+
+### Clearing all entries : `clear`
+
+Clears all entries from InsuraBook.
+
+<div style="text-align: center;">
+    <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
+    <p>Clearing details of all clients from InsuraBook</p>
+</div>
+
+Format: `clear`
+
+<!-- Insert after the Clear command description in `docs/UserGuide.md` -->
+<box type="warning" seamless>
+
+**Warning:** The `clear` command permanently deletes *all* contacts and cannot be undone. Only use this command if you are sure you want to permanently remove all data. Confirm carefully before proceeding.
+
+</box>
+
+<div style="page-break-after: always;"></div>
+
 #### Organizing and Searching
 
 ### Listing all clients : `list`
@@ -297,40 +374,6 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Editing a client : `edit`
-
-Edits an existing contact in InsuraBook.
-
-<div style="text-align: center;">
-    <img src="images/features/editCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
-    <p>Editing details of the first client on InsuraBook</p>
-</div>
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
-
-* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
-* Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com`
-    * Edits the phone number and email address of the first contact to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/ pr/HIGH`
-    * Edits the name of the second contact to be `Betsy Crower`, clears all existing tags and changes the priority to HIGH.
-
-<box type="warning" seamless>
-
-**Warning:** When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
-
-</box>
-<box type="tip" seamless>
-
-**Tip:** You can remove any optional field by using the prefix without a value (e.g., `edit INDEX t/` removes all tags, `edit INDEX e/` removes email, `edit INDEX a/` removes address).
-
-</box>
-
-<div style="page-break-after: always;"></div>
-
 ### Locating clients by fields: `find`
 
 Finds clients whose fields contain any of the given keywords.
@@ -362,29 +405,6 @@ Examples:
   * Returns `Alex Yeoh`, `David Li`.
 * `find 2023-12-25` 
   * Returns clients with `LAST_CONTACTED` = `2023-12-25`.<br>
-
-<div style="page-break-after: always;"></div>
-
-### Deleting a client : `delete`
-
-Deletes the specified contact from InsuraBook.
-
-<div style="text-align: center;">
-    <img src="images/features/deleteCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
-    <p>Deleting the first client from InsuraBook</p>
-</div>
-
-Format: `delete INDEX`
-
-* Deletes the contact at the specified `INDEX`.
-* The index refers to the index number shown in the displayed contact list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` 
-  * Deletes the second contact in InsuraBook, after carrying out the `list` command.
-* `find Betsy` followed by `delete 1` 
-  * Deletes the first contact in the results of the `find` command.
 
 <div style="page-break-after: always;"></div>
 
@@ -502,24 +522,6 @@ Examples:
 <div style="page-break-after: always;"></div>
 
 #### System Commands
-
-### Clearing all entries : `clear`
-
-Clears all entries from InsuraBook.
-
-<div style="text-align: center;">
-    <img src="images/features/clearCommand.png" alt="Ui" style="border: 2px solid black; border-radius: 10px; max-width: 50%; height: auto; margin: 20px 0px;"/>
-    <p>Clearing details of all clients from InsuraBook</p>
-</div>
-
-Format: `clear`
-
-<!-- Insert after the Clear command description in `docs/UserGuide.md` -->
-<box type="warning" seamless>
-
-**Warning:** The `clear` command permanently deletes *all* contacts and cannot be undone. Only use this command if you are sure you want to permanently remove all data. Confirm carefully before proceeding.
-
-</box>
 
 ### Exiting the program : `exit`
 
