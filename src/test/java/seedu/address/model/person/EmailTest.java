@@ -43,13 +43,22 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("peter@jack@example.com")); // '@' symbol in local part
         assertFalse(Email.isValidEmail("-peterjack@example.com")); // local part starts with a hyphen
         assertFalse(Email.isValidEmail("peterjack-@example.com")); // local part ends with a hyphen
-        assertFalse(Email.isValidEmail("peter..jack@example.com")); // local part has two consecutive periods
+        assertFalse(Email.isValidEmail("peter..jack@example.com")); // local part has two consecutive periods - invalid
         assertFalse(Email.isValidEmail("peterjack@example@com")); // '@' symbol in domain name
         assertFalse(Email.isValidEmail("peterjack@.example.com")); // domain name starts with a period
         assertFalse(Email.isValidEmail("peterjack@example.com.")); // domain name ends with a period
         assertFalse(Email.isValidEmail("peterjack@-example.com")); // domain name starts with a hyphen
         assertFalse(Email.isValidEmail("peterjack@example.com-")); // domain name ends with a hyphen
         assertFalse(Email.isValidEmail("peterjack@example.c")); // top level domain has less than two chars
+
+        // consecutive periods - invalid
+        assertFalse(Email.isValidEmail("test..user@example.com")); // consecutive periods
+        assertFalse(Email.isValidEmail("a...b@test.com")); // multiple consecutive periods
+
+        // consecutive other special characters - valid (hyphens, plus, underscores)
+        assertTrue(Email.isValidEmail("user--name@example.com")); // consecutive hyphens - valid
+        assertTrue(Email.isValidEmail("test++tag@example.com")); // consecutive plus signs - valid
+        assertTrue(Email.isValidEmail("user__test@example.com")); // consecutive underscores - valid
 
         // valid email
         assertTrue(Email.isValidEmail("PeterJack_1190@example.com")); // underscore in local part
