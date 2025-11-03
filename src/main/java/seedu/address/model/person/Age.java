@@ -10,8 +10,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Age {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Age should be a non-negative integer with at most 3 digits.";
+            "Age should be between 10 and 120 (inclusive).";
     public static final String VALIDATION_REGEX = "\\d{1,3}";
+    public static final int MIN_AGE = 10;
+    public static final int MAX_AGE = 120;
     public final String value;
 
     /**
@@ -21,15 +23,36 @@ public class Age {
      */
     public Age(String age) {
         requireNonNull(age);
-        checkArgument(isValidAge(age), MESSAGE_CONSTRAINTS);
-        value = age;
+
+        if (age.isEmpty()) {
+            value = age;
+        } else {
+            // Remove leading zeros by parsing as integer and converting back to string
+            String normalizedAge = String.valueOf(Integer.parseInt(age));
+            checkArgument(isValidAge(normalizedAge), MESSAGE_CONSTRAINTS);
+            value = normalizedAge;
+        }
     }
 
     /**
      * Returns true if a given string is a valid age.
+     * Valid age must be empty or a number between 10 and 120 (inclusive).
      */
     public static boolean isValidAge(String test) {
-        return test.isEmpty() || test.matches(VALIDATION_REGEX);
+        if (test.isEmpty()) {
+            return true;
+        }
+
+        if (!test.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+
+        try {
+            int ageValue = Integer.parseInt(test);
+            return ageValue >= MIN_AGE && ageValue <= MAX_AGE;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     @Override
