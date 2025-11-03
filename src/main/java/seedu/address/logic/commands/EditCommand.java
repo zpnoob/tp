@@ -35,6 +35,7 @@ import seedu.address.model.person.Occupation;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Priority;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 
@@ -72,6 +73,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_DUPLICATE_NAME_AND_PHONE =
             "A person with this name and phone number already exists in the address book.";
     public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify fields of a Do Not Call contact.";
+    public static final String MESSAGE_CANNOT_ADD_DNC_TAG =
+            "Cannot add Do Not Call tag via edit command. Use the 'dnc' command instead.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -99,6 +102,11 @@ public class EditCommand extends Command {
 
         if (personToEdit.isDncTagged() && editPersonDescriptor.isAnyFieldEdited()) {
             throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
+        }
+
+        if (editPersonDescriptor.getTags().isPresent()
+            && editPersonDescriptor.getTags().get().stream().anyMatch(tag -> tag instanceof DncTag)) {
+            throw new CommandException(MESSAGE_CANNOT_ADD_DNC_TAG);
         }
 
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);

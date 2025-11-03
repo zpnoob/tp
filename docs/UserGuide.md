@@ -3,7 +3,11 @@
   title: "User Guide"
   pageNav: 3
 --- 
+
 # InsuraBook User Guide
+
+<!-- * Table of Contents -->
+<page-nav-print />
 
 **Every sales day starts the same:** a long list of leads, a tighter list of callbacks, and too much information - spreadsheets, sticky notes, scattered files. In the middle of a call with an important client, one cannot afford to hunt for the right number, the last note, or the correct spelling of a client’s name. Miss a detail and just like that, a warm lead goes cold!
 
@@ -16,6 +20,8 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 </div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## How to Use This Guide
 
@@ -33,7 +39,7 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 **Experienced user looking for specific information?**
 
 * Use the [Features](#features) section to find detailed explanations of specific commands.
-* Check out [PERSON_PARAMS](#person_params) for information on the available contact parameters.
+* Check out [Parameters](#parameters) for information on the available contact parameters.
 
 </div>
 
@@ -51,11 +57,6 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 **Pro Tip:** Use `Ctrl+F` (or `Cmd+F` on Mac) to search for specific keywords/commands in this guide.
 
 </box>
-
---------------------------------------------------------------------------------------------------------------------
-
-<!-- * Table of Contents -->
-<page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -118,6 +119,63 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 
 6. Refer to the [Features](#features) below for details of each command.
 
+Click [here](#) to go back to the content page.
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+## Parameters 
+
+The following are the parameters we will be using in InusraBook.
+
+### Reading Parameter Formats
+
+Before diving into each parameter, here's how to read the command formats:
+
+| Format | Meaning | Example |
+|--------|---------|---------|
+| `PARAMETER` | Required, must provide | `n/NAME` must be included |
+| `[PARAMETER]` | Optional, can skip | `[e/EMAIL]` can be omitted |
+| `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip` |
+| `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket |
+
+### Common Parameters 
+The following are **compulsory** parameters to the `add` and `edit` command.
+
+Parameter | Description | Format | Constraints
+----------|-------------|--------|------------
+`n/NAME` | Client's name | `n/NAME` | Must consist of alphabets or the following characters: `-`/ `'`/ `/`/ `@`.
+`p/PHONE_NUMBER` | Client's phone number | `p/PHONE_NUMBER` | Must be a number between 4-17 digits.
+
+
+### Optional Parameters: PERSON_PARAM 
+The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAM]`
+
+Parameter | Description | Format | Constraints
+----------|-------------|--------|------------
+`e/EMAIL` | Email address | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
+`a/ADDRESS` | Physical address | `a/ADDRESS` | Any text string.
+`o/OCCUPATION` | Client's occupation | `o/OCCUPATION` | Any text string.
+`age/AGE` | Client's age | `age/AGE` | Must be a non-negative integer.
+`lc/LAST_CONTACTED` | Last contact date | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`)
+`pr/PRIORITY` | Contact priority level | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
+`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
+`t/TAG` | Tags for categorization | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
+
+<box type="info" seamless>
+
+**Notes about PERSON_PARAMS:**
+* These parameters can be used in any combination with the `add` and `edit` commands.
+* Parameters can be specified in any order.
+* For the `edit` command, at least one parameter must be provided.
+* When editing tags with the `edit` command, existing tags will be replaced (not added to).
+* To remove any field, use the prefix without specifying a value after it (e.g. `t/` to remove all tags, `e/` to remove email, `a/` to remove address, etc.).
+
+</box>
+
+Click [here](#) to go back to the content page.
+
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
@@ -170,7 +228,7 @@ Adds a client to InsuraBook.
 
 Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#PERSON-PARAMS).
+* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 age/28`
@@ -244,8 +302,8 @@ Edits an existing contact in InsuraBook.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
 
-* For details on available `PERSON_PARAMS`, click [here](#PERSON-PARAMS).
-* Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
+* Edits the client at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 
 Examples:
@@ -474,46 +532,7 @@ If your changes to the data file makes its format invalid, InsuraBook will disca
 Furthermore, certain edits can cause the InsuraBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
---------------------------------------------------------------------------------------------------------------------
-
-<div style="page-break-after: always;"></div>
-
-## PERSON_PARAMS
-
-### Reading Parameter Formats
-
-Before diving into each parameter, here's how to read the command formats:
-
-| Format | Meaning | Example |
-|--------|---------|---------|
-| `PARAMETER` | Required, must provide | `n/NAME` must be included |
-| `[PARAMETER]` | Optional, can skip | `[e/EMAIL]` can be omitted |
-| `[PARAMETER]...` | Can repeat multiple times | `[t/TAG]...` → `t/friend t/vip` |
-| `PARAMETER/` (empty) | Clears the field | `i/` removes income bracket |
-
-The following parameters can be used when adding or editing a contact. All parameters are optional unless otherwise specified:
-
-Parameter | Description                   | Format | Constraints
-----------|-------------------------------|--------|------------
-`e/EMAIL` | Email address                 | `e/EMAIL` | Must be a valid email format (e.g., `user@example.com`).
-`a/ADDRESS` | Physical address              | `a/ADDRESS` | Any text string.
-`o/OCCUPATION` | Client's occupation           | `o/OCCUPATION` | Any text string.
-`age/AGE` | Client's age                  | `age/AGE` | Must be a non-negative integer.
-`lc/LAST_CONTACTED` | Last contact date             | `lc/LAST_CONTACTED` | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`)
-`pr/PRIORITY` | Contact priority level        | `pr/PRIORITY` | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
-`i/INCOME_BRACKET` | Income bracket classification | `i/INCOME_BRACKET` | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
-`t/TAG` | Tags for categorization       | `t/TAG` | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
-
-<box type="info" seamless>
-
-**Notes about PERSON_PARAMS:**
-* These parameters can be used in any combination with the `add` and `edit` commands.
-* Parameters can be specified in any order.
-* For the `edit` command, at least one parameter must be provided.
-* When editing tags with the `edit` command, existing tags will be replaced (not added to).
-* To remove any field, use the prefix without specifying a value after it (e.g. `t/` to remove all tags, `e/` to remove email, `a/` to remove address, etc.).
-
-</box>
+Click [here](#) to go back to the content page.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -534,6 +553,8 @@ Action     | Format, Examples
 **Priority** | `priority INDEX PRIORITY`<br><br> e.g., `priority 1 HIGH`
 **Help**   | `help`
 
+Click [here](#) to go back to the content page.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -541,9 +562,13 @@ Action     | Format, Examples
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite `[JAR file location]/data/insurabook.json` with the file that contains the data of your previous InsuraBook home folder.
 
+Click [here](#) to go back to the content page.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+
+Click [here](#) to go back to the content page.

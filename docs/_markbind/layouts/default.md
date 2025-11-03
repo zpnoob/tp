@@ -29,8 +29,8 @@
 * [Home]({{ baseUrl }}/index.html)
 * [User Guide]({{ baseUrl }}/UserGuide.html) :expanded:
   * [Quick Start]({{ baseUrl }}/UserGuide.html#quick-start)
+  * [Parameters]({{ baseUrl }}/UserGuide.html#parameters)
   * [Features]({{ baseUrl }}/UserGuide.html#features)
-  * [PERSON_PARAMS]({{ baseUrl }}/UserGuide.html#person-params)
   * [Command Summary]({{ baseUrl }}/UserGuide.html#faq)
   * [FAQ]({{ baseUrl }}/UserGuide.html#faq)
   * [Known Issues]({{ baseUrl }}/UserGuide.html#known-issues)
