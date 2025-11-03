@@ -619,3 +619,16 @@ testers are expected to do more *exploratory* testing.
 2. _{ more test cases …​ }_
 </md>
 </box>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Future Enhancement**
+
+Team size: 5
+
+1. **Allow multiple phone number fields with international format support:**
+   Currently, the phone number field only accepts numeric digits and each contact can have only one
+   phone number. However, telemarketers frequently need to store multiple contact numbers (home, mobile,
+   office) for the same person and require support for special characters like `-`, `+`, and `( )` to
+   accommodate international country codes and phone extensions.
+    
