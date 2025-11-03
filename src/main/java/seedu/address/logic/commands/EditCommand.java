@@ -65,7 +65,12 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_NAME =
+            "A person with this name already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PHONE =
+            "A person with this phone number already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_NAME_AND_PHONE =
+            "A person with this name and phone number already exists in the address book.";
     public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify fields of a Do Not Call contact.";
 
     private final Index index;
@@ -97,13 +102,56 @@ public class EditCommand extends Command {
         }
 
         Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+
+        // Check for conflicts with existing persons
+        if (!personToEdit.isSamePerson(editedPerson)) {
+            checkForDuplicates(model, personToEdit, editedPerson);
         }
+
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS,
             Messages.format(editedPerson)));
+    }
+
+    /**
+     * Checks if the edited person conflicts with any existing person in the address book.
+     * A conflict occurs if another person (not the one being edited) has the same phone number,
+     * or the same name AND phone number combination.
+     *
+     * @param model The model containing the address book.
+     * @param personToEdit The original person being edited.
+     * @param editedPerson The person with updated details.
+     * @throws CommandException if a conflict is detected.
+     */
+    private void checkForDuplicates(Model model, Person personToEdit, Person editedPerson)
+            throws CommandException {
+        List<Person> allPersons = model.getAddressBook().getPersonList();
+
+        boolean hasNameConflict = false;
+        boolean hasPhoneConflict = false;
+
+        for (Person existingPerson : allPersons) {
+            if (existingPerson.equals(personToEdit)) {
+                continue;
+            }
+
+            // Check for name conflict
+            if (existingPerson.getName().equals(editedPerson.getName())) {
+                hasNameConflict = true;
+            }
+
+            // Check for phone conflict
+            if (existingPerson.getPhone().equals(editedPerson.getPhone())) {
+                hasPhoneConflict = true;
+            }
+        }
+
+        if (hasNameConflict && hasPhoneConflict) {
+            throw new CommandException(MESSAGE_DUPLICATE_NAME_AND_PHONE);
+        } else if (hasPhoneConflict) {
+            throw new CommandException(MESSAGE_DUPLICATE_PHONE);
+        }
     }
 
     /**
