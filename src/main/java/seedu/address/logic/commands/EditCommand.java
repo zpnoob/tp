@@ -67,11 +67,11 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_NAME =
-            "A person with this name already exists in the address book.";
+            "A person with this name already exists in the InsuraBook.";
     public static final String MESSAGE_DUPLICATE_PHONE =
-            "A person with this phone number already exists in the address book.";
+            "A person with this phone number already exists in the InsuraBook.";
     public static final String MESSAGE_DUPLICATE_NAME_AND_PHONE =
-            "A person with this name and phone number already exists in the address book.";
+            "A person with this name and phone number already exists in the InsuraBook.";
     public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify fields of a Do Not Call contact.";
     public static final String MESSAGE_CANNOT_ADD_DNC_TAG =
             "Cannot add Do Not Call tag via edit command. Use the 'dnc' command instead.";
