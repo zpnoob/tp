@@ -1099,3 +1099,23 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Future Enhancements**
+
+Team size: 5
+
+1. **Allow multiple phone number fields with international format support:**
+   Currently, the phone number field only accepts numeric digits and each contact can have only one
+   phone number. However, telemarketers frequently need to store multiple contact numbers (home, mobile,
+   office) for the same person and require support for special characters like `-`, `+`, and `( )` to
+   accommodate international country codes and phone extensions.
+
+2. **Add confirmation dialog for clear command:**
+   Currently, the `clear` command immediately deletes all contacts from InsuraBook without
+   requesting user confirmation. A single typo or accidental command execution can permanently
+   delete an insurance agent's entire client database. Although data is saved to file after
+   each operation, there is no recovery mechanism to restore cleared contacts. This poses a
+   significant risk for professionals managing hundreds of client records. To address this, we
+   plan to implement a confirmation dialog that requires the user to explicitly confirm the
+   action before deletion proceeds.
