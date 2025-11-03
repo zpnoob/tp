@@ -12,6 +12,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.DncTag;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -32,6 +33,8 @@ public class TagCommand extends Command {
 
     public static final String MESSAGE_TAG_PERSON_SUCCESS = "Changed tags of Person: %s";
     public static final String MESSAGE_DNC_CANNOT_MODIFY = "Cannot modify tags of a Do Not Call contact.";
+    public static final String MESSAGE_CANNOT_ADD_DNC_TAG =
+            "Cannot add Do Not Call tag via tag command. Use the 'dnc' command instead.";
 
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Tag command not implemented yet";
 
@@ -61,6 +64,10 @@ public class TagCommand extends Command {
 
         if (personToEdit.isDncTagged()) {
             throw new CommandException(MESSAGE_DNC_CANNOT_MODIFY);
+        }
+
+        if (tags.stream().anyMatch(tag -> tag instanceof DncTag)) {
+            throw new CommandException(MESSAGE_CANNOT_ADD_DNC_TAG);
         }
 
         Person editedPerson = new Person(
