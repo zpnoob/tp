@@ -72,6 +72,20 @@ public class EmailTest {
         assertTrue(Email.isValidEmail("peter_jack@very-very-very-long-example.com")); // long domain name
         assertTrue(Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
         assertTrue(Email.isValidEmail("e1234567@u.nus.edu")); // more than one period in domain
+
+        // email length validation - testing 100 character limit
+        // Invalid: emails exceeding 100 characters (must be > 100)
+        assertFalse(Email.isValidEmail("a".repeat(50) + "@" + "b".repeat(50) + ".com"));
+        assertFalse(Email.isValidEmail("a".repeat(95) + "@bc.de")); // 95+1+5 = 101 chars - too long
+        assertFalse(Email.isValidEmail("abc@" + "d".repeat(97) + ".com")); // 3+1+97+4 = 105 chars - too long
+        assertFalse(Email.isValidEmail("user@" + "x".repeat(200) + ".com")); // way too long
+        assertFalse(Email.isValidEmail("x".repeat(60) + "@" + "y".repeat(60) + ".com"));
+
+        // Valid: emails at or under 100 characters (must be <= 100)
+        assertTrue(Email.isValidEmail("a".repeat(94) + "@bc.de")); // 94+1+5 = 100 chars - exactly at limit
+        assertTrue(Email.isValidEmail("a".repeat(50) + "@" + "b".repeat(45) + ".com"));
+        assertTrue(Email.isValidEmail("test@example.com")); // 16 chars - well under limit
+        assertTrue(Email.isValidEmail("verylongemailaddress@verylongdomainname.com")); // 43 chars - valid
     }
 
     @Test
