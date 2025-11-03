@@ -152,7 +152,7 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code IncomeBracket} of the {@code Person} that we are building to null.
+     * Sets the {@code IncomeBracket} of the {@code Person} that we are building to null or a given IncomeBracket.
      */
     public PersonBuilder withIncomeBracket(IncomeBracket incomeBracket) {
         this.incomeBracket = incomeBracket;

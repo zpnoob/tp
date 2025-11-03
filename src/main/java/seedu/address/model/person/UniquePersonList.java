@@ -135,6 +135,18 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Returns true if the list contains a person with the same email as the given argument.
+     * Empty emails are not considered duplicates.
+     */
+    public boolean containsSameEmail(Person toCheck) {
+        requireNonNull(toCheck);
+        if (toCheck.getEmail().value.isEmpty()) {
+            return false;
+        }
+        return internalList.stream().anyMatch(toCheck::hasSameEmail);
+    }
+
+    /**
      * Returns true if {@code persons} contains only unique persons.
      */
     private boolean personsAreUnique(List<Person> persons) {

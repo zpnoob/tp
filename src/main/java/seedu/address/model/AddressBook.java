@@ -76,6 +76,13 @@ public class AddressBook implements ReadOnlyAddressBook {
                 .anyMatch(p -> p.hasSamePhone(person));
     }
 
+    /**
+     * Returns true if a person with the same email exists in the address book.
+     */
+    public boolean hasPersonWithEmail(Person person) {
+        requireNonNull(person);
+        return persons.containsSameEmail(person);
+    }
 
     /**
      * Adds a person to the address book.
