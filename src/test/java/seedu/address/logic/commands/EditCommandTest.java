@@ -127,7 +127,6 @@ public class EditCommandTest {
     public void execute_duplicateNameOnly_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person secondPerson = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
-
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
                 .withName(firstPerson.getName().fullName).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
