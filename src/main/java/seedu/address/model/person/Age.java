@@ -22,7 +22,13 @@ public class Age {
     public Age(String age) {
         requireNonNull(age);
         checkArgument(isValidAge(age), MESSAGE_CONSTRAINTS);
-        value = age;
+
+        if (age.isEmpty()) {
+            value = age;
+        } else {
+            // Remove leading zeros by parsing as integer and converting back to string
+            value = String.valueOf(Integer.parseInt(age));
+        }
     }
 
     /**

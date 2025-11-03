@@ -288,6 +288,36 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseAge_leadingZeros_returnsAgeWithoutLeadingZeros() throws Exception {
+        // Single leading zero - two digit result
+        Age expectedAge20 = new Age("20");
+        assertEquals(expectedAge20, ParserUtil.parseAge("020"));
+        assertEquals("20", ParserUtil.parseAge("020").value);
+
+        // Leading zero with single digit result
+        Age expectedAge5 = new Age("5");
+        assertEquals(expectedAge5, ParserUtil.parseAge("05"));
+        assertEquals("5", ParserUtil.parseAge("05").value);
+
+        // All zeros except last digit
+        Age expectedAge1 = new Age("1");
+        assertEquals(expectedAge1, ParserUtil.parseAge("001"));
+        assertEquals("1", ParserUtil.parseAge("001").value);
+
+        // Just zero
+        Age expectedAge0 = new Age("0");
+        assertEquals(expectedAge0, ParserUtil.parseAge("00"));
+        assertEquals("0", ParserUtil.parseAge("00").value);
+        assertEquals(expectedAge0, ParserUtil.parseAge("000"));
+        assertEquals("0", ParserUtil.parseAge("000").value);
+
+        // Three digit age without leading zeros should remain unchanged
+        Age expectedAge100 = new Age("100");
+        assertEquals(expectedAge100, ParserUtil.parseAge("100"));
+        assertEquals("100", ParserUtil.parseAge("100").value);
+    }
+
+    @Test
     public void parseLastContactedDate_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseLastContactedDate(null));
     }
