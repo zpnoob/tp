@@ -285,6 +285,25 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseTag_exactly30Characters_success() throws Exception {
+        String tag30Chars = "123456789012345678901234567890";
+        Tag expectedTag = new Tag(tag30Chars);
+        assertEquals(expectedTag, ParserUtil.parseTag(tag30Chars));
+    }
+
+    @Test
+    public void parseTag_tag31Characters_throwsParseException() {
+        String tag31Chars = "1234567890123456789012345678901";
+        assertThrows(ParseException.class, () -> ParserUtil.parseTag(tag31Chars));
+    }
+
+    @Test
+    public void parseTag_exceedsMaxLength_throwsParseException() {
+        String longTag = "this is a very long tag name that exceeds the limit";
+        assertThrows(ParseException.class, () -> ParserUtil.parseTag(longTag));
+    }
+
+    @Test
     public void parseTags_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parseTags(null));
     }
