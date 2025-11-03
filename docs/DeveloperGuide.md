@@ -1126,3 +1126,11 @@ Team size: 5
    cannot update the address without removing the DNC tag first. To address this, we plan to reduce the restrictions to
    only prevent editing of name and phone number fields, while allowing updates to other contact information. We also
    plan to add a dedicated reversal command to eliminate the need to delete/re-add workaround.
+
+4. **Provide in-app command reference for help command:**
+   Currently, the `help` command only directs users to an external online User Guide link, forcing CLI users to
+   interrupt their workflow, open a web browser, and manually navigate documentation simply to recall a command
+   format. This lack of in-app reference significantly hinders the efficiency and usability for fast-typists and
+   power users who value staying within the terminal environment. To address this, we plan to update the `help`
+   command to display a brief summary of all available commands and their basic syntax directly in the application.
+   The external User Guide link can be retained as a secondary option for users needing more comprehensive details.
