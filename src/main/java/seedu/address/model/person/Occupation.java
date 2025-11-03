@@ -9,13 +9,14 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Occupation {
 
-    public static final String MESSAGE_CONSTRAINTS = "Occupation can take any values.";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Occupation should only contain alphabetic characters and spaces between words. "
+            + "It should not be blank and should not have leading/trailing spaces or consecutive spaces.";
 
     /*
-     * The first character of the occupation must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * Only accepts alphabetic characters with single spaces between words.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z]+( [a-zA-Z]+)*$";
 
     public final String value;
 
