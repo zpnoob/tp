@@ -91,6 +91,34 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseName_validValueWithMultipleSpaces_returnsNormalisedName() throws Exception {
+        String nameWithMultipleSpaces = "Rachel   Walker";
+        Name expectedName = new Name(VALID_NAME);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithMultipleSpaces));
+    }
+
+    @Test
+    public void parseName_validValueWithLeadingTrailingAndInternalSpaces_returnsNormalisedName() throws Exception {
+        String nameWithExtraSpaces = "  Rachel    Walker  ";
+        Name expectedName = new Name(VALID_NAME);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithExtraSpaces));
+    }
+
+    @Test
+    public void parseName_validValueWithTabsAndNewlines_returnsNormalisedName() throws Exception {
+        String nameWithMixedWhitespace = "Rachel\t\t\nWalker";
+        Name expectedName = new Name(VALID_NAME);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithMixedWhitespace));
+    }
+
+    @Test
+    public void parseName_validValueWithMultipleWordsAndSpaces_returnsNormalisedName() throws Exception {
+        String nameWithMultipleSpaces = "John   Paul    George   Ringo";
+        Name expectedName = new Name("John Paul George Ringo");
+        assertEquals(expectedName, ParserUtil.parseName(nameWithMultipleSpaces));
+    }
+
+    @Test
     public void parsePhone_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
     }
@@ -137,6 +165,35 @@ public class ParserUtilTest {
         String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
         Address expectedAddress = new Address(VALID_ADDRESS);
         assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithWhitespace));
+    }
+
+    @Test
+    public void parseAddress_validValueWithMultipleSpaces_returnsNormalisedAddress() throws Exception {
+        String addressWithMultipleSpaces = "123   Main   Street   #0505";
+        Address expectedAddress = new Address(VALID_ADDRESS);
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithMultipleSpaces));
+    }
+
+    @Test
+    public void parseAddress_validValueWithLeadingTrailingAndInternalSpaces_returnsNormalisedAddress()
+            throws Exception {
+        String addressWithExtraSpaces = "  123    Main    Street    #0505  ";
+        Address expectedAddress = new Address(VALID_ADDRESS);
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithExtraSpaces));
+    }
+
+    @Test
+    public void parseAddress_validValueWithTabsAndNewlines_returnsNormalisedAddress() throws Exception {
+        String addressWithMixedWhitespace = "123\t\tMain\n\nStreet\t#0505";
+        Address expectedAddress = new Address(VALID_ADDRESS);
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithMixedWhitespace));
+    }
+
+    @Test
+    public void parseAddress_validValueWithComplexWhitespace_returnsNormalisedAddress() throws Exception {
+        String addressWithComplexWhitespace = "  Blk   456,   Den    Road,    #01-355  ";
+        Address expectedAddress = new Address("Blk 456, Den Road, #01-355");
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithComplexWhitespace));
     }
 
     @Test
