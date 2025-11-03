@@ -1126,4 +1126,3 @@ Team size: 5
    phone number. However, telemarketers frequently need to store multiple contact numbers (home, mobile,
    office) for the same person and require support for special characters like `-`, `+`, and `( )` to
    accommodate international country codes and phone extensions.
-    
