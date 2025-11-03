@@ -103,6 +103,11 @@ public class ModelManager implements Model {
         return addressBook.hasPersonWithPhone(person);
     }
 
+    @Override
+    public boolean hasPersonWithEmail(Person person) {
+        requireNonNull(person);
+        return addressBook.hasPersonWithEmail(person);
+    }
 
     @Override
     public void deletePerson(Person target) {

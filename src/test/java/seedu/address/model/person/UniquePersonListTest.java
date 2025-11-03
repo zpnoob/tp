@@ -169,6 +169,48 @@ public class UniquePersonListTest {
     }
 
     @Test
+    public void containsSameEmail_nullPerson_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniquePersonList.containsSameEmail(null));
+    }
+
+    @Test
+    public void containsSameEmail_personNotInList_returnsFalse() {
+        uniquePersonList.add(ALICE);
+        Person differentEmailPerson = new PersonBuilder().withEmail("different@example.com").build();
+        assertFalse(uniquePersonList.containsSameEmail(differentEmailPerson));
+    }
+
+    @Test
+    public void containsSameEmail_personWithSameEmailInList_returnsTrue() {
+        uniquePersonList.add(ALICE);
+        Person sameEmailPerson = new PersonBuilder()
+                .withName("Different Name")
+                .withPhone("99999999")
+                .withEmail(ALICE.getEmail().value)
+                .build();
+        assertTrue(uniquePersonList.containsSameEmail(sameEmailPerson));
+    }
+
+    @Test
+    public void containsSameEmail_emptyEmailInCheckPerson_returnsFalse() {
+        uniquePersonList.add(ALICE);
+        Person emptyEmailPerson = new PersonBuilder().withEmail("").build();
+        assertFalse(uniquePersonList.containsSameEmail(emptyEmailPerson));
+    }
+
+    @Test
+    public void containsSameEmail_emptyEmailInListAndCheckPerson_returnsFalse() {
+        Person emptyEmailPerson1 = new PersonBuilder().withEmail("").build();
+        Person emptyEmailPerson2 = new PersonBuilder()
+                .withName("Different Name")
+                .withPhone("88888888")
+                .withEmail("")
+                .build();
+        uniquePersonList.add(emptyEmailPerson1);
+        assertFalse(uniquePersonList.containsSameEmail(emptyEmailPerson2));
+    }
+
+    @Test
     public void toStringMethod() {
         assertEquals(uniquePersonList.asUnmodifiableObservableList().toString(), uniquePersonList.toString());
     }

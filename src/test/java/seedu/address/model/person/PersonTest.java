@@ -120,6 +120,41 @@ public class PersonTest {
         assertFalse(ALICE.hasSamePhone(differentPhone));
     }
 
+    @Test
+    public void hasSameEmail() {
+        // same object -> returns true
+        assertTrue(ALICE.hasSameEmail(ALICE));
+
+        // null -> returns false
+        assertFalse(ALICE.hasSameEmail(null));
+
+        // same email, different name -> returns true
+        Person differentNameSameEmail = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        assertTrue(ALICE.hasSameEmail(differentNameSameEmail));
+
+        // same email, all other attributes different -> returns true
+        Person sameEmailOnly = new PersonBuilder(ALICE)
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .build();
+        assertTrue(ALICE.hasSameEmail(sameEmailOnly));
+
+        // different email, all other attributes same -> returns false
+        Person differentEmail = new PersonBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
+        assertFalse(ALICE.hasSameEmail(differentEmail));
+
+        // empty email on first person -> returns false
+        Person emptyEmailPerson = new PersonBuilder(ALICE).withEmail("").build();
+        assertFalse(emptyEmailPerson.hasSameEmail(ALICE));
+
+        // empty email on second person -> returns false
+        assertFalse(ALICE.hasSameEmail(emptyEmailPerson));
+
+        // both persons have empty email -> returns false
+        Person anotherEmptyEmailPerson = new PersonBuilder(BOB).withEmail("").build();
+        assertFalse(emptyEmailPerson.hasSameEmail(anotherEmptyEmailPerson));
+    }
 
     @Test
     public void equals() {

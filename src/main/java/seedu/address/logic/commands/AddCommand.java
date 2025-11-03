@@ -50,6 +50,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the InsuraBook";
     public static final String MESSAGE_DUPLICATE_PHONE = "This phone number already exists in the InsuraBook";
+    public static final String MESSAGE_DUPLICATE_EMAIL = "This email address already exists in the InsuraBook";
 
     private final Person toAdd;
 
@@ -71,6 +72,10 @@ public class AddCommand extends Command {
 
         if (model.hasPersonWithPhone(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_PHONE);
+        }
+
+        if (model.hasPersonWithEmail(toAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_EMAIL);
         }
 
         model.addPerson(toAdd);

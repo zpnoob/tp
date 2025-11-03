@@ -95,4 +95,9 @@ public interface Model {
      * Updates the sorted order of the filtered person list using the given {@code comparator}.
      */
     void updateSortedPersonList(Comparator<Person> comparator);
+
+    /**
+    * Returns true if a person with the same email as {@code person} exists in the address book.
+    */
+    boolean hasPersonWithEmail(Person person);
 }

@@ -67,7 +67,19 @@ public class AddCommandTest {
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PHONE, () -> addCommand.execute(modelStub));
     }
 
+    @Test
+    public void execute_duplicateEmail_throwsCommandException() {
+        Person validPerson = new PersonBuilder().withEmail("test@example.com").build();
+        Person personWithSameEmail = new PersonBuilder()
+                .withName("Different Name")
+                .withPhone("87654321")
+                .withEmail("test@example.com")
+                .build();
+        AddCommand addCommand = new AddCommand(personWithSameEmail);
+        ModelStubWithPersonAndEmail modelStub = new ModelStubWithPersonAndEmail(validPerson);
 
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_EMAIL, () -> addCommand.execute(modelStub));
+    }
 
     @Test
     public void equals() {
@@ -160,6 +172,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasPersonWithEmail(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -211,6 +228,36 @@ public class AddCommandTest {
     }
 
     /**
+     * A Model stub that contains a single person and checks for email duplicates.
+     */
+    private class ModelStubWithPersonAndEmail extends ModelStub {
+        private final Person person;
+
+        ModelStubWithPersonAndEmail(Person person) {
+            requireNonNull(person);
+            this.person = person;
+        }
+
+        @Override
+        public boolean hasPerson(Person person) {
+            requireNonNull(person);
+            return this.person.isSamePerson(person);
+        }
+
+        @Override
+        public boolean hasPersonWithPhone(Person person) {
+            requireNonNull(person);
+            return this.person.hasSamePhone(person);
+        }
+
+        @Override
+        public boolean hasPersonWithEmail(Person person) {
+            requireNonNull(person);
+            return this.person.hasSameEmail(person);
+        }
+    }
+
+    /**
      * A Model stub that always accept the person being added.
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
@@ -228,6 +275,11 @@ public class AddCommandTest {
             return personsAdded.stream().anyMatch(p -> p.hasSamePhone(person));
         }
 
+        @Override
+        public boolean hasPersonWithEmail(Person person) {
+            requireNonNull(person);
+            return personsAdded.stream().anyMatch(p -> p.hasSameEmail(person));
+        }
 
         @Override
         public void addPerson(Person person) {

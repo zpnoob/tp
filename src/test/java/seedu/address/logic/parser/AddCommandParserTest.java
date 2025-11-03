@@ -344,4 +344,80 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB, new AddCommand(expectedPerson));
     }
+
+    @Test
+    public void parse_nameWithMultipleSpaces_normalisesWhitespace() {
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail("")
+                .withAddress("")
+                .withAge("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, " n/Bob    Choo " + PHONE_DESC_BOB,
+                new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_nameWithTabsAndNewlines_normalisesWhitespace() {
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail("")
+                .withAddress("")
+                .withAge("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, " n/Bob\t\t\nChoo " + PHONE_DESC_BOB,
+                new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_addressWithMultipleSpaces_normalisesWhitespace() {
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail("")
+                .withAddress(VALID_ADDRESS_BOB)
+                .withAge("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + " a/Block   123,   Bobby   Street   3 ",
+                new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_addressWithTabsAndNewlines_normalisesWhitespace() {
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail("")
+                .withAddress(VALID_ADDRESS_BOB)
+                .withAge("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + " a/Block\t\t123,\n\nBobby   Street   3 ",
+                new AddCommand(expectedPerson));
+    }
+
+    @Test
+    public void parse_nameAndAddressWithMixedWhitespace_normalisesWhitespace() {
+        Person expectedPerson = new PersonBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .withAge("")
+                .withTags()
+                .build();
+
+        assertParseSuccess(parser, " n/Bob    Choo " + PHONE_DESC_BOB + EMAIL_DESC_BOB
+                        + " a/Block   123,   Bobby   Street   3 ",
+                new AddCommand(expectedPerson));
+    }
 }

@@ -91,6 +91,34 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseName_validValueWithMultipleSpaces_returnsNormalisedName() throws Exception {
+        String nameWithMultipleSpaces = "Rachel   Walker";
+        Name expectedName = new Name(VALID_NAME);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithMultipleSpaces));
+    }
+
+    @Test
+    public void parseName_validValueWithLeadingTrailingAndInternalSpaces_returnsNormalisedName() throws Exception {
+        String nameWithExtraSpaces = "  Rachel    Walker  ";
+        Name expectedName = new Name(VALID_NAME);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithExtraSpaces));
+    }
+
+    @Test
+    public void parseName_validValueWithTabsAndNewlines_returnsNormalisedName() throws Exception {
+        String nameWithMixedWhitespace = "Rachel\t\t\nWalker";
+        Name expectedName = new Name(VALID_NAME);
+        assertEquals(expectedName, ParserUtil.parseName(nameWithMixedWhitespace));
+    }
+
+    @Test
+    public void parseName_validValueWithMultipleWordsAndSpaces_returnsNormalisedName() throws Exception {
+        String nameWithMultipleSpaces = "John   Paul    George   Ringo";
+        Name expectedName = new Name("John Paul George Ringo");
+        assertEquals(expectedName, ParserUtil.parseName(nameWithMultipleSpaces));
+    }
+
+    @Test
     public void parsePhone_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
     }
@@ -137,6 +165,35 @@ public class ParserUtilTest {
         String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
         Address expectedAddress = new Address(VALID_ADDRESS);
         assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithWhitespace));
+    }
+
+    @Test
+    public void parseAddress_validValueWithMultipleSpaces_returnsNormalisedAddress() throws Exception {
+        String addressWithMultipleSpaces = "123   Main   Street   #0505";
+        Address expectedAddress = new Address(VALID_ADDRESS);
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithMultipleSpaces));
+    }
+
+    @Test
+    public void parseAddress_validValueWithLeadingTrailingAndInternalSpaces_returnsNormalisedAddress()
+            throws Exception {
+        String addressWithExtraSpaces = "  123    Main    Street    #0505  ";
+        Address expectedAddress = new Address(VALID_ADDRESS);
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithExtraSpaces));
+    }
+
+    @Test
+    public void parseAddress_validValueWithTabsAndNewlines_returnsNormalisedAddress() throws Exception {
+        String addressWithMixedWhitespace = "123\t\tMain\n\nStreet\t#0505";
+        Address expectedAddress = new Address(VALID_ADDRESS);
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithMixedWhitespace));
+    }
+
+    @Test
+    public void parseAddress_validValueWithComplexWhitespace_returnsNormalisedAddress() throws Exception {
+        String addressWithComplexWhitespace = "  Blk   456,   Den    Road,    #01-355  ";
+        Address expectedAddress = new Address("Blk 456, Den Road, #01-355");
+        assertEquals(expectedAddress, ParserUtil.parseAddress(addressWithComplexWhitespace));
     }
 
     @Test
@@ -307,7 +364,15 @@ public class ParserUtilTest {
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("12.5"));
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("-5"));
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("20a"));
+
         assertThrows(ParseException.class, () -> ParserUtil.parseAge("1234")); // more than 3 digits
+
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("5")); // below minimum age
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("9")); // below minimum age
+
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("1234")); // more than 3 digits
+
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge("5")); // below minimum age
     }
 
     @Test
@@ -328,6 +393,42 @@ public class ParserUtilTest {
         String ageWithWhitespace = "  " + VALID_AGE + "  ";
         Age expectedAge = new Age(VALID_AGE);
         assertEquals(expectedAge, ParserUtil.parseAge(ageWithWhitespace));
+    }
+
+    @Test
+    public void parseAge_leadingZeros_returnsAgeWithoutLeadingZeros() throws Exception {
+        // Single leading zero - two digit result
+        Age expectedAge20 = new Age("20");
+        assertEquals(expectedAge20, ParserUtil.parseAge("020"));
+        assertEquals("20", ParserUtil.parseAge("020").value);
+
+        // Multiple leading zeros - 4 digits becomes valid 2 digits
+        assertEquals(expectedAge20, ParserUtil.parseAge("0020"));
+        assertEquals("20", ParserUtil.parseAge("0020").value);
+
+        // Leading zero with two digit result
+        Age expectedAge15 = new Age("15");
+        assertEquals(expectedAge15, ParserUtil.parseAge("015"));
+        assertEquals("15", ParserUtil.parseAge("015").value);
+
+        // Leading zeros with minimum valid age
+        Age expectedAge10 = new Age("10");
+        assertEquals(expectedAge10, ParserUtil.parseAge("010"));
+        assertEquals("10", ParserUtil.parseAge("010").value);
+
+        // 4 digits with leading zeros becomes valid minimum age
+        assertEquals(expectedAge10, ParserUtil.parseAge("0010"));
+        assertEquals("10", ParserUtil.parseAge("0010").value);
+
+        // Three digit age without leading zeros should remain unchanged
+        Age expectedAge100 = new Age("100");
+        assertEquals(expectedAge100, ParserUtil.parseAge("100"));
+        assertEquals("100", ParserUtil.parseAge("100").value);
+
+        // Maximum valid age
+        Age expectedAge120 = new Age("120");
+        assertEquals(expectedAge120, ParserUtil.parseAge("120"));
+        assertEquals("120", ParserUtil.parseAge("120").value);
     }
 
     @Test
