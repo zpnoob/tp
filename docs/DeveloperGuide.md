@@ -11,6 +11,8 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Acknowledgements**
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
@@ -19,7 +21,7 @@ We would like to acknowledge the following third-party libraries and tools used 
 
 **Libraries:**
 * **[JavaFX](https://openjfx.io/)** - Used for building the graphical user interface
-* **[Jackson](https://github.com/FasterXML/jackson)** - Used for JSON parsing and data serialization
+* **[Jackson](https://github.com/FasterXML/jackson)** - Used for JSON parsing and data serialisation
 * **[JUnit5](https://github.com/junit-team/junit5)** - Used as the testing framework
 * **[Gradle](https://gradle.org/)** - Used for build automation and dependency management
 * **[Checkstyle](https://checkstyle.org/)** - Used for code quality and style checking
@@ -51,7 +53,7 @@ Given below is a quick overview of main components and how they interact with ea
 **Main components of the architecture**
 
 **`Main`** (consisting of classes [`Main`](https://github.com/AY2526S1-CS2103T-F15a-2/tp/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2526S1-CS2103T-F15a-2/tp/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
-* At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
+* At app launch, it initialises the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
 The bulk of the app's work is done by the following four components:
@@ -107,7 +109,7 @@ The `UI` component,
 
 Here's a (partial) class diagram of the `Logic` component:
 
-<puml src="diagrams/LogicClassDiagram.puml" width="550"/>
+<puml src="diagrams/LogicClassDiagram.puml" width="500"/>
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
 
@@ -117,6 +119,8 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline continues till the end of diagram.
 </box>
+
+<div style="page-break-after: always;"></div>
 
 How the `Logic` component works:
 
@@ -149,6 +153,8 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
+<div style="page-break-after: always;"></div>
+
 #### Person Class
 
 For a detailed view of the `Person` class and its associated attribute classes (Name, Phone, Email, etc.), refer to the dedicated diagram below:
@@ -159,7 +165,7 @@ The `Person` class encapsulates all contact information for InsuraBook users. Ke
 * **Required Fields**: Only Name and Phone are required fields. All other fields (Email, Address, Occupation, Age, Priority, Income Bracket, Tags) are optional.
 * **Validation**: Each attribute class (Name, Phone, Email, etc.) performs its own validation upon construction.
 * **Editability**: Person fields can be modified through the `edit` command, allowing users to update contact information as needed.
-* **Tag Support**: Persons can have multiple tags, including a special `DncTag` for "Do Not Call" compliance
+* **Tag Support**: Persons can have multiple tags, including a special `DncTag` for "Do Not Call" compliance.
 
 <box type="info" seamless>
 
@@ -209,7 +215,7 @@ These operations are exposed in the `Model` interface as `Model#commitAddressBoo
 
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialised with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
 
 <puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
 
@@ -269,7 +275,7 @@ Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Sinc
 
 <puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
 
-The following activity diagram summarizes what happens when a user executes a new command:
+The following activity diagram summarises what happens when a user executes a new command:
 
 <puml src="diagrams/CommitActivityDiagram.puml" width="350" />
 
@@ -310,10 +316,12 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* busy telemarketing agents who sell insurance
+* need to manage large lists of clients and new leads
+* require quick access to client names, phone numbers, and other essential information during calls
 * prefer desktop apps over other types
-* is reasonably comfortable using CLI apps
-* has a need for reminders
+* can type fast and are reasonably comfortable using CLI apps
+* need to find, add, and update records efficiently without interrupting their workflow
 
 **Value proposition**:
 * saves time
@@ -420,6 +428,8 @@ Extensions:
 </pre>
 </box>
 
+<div style="page-break-after: always;"></div>
+
 #### UC3 - Edit Contact Details
 <box>
 Software System: InsuraBook<br>
@@ -453,6 +463,8 @@ Extensions:
       Use case resumes at step 3.
 </pre>
 </box>
+
+<div style="page-break-after: always;"></div>
 
 #### UC4 - Find Contacts by Keywords
 <box>
@@ -507,6 +519,8 @@ Extensions:
       Use case resumes at step 3.
 </pre>
 </box>
+
+<div style="page-break-after: always;"></div>
 
 #### UC6 - Set Contact Priority
 <box>
@@ -596,6 +610,8 @@ Extensions:
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
@@ -613,7 +629,7 @@ testers are expected to do more *exploratory* testing.
 
 **Test: Initial launch**
 
-**Preconditions**: Java 17 or above is installed on the system.
+**Preconditions**: Java 17 is installed on the system.
 
 1. Download the jar file and copy into an empty folder. 
 2. Open a command terminal and navigate to the folder containing the jar file. Run the command `java -jar InsuraBook.jar`.
@@ -656,6 +672,8 @@ testers are expected to do more *exploratory* testing.
 **Expected**: Application closes gracefully.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Adding a contact
 
@@ -721,6 +739,8 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ### Editing a contact
 
 <box>
@@ -784,6 +804,8 @@ testers are expected to do more *exploratory* testing.
 **Expected**: All tags removed from first contact.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Deleting a contact
 
@@ -869,6 +891,8 @@ testers are expected to do more *exploratory* testing.
 **Expected**: Last contact is deleted successfully. List size decreases by one.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Finding contacts
 
@@ -964,6 +988,8 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ### Priority management
 
 <box>
@@ -1007,6 +1033,8 @@ testers are expected to do more *exploratory* testing.
 **Expected**: Error message about invalid priority value. Valid values shown.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ### Income bracket management
 
@@ -1076,6 +1104,8 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ### Saving data
 
 <box>
@@ -1143,7 +1173,9 @@ testers are expected to do more *exploratory* testing.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Future Enhancements**
+<div style="page-break-after: always;"></div>
+
+## **Appendix: Planned Enhancements**
 
 Team size: 5
 
@@ -1180,8 +1212,8 @@ Team size: 5
 5. **Improve Unicode character support for international contacts:**
    Currently, the application handles Unicode characters inconsistently across different fields. The TAG field is
    limited to alphanumeric characters and spaces, while the EMAIL field only accepts standard ASCII characters,
-   preventing agents from working with clients who use internationalized email addresses with native scripts (e.g.,
+   preventing agents from working with clients who use internationalised email addresses with native scripts (e.g.,
    Chinese, Arabic). This creates barriers for telemarketing agents with diverse, multilingual client bases. To
    address this, we plan to extend the TAG field to accept all Unicode characters and extend the EMAIL field to
-   support internationalized email addresses with foreign characters, while maintaining current restrictions for
+   support internationalised email addresses with foreign characters, while maintaining current restrictions for
    NAME and other fields to ensure data consistency.

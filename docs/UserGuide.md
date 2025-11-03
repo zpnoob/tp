@@ -10,7 +10,7 @@
 
 InsuraBook exists to stop that from happening. Designed for busy **telemarketing agents** who sell insurance - InsuraBook is tailor-made to handle **large lists of clients and new leads**. This means that you can focus on your sales calls as the information you need is always where you expect it to be.
 
-InsuraBook keeps essential **client names, phone numbers and other miscellaneous information** organized. It's **optimized for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. InsuraBook transforms messy binders filled with client details into a steady, repeatable workflow optimized for high-volume calling - so busy agents can spend their energy making deals, and not chasing information.
+InsuraBook keeps essential **client names, phone numbers and other miscellaneous information** organised. It's **optimised for use via a Command Line Interface (CLI)** - making it easy to find, add, and update records efficiently using simple commands. InsuraBook transforms messy binders filled with client details into a steady, repeatable workflow optimised for high-volume calling - so busy agents can spend their energy making deals, and not chasing information.
 
 <div style="text-align: center; font-style: italic; font-size: 1.1em; margin: 20px 0; padding: 15px; background-color: #f0f0f0; border-left: 4px solid #0366d6;">
 <strong>InsuraBook is a one-stop solution for telemarketers and their daily contact management needs.</strong>
@@ -64,25 +64,25 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
+1. Ensure you have Java `17` installed in your computer.<br>
 
-   **To check if Java 17+ is installed:**
+   **To check if Java 17 is installed:**
    Open a command terminal/command prompt and type the following:
    ```
    java -version
    ```
-   If Java 17 or higher is installed, you should see output similar to:
+   If Java 17 is installed, you should see output similar to:
 
    ```
-   java version "17.0.x" or higher
+   java version "17.0.x"
    ```
-   If Java is not installed, or the Java version is below Java 17, proceed to install Java 17+.
+   If Java is not installed, or the Java version is below Java 17, proceed to install Java 17.
 
    **Installation links:**
    * **Mac users:** Follow the precise installation guide [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
-   * **Windows/Linux users:** Download Java 17+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/).
+   * **Windows/Linux users:** Download Java 17 from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/install/).
 <br><br>
-2. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-F15a-2/tp/releases/tag/v1.5).
+2. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-F15a-2/tp/releases/tag/v1.6).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your InsuraBook.
 
@@ -94,7 +94,7 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
     ```
     Run the application:
     ```
-    java -jar insurabook.jar
+    java -jar InsuraBook.jar
     ```
     A GUI similar to the one displayed below should appear within a few seconds. Note how the app contains some sample data.<br>
     <div style="text-align: center; ">
@@ -109,9 +109,9 @@ InsuraBook keeps essential **client names, phone numbers and other miscellaneous
 
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe`, with phone number `98765432`, email `johnd@example.com`, and address `John street, block 123, #01-01`.
 
-   * `priority 1 HIGH` : Sets the priority of the 1st contact to HIGH.
+   * `priority 1 HIGH` : Sets the priority of the first contact to HIGH.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the third contact shown in the current list.
 
    * `clear` : Deletes all contacts.
 
@@ -151,18 +151,18 @@ Parameter | Description | Constraints
 
 
 ### Optional Parameters: PERSON_PARAMS
-The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAMS]`
+The following are **optional** parameters to the `add` and `edit` command. We denote them as `[PERSON_PARAMS]`.
 
 Parameter | Description | Constraints
 ----------|-------------|------------
 `e/EMAIL` | Email address | Must be a valid email format (e.g., `user@example.com`).
-`a/ADDRESS` | Physical address | Any text string.
-`o/OCCUPATION` | Client's occupation | Any text string.
+`a/ADDRESS` | Physical address | Any text string that is a valid address.
+`o/OCCUPATION` | Client's occupation | Any alphabetical character.
 `age/AGE` | Client's age | Must be a positive integer between 10-120 inclusive.
 `lc/LAST_CONTACTED` | Last contact date | Must not be a future date. Format: `YYYY-MM-DD` (e.g., `2023-10-15`).
 `pr/PRIORITY` | Contact priority level | Must be one of: `NONE`, `LOW`, `MEDIUM`, `HIGH` (case-insensitive).
-`i/INCOME_BRACKET` | Income bracket classification | Must be one of: `NONE`, `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
-`t/TAG` | Tags for categorization | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
+`i/INCOME_BRACKET` | Income bracket classification | Must be one of: `LOW`, `MIDDLE`, `HIGH` (case-insensitive).
+`t/TAG` | Tags for categorisation | Alphanumeric and spaces allowed. Maximum 30 characters. **Can be used multiple times** (e.g., `t/friend t/colleague`).
 
 <div style="page-break-after: always;"></div>
 
@@ -195,7 +195,7 @@ Click [here](#) to go back to the content page.
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[t/TAG]…​` can be used 0 times, `t/friend`, `t/friend t/family` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -210,7 +210,7 @@ Click [here](#) to go back to the content page.
 
 ### Getting Started
 
-#### Viewing help : `help`
+#### Viewing help: `help`
 
 Shows a message explaining how to access the help page.
 
@@ -235,7 +235,7 @@ Format: `add n/NAME p/PHONE_NUMBER [PERSON_PARAMS]`
     <p>Adding a client on InsuraBook</p>
 </div>
 
-* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
+* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-params).
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 age/28`
@@ -250,7 +250,7 @@ Examples:
 
 **Note:** `n/NAME` and `p/PHONE_NUMBER` are required for `add`. All other prefixes under `PERSON_PARAMS` are optional.
 - If an optional prefix is *omitted*, that field is left unset.
-- If an optional prefix is *present but has no value* (for example `e/` or `a/`) when adding a client, the application accepts and stores that field as an empty string.
+- If an optional prefix is *present but has no value* (for example `e/` or `a/`) when adding a client, the application ignores the prefix.
 </box>
 
 <box type="warning">
@@ -261,7 +261,7 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-#### Editing a client : `edit`
+#### Editing a client: `edit`
 
 Edits an existing contact in InsuraBook.
 
@@ -272,7 +272,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [PERSON_PARAMS]`
     <p>Editing details of the first client on InsuraBook</p>
 </div>
 
-* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-param).
+* For details on available `PERSON_PARAMS`, click [here](#optional-parameters-person-params).
 * Edits the client at the specified `INDEX`.
 * At least one of the optional fields must be provided.
 
@@ -295,7 +295,7 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-#### Deleting a client : `delete`
+#### Deleting a client: `delete`
 
 Deletes the specified contact from InsuraBook.
 
@@ -316,7 +316,7 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-#### Clearing all entries : `clear`
+#### Clearing all entries: `clear`
 
 Clears all entries from InsuraBook.
 
@@ -336,9 +336,9 @@ Format: `clear`
 
 <div style="page-break-after: always;"></div>
 
-### Organizing and Searching
+### Organising and Searching
 
-#### Listing all clients : `list`
+#### Listing all clients: `list`
 
 Shows a list of all contacts sorted by index in the InsuraBook.
 
@@ -409,11 +409,11 @@ Examples:
 
 <div style="page-break-after: always;"></div>
 
-### Client Categorization
+### Client Categorisation
 
 #### Editing a tag: `tag`
 
-Changes the tags of an existing client in Insurabook. This is a convenient shortcut for the edit command when you only want to change the tags.
+Changes the tags of an existing client in InsuraBook. This is a convenient shortcut for the edit command when you only want to change the tags.
 
 Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 
@@ -423,17 +423,21 @@ Format: `tag INDEX t/TAG_NAME [t/TAG_NAME]...`
 </div>
 
 * Changes the tags of the contact at the specified `INDEX`.
-* `tag_name` must be  Alphanumeric and spaces allowed.
+* `tag_name` must be alphanumeric and spaces allowed.
     * Maximum 30 characters.
     * Case-insensitive (eg, Interested = interested).
     * Leading/trailing spaces are trimmed.
 * This command is equivalent to `edit INDEX t/tag_name`.
 
 Examples:
-* `tag 1 t/interested` Sets the tag of the first contact to `interested`.
-* `tag 2 t/follow up` Sets the tag of the second client to `follow up`.
-* `tag 5 t/do not call` Sets the tag of the fifth client to `do not call`.
-* `tag 7 t/follow up t/interested` Sets the tags of the seventh client to `follow up` and `interested`.
+* `tag 1 t/interested` 
+  * Sets the tag of the first contact to `interested`.
+* `tag 2 t/follow up` 
+  * Sets the tag of the second client to `follow up`.
+* `tag 5 t/do not call` 
+  * Sets the tag of the fifth client to `do not call`.
+* `tag 7 t/follow up t/interested` 
+  * Sets the tags of the seventh client to `follow up` and `interested`.
 
 <box type="info">
 
@@ -471,8 +475,10 @@ Format: `dnc INDEX`
 * The DNC status **cannot be removed** from a contact.
 
 Examples:
-* `dnc 1` Marks the first contact on the list as Do Not Call.
-* `dnc 3` Marks the third contact on the list as Do Not Call.
+* `dnc 1` 
+  * Marks the first contact on the list as Do Not Call.
+* `dnc 3` 
+  * Marks the third contact on the list as Do Not Call.
 
 <box type="warning">
 
@@ -518,7 +524,7 @@ Examples:
 
 ### System Commands
 
-#### Exiting the program : `exit`
+#### Exiting the program: `exit`
 
 Exits the program.
 
@@ -526,11 +532,11 @@ Format: `exit`
 
 #### Saving the data
 
-InsuraBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+InsuraBook data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 #### Editing the data file
 
-InsuraBook data are saved automatically as a JSON file `[JAR file location]/data/insurabook.json`. Advanced users are welcome to update data directly by editing that data file.
+InsuraBook data is saved automatically as a JSON file `[JAR file location]/data/insurabook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning">
 
@@ -576,6 +582,7 @@ Click [here](#) to go back to the content page.
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+2. **If you minimise the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimised, and no new Help Window will appear. The remedy is to manually restore the minimised Help Window.
+3. **If you manually edit the data file** (`data/insurabook.json`) with invalid data (e.g., an occupation containing non-alphabetical characters, an age outside the valid range, or other constraint violations), the application will fail to start. The remedy is to ensure all data is validated before editing the file, or restore a backup of the file. Refer to the [Parameters](#parameters) section for the constraints of each field.
 
 Click [here](#) to go back to the content page.
