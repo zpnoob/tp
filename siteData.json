@@ -69,7 +69,7 @@
         "income-bracket-management": "Income bracket management",
         "do-not-call-dnc-tag-management": "Do Not Call (DNC) tag management",
         "saving-data": "Saving data",
-        "appendix-future-enhancements": "Appendix: Future Enhancements"
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
     },
@@ -119,12 +119,12 @@
         "parameters": "Parameters",
         "reading-parameter-formats": "Reading Parameter Formats",
         "common-parameters": "Common Parameters",
-        "optional-parameters-person-param": "Optional Parameters: PERSON_PARAM",
+        "optional-parameters-person-params": "Optional Parameters: PERSON_PARAMS",
         "features": "Features",
         "getting-started": "Getting Started",
         "managing-client-information": "Managing Client Information",
-        "organizing-and-searching": "Organizing and Searching",
-        "client-categorization": "Client Categorization",
+        "organising-and-searching": "Organising and Searching",
+        "client-categorisation": "Client Categorisation",
         "system-commands": "System Commands",
         "command-summary": "Command summary",
         "faq": "FAQ",
